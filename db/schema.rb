@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330133225) do
+ActiveRecord::Schema.define(version: 20150331031102) do
 
   create_table "album_comments", force: true do |t|
     t.integer  "comment_id"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 20150330133225) do
     t.datetime "updated_at"
   end
 
+  create_table "music_albums", force: true do |t|
+    t.integer  "music_id"
+    t.integer  "album_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "music_comments", force: true do |t|
     t.integer  "comment_id"
     t.integer  "music_id"
@@ -91,6 +98,13 @@ ActiveRecord::Schema.define(version: 20150330133225) do
   create_table "personal_comments", force: true do |t|
     t.integer  "comment_id"
     t.integer  "to_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "playlist_musics", force: true do |t|
+    t.integer  "playlist_id"
+    t.integer  "music_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

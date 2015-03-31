@@ -1,4 +1,6 @@
 class Album < ActiveRecord::Base
-	has_many :album_ratings 
-	has_and_belongs_to_many :musics
+	has_many :album_ratings, dependent: :destroy 
+	has_many :users, :through => :album_ratings
+
+	has_many :music_albums
 end
