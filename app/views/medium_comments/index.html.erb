@@ -1,0 +1,29 @@
+<h1>Listing medium_comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Medium</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medium_comments.each do |medium_comment| %>
+      <tr>
+        <td><%= medium_comment.comment_id %></td>
+        <td><%= medium_comment.medium_id %></td>
+        <td><%= link_to 'Show', medium_comment %></td>
+        <td><%= link_to 'Edit', edit_medium_comment_path(medium_comment) %></td>
+        <td><%= link_to 'Destroy', medium_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medium comment', new_medium_comment_path %>

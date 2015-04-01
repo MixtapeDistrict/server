@@ -1,7 +1,15 @@
 WebInfo2::Application.routes.draw do
-  resources :music_albums
+  resources :medium_comments
+
+  resources :media
+
+  resources :ratings
 
   resources :playlist_musics
+
+  resources :music_albums
+
+  resources :musics
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

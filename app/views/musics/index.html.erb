@@ -1,0 +1,33 @@
+<h1>Listing musics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image path</th>
+      <th>Media</th>
+      <th>Plays</th>
+      <th>Genre</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @musics.each do |music| %>
+      <tr>
+        <td><%= music.image_path %></td>
+        <td><%= music.media_id %></td>
+        <td><%= music.plays %></td>
+        <td><%= music.genre %></td>
+        <td><%= link_to 'Show', music %></td>
+        <td><%= link_to 'Edit', edit_music_path(music) %></td>
+        <td><%= link_to 'Destroy', music, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Music', new_music_path %>

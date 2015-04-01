@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331031102) do
+ActiveRecord::Schema.define(version: 20150401135819) do
 
   create_table "album_comments", force: true do |t|
     t.integer  "comment_id"
@@ -37,21 +37,35 @@ ActiveRecord::Schema.define(version: 20150331031102) do
     t.datetime "updated_at"
   end
 
-  create_table "albums_musics", force: true do |t|
-    t.integer "album_id"
-    t.integer "music_id"
-  end
-
   create_table "comments", force: true do |t|
     t.integer  "user_id"
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment_type"
   end
 
   create_table "followers", force: true do |t|
     t.integer  "user_id"
     t.integer  "follower_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "media", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "file_path"
+    t.string   "image_path"
+    t.integer  "downloads"
+    t.string   "media_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medium_comments", force: true do |t|
+    t.integer  "comment_id"
+    t.integer  "medium_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,36 +77,13 @@ ActiveRecord::Schema.define(version: 20150331031102) do
     t.datetime "updated_at"
   end
 
-  create_table "music_comments", force: true do |t|
-    t.integer  "comment_id"
-    t.integer  "music_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "music_ratings", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "music_id"
-    t.integer  "rating"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "musics", force: true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.string   "filepath"
-    t.string   "imagepath"
-    t.time     "length"
+    t.string   "image_path"
+    t.integer  "medium_id"
     t.integer  "plays"
+    t.string   "genre"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "downloads"
-  end
-
-  create_table "musics_playlists", force: true do |t|
-    t.integer "music_id"
-    t.integer "playlist_id"
   end
 
   create_table "personal_comments", force: true do |t|
@@ -116,19 +107,10 @@ ActiveRecord::Schema.define(version: 20150331031102) do
     t.datetime "updated_at"
   end
 
-  create_table "profile_comments", force: true do |t|
-    t.integer  "comment_id"
-    t.integer  "to_user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "profiles", force: true do |t|
+  create_table "ratings", force: true do |t|
+    t.integer  "medium_id"
     t.integer  "user_id"
-    t.text     "description"
-    t.text     "website_line"
-    t.text     "tracks_heard"
-    t.string   "imagepath"
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -139,6 +121,10 @@ ActiveRecord::Schema.define(version: 20150331031102) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.string   "website_link"
+    t.text     "tracks_heard"
+    t.string   "image_path"
   end
 
 end

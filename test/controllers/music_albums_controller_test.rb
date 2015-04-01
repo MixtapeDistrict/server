@@ -18,7 +18,7 @@ class MusicAlbumsControllerTest < ActionController::TestCase
 
   test "should create music_album" do
     assert_difference('MusicAlbum.count') do
-      post :create, music_album: { album_id: @music_album.album_id, music_id: @music_album.music_id }
+      post :create, music_album: { album_id: @music_album.album_id, media_id: @music_album.media_id }
     end
 
     assert_redirected_to music_album_path(assigns(:music_album))
@@ -35,7 +35,7 @@ class MusicAlbumsControllerTest < ActionController::TestCase
   end
 
   test "should update music_album" do
-    patch :update, id: @music_album, music_album: { album_id: @music_album.album_id, music_id: @music_album.music_id }
+    patch :update, id: @music_album, music_album: { album_id: @music_album.album_id, media_id: @music_album.media_id }
     assert_redirected_to music_album_path(assigns(:music_album))
   end
 

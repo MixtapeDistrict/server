@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @medium_comment.comment_id %>
+</p>
+
+<p>
+  <strong>Medium:</strong>
+  <%= @medium_comment.medium_id %>
+</p>
+
+<%= link_to 'Edit', edit_medium_comment_path(@medium_comment) %> |
+<%= link_to 'Back', medium_comments_path %>

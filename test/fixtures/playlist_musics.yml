@@ -2,8 +2,8 @@
 
 one:
   playlist_id: 1
-  music_id: 1
+  media_id: 1
 
 two:
   playlist_id: 1
-  music_id: 1
+  media_id: 1

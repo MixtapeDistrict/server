@@ -1,17 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 1
-  title: MyString
-  filepath: MyString
-  imagepath: MyString
-  length: 2015-03-31 00:09:34
+  image_path: MyString
+  media_id: 1
   plays: 1
+  genre: MyString
 
 two:
-  user_id: 1
-  title: MyString
-  filepath: MyString
-  imagepath: MyString
-  length: 2015-03-31 00:09:34
+  image_path: MyString
+  media_id: 1
   plays: 1
+  genre: MyString
