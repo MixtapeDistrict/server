@@ -1,5 +1,18 @@
 class HomeController < ApplicationController
 	def showHome
+		# Initialize the user's session if it doesn't
+		# already have one.
+		if(session.has_key?("logged_in"))
+			# If the user is logged in render the logged
+			# in page
+			if(session['logged_in'] == 1) 
+				render "logged_in"
+			end
+		else
+			# Initialize the session
+			session['logged_in'] = 1
+			session['user_id'] = 0
+		end
 	end
 
 	def sign_up
