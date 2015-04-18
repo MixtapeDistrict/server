@@ -12,6 +12,9 @@ function submit_form() {
 		document.getElementById('password-message').innerHTML = "Passwords do not match";
 		return;
 	}
+	if(!validateRegex(username, email, password)) {
+		return;
+	}
 	/* Check with the server if this sign up is valid */
 	var xmlhttp;
 	if(window.XMLHttpRequest) {
@@ -51,4 +54,24 @@ function clearMessages() {
 	document.getElementById('email-message').innerHTML = "";
 	document.getElementById('password-message').innerHTML = "";
 	document.getElementById('username-message').innerHTML = "";
+}
+/* Validates the function using regex */
+function validateRegex(username, email, password) {
+	/*A username & Password must consist of letters and numbers and be between length 6 and 30*/
+	var regex = /^[A-Za-z0-9]{6,30}$/i;
+	var valid = true;
+	if(!regex.test(username)) {
+		document.getElementById('username-message').innerHTML = "Invalid username";
+		valid = false;
+	}
+	if(!regex.test(password)) {
+		document.getElementById('password-message').innerHTML = "Invalid password";
+		valid = false;
+	}
+	regex = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i;
+	if(!regex.test(email)) {
+		document.getElementById('email-message').innerHTML = "Invalid email";
+		valid = false;
+	}
+	return valid;
 }
