@@ -3,7 +3,7 @@ WebInfo2::Application.routes.draw do
   # get 'home/index'
   root 'home#showHome'
   match ':controller(/:action(/:id))', :via => :get
-  get '/sign_up', to: 'home#sign_up'
+  post '/sign_up', to: 'home#sign_up'
   resources :medium_comments
 
   resources :media
