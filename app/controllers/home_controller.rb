@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 			end
 		else
 			# Initialize the session
-			session['logged_in'] = 1
+			session['logged_in'] = 0
 			session['user_id'] = 0
 		end
 	end
@@ -55,5 +55,24 @@ class HomeController < ApplicationController
 		session['logged_in'] = 0
 		# Transfer controll to showHome
 		redirect_to action:"showHome"
+	end
+
+	def login
+		# Get the parameters passed 
+		username = params[:username]
+		password = params[:password]
+		# Get the user trying to login 
+		user = User.find_by(username:username)
+		if(user)
+			# Check if this user has the password
+			if(user.password == password)
+				session['logged_in']=1
+				session['user_id']=user.id
+				redirect_to action:"logged_in" and return
+			end
+		end
+		# If the action reached here, this is an invalid username/password
+	    redirect_to action:"showHome"
+		
 	end
 end

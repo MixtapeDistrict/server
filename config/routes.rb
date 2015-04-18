@@ -5,6 +5,7 @@ WebInfo2::Application.routes.draw do
   match ':controller(/:action(/:id))', :via => :get
   post '/sign_up', to: 'home#sign_up'
   post '/sign_out', to: 'home#sign_out'
+  post '/login', to: 'home#login'
   resources :medium_comments
 
   resources :media
