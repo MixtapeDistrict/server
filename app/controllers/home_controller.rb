@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 			end
 		else
 			# Initialize the session
-			session['logged_in'] = 1
+			session['logged_in'] = 0
 			session['user_id'] = 0
 		end
 	end
