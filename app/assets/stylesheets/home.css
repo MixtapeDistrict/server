@@ -129,4 +129,18 @@
 		top: 10px;
 		border: 2px solid;
 	}
-	
+	#email-message {
+		color:red;
+		text-align:center;
+	}
+	#password-message {
+		color:red;
+		text-align:center;
+	}
+	#username-message {
+		color:red;
+		text-align:center;
+	}
+	form {
+		text-align:center;
+	}
