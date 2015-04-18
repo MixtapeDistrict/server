@@ -6,12 +6,24 @@ class HomeController < ApplicationController
 			# If the user is logged in render the logged
 			# in page
 			if(session['logged_in'] == 1) 
-				render "logged_in"
+				redirect_to action:"logged_in"
 			end
 		else
 			# Initialize the session
 			session['logged_in'] = 1
 			session['user_id'] = 0
+		end
+	end
+
+	def logged_in
+		# Ensure user is logged in to view this page
+		if(session.has_key?("logged_in"))
+			# If the user is not logged in redirect to homepage
+			if(session['logged_in'] != 1) 
+				redirect_to action:"showHome"
+			end
+		else
+			redirect_to action:"showHome"
 		end
 	end
 
@@ -36,5 +48,12 @@ class HomeController < ApplicationController
 		end
 		# Return the response to the AJAX script
 		render :text => response
+	end
+
+	def sign_out
+		# Log the user out
+		session['logged_in'] = 0
+		# Transfer controll to showHome
+		redirect_to action:"showHome"
 	end
 end
