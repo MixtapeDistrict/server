@@ -35,8 +35,8 @@ function submit_form() {
 			if(error == false) {
 				document.getElementById("sign_up").innerHTML = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="background:DodgerBlue;">You have signed up</a>'
 				setTimeout(function(){
-    				document.getElementById("signup").innerHTML = '';
-				}, 5000);
+    				document.getElementById("sign_up").innerHTML = '';
+				}, 3000);
 			}
 		}
 
