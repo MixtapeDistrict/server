@@ -50,5 +50,5 @@ function submit_form() {
 function clearMessages() {
 	document.getElementById('email-message').innerHTML = "";
 	document.getElementById('password-message').innerHTML = "";
-	document.getElementById('email-message').innerHTML = "";
+	document.getElementById('username-message').innerHTML = "";
 }
