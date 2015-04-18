@@ -1,6 +1,7 @@
 WebInfo2::Application.routes.draw do
 
   # get 'home/index'
+  root 'home#showHome'
   match ':controller(/:action(/:id))', :via => :get
 
   resources :medium_comments
