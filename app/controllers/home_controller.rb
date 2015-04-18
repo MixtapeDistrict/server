@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
 	def showHome
+		if(params.has_key?(:error)) 
+			@error = params[:error]
+		else
+			@error = ""
+		end
 		# Initialize the user's session if it doesn't
 		# already have one.
 		if(session.has_key?("logged_in"))
@@ -62,17 +67,20 @@ class HomeController < ApplicationController
 		username = params[:username]
 		password = params[:password]
 		# Get the user trying to login 
+		response = ""
 		user = User.find_by(username:username)
 		if(user)
 			# Check if this user has the password
 			if(user.password == password)
 				session['logged_in']=1
 				session['user_id']=user.id
-				redirect_to action:"logged_in" and return
+			else
+				response+="error"
 			end
+		else 
+			response += "error"
 		end
-		# If the action reached here, this is an invalid username/password
-	    redirect_to action:"showHome"
+		render :text => response
 		
 	end
 end

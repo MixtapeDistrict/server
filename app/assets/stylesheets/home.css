@@ -145,3 +145,7 @@
 	form {
 		text-align:center;
 	}
+	#login-message {
+		color:red;
+		text-align:center;
+	}
