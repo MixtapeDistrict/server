@@ -104,6 +104,25 @@ $(document).ready(function(){
         // TRACKS PICK SIMULATION: Won't be here when the database is connected
         track_id = range(1,100);
         rand_tracks = shuffle(track_id).slice(0,24);
+        /*--------------------------START ADDITION------------------------*/
+        /* Gets the json by using AJAX and calling a rails controller in the background.*/
+        var xmlhttp;
+        if(window.XMLHttpRequest) {
+        	xmlhttp = new XMLHttpRequest();
+        }
+        else {
+        	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+        	if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+        		/* Store the json which was given by the rails controller */
+        		var tracks = xmlhttp.responseText;
+        	}
+        }
+        var request = "/get_tracks?cache=false"
+        xmlhttp.open("get",request, true);
+        xmlhttp.send();
+        /*-------------------------------END ADDITION---------------------*/
 
         tracks = '{"tracks":[' +
         '{"cover":"common/'+ rand_tracks[0]+'.jpg"},' +
