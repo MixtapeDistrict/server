@@ -6,7 +6,7 @@ WebInfo2::Application.routes.draw do
   post '/sign_up', to: 'home#sign_up'
   post '/sign_out', to: 'home#sign_out'
   post '/login', to: 'home#login'
-  get 'sign_out', to: 'home#sign_out'
+  get '/sign_out', to: 'home#sign_out'
   resources :medium_comments
 
   resources :media

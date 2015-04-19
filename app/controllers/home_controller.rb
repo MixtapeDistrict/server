@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
 	def showHome
+		puts "lol"
 		if(params.has_key?(:error)) 
 			@error = params[:error]
 		else
