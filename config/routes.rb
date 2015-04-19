@@ -7,6 +7,7 @@ WebInfo2::Application.routes.draw do
   post '/sign_out', to: 'home#sign_out'
   post '/login', to: 'home#login'
   get '/sign_out', to: 'home#sign_out'
+  get '/get_tracks', to: 'music#get_tracks'
   resources :medium_comments
 
   resources :media
