@@ -1,103 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>HitPlayShare</title>
-  <link rel="shortcut icon" href="/assets/images/logo.ico" type="image/x-icon" />
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <%= stylesheet_link_tag "home.css" %>
-  <script src="/assets/signup.js"></script>
-  <script src="/assets/login.js"></script>
-
-</head>
-<body>
-  <div id="wrapper">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button aria-expanded="true" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#elements">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- Need to fix routing error here. -->
-          <a class="navbar-brand" href="#">
-            <%= image_tag "logo.png", class:"img-responsive" %>              
-          </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="navbar-collapse collapse in" id="elements">
-          <!-- Get new random songs -->
-          <ul class="nav navbar-nav navbar-left">
-            <li><a class="new-songs">New Songs      <%= image_tag "new.png", class:"refresh" %></a></li>
-          </ul>
-            
-            <ul class="nav navbar-nav navbar-right">
-
-            <!-- Sign up form -->
-            <%= render 'signup' %>
-
-            <!-- Log In form -->
-            <%= render 'login' %>
-
-            </ul>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- All the content on the homepage -->
-    <div id="content" class="container-fluid">
-      <div class="container">
-        
-        <div class="main row">
-          <div class="row grind">                      
-          </div>
-        </div>
-        
+<%= render 'navbar'%>
+<!-- All the content on the homepage -->
+<div id="content" class="container-fluid">
+  <div class="container">
+    
+    <div class="main row">
+      <div class="row grind">                      
       </div>
     </div>
-
-    <div class="row playlist">
-      <div class="col-md-10">
-        <section class="gallery">
-          <div id="carousel"></div>
-          <button type="button" style=float:left class="btn btn-default ss-icon" onclick="galleryspin('-')">&lt;</button>
-          <button type="button" style=float:right class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
-        </section>
-          </div>
-          <!-- Playlist Track Information (Currently: static), TODO: Show information of the current track -->
-          <div class="col-md-2 pull-left">
-            <p><b>Track Information:</b></p>
-            <p>Track Name</p>
-            <p>Artist</p>
-            <p>Duration</p> 
-            <p>Album</p>
-            <p>Rating</p>   
-          </div>
-    </div>
-        <br>
-        <br>
-
-    <nav id="footer" class="navbar">
-      <p id="about" class="navbar-text">2015 Rohan Sharma, Vui Chee, Alexander Jackson,<br> Andres Landeta, Chen Zhao, Joshua Wright</p>
-    </nav>
+    
   </div>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- Include home.js -->
-  <%= javascript_include_tag "home.js" %>
+</div>
 
-</body>
-</html>
+<div class="row playlist">
+  <div class="col-md-10">
+    <section class="gallery">
+      <div id="carousel"></div>
+      <button type="button" style=float:left class="btn btn-default ss-icon" onclick="galleryspin('-')">&lt;</button>
+      <button type="button" style=float:right class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
+    </section>
+      </div>
+      <!-- Playlist Track Information (Currently: static), TODO: Show information of the current track -->
+      <div class="col-md-2 pull-left">
+        <p><b>Track Information:</b></p>
+        <p>Track Name</p>
+        <p>Artist</p>
+        <p>Duration</p> 
+        <p>Album</p>
+        <p>Rating</p>   
+      </div>
+</div>
+    <br>
+    <br>

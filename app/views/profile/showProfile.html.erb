@@ -1,0 +1,62 @@
+<%= render 'navbar' %>
+<!-- All the content on the homepage -->
+<div id="content" class="container-fluid">
+  <div class="container">
+    <div class="col-md-2">
+      <div class="artist-image row">
+        <img class="img-thumbnail" src="../common/artist.png" alt="Artist Image">
+      </div>
+      <div class="artist-info row">
+          <p class="h3">About:<p>
+          <p id="description">Information about the artist goes here I don't know how far this goes<p>  
+      </div>
+      <div class="artist-web row">
+          <p class="h3">Website:<p>
+          <a id="web-site" target="_blank" href="http://www.diablosdelcirco.com">www.diablosdelcirco.com</a>  
+      </div>
+      <div class="followers-count row">
+          <p class="h4">Followers (<span id="followers">50<span>)<p>                
+      </div>
+      <div class="follow-btn row">
+        <button type="button" class="btn btn-primary">Follow</button>
+      </div>
+      <div class="collaborate-btn row">
+        <button type="button" class="btn btn-success">Collaborate</button>
+      </div>
+      <div class="donate-btn row">
+        <button type="button" class="btn btn-info">Donate</button>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="artist-name row">
+        <h1>Andres Lopez</h1>  
+      </div>
+      <div role="tabpanel row">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="pull-right col-md-4"> 
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div>                
+          </li> 
+          <li role="presentation" class="active"><a href="#tracks" aria-controls="tracks" role="tab" data-toggle="tab">Tracks</a></li>
+          <li role="presentation"><a href="#albums" aria-controls="albums" role="tab" data-toggle="tab">Albums</a></li>
+          <li role="presentation"><a href="#collaborators" aria-controls="collaborators" role="tab" data-toggle="tab">Collaborators</a></li>
+          <li role="presentation"><a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following</a></li>
+       
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="tracks"></div>
+          <div role="tabpanel" class="tab-pane" id="albums"></div>
+          <div role="tabpanel" class="tab-pane" id="collaborators"></div>
+          <div role="tabpanel" class="tab-pane" id="following"></div>            
+        </div>
+      </div>        
+  </div>
+</div>
