@@ -1,1 +1,33 @@
-test
+<%= render 'navbar'%>
+<!-- All the content on the homepage -->
+<div id="content" class="container-fluid">
+  <div class="container">
+    
+    <div class="main row">
+      <div class="row grind">                      
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="row playlist">
+  <div class="col-md-10">
+    <section class="gallery">
+      <div id="carousel"></div>
+      <button type="button" style=float:left class="btn btn-default ss-icon" onclick="galleryspin('-')">&lt;</button>
+      <button type="button" style=float:right class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
+    </section>
+      </div>
+      <!-- Playlist Track Information (Currently: static), TODO: Show information of the current track -->
+      <div class="col-md-2 pull-left">
+        <p><b>Track Information:</b></p>
+        <p>Track Name</p>
+        <p>Artist</p>
+        <p>Duration</p> 
+        <p>Album</p>
+        <p>Rating</p>   
+      </div>
+</div>
+    <br>
+    <br>
