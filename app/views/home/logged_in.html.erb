@@ -1,15 +1,26 @@
+<!-- Main logged in page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HitPlayShare</title>
+  <link rel="shortcut icon" href="/assets/images/logo.ico" type="image/x-icon" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <%= stylesheet_link_tag "home.css" %>
+</head>
+
+<body>
 <%= render 'navbar_logged'%>
 <!-- All the content on the homepage -->
 <div id="content" class="container-fluid">
   <div class="container">
-    
     <div class="main row">
-      <div class="row grind">                      
-      </div>
-    </div>
-    
-  </div>
-</div>
+      <div class="row grind"></div></div></div></div>  
 
 <div class="row playlist">
   <div class="col-md-10">
@@ -18,7 +29,7 @@
       <button type="button" style=float:left class="btn btn-default ss-icon" onclick="galleryspin('-')">&lt;</button>
       <button type="button" style=float:right class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
     </section>
-      </div>
+  </div>
       <!-- Playlist Track Information (Currently: static), TODO: Show information of the current track -->
       <div class="col-md-2 pull-left">
         <p><b>Track Information:</b></p>

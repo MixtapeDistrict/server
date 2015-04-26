@@ -2,6 +2,7 @@
 function sign_in() {
 	var username = document.getElementById('logIn-username').value;
 	var password = document.getElementById('logIn-password').value;
+
 	if(!validate(username, password)) {
 		return false;
 	}

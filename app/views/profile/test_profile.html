@@ -1,23 +1,5 @@
-<!-- NOTE: this page is only viewable iff the user the logged in. -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>HitPlayShare</title>
-  <link rel="shortcut icon" href="/assets/images/logo.ico" type="image/x-icon" />
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <%= stylesheet_link_tag "home.css" %>
-
-</head>
-<body>
-
-<%= render 'navbar_others'%>
-
+<!-- Updated upstream -->
+<%= render 'navbar_logged' %>
 <!-- All the content on the homepage -->
 <div id="content" class="container-fluid">
   <div class="container">
@@ -25,26 +7,16 @@
       <div class="artist-image row">
         <img class="img-thumbnail" src="../common/artist.png" alt="Artist Image">
       </div>
-
-      <br>
-      <div class="artist-image row">
-        <!-- Update profile details button here... -->
-        <%= link_to 'Update Details', '/update_profile' %>
-      </div>
-
       <div class="artist-info row">
-          <p class="h3">About:</p>
-          <p id="description">
-            Email: <%= @email %><%= tag(:br) %>
-            Description: <%= @description %><%= tag(:br) %>
-          </p>  
+          <p class="h3">About:<p>
+          <p id="description">Information about the artist goes here I don't know how far this goes<p>  
       </div>
       <div class="artist-web row">
-          <p class="h3">Website:</p>
-            <%= link_to @website_link.to_s, @website_link %>
+          <p class="h3">Website:<p>
+          <a id="web-site" target="_blank" href="http://www.diablosdelcirco.com">www.diablosdelcirco.com</a>  
       </div>
       <div class="followers-count row">
-          <p class="h4">Followers (<span id="followers">50<span>)</p>                
+          <p class="h4">Followers (<span id="followers">50<span>)<p>                
       </div>
       <div class="follow-btn row">
         <button type="button" class="btn btn-primary">Follow</button>
@@ -58,7 +30,7 @@
     </div>
     <div class="col-md-9">
       <div class="artist-name row">
-        <h1><%= @username %></h1>  
+        <h1>Andres Lopez</h1>  
       </div>
       <div role="tabpanel row">
 
@@ -89,13 +61,13 @@
       </div>        
   </div>
 </div>
+=======
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- Include home.js -->
-  <%= javascript_include_tag "home.js" %>
-
-</body>
-</html>
+    <div>
+      <!-- Add profile html content here. -->
+      <h1>Profile Page</h1>
+      <%= @username %><br>
+      <%= @email %><br>
+      <%= @description %><br>
+      <%= @website_link %><br>
+    </div>

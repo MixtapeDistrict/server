@@ -1,0 +1,42 @@
+<!-- NOTE: this page is only viewable iff the user the logged in. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HitPlayShare</title>
+  <link rel="shortcut icon" href="/assets/images/logo.ico" type="image/x-icon" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <%= stylesheet_link_tag "home.css" %>
+</head>
+
+
+<body>
+
+<%= render 'navbar_others'%>
+
+<!-- This form needs STYLING!!!  -->
+<%= form_tag('/update_details', method: 'get') do %>
+ 	<%= label_tag(:name, "New username: ") %>
+  	<%= text_field_tag(:name) %><%= tag(:br) %>
+  	<%= label_tag(:email, "New email: ") %>
+  	<%= text_field_tag(:email) %><%= tag(:br) %>
+  	<%= label_tag(:link, "New website link: ") %>
+  	<%= text_field_tag(:link) %><%= tag(:br) %>
+  	<%= label_tag(:description, "New description: ") %>
+  	<%= text_field_tag(:description) %><%= tag(:br) %>
+
+  	<%= submit_tag("Update") %>
+<% end %>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!-- Include home.js -->
+<%= javascript_include_tag "home.js" %>
+
+</body>
+</html>
