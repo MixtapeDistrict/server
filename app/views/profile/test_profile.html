@@ -71,3 +71,27 @@
       <%= @description %><br>
       <%= @website_link %><br>
     </div>
+
+            <img class="img-thumbnail" src="../common/artist.png" alt="Artist Image">
+      <a class="navbar-brand" href="#">
+
+
+<%= form_tag('/update_details', method: 'get') do %>
+  <%= label_tag(:name, "New username: ") %>
+  <%= text_field_tag(:name) %>
+      <div id="name_outcome"></div>
+  <%= tag(:br) %>
+  <%= label_tag(:email, "New email: ") %>
+  <%= text_field_tag(:email) %>
+      <div id="email_outcome"></div>
+  <%= tag(:br) %>
+
+  <%= label_tag(:link, "New website link: ") %>
+  <%= text_field_tag(:link) %>
+  <%= tag(:br) %>
+  <%= label_tag(:description, "New description: ") %>
+  <%= text_field_tag(:description) %>
+  <%= tag(:br) %>
+
+    <%= submit_tag "Update", :onclick => 'return update_profile();' %>
+<% end %>

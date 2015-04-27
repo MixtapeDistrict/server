@@ -30,6 +30,7 @@ function sign_in() {
 	xmlhttp.send();
 }
 
+// You should comment on what is allowed in the regex string...
 function validate(username, password) {
 	var regex = /^[A-Za-z0-9]{6,30}$/i;
 	var valid = true;

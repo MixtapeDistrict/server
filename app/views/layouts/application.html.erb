@@ -14,6 +14,7 @@
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "profile.js"%>
 </head>
 <body>
   <%= yield %>
@@ -23,5 +24,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <%= javascript_include_tag "signup.js" %>
   <%= javascript_include_tag "login.js" %>
+  
 </body>
 </html>
