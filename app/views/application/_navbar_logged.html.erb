@@ -26,7 +26,7 @@
         <li class="dropdown">
           <!-- Acts as a href link to controller action -->
            <% iduser = session['user_id'] %>
-        	 <%= link_to 'profile', "/user_profile/#{iduser}", {:class => 'dropdown-toggle', :data_toggle => 'dropdown', :role => 'button', :aria_expanded => 'true'}%>
+        	 <%= link_to 'profile', "/user_profile", {:class => 'dropdown-toggle', :data_toggle => 'dropdown', :role => 'button', :aria_expanded => 'true'}%>
         </li>
 
          <li class="dropdown">

@@ -43,18 +43,13 @@
           <p class="h3">Website:</p>
             <%= link_to @website_link.to_s, @website_link %>
       </div>
+
+      <!-- No. of followers being displayed -->
       <div class="followers-count row">
-          <p class="h4">Followers (<span id="followers">50<span>)</p>                
+          <p class="h4">Followers (<span id="followers"> <%= @num_followers %> <span>)</p>                
       </div>
-      <div class="follow-btn row">
-        <button type="button" class="btn btn-primary">Follow</button>
-      </div>
-      <div class="collaborate-btn row">
-        <button type="button" class="btn btn-success">Collaborate</button>
-      </div>
-      <div class="donate-btn row">
-        <button type="button" class="btn btn-info">Donate</button>
-      </div>
+
+
     </div>
     <div class="col-md-9">
       <div class="artist-name row">

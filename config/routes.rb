@@ -12,8 +12,11 @@ WebInfo2::Application.routes.draw do
 # TO DO: show users profile, and let's him update.
   get '/user_profile', to: 'profile#showProfile' 
   get '/go_home', to: 'home#showHome'
-  get '/update_profile/:id', to: 'profile#updateProfile'
+  get '/update_profile', to: 'profile#updateProfile'
   get '/update_details', to: 'profile#updateDetails'
+  
+  get '/showAlbum', to: 'album#showAlbum'
+
 
   resources :medium_comments
 

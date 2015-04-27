@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HitPlayShare</title>
+  <link rel="shortcut icon" href="../common/logo.ico" type="image/x-icon" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="album.css">
+</head>
+<body>
+
+  <div id="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button aria-expanded="true" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#elements">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="home.html">
+            <img class="img-responsive" alt="" src="../common/logo.png">              
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse in" id="elements">
+          <!-- Get new random songs -->
+          <ul class="nav navbar-nav navbar-left">
+                  
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+
+            <!-- Sign up form -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign up<span class="caret"></span></a>
+              <ul class="dropdown-menu form-group" id="signUp" role="menu">
+                <li><form role="form">
+                  <div class="sign-form">
+                    <input type="email" class="form-control" id="email" placeholder=" E-mail">
+                  </div>
+                  <div class="sign-form">
+                    <input type="text" class="form-control" id="username" placeholder=" Username">
+                  </div>
+                  <div class="sign-form">
+                    <input type="password" class="form-control" id="password" placeholder=" Password">
+                  </div>
+                  <div class="sign-form">
+                    <input type="password" class="form-control" id="re-password" placeholder=" Re-enter password">
+                  </div>
+                  <button type="submit" class="btn btn-default">Sign up</button>
+                </form></li>
+              </ul>                    
+            </li>
+
+            <!-- Log In form -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Log in<span class="caret"></span></a>
+              <ul class="dropdown-menu form-group" id="logIn" role="menu">
+                <li><form role="form">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="logIn-username" placeholder=" Username">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="logIn-password" placeholder=" Password">
+                  </div>
+                  <div class="checkbox"> 
+                    <label><input type="checkbox">Remember me</label>
+                  </div>
+                  <button type="submit" class="btn btn-default">Log In</button>
+                </form></li>
+              </ul>
+            </li>   
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container-fluid"> <!-- Added container-fluid to make the footer work --> 
+      <div class="container"> <!-- Added container class to do the central allign magic for us -->      
+        <div class="row" id="album-info"> <!-- Changed row id to give more meaning -->
+            <div class="col-md-2">
+                <img class="album-cover" src="../common/2.jpg" alt="album cover"> <!-- Added alt attribute an class --> 
+            </div>
+            <div class="col-md-10">
+                <p class="album-name">Album Name</p> <!-- Added classes for access and css-->
+                <p class="album-artist">Artist Name</p>
+                <p class="album-year">2010</p>
+                <p><span class='tracks-number'>5<span> Tracks</p> <!-- Added span so the number can be changed --> 
+            </div>
+        </div>
+        <div class="row" id="album-tracks"> <!-- Changed row id to give more meaning -->
+           <table class="table table-striped"> <!-- Use col-md to make all the alligment and put all the style in css -->
+
+             <tbody>
+               <tr class="info">
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll">(Artist Collaboration)<span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll"><span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+               </tr>
+               <tr class="active">
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll">(Artist Collaboration)<span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll">(Artist Collaboration)<span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+               </tr>
+               <tr class="info">
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll"><span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll">(Artist Collaboration)<span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+               </tr>
+               <tr class="active">
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll">(Artist Collaboration)<span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll"><span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+               </tr>              
+               <tr class="info">
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll"><span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+                  <td class="col-md-6">
+                    <i class="glyphicon glyphicon-play-circle col-md-1"></i>
+                    <div class="col-md-11" id="track-info">
+                      <p class="track-name h4">Track Name <span class="coll">(Artist Collaboration)<span></p>
+                      <p class= "track-duration"> 1:00 </p>
+                    </div>
+                  </td>
+               </tr>         
+            </tbody>
+           </table>
+        </div>
+      </div> 
+    </div>         
+      
+    <nav id="footer" class="navbar">
+      <p id="about" class="navbar-text">2015 Rohan Sharma, Vui Chee, Alexander Jackson,<br> Andres Landeta, Chen Zhao, Joshua Wright</p>
+    </nav>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="../webui-popover/dist/jquery.webui-popover.min.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
+    

@@ -24,6 +24,14 @@ class ProfileController < ApplicationController
 				@website_link =  user.website_link
 				@image_path  = user.image_path
 				@tracks = user.tracks_heard
+
+				# Count the number of followers the user has.
+				if Follower.where(user_id:userID).count > 0
+					@num_followers = Follower.where(user_id:userID).count
+				else
+					@num_followers = 0
+				end
+
 				# Now items can be rendered in the view.
 			end
 
@@ -50,7 +58,7 @@ class ProfileController < ApplicationController
 			@website_link = User.find(userID).website_link
 			@description = User.find(userID).description
 
-			
+
 
 		else
 			redirect_to url_for(:controller => :home, :action => :showHome)
