@@ -41,6 +41,17 @@ class ProfileController < ApplicationController
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome)
 			end
+
+			# Get user id.
+			userID = session['user_id']
+
+			@username = User.find(userID).username
+			@email = User.find(userID).email
+			@website_link = User.find(userID).website_link
+			@description = User.find(userID).description
+
+			
+
 		else
 			redirect_to url_for(:controller => :home, :action => :showHome)
 		end
@@ -88,6 +99,7 @@ class ProfileController < ApplicationController
 			redirect_to url_for(:controller => :home, :action => :showHome)
 		end
   	end
+
 
 end
 

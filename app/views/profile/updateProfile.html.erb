@@ -5,11 +5,11 @@
 
 <!-- This form needs STYLING!!!  -->
 <form onsubmit="return update_profile();" action="/update_details" method="get">
-  New Username: <input id="name" type="text" name="name" onfocus="clearErrorMessage()"/><div id="name_outcome"></div>
+  New Username: <input id="name" type="text" name="name" onfocus="clearErrorMessage()" value="<%= @username %>"/><div id="name_outcome"></div>
   <br>
-  New Email: <input id="email" type="text" name="email" onfocus="clearErrorMessage()"/><div id="email_outcome"></div>
+  New Email: <input id="email" type="text" name="email" onfocus="clearErrorMessage()" value="<%= @email %>"/><div id="email_outcome"></div>
   <br>
-  Link: <input id="link" type="text" name="link"/><br><br>
-  Description: <textarea id="description" name="description"></textarea><br>
+  Link: <input id="link" type="text" name="link" value="<%= @website_link %>"/><br><br>
+  Description: <textarea id="description" name="description" value="<%= @description %>"></textarea><br>
   <input type="submit" value="Update profile"/>
 </form>
