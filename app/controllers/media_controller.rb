@@ -24,7 +24,23 @@ class MediaController < ApplicationController
   # POST /media
   # POST /media.json
   def create
-    @medium = Medium.new(medium_params)
+	@uploaded_file = medium_params[:file]
+	@uploaded_image = medium_params[:image]
+	@medium = medium_params
+	@medium.delete :file_path
+	@medium.delete :image_path
+	@medium[:file_path] = '/media/media/' + @uploaded_file.original_filename
+	@medium[:image_path] = '/media/images/' + @uploaded_image.original_filename
+	@medium.delete(:image)
+	@medium.delete(:file)
+	@medium = Medium.new(@medium)
+	filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
+	File.open(Rails.root.join('media', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
+		file.write(@uploaded_file.read)
+	end
+	File.open(Rails.root.join('media', 'images', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
+		file.write(@uploaded_image.read)
+	end
 
     respond_to do |format|
       if @medium.save
@@ -69,6 +85,6 @@ class MediaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medium_params
-      params.require(:medium).permit(:user_id, :title, :file_path, :image_path, :downloads, :media_type)
+      params.require(:medium).permit(:user_id, :title, :file_path, :file, :image_path, :image, :downloads, :media_type)
     end
 end
