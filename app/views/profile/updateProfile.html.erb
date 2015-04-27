@@ -4,12 +4,12 @@
 
 
 <!-- This form needs STYLING!!!  -->
-<form action="/update_details" method="get">
-  <input id="name" type="text" name="name"/><div id="name_outcome"></div>
+<form onsubmit="return update_profile();" action="/update_details" method="get">
+  New Username: <input id="name" type="text" name="name" onfocus="clearErrorMessage()"/><div id="name_outcome"></div>
   <br>
-  <input id="email" type="text" name="email"/><div id="email_outcome"></div>
+  New Email: <input id="email" type="text" name="email" onfocus="clearErrorMessage()"/><div id="email_outcome"></div>
   <br>
-  <input id="link" type="text" name="link"/><br><br>
-  <textarea id="description" name="description"></textarea><br>
-  <input type="submit" value="Update profile" onsubmit="return update_profile();"/>
+  Link: <input id="link" type="text" name="link"/><br><br>
+  Description: <textarea id="description" name="description"></textarea><br>
+  <input type="submit" value="Update profile"/>
 </form>
