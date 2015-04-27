@@ -32,6 +32,24 @@ class ProfileController < ApplicationController
 					@num_followers = 0
 				end
 
+				# Store an array of objects containing all following ids.
+				@all_following_ids = Follower.where(follower_id:userID).select(:user_id)
+				# Find all the people the user is following.
+				@num_following = Follower.where(follower_id:userID).count
+
+				# Initialize names and links arrays for people user is following.
+				@names_following = Array.new(@num_following)
+				@links_following = Array.new(@num_following)
+
+				# Now get all the required data.
+				for i in 0..@num_following
+					if @all_following_ids[i]
+						curr_id = @all_following_ids[i].user_id
+						@names_following[i] = User.find(curr_id).username
+						@links_following[i] = User.find(curr_id).website_link
+					end
+				end
+
 				# Now items can be rendered in the view.
 			end
 

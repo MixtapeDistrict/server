@@ -49,6 +49,7 @@
           <p class="h4">Followers (<span id="followers"> <%= @num_followers %> <span>)</p>                
       </div>
 
+    <!-- Add _viewothers.html.erb when viewing other people's profile to see buttons. -->
 
     </div>
     <div class="col-md-9">
@@ -79,7 +80,20 @@
           <div role="tabpanel" class="tab-pane active" id="tracks"></div>
           <div role="tabpanel" class="tab-pane" id="albums"></div>
           <div role="tabpanel" class="tab-pane" id="collaborators"></div>
-          <div role="tabpanel" class="tab-pane" id="following"></div>            
+
+          <!-- Onclick reveals all the people the user is following... 
+            NOTE: should display all users as links !
+          -->
+          <div role="tabpanel" class="tab-pane" id="following"></div> 
+          <div id="all_links">
+            <%= "Some information about people you are following" %><br>
+            <%= "number of following : #{@num_following}"  %><br>
+            <% @names_following.each do |name|  %>
+              <%= name %><br>
+            <% end %>
+          </div>
+
+
         </div>
       </div>        
   </div>
