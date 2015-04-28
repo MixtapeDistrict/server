@@ -138,6 +138,9 @@ class ProfileController < ApplicationController
 				redirect_to url_for(:controller => :home, :action => :showHome)
 			end
 
+			# Get your current user id if you are logged in.
+			logged_in_id = session['user_id']
+
 			# Get other person's profile details.
 			user = User.find(params[:id])
 
@@ -178,7 +181,10 @@ class ProfileController < ApplicationController
 				end
 			end
 
-			
+			# If you come back to your profile, you should just see your own page.
+			if userID == logged_in_id
+				redirect_to url_for(:controller => :profile, :action => :showProfile)
+			end
 
 		else
 			redirect_to url_for(:controller => :home, :action => :showHome)
