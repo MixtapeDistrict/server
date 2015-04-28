@@ -40,11 +40,13 @@ class ProfileController < ApplicationController
 				# Initialize names and links arrays for people user is following.
 				@names_following = Array.new(@num_following)
 				@links_following = Array.new(@num_following)
+				@ids = Array.new(@num_following)
 
 				# Now get all the required data.
 				for i in 0..@num_following
 					if @all_following_ids[i]
 						curr_id = @all_following_ids[i].user_id
+						@ids[i] = curr_id
 						@names_following[i] = User.find(curr_id).username
 						@links_following[i] = User.find(curr_id).website_link
 					end
@@ -127,7 +129,79 @@ class ProfileController < ApplicationController
   	end
 
 
+  	# Show other person's profile.
+  	def showOther
+  		# Ensure user is logged in to view this page
+		if(session.has_key?("logged_in"))
+			# If the user is not logged in redirect to homepage
+			if(session['logged_in'] != 1) 
+				redirect_to url_for(:controller => :home, :action => :showHome)
+			end
+
+			# Get other person's profile details.
+			user = User.find(params[:id])
+
+			# Get other person's id.
+			userID = user.id
+
+			@username = user.username
+			@email = user.email
+			@description = user.description
+			@website_link =  user.website_link
+			@image_path  = user.image_path
+			@tracks = user.tracks_heard
+
+			# Count the number of followers the user has.
+			if Follower.where(user_id:userID).count > 0
+				@num_followers = Follower.where(user_id:userID).count
+			else
+				@num_followers = 0
+			end
+
+			# Store an array of objects containing all following ids.
+			@all_following_ids = Follower.where(follower_id:userID).select(:user_id)
+			# Find all the people the user is following.
+			@num_following = Follower.where(follower_id:userID).count
+
+			# Initialize names and links arrays for people user is following.
+			@names_following = Array.new(@num_following)
+			@links_following = Array.new(@num_following)
+			@ids = Array.new(@num_following)
+
+			# Now get all the required data.
+			for i in 0..@num_following
+				if @all_following_ids[i]
+					curr_id = @all_following_ids[i].user_id
+					@ids[i] = curr_id
+					@names_following[i] = User.find(curr_id).username
+					@links_following[i] = User.find(curr_id).website_link
+				end
+			end
+
+			
+
+		else
+			redirect_to url_for(:controller => :home, :action => :showHome)
+		end
+  	end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

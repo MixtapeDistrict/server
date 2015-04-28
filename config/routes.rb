@@ -14,9 +14,7 @@ WebInfo2::Application.routes.draw do
   get '/go_home', to: 'home#showHome'
   get '/update_profile', to: 'profile#updateProfile'
   get '/update_details', to: 'profile#updateDetails'
-  
-  get '/showAlbum', to: 'album#showAlbum'
-
+  get '/other_profile', to: 'profile#showOther'
 
   resources :medium_comments
 
