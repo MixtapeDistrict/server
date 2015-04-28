@@ -1,110 +1,39 @@
 <!-- NOTE: this page is only viewable iff the user the logged in. -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>HitPlayShare</title>
-  <link rel="shortcut icon" href="/assets/images/logo.ico" type="image/x-icon" />
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <%= stylesheet_link_tag "home.css" %>
-
-</head>
-<body>
 
 <%= render 'navbar_others'%>
 
 <!-- All the content on the homepage -->
 <div id="content" class="container-fluid">
   <div class="container">
+    <!-- Artist details, see classes for information-->
     <div class="col-md-2">
       <div class="artist-image row">
         <%= image_tag('1.jpg', class: 'img-thumbnail', alt: 'Artist Image') %>
       </div>
-
-      <br>
-      <div class="artist-image row">
-        <!-- Update profile details button here... -->
-        <%= link_to 'Update Details', '/update_profile' %>
-      </div>
-
-      <div class="artist-info row">
-          <p class="h3">About:</p>
-          <p id="description">
-            Email: <%= @email %><%= tag(:br) %>
-            Description: <%= @description %><%= tag(:br) %>
-          </p>  
+      <div class="description row">
+          <p> <span class="h4">Description:</span></br>
+          <%= @description %></p>
+      </div> 
+      <div class="e-mail row">
+            <p><span class="h4">Email:</span></br> 
+            <%= @email %></p>
       </div>
       <div class="artist-web row">
-          <p class="h3">Website:</p>
-            <%= link_to @website_link.to_s, @website_link %>
+          <p><span class="h4"> Website: </span>
+          <%= link_to @website_link.to_s, @website_link, :target => '_blank' %></p>
       </div>
-
-      <!-- No. of followers being displayed -->
       <div class="followers-count row">
-          <p class="h4">Followers (<span id="followers"> <%= @num_followers %> <span>)</p>               
+          <p class="h4">Followers (<%= @num_followers %>)</p>                
       </div>
-
-      <div class="">
-
-      </div>
-    <!-- Add _viewothers.html.erb when viewing other people's profile to see buttons. -->
-
-    </div>
+    <!-- Buttons to display own profile, refer to viewself partial-->  
+    <%= render 'viewself'%>
+    </div>  
     <div class="col-md-9">
       <div class="artist-name row">
         <h1><%= @username %></h1>  
       </div>
-      <div role="tabpanel row">
-
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li class="pull-right col-md-4"> 
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
-            </div>                
-          </li> 
-          <li role="presentation" class="active"><a href="#tracks" aria-controls="tracks" role="tab" data-toggle="tab">Tracks</a></li>
-          <li role="presentation"><a href="#albums" aria-controls="albums" role="tab" data-toggle="tab">Albums</a></li>
-          <li role="presentation"><a href="#collaborators" aria-controls="collaborators" role="tab" data-toggle="tab">Collaborators</a></li>
-          <li role="presentation"><a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following</a></li>
-       
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="tracks"></div>
-          <div role="tabpanel" class="tab-pane" id="albums"></div>
-          <div role="tabpanel" class="tab-pane" id="collaborators"></div>
-
-          <!-- Onclick reveals all the people the user is following... 
-            NOTE: should display all users as links !
-          -->
-          <div role="tabpanel" class="tab-pane" id="following">
-            <% for i in 0..@num_following - 1  %>
-              <div class=""><%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %></div><br>
-            <% end %>
-          </div> 
-
-
-        </div>
-      </div>        
+      <!-- Refer to tabpanel partial -->
+      <%= render 'tabpanel'%>
+    </div>          
   </div>
 </div>
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- Include home.js -->
-  <%= javascript_include_tag "home.js" %>
-
-</body>
-</html>

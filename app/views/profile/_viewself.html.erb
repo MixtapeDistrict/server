@@ -1,0 +1,22 @@
+<!-- Buttons to display own profile-->
+
+<!-- Update profile details button-->
+<div class="edit-profile row">        
+  <%= link_to 'Update Details', '/update_profile', :type => "button", :class =>"btn profile-btn btn-default" %>
+</div>
+<!-- Collaborations Rquests button-->
+<div class="coll-requests row">
+      <button type="button" class="btn profile-btn btn-success">Collaboration Requests (<span class="req-num">0</span>)</button>
+</div>
+<!-- Manage danations button-->
+<div class="donations row">
+      <button type="button" class="btn profile-btn btn-info">Set up Donations</button>
+</div>
+<!-- Track upload button-->
+<div class="track-upload row">
+      <button type="button" class="btn profile-btn btn-danger">Upload a Track</button>
+</div>
+<!-- Create album button-->
+<div class="create-album row">
+      <button type="button" class="btn profile-btn btn-primary">Create an Album</button>
+</div>

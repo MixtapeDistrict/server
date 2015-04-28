@@ -1,0 +1,81 @@
+/* Common css for site */
+
+/*Css for footer to work*/
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+#wrapper {
+   min-height:100%;
+   position:relative;
+}
+
+#content{
+   padding:10px;
+   padding-bottom:100px;
+}
+
+/*Navigation Bar Fixes*/
+.navbar-brand {
+	width: 150px;
+}
+
+#footer {
+   position:absolute;
+   bottom:0;
+   height: 72px;  		/* depends on the content */
+   width:100%;
+   padding:0;
+   margin: 0;
+   background-color:#E6E9EB; 
+   text-align: center;
+}
+
+/* Footer content */
+#about{
+	width: 98%; 		/* avoids overflow*/
+	position: absolute;
+    left: 0;
+    text-align: center;   
+}
+
+/* Sing up and Log in */
+form {
+	text-align:center;
+}
+
+#signUp, #logIn {
+	padding: 10px;
+	width: 225px;
+}
+
+.sign-form {
+	margin-bottom: 5px;
+}
+
+#email-message {
+	color:red;
+	text-align:center;
+}
+#password-message {
+	color:red;
+	text-align:center;
+}
+#username-message {
+	color:red;
+	text-align:center;
+}
+
+#login-message {
+	color:red;
+	text-align:center;
+}
+.log-out {
+	margin-top:12px;
+	margin-left:10px;
+	float:left;
+	
+}

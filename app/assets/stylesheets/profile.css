@@ -1,0 +1,46 @@
+/* Profile page Css*/
+
+.description {
+	margin-top: 10px;
+}
+.profile-btn {
+	margin-top: 10px;
+	margin-left: 0;			
+}
+
+#content-img {
+	width: 100%;
+	max-width: 100px;
+}
+
+.artist-name {
+	margin-left: 10px;
+}
+
+.nav-tabs {
+	margin-bottom: 35px;
+}
+
+.element {
+	margin-bottom: 35px;
+}
+
+.info {
+	padding: 0;
+	margin: 0;
+}
+
+.track-name, .album-name,
+.coll-name, .foll-name {
+	margin-top: 5px;
+}
+
+.content-info {
+	padding: 0;
+	margin: 0;
+}
+
+.projects{
+	font-style: italic;
+	text-decoration: underline;
+}

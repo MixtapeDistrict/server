@@ -1,0 +1,54 @@
+<!-- Tab panel for profile page -->
+
+<div role="tabpanel row">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <!-- Search bar -->
+    <li class="pull-right col-md-4"> 
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+      </div>                
+    </li>
+    <!-- Tabs Names --> 
+    <li role="presentation" class="active">
+      <a href="#tracks" aria-controls="tracks" role="tab" data-toggle="tab">Tracks</a>
+    </li>
+    <li role="presentation">
+      <a href="#albums" aria-controls="albums" role="tab" data-toggle="tab">Albums</a>
+    </li>
+    <li role="presentation">
+      <a href="#collaborators" aria-controls="collaborators" role="tab" data-toggle="tab">Collaborators</a>
+    </li>
+    <li role="presentation">
+      <a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following</a>
+    </li>
+ 
+  </ul>
+
+  <!-- Information of the tabs to be display, see id is the same that the tab names-->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="tracks">
+      
+    </div>
+    <div role="tabpanel" class="tab-pane" id="albums">
+      
+    </div>
+    <div role="tabpanel" class="tab-pane" id="collaborators">
+      
+    </div>
+
+    <!-- Onclick reveals all the people the user is following... 
+      NOTE: should display all users as links !
+    -->
+    <div role="tabpanel" class="tab-pane" id="following">
+      <% for i in 0..@num_following - 1  %>
+        <div class=""><%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
+        </div><br>
+      <% end %>
+    </div>
+  </div>
+</div>
