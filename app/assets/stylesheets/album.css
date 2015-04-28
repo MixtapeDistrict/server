@@ -1,0 +1,109 @@
+
+/* Common css for site */
+
+    /*Css for footer to work*/
+    html,
+    body {
+       margin:0;
+       padding:0;
+       height:100%;
+    }
+
+    #wrapper {
+       min-height:100%;
+       position:relative;
+    }
+
+    #content{
+       padding:10px;
+       padding-bottom:100px;
+    }
+
+    #footer {
+       position:absolute;
+       bottom:0;
+       height: 72px;          /* depends on the content */
+       width:100%;
+       padding:0;
+       margin: 0;
+       background-color:#E6E9EB; 
+       text-align: center;
+    }
+
+    /*Navigation Bar Fixes*/
+    .navbar-brand {
+        width: 150px;
+    }
+
+    .refresh{
+        height: 20px;
+    }
+
+    #signUp, #logIn {
+        padding: 10px;
+        width: 225px;
+    }
+
+    .sign-form {
+        margin-bottom: 5px;
+    }
+    
+    /* Footer content */
+    #about{
+        width: 98%;         /* avoids overflow*/
+        position: absolute;
+        left: 0;
+        text-align: center;   
+    }
+    
+    
+    #album-info {
+      padding-top: 4%;
+    }
+    
+    #album-tracks {
+      padding-top: 3%;
+      padding-bottom: 100px;
+    }
+
+    .album-cover {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    #album-info{
+      font-size: 16px;
+    }
+
+    .album-name {
+        font-family: "Verdana", Verdana, sansserif;
+        font-weight: bold;
+        font-size: 20px;
+        color:rgb(0, 153, 204);
+    }
+
+    .album-artist {
+      font-weight: bold;
+    }
+
+    .glyphicon-play-circle{
+      font-size: 25px;
+      padding-top: 20px;
+    }
+
+    .track-name{
+      font-weight: bold;
+    }
+
+    .coll{
+      font-weight: normal;
+      font-style: italic;
+      text-decoration: underline;
+    }
+
+    td, tr{
+      background: white;
+      border-top: 1px solid;
+      border-bottom: 1px solid;
+    }
+
