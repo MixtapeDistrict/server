@@ -69,6 +69,7 @@ class HomeController < ApplicationController
 		# Get the user trying to login 
 		response = ""
 		user = User.find_by(username:username)
+		userEmail = User.find_by(email:username)
 		if(user)
 			# Check if this user has the password
 			if(user.password == password)
@@ -79,6 +80,17 @@ class HomeController < ApplicationController
 			end
 		else 
 			response += "error"
+		end
+		# If there was an error check if user entered email
+		if(userEmail and not response.empty?)
+			# Check if this user entered the current password
+			if(userEmail.password == password)
+				session['logged_in']=1
+				session['user_id']=userEmail.id
+				response =""
+			else
+				response+="error"
+			end
 		end
 		render :text => response
 		

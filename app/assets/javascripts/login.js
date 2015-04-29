@@ -3,9 +3,6 @@ function sign_in() {
 	var username = document.getElementById('logIn-username').value;
 	var password = document.getElementById('logIn-password').value;
 
-	if(!validate(username, password)) {
-		return false;
-	}
 	/* Communicate with the server and check if this is a valid sign up */
 	var xmlhttp;
 	if(window.XMLHttpRequest) {
@@ -30,20 +27,6 @@ function sign_in() {
 	xmlhttp.send();
 }
 
-// You should comment on what is allowed in the regex string...
-function validate(username, password) {
-	var regex = /^[A-Za-z0-9]{6,30}$/i;
-	var valid = true;
-	if(!regex.test(username)) {
-		valid = false;
-		document.getElementById('login-message').innerHTML = "Invalid username/password";
-	}
-	if(!regex.test(password)) {
-		valid = false;
-		document.getElementById('login-message').innerHTML = "Invalid username/password";
-	}
-	return valid;
-}
 function clearLogin() {
 	document.getElementById('login-message').innerHTML = "";
 }
