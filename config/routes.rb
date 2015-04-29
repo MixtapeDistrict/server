@@ -1,7 +1,9 @@
 WebInfo2::Application.routes.draw do
 
+  #get "main/parse_route"
   # get 'home/index'
-  root 'home#showHome'
+  root 'main#parse_route'
+  get '/home', to: 'home#showHome'
   match ':controller(/:action(/:id))', :via => :get
   post '/sign_up', to: 'home#sign_up'
   post '/sign_out', to: 'home#sign_out'
