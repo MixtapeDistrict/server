@@ -4,12 +4,13 @@
 
 
 <!-- This form needs STYLING!!!  -->
-<form onsubmit="return update_profile();" action="/update_details" method="get">
+<form enctype="multipart/form-data" onsubmit="return update_profile();" action="/update_details" method="post">
   New Username: <input id="name" type="text" name="name" onfocus="clearErrorMessage()" value="<%= @username %>"/><div id="name_outcome"></div>
   <br>
   New Email: <input id="email" type="text" name="email" onfocus="clearErrorMessage()" value="<%= @email %>"/><div id="email_outcome"></div>
   <br>
   Link: <input id="link" type="text" name="link" value="<%= @website_link %>"/><br><br>
   Description: <textarea id="description" name="description" value="<%= @description %>"></textarea><br>
+  Upload new Profile Image: <input id="image" type=file name="image" accept="image/*" /><br>
   <input type="submit" value="Update profile"/>
 </form>

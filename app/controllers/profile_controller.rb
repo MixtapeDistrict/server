@@ -103,6 +103,7 @@ class ProfileController < ApplicationController
 			new_email = params[:email]
 			new_link = params[:link]
 			new_description = params[:description]
+			new_image = params[:image]
 
 			# Now update records if need be. Blank inputs means no update!
 			if not new_username.empty?
@@ -119,6 +120,10 @@ class ProfileController < ApplicationController
 
 			if not new_description.empty?
 				User.find(userID).update(description:new_description)
+			end
+			
+			if not new_image.nil?
+				User.updateimage(userID, new_image)
 			end
 
 			redirect_to url_for(:controller => :profile, :action => :showProfile)

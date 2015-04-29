@@ -10,4 +10,14 @@ class User < ActiveRecord::Base
 	has_many :comments, dependent: :destroy
 
 	has_many :followers, dependent: :destroy
+	
+	def self.updateimage(user, img)
+		filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'+img.original_filename
+		File.open(Rails.root.join('app/assets/images', 'userimage', filenamebase), 'wb') do |file|
+			file.write(img.read)
+		user = User.where(id: user).first
+		user.image_path = filenamebase
+		user.save
+		end
+	end
 end

@@ -29,16 +29,16 @@ class MediaController < ApplicationController
 	@medium = medium_params
 	@medium.delete :file_path
 	@medium.delete :image_path
-	@medium[:file_path] = '/media/media/' + @uploaded_file.original_filename
-	@medium[:image_path] = '/media/images/' + @uploaded_image.original_filename
 	@medium.delete(:image)
 	@medium.delete(:file)
 	@medium = Medium.new(@medium)
 	filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
-	File.open(Rails.root.join('media', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
+	@medium[:file_path] = @uploaded_file.original_filename
+	@medium[:image_path] = @uploaded_image.original_filename
+	File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
 		file.write(@uploaded_file.read)
 	end
-	File.open(Rails.root.join('media', 'images', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
+	File.open(Rails.root.join('app/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
 		file.write(@uploaded_image.read)
 	end
 
