@@ -18,7 +18,16 @@ function sign_in() {
 				document.getElementById('login-message').innerHTML = "Invalid username/password";
 			}
 			else {
-				location.reload();
+				document.getElementById('replace').innerHTML = "<li class=\"dropdown\">\
+          <!-- Acts as a href link to controller action -->\
+           <a href=\"/user_profile\" class=\"dropdown-toggle\" data_toggle=\"dropdown\" role=\"button\" aria_expanded=\"true\">Profile</a>\
+        </li>\
+        \
+         <li class=\"dropdown\">\
+         <form action=\"/sign_out\" method=\"post\">\
+         	<input type=\"submit\" class=\"log-out\" role=\"button\" value=\"Logout\"></input>\
+         </form>\
+         </li>";
 			}
 		}
 	}
@@ -26,6 +35,7 @@ function sign_in() {
 	xmlhttp.open("post", request, true);
 	xmlhttp.send();
 }
+
 
 function clearLogin() {
 	document.getElementById('login-message').innerHTML = "";
