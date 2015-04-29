@@ -7,5 +7,8 @@ function inIframe () {
 }
 
 if(!inIframe()) {
-	window.location.href = '/error';
+	window.location.href = "/?request="+window.location.href;
+}
+else {
+	window.parent.history.pushState('HSP', 'HitSharePlay',location.href);
 }
