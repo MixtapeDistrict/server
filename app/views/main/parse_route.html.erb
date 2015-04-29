@@ -1,7 +1,10 @@
 <html>
-<body style="overflow:hidden">
+<body>
+<head>
+ <%= stylesheet_link_tag "main.css" %>
+</head>
 EVALUATION MODE ------> JPlayer instance will be here so it doesn't get destroyed when page reloads <-------  
-<iframe src="<%= @link %>" height="100%" width="100%" frameborder="0">
+<iframe src="<%= @link %>" frameborder="0">
 </iframe>
 </body>
 </html>
