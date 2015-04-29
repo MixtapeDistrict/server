@@ -1,14 +1,18 @@
 <!-- Log In form -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Log in<span class="caret"></span></a>
-              <ul class="dropdown-menu form-group" id="logIn" role="menu">
-                <li><form role="form" action="" method="post" onkeypress="if(event.keyCode==13) {sign_in();}">
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="logIn-username" placeholder="Email/Username" name="username" onfocus="clearLogin()">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" class="form-control" id="logIn-password" placeholder=" Password" name="password" onfocus="clearLogin()">
-                  </div>                  
-                  <div id="login-message"></div><br>
-                  <button type="button" class="btn btn-default" onclick="sign_in()">Log In</button>
-                </form></li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Log in<span class="caret"></span></a>
+  <ul class="dropdown-menu form-group" id="logIn" role="menu">
+    <li>
+    <form role="form" action="" method="post" onkeypress="if(event.keyCode==13) {sign_in();}">
+      <div class="form-group">
+        <input type="text" class="form-control" id="logIn-username" placeholder="Email/Username" name="username" onfocus="clearLogin()">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="logIn-password" placeholder=" Password" name="password" onfocus="clearLogin()">
+      </div>                  
+      <div id="login-message"></div><br>
+      <button type="button" class="btn btn-default" onclick="sign_in()">Log In</button>
+    </form>
+    </li>
+  </ul>
+</li>
