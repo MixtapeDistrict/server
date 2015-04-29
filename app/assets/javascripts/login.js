@@ -25,7 +25,7 @@ function sign_in() {
         \
          <li class=\"dropdown\">\
          <form action=\"/sign_out\" method=\"post\">\
-         	<input type=\"submit\" class=\"log-out\" role=\"button\" value=\"Logout\"></input>\
+         	<button type=\"submit\" class=\"btn profile-btn btn-danger log-out\">Logout</button>\
          </form>\
          </li>";
 			}
