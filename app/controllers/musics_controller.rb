@@ -61,8 +61,45 @@ class MusicsController < ApplicationController
     end
   end
 
+  # Returns XML representing tracks to load from the database
   def get_tracks
-  	
+  	# Get all songs in the database
+  	musics = Music.all
+  	music = "<songs>"
+  	for music in musics
+  		# Get the medium this music belongs to
+  		medium = music.medium
+  		# Get the user who created the music
+  		user = medium.user
+  		# Add useful information to the XML 
+  		music += "<song>"
+  		music += "<title>#{medium.title}</title>"
+  		music += "<songID>#{music.id}</songID>"
+  		music += "<artist>#{user.username}</artist>"
+  		music += "<artistID>#{user.id}</artistID>"
+  		# Check if this music belongs to an album
+  		if(music.music_albums.first)
+  			music += "<album>#{music.music_albums.first.title}</album>"
+  			music += "<albumID>#{music.music_albums.first.id}</albumID>"
+  		else
+  			music += "<album></album>"
+  		end
+  		music += "<plays>#{music.plays}</plays>"
+  		# Calculate the average rating of this song
+  		rating_count = 0
+  		rating_sum = 0
+  		user_mediums = UserMedium.where(medium_id:medium.id)
+  		for user_medium in user_mediums
+  			rating_sum += user_medium.rating
+  		end
+  		rating = 0
+  		if(rating_count != 0)
+  			rating = rating_sum.to_f/rating_count
+  		end
+  		music += "<rating>#{rating}</rating>"
+  		music += "</song>"
+	end
+	music += "</songs>"
   end
 
   private
