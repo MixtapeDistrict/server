@@ -93,6 +93,5 @@ class HomeController < ApplicationController
 			end
 		end
 		render :text => response
-		
 	end
 end

@@ -77,6 +77,8 @@ class MusicsController < ApplicationController
   		music += "<songID>#{music.id}</songID>"
   		music += "<artist>#{user.username}</artist>"
   		music += "<artistID>#{user.id}</artistID>"
+  		music += "<imagePath>#{music.image_path}"
+  		music += "<filePath>#{medium.file_path}</filepath>"
   		# Check if this music belongs to an album
   		if(music.music_albums.first)
   			music += "<album>#{music.music_albums.first.title}</album>"
@@ -100,6 +102,7 @@ class MusicsController < ApplicationController
   		music += "</song>"
 	end
 	music += "</songs>"
+	render :xml => music
   end
 
   private
