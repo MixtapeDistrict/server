@@ -7,17 +7,15 @@
       <div class="row grind">                      
       </div>
     </div>
-    
-  </div>
-</div>
 
-<div class="row playlist">
-  <div class="col-md-10">
-    <div class="gallery">
-      <div id="carousel"></div>
-      <button type="button" style=float:left class="btn btn-default ss-icon" onclick="galleryspin('-')">&lt;</button>
-      <button type="button" style=float:right class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
-    </div>
+    <div class="row playlist">
+      <div class="col-md-10">
+        <div class="gallery">
+          <div id="carousel"></div>
+          <button type="button" id="previous" class="btn btn-default ss-icon" onclick="galleryspin('-')">&lt;</button>
+          <button type="button" id="next" class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
+          <button type="button" id="random" class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
+        </div>        
       </div>
       <!-- Playlist Track Information (Currently: static), TODO: Show information of the current track -->
       <div class="col-md-2 pull-left">
@@ -28,6 +26,8 @@
         <p>Album</p>
         <p>Rating</p>   
       </div>
+    </div>
+    
+  </div>
 </div>
-    <br>
-    <br>
+

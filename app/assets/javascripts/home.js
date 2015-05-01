@@ -192,29 +192,29 @@ var BACKFACE_INVISIBLE = true;
 
 // Creates a Carousel from an Array 
 function doCarousel(data){
-	var spinner = $("#carousel");
-	var interval = 360/data.length;
-	var r = PANEL_SIZE/(Math.tan((interval/2)*TO_RADIANS));
-	for(var i = 0 ; i < data.length ; i++) {
-		var newElement = $("<img src=\"../"+data[i]+"\">");
-		var num = interval*i;
-		newElement.css("transform","rotateY( " + num + "deg ) translateZ( "+r+"px )");
-		
-		var backfaceVisibility = BACKFACE_INVISIBLE ? "hidden" : "visible";
-		newElement.css("-webkit-backface-visibility",backfaceVisibility);
-		newElement.css("backface-visibility",backfaceVisibility);
-		spinner.append(newElement);
-	}
+    var spinner = $("#carousel");
+    var interval = 360/data.length;
+    var r = PANEL_SIZE/(Math.tan((interval/2)*TO_RADIANS));
+    for(var i = 0 ; i < data.length ; i++) {
+        var newElement = $("<img src=\"../"+data[i]+"\">");
+        var num = interval*i;
+        newElement.css("transform","rotateY( " + num + "deg ) translateZ( "+r+"px )");
+        
+        var backfaceVisibility = BACKFACE_INVISIBLE ? "hidden" : "visible";
+        newElement.css("-webkit-backface-visibility",backfaceVisibility);
+        newElement.css("backface-visibility",backfaceVisibility);
+        spinner.append(newElement);
+    }
 }
 
 // Makes the images on the carousel spin, updating the css
 var angle = 0;
 function galleryspin(sign) {
-	var carousel = document.querySelector('#carousel');
-	var numPanels = carousel.children.length;
-	var increment = sign ? -1 : 1;
-	
-	angle += ( -360 / numPanels ) * increment;
-	carousel.style[ '-webkit-transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';
-	carousel.style[ 'transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';	
+    var carousel = document.querySelector('#carousel');
+    var numPanels = carousel.children.length;
+    var increment = sign ? -1 : 1;
+    
+    angle += ( -360 / numPanels ) * increment;
+    carousel.style[ '-webkit-transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';
+    carousel.style[ 'transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';   
 }

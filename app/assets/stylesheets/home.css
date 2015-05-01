@@ -1,7 +1,7 @@
 /* Homepage specific css */	
 
 .main {
-	padding-bottom: 100px;
+	padding-bottom: 40px;
 }
 
 .refresh{
@@ -9,17 +9,17 @@
 }
 
 #track{
-	width: 100%;
-	max-width: 200px;
-	min-width: 150px;
+  	width: 100%;
+  	max-width: 200px;
+  	min-width: 150px;
 }
 
 .element{
-	float:left;
-	width: 15%;
-	margin: 10px;
-	min-width: 160px;
-	position:relative;
+  	float:left;
+  	width: 15%;
+  	margin: 10px;
+  	min-width: 160px;
+  	position:relative;
 }
 
 /* Display Track Information */
@@ -49,33 +49,56 @@
 
 /*  Created using http://desandro.github.io/3dtransforms/docs/carousel.html as a tutorial/guide
 I refactored and revamped just about all code from there, but it is possible a few variable names/css are the same */	
-
+.playlist{
+    margin-bottom: 35px;
+}
 .gallery {
-  width: 100%;
-  height: 210px;
-  -webkit-perspective: 1100px;
-          perspective: 1100px;
-		  margin-bottom: 100px;
+    width: 100%;
+    margin-bottom: 50px;
+    height: 210px;
+    -webkit-perspective: 1100px;
+            perspective: 1100px;  	
 }
 
 #carousel {
-  width: 200px;
-  height: 100%;
-  margin: auto auto;
-  -webkit-transform: translateZ( -288px );
-          transform: translateZ( -288px );
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 1s;
-          transition: transform 1s;
+    width: 200px;
+    height: 100%;
+    margin: auto auto;
+    -webkit-transform: translateZ( -288px );
+            transform: translateZ( -288px );
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 1s;
+            transition: transform 1s;
 }
 
 #carousel img {
-	position: absolute;
-	width: 200px;
-	height: 200px;
-	left: 10px;
-	top: 10px;
-	margin: 0 auto;
-	border: 2px solid;
+  	position: absolute;
+  	width: 200px;
+  	height: 200px;
+  	left: 10px;
+  	top: 10px;
+  	margin: 0 auto;
+  	border: 2px solid;
+}
+
+#previous { 
+    position: relative; 
+    left: 85px; 
+    bottom: 125px;
+    float:left;
+}
+
+#next {
+    position: relative;
+    right: 75px; 
+    bottom: 125px;
+    float:right;    
+}
+
+#random {
+    position: relative;
+    left: 434px;
+    bottom: -30px; 
+    float:left;
 }
