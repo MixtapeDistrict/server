@@ -1,0 +1,29 @@
+<form class="form-horizontal" enctype="multipart/form-data" 
+      onsubmit="return update_profile();"	action="/update_details" method="post">		
+	
+  <div class="album form-group">
+		<label for="album-name" class="col-md-4 control-label">Album Name:</label>							
+		<div class="col-md-7">
+			<input id="album-name" type="text" class="form-control" name="album-name" onfocus="clearErrorMessage()"/>
+			<div id="name_outcome"></div>
+		</div>
+	</div>
+
+	<div class="edit-description form-group">
+		<label for="description" class="col-md-4 control-label">Description:</label>
+		<div class="col-md-7">
+			<textarea id="album-description" class="form-control" name="album-description"></textarea>	
+		</div>
+	</div>
+
+	<div class="edit-img form-group">
+		<label for="image" class="col-md-4 control-label">Album Image:</label>
+		<div class="col-md-2">
+			<input id="album-image" type="file" name="album-image" accept="image/*"/>
+		</div>
+	</div>
+	<input type="submit" id="submit-album" class="hidden"/>
+</form>
+
+
+

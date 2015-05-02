@@ -19,7 +19,7 @@
             <%= @email %></p>
       </div>
       <div class="artist-web row">
-          <p><span class="h4"> Website: </span>
+          <p><span class="h4"> Website:</span></br> 
           <%= link_to @website_link.to_s, @website_link, :target => '_blank' %></p>
       </div>
       <div class="followers-count row">
@@ -37,3 +37,5 @@
     </div>          
   </div>
 </div>
+
+<%= render 'modals'%>

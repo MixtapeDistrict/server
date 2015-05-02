@@ -1,7 +1,4 @@
-<%= render 'navbar_others'%>
-
-
-<form class="form-horizontal col-md-4 col-md-offset-4" enctype="multipart/form-data" 
+<form class="form-horizontal" enctype="multipart/form-data" 
       onsubmit="return update_profile();"	action="/update_details" method="post">		
 	
   <div class="edit-username form-group">
@@ -30,20 +27,15 @@
 	<div class="edit-description form-group">
 		<label for="description" class="col-md-4 control-label">Description:</label>
 		<div class="col-md-7">
-			<textarea id="description" class="form-control" name="description" value="<%= @description %>"></textarea>	
+			<textarea id="description" class="form-control" name="description"><%= @description %></textarea>	
 		</div>
 	</div>
 
 	<div class="edit-img form-group">
 		<label for="image" class="col-md-4 control-label">Upload Profile Image:</label>
 		<div class="col-md-2">
-			<input id="image" type="file" name="image" accept="image/*" />
+			<input id="image" type="file" name="image" accept="image/*"/>
 		</div>
 	</div>
-
-	<div class="submit form-group">
-		<div class="col-md-1 col-md-offset-5">
-		  <input type="submit" class="btn btn-default" value="Update profile"/>
-	  </div>
-  </div>	
+	<input type="submit" id="submit-update" class="hidden"/>
 </form>
