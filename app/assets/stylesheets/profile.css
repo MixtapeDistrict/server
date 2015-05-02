@@ -40,7 +40,11 @@
 	margin: 0;
 }
 
-.projects{
+.projects {
 	font-style: italic;
 	text-decoration: underline;
+}
+
+textarea { 
+	resize: vertical; 
 }
