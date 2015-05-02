@@ -1,39 +1,37 @@
 <form class="form-horizontal" enctype="multipart/form-data" 
       onsubmit="return update_profile();"	action="/update_details" method="post">		
 	
-  <div class="edit-username form-group">
-		<label for="name" class="col-md-4 control-label">Track Name:</label>							
+  <div class="new-track-name form-group">
+		<label for="track-name" class="col-md-4 control-label">Track Name:</label>							
 		<div class="col-md-7">
-			<input id="name" type="text" class="form-control" name="name" onfocus="clearErrorMessage()"/>
+			<input id="track-name" type="text" class="form-control" name="track-name" onfocus="clearErrorMessage()"/>
 			<div id="name_outcome"></div>
 		</div>
 	</div>
 
-	<div class="edit-link form-group">
-		<label for="link" class="col-md-4 control-label">Album:</label>
+	<div class="new-track-album form-group">
+		<label for="track-album" class="col-md-4 control-label">Album:</label>
 		<div class="col-md-7">
-			<input id="link" list="albums" class="form-control" name="link"/>	
-		</div>
-		<datalist id="albums">
-		  <option value="Album 1">
-		  <option value="Album 2">
-		  <option value="Album 3">
-		  <option value="Album 4">
-		  <option value="Album 5">
-		</datalist> 
-	</div>
-
-	<div class="edit-img form-group">
-		<label for="image" class="col-md-4 control-label">Track Image:</label>
-		<div class="col-md-2">
-			<input id="image" type="file" name="image" accept="image/*"/>
+			<select class="form-control" id="track-album" name="track-album">
+			    <option value="Album 1">Album 1</option>
+			    <option value="Album 2">Album 2</option>
+			    <option value="Album 3">Album 3</option>
+			    <option value="Album 4">Album 4</option>
+		    </select>	
 		</div>
 	</div>
 
-	<div class="edit-img form-group">
-		<label for="image" class="col-md-4 control-label">Track File:</label>
+	<div class="new-track-img form-group">
+		<label for="track-img" class="col-md-4 control-label">Track Image:</label>
 		<div class="col-md-2">
-			<input id="image" type="file" name="image" accept="audio/*"/>
+			<input id="track-img" type="file" name="track-img" accept="image/*"/>
+		</div>
+	</div>
+
+	<div class="new-track-file form-group">
+		<label for="track-file" class="col-md-4 control-label">Track File:</label>
+		<div class="col-md-2">
+			<input id="track-file" type="file" name="track-file" accept="audio/*"/>
 		</div>
 	</div>
 	<input type="submit" id="submit-track" class="hidden"/>
