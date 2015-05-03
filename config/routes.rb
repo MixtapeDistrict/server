@@ -14,7 +14,7 @@ WebInfo2::Application.routes.draw do
 # TO DO: show users profile, and let's him update.
   get '/user_profile', to: 'profile#showProfile' 
   get '/go_home', to: 'home#showHome'
-  get '/update_profile', to: 'profile#updateProfile'
+  post '/update_profile', to: 'profile#updateProfile'
   post '/update_details', to: 'profile#updateDetails'
   get '/other_profile', to: 'profile#showOther'
 
