@@ -30,3 +30,15 @@ function update_profile() {
 	return result;
 }
 
+/** Allow submit in modal footer */
+$('#submit-update').on('click', function(e){
+	$('.submit-update').submit();
+});
+
+$('#submit-track').on('click', function(e){
+	$('.submit-track').submit();
+});
+
+$('#submit-album').on('click', function(e){
+	$('.submit-album').submit();
+});

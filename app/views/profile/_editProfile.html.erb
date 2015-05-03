@@ -1,7 +1,7 @@
-<form class="form-horizontal" enctype="multipart/form-data" 
+<form class="form-horizontal submit-update" enctype="multipart/form-data" 
       onsubmit="return update_profile();"	action="/update_details" method="post">		
 	
-  <div class="edit-username form-group">
+    <div class="edit-username form-group">
 		<label for="name" class="col-md-4 control-label">New Username:</label>							
 		<div class="col-md-7">
 			<input id="name" type="text" class="form-control" name="name" onfocus="clearErrorMessage()" value="<%= @username %>"/>
@@ -33,9 +33,8 @@
 
 	<div class="edit-img form-group">
 		<label for="image" class="col-md-4 control-label">Upload Profile Image:</label>
-		<div class="col-md-2">
+		<div class="col-md-7">
 			<input id="image" type="file" name="image" accept="image/*"/>
 		</div>
 	</div>
-	<input type="submit" id="submit-update" class="hidden"/>
 </form>
