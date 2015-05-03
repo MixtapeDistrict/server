@@ -31,14 +31,14 @@ function update_profile() {
 }
 
 /** Allow submit in modal footer */
-$('#submit-update').on('click', function(e){
+$('#submit-update').click(function(){
 	$('.submit-update').submit();
 });
 
-$('#submit-track').on('click', function(e){
+$('#submit-track').click(function(){
 	$('.submit-track').submit();
 });
 
-$('#submit-album').on('click', function(e){
+$('#submit-album').click(function(){
 	$('.submit-album').submit();
 });
