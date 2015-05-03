@@ -48,3 +48,9 @@
 textarea { 
 	resize: vertical; 
 }
+
+.followers{
+	position: relative;
+	left: 45%;
+	right: 50%;
+}

@@ -66,6 +66,45 @@ class ProfileController < ApplicationController
   	end
 
 
+  	# Display all followers as links.
+  	def showFollowers
+		# Ensure user is logged in to view this page
+		if(session.has_key?("logged_in"))
+			# If the user is not logged in redirect to homepage
+			if(session['logged_in'] != 1) 
+				redirect_to url_for(:controller => :home, :action => :showHome)
+			end
+
+			# Get user id.
+			userID = session['user_id']
+
+			# Count the number of followers the user has.
+			if Follower.where(user_id:userID).count > 0
+				@num_followers = Follower.where(user_id:userID).count
+			else
+				@num_followers = 0
+			end
+
+			@follower_names = Array.new(@num_followers)
+			@follower_ids = Array.new(@num_followers)
+
+			# Get the user ids of all followers.
+			@ids = Follower.where(user_id:userID).select(:follower_id)
+
+			for i in 0..@num_followers
+				if @ids[i]
+					curr_id = @ids[i].follower_id
+					@follower_ids[i] = curr_id
+					@follower_names[i] = User.find(curr_id).username
+				end
+			end
+
+		else
+			redirect_to url_for(:controller => :home, :action => :showHome)
+		end
+  	end
+
+
   	# Takes user to updateProfile page where he/she update her profile details.
   	def updateProfile
   		# Ensure user is logged in to view this page
@@ -235,8 +274,8 @@ class ProfileController < ApplicationController
 		end
   	end
 
+  	# Use this follow to follow someone.
   	def follow
-
 		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
 			# If the user is not logged in redirect to homepage

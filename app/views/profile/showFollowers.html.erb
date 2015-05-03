@@ -1,0 +1,10 @@
+<%= render 'navbar_others'%>
+<!-- List all followers here as links. -->
+<div class="followers">
+<h2>All followers</h2>
+
+<% for i in 0..@num_followers - 1  %>
+    <div class=""><%= link_to @follower_names[i] , {:controller => 'profile', :action => 'showOther', :id => @follower_ids[i] } %>
+    </div><br>
+<% end %>
+</div>

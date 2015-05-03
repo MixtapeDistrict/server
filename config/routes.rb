@@ -19,6 +19,7 @@ WebInfo2::Application.routes.draw do
   get '/other_profile', to: 'profile#showOther'
   post'/unfollow_user', to: 'profile#unfollow'
   post '/follow_user', to: 'profile#follow'
+  get '/followers', to: 'profile#showFollowers'
 
   resources :medium_comments
 
