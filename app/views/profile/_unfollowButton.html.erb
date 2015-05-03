@@ -1,0 +1,6 @@
+<div>
+<%= form_tag({:controller => 'profile', :action => 'unfollow'}, method: "post") do %>	
+	<%= hidden_field_tag(:id, @otherID) %>
+	<%= submit_tag("Unfollow", :class => 'btn btn-primary') %>
+<% end %>
+</div><br>

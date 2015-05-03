@@ -17,6 +17,8 @@ WebInfo2::Application.routes.draw do
   post '/update_profile', to: 'profile#updateProfile'
   post '/update_details', to: 'profile#updateDetails'
   get '/other_profile', to: 'profile#showOther'
+  post'/unfollow_user', to: 'profile#unfollow'
+  post '/follow_user', to: 'profile#follow'
 
   resources :medium_comments
 

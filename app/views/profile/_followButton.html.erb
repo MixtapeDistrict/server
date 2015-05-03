@@ -1,0 +1,6 @@
+<div>
+<%= form_tag({:controller => 'profile', :action => 'follow'}, method: "post") do %>	
+	<%= hidden_field_tag(:id, @otherID) %>
+	<%= submit_tag("Follow", :class => 'btn btn-primary') %>
+<% end %>
+</div><br>

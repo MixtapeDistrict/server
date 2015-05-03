@@ -15,6 +15,11 @@ class ProfileController < ApplicationController
 
 			# Should fetch user's data from database and display profile details.
 			userID = session['user_id']
+
+			if userID <= 0
+				render nothing: true
+			end
+
 			user = User.find(userID)
 
 			if (user)
@@ -77,8 +82,6 @@ class ProfileController < ApplicationController
 			@email = User.find(userID).email
 			@website_link = User.find(userID).website_link
 			@description = User.find(userID).description
-
-
 
 		else
 			redirect_to url_for(:controller => :home, :action => :showHome)
@@ -147,10 +150,12 @@ class ProfileController < ApplicationController
 			logged_in_id = session['user_id']
 
 			# Get other person's profile details.
-			user = User.find(params[:id])
+			user = User.find(params[:id].to_i)
 
 			# Get other person's id.
 			userID = user.id
+
+			@otherID = user.id
 
 			@username = user.username
 			@email = user.email
@@ -186,6 +191,13 @@ class ProfileController < ApplicationController
 				end
 			end
 
+			# If you are following this person, the follow button should not be visible.
+			if Follower.where(user_id:userID, follower_id:logged_in_id).count > 0
+				@amFollowing = true # You are following this person.
+			else
+				@amFollowing = false
+			end
+
 			# If you come back to your profile, you should just see your own page.
 			if userID == logged_in_id
 				redirect_to url_for(:controller => :profile, :action => :showProfile)
@@ -195,6 +207,65 @@ class ProfileController < ApplicationController
 			redirect_to url_for(:controller => :home, :action => :showHome)
 		end
   	end
+
+
+  	# Unfollow the person you are following.
+  	def unfollow
+  		# Ensure user is logged in to view this page
+		if(session.has_key?("logged_in"))
+			# If the user is not logged in redirect to homepage
+			if(session['logged_in'] != 1) 
+				redirect_to url_for(:controller => :home, :action => :showHome)
+			end
+
+			# Get your id
+			@userID = session['user_id']
+
+			# Get the id of the person you want to unfollow
+			@unfollow_id = params[:id]
+
+			# Destroy record of you following this person.
+			if @userID != @unfollow_id and @unfollow_id.to_i > 0
+				Follower.where(user_id:@unfollow_id, follower_id:@userID).destroy_all
+				redirect_to url_for(:controller => :profile, :action => :showOther, :id => @unfollow_id.to_s)
+			end
+
+		else
+			redirect_to url_for(:controller => :home, :action => :showHome)
+		end
+  	end
+
+  	def follow
+
+		# Ensure user is logged in to view this page
+		if(session.has_key?("logged_in"))
+			# If the user is not logged in redirect to homepage
+			if(session['logged_in'] != 1) 
+				redirect_to url_for(:controller => :home, :action => :showHome)
+			end
+
+			# Get user id.
+			userID = session['user_id']
+
+			# Get id of person you want to follow.
+			toFollowID = params[:id]
+
+			# Check if you are currently following this person.
+			if Follower.where(user_id:toFollowID, follower_id:userID).count == 0
+				if userID != toFollowID and toFollowID.to_i > 0
+					# Follow this person
+					Follower.create(user_id:toFollowID, follower_id:userID)
+					redirect_to url_for(:controller => :profile, :action => :showOther, :id => toFollowID)
+					return
+				end
+			end
+
+			redirect_to url_for(:controller => :profile, :action => :showOther, :id => toFollowID)
+		else
+			redirect_to url_for(:controller => :home, :action => :showHome)
+		end
+  	end
+
 
 end
 

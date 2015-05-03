@@ -1,0 +1,10 @@
+      <%= @other_id %>
+      <div class="follow-btn row">
+      <%= button_to "Unfollow", '/unfollow_user', :person_id => @other_id, :class => 'btn btn-primary' %>
+      </div><br>
+      <div class="collaborate-btn row">
+        <button type="button" class="btn btn-success">Collaborate</button>
+      </div><br>
+      <div class="donate-btn row">
+        <button type="button" class="btn btn-info">Donate</button>
+      </div>
