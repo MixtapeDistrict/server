@@ -1,4 +1,8 @@
+<% if session['logged_in']==1 %>
+<%= render 'navbar_logged'%>
+<% else %>
 <%= render 'navbar'%>
+<% end %>
 <!-- All the content on the homepage -->
 <div id="content" class="container-fluid">
   <div class="container">

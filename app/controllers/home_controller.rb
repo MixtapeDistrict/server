@@ -7,28 +7,10 @@ class HomeController < ApplicationController
 		end
 		# Initialize the user's session if it doesn't
 		# already have one.
-		if(session.has_key?("logged_in"))
-			# If the user is logged in render the logged
-			# in page
-			if(session['logged_in'] == 1) 
-				redirect_to action:"logged_in"
-			end
-		else
+		if(not session.has_key?("logged_in"))
 			# Initialize the session
 			session['logged_in'] = 0
 			session['user_id'] = 0
-		end
-	end
-
-	def logged_in
-		# Ensure user is logged in to view this page
-		if(session.has_key?("logged_in"))
-			# If the user is not logged in redirect to homepage
-			if(session['logged_in'] != 1) 
-				redirect_to action:"showHome"
-			end
-		else
-			redirect_to action:"showHome"
 		end
 	end
 
