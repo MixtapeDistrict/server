@@ -10,14 +10,10 @@ iframe {
 	width:100%;
 }
 
-.msg {
+.player {
 	position: absolute;
 	height:4%;
 	background-color: black;
 	width:99%;
 	color:red;
-}
-#scroller {
-  -webkit-overflow-scrolling: touch;
-  	overflow-y: scroll;
 }

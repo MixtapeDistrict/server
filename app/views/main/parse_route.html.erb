@@ -1,6 +1,12 @@
-<html>
+<html lang="en">
 
-  <head>
+  <head>    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HitPlayShare</title>
+    <link rel="shortcut icon" href="/assets/logo.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "main.css" %>
   </head> 
 
@@ -8,7 +14,7 @@
     <div id="scroller"> 
       <iframe src="<%= @link %>" frameborder="0" id="loader">
       </iframe>
-      <div class="msg" id="msg">JPlayer here
+      <div class="player" id="msg">JPlayer here
       </div>
     </div>
   </body>
