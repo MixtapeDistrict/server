@@ -64,45 +64,45 @@ class MusicsController < ApplicationController
   # Returns XML representing tracks to load from the database
   def get_tracks
   	# Get all songs in the database
-  	musics = Music.all
-  	music = "<songs>"
+  	musics = Music.all.order('created_at DESC')
+  	xml = "<songs>"
   	for music in musics
   		# Get the medium this music belongs to
   		medium = music.medium
   		# Get the user who created the music
   		user = medium.user
   		# Add useful information to the XML 
-  		music += "<song>"
-  		music += "<title>#{medium.title}</title>"
-  		music += "<songID>#{music.id}</songID>"
-  		music += "<artist>#{user.username}</artist>"
-  		music += "<artistID>#{user.id}</artistID>"
-  		music += "<imagePath>#{music.image_path}"
-  		music += "<filePath>#{medium.file_path}</filepath>"
+  		xml  = "<song>"
+  		xml  = "<title>#{medium.title}</title>"
+  		xml  = "<songID>#{music.id}</songID>"
+  		xml  = "<artist>#{user.username}</artist>"
+  		xml  = "<artistID>#{user.id}</artistID>"
+  		xml  = "<imagePath>#{music.image_path}</imagePath>"
+  		xml  = "<filePath>#{medium.file_path}</filePath>"
   		# Check if this music belongs to an album
   		if(music.music_albums.first)
-  			music += "<album>#{music.music_albums.first.title}</album>"
-  			music += "<albumID>#{music.music_albums.first.id}</albumID>"
+  			xml  = "<album>#{music.music_albums.first.title}</album>"
+  			xml  = "<albumID>#{music.music_albums.first.id}</albumID>"
   		else
-  			music += "<album></album>"
+  			xml  = "<album>Single</album>"
   		end
-  		music += "<plays>#{music.plays}</plays>"
+  		xml  = "<plays>#{music.plays}</plays>"
   		# Calculate the average rating of this song
   		rating_count = 0
   		rating_sum = 0
-  		user_mediums = UserMedium.where(medium_id:medium.id)
-  		for user_medium in user_mediums
-  			rating_sum += user_medium.rating
+  		user_ratings = medium.ratings
+  		for user_rating in user_ratings
+  			rating_sum  = user_medium.rating
   		end
   		rating = 0
   		if(rating_count != 0)
   			rating = rating_sum.to_f/rating_count
   		end
-  		music += "<rating>#{rating}</rating>"
-  		music += "</song>"
+  		xml  = "<rating>#{rating}</rating>"
+  		xml  = "</song>"
 	end
-	music += "</songs>"
-	render :xml => music
+	xml  += "</songs>"
+	render :xml => xml
   end
 
   private

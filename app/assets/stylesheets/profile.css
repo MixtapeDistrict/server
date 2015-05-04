@@ -1,5 +1,4 @@
 /* Profile page Css*/
-
 .description {
 	margin-top: 10px;
 }
@@ -53,4 +52,7 @@ textarea {
 	position: relative;
 	left: 45%;
 	right: 50%;
+}
+.modal {
+	margin-top:50px;
 }

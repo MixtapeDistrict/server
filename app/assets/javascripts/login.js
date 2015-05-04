@@ -28,7 +28,6 @@ function sign_in() {
          	<button type=\"submit\" class=\"btn profile-btn btn-danger log-out\">Logout</button>\
          </form>\
          </li>";
-         history.pushState("", "logged_in", "");
 			}
 		}
 	}

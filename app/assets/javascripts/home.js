@@ -232,13 +232,17 @@ function get_profile() {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			var response = xmlhttp.responseText;
 			var lines = response.split("\n");
-			document.getElementById("content").innerHTML = "";
+			document.getElementById("content").innerHTML = "PROFILE SHOWS HERE";
 			for(var i=0; i<lines.length;i++) {
 				document.getElementById("content").innerHTML += lines[i];
 			}
-			location.hash="view_profile";
 		}
 	}
 	xmlhttp.open("get", "/user_profile", true);
 	xmlhttp.send();
+}
+
+/* Gets the tracks from the database in XML format */
+function get_tracks() {
+	
 }

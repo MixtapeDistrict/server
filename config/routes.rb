@@ -1,15 +1,15 @@
 WebInfo2::Application.routes.draw do
 
-  #get "main/parse_route"
+  root "main#parse_route"
   # get 'home/index'
-  root 'home#showHome'
+  #root 'home#showHome'
   get '/home', to: 'home#showHome'
   match ':controller(/:action(/:id))', :via => :get
   post '/sign_up', to: 'home#sign_up'
   post '/sign_out', to: 'home#sign_out'
   post '/login', to: 'home#login'
   get '/sign_out', to: 'home#sign_out'
-  get '/get_tracks', to: 'music#get_tracks'
+  get '/get_tracks', to: 'musics#get_tracks'
 
 # TO DO: show users profile, and let's him update.
   get '/user_profile', to: 'profile#showProfile' 
