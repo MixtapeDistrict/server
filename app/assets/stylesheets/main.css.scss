@@ -19,6 +19,6 @@ iframe {
 	width:99%;
 }
 #scroller {
-    -webkit-overflow-scrolling: touch;
-  	overflow:auto;
+  -webkit-overflow-scrolling: touch;
+  	overflow-y: scroll;
 }

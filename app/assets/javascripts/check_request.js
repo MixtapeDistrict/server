@@ -10,5 +10,5 @@ if(!inIframe()) {
 	window.location.href = "/?request="+window.location.href;
 }
 else {
-	window.parent.history.pushState('HSP', 'HitSharePlay',location.href);
+	window.parent.history.replaceState(null,null,location.href);
 }
