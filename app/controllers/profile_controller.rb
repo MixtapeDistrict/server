@@ -189,12 +189,11 @@ class ProfileController < ApplicationController
 		end
 		File.open(Rails.root.join('app/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
 			file.write(@uploaded_image.read)
-			Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
 		end
 		File.open(Rails.root.join('public/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
 			file.write(@uploaded_image.read)
-			Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
 		end
+		Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
 		
 		redirect_to url_for(:controller => :profile, :action => :showProfile)
   	end
