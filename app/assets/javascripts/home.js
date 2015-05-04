@@ -219,28 +219,6 @@ function galleryspin(sign) {
     carousel.style[ 'transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';   
 }
 
-function get_profile() {
-	var xmlhttp;
-	if(window.XMLHttpRequest) {
-		xmlhttp = new XMLHttpRequest();
-	}
-	/* Internet Explorer */
-	else {
-		xmlhttp = ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange = function () {
-		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
-			var response = xmlhttp.responseText;
-			var lines = response.split("\n");
-			document.getElementById("content").innerHTML = "PROFILE SHOWS HERE";
-			for(var i=0; i<lines.length;i++) {
-				document.getElementById("content").innerHTML += lines[i];
-			}
-		}
-	}
-	xmlhttp.open("get", "/user_profile", true);
-	xmlhttp.send();
-}
 
 /* Gets the tracks from the database in XML format */
 function get_tracks() {

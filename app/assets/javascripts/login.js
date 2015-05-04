@@ -20,7 +20,7 @@ function sign_in() {
 			else {
 				document.getElementById('replace').innerHTML = "<li class=\"dropdown\">\
           <!-- Acts as a href link to controller action -->\
-           <a onclick=\"get_profile()\" class=\"dropdown-toggle\" data_toggle=\"dropdown\" role=\"button\" aria_expanded=\"true\">Profile</a>\
+           <a href=\"/user_profile\" class=\"dropdown-toggle\" data_toggle=\"dropdown\" role=\"button\" aria_expanded=\"true\">Profile</a>\
         </li>\
         \
          <li class=\"dropdown\">\
