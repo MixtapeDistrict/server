@@ -19,5 +19,8 @@ class User < ActiveRecord::Base
 		user.image_path = filenamebase
 		user.save
 		end
+		File.open(Rails.root.join('public/assets/images', 'userimage', filenamebase), 'wb') do |file|
+			file.write(img.read)
+		end
 	end
 end
