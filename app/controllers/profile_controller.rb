@@ -175,6 +175,22 @@ class ProfileController < ApplicationController
 		end
   	end
 
+	def newTrack
+  		@uploaded_file = params['track-file']
+		@uploaded_image = params['track-img']
+		@track = params
+		puts params
+		filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
+		File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
+			file.write(@uploaded_file.read)
+		end
+		File.open(Rails.root.join('app/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
+			file.write(@uploaded_image.read)
+			Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
+		end
+		
+		redirect_to url_for(:controller => :profile, :action => :showProfile)
+  	end
 
   	# Show other person's profile.
   	def showOther
