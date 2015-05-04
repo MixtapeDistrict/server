@@ -18,6 +18,6 @@ iframe {
 	color:red;
 }
 #scroller {
-  -webkit-overflow-scrolling: touch;
-  	overflow-y: scroll;
+  -webkit-overflow-scrolling: touch !important;
+  	overflow-y: scroll !important;
 }
