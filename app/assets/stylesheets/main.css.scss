@@ -18,3 +18,7 @@ iframe {
 	background-color: black;
 	width:99%;
 }
+#scroller {
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+}
