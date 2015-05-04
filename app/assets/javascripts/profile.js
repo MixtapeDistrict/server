@@ -111,7 +111,7 @@ for (var i=0; i<12 ; i++){
     html += '<div class="element col-md-4">'+img+info+'</div>';
 };
 html+='</div><div class="row track-req"><button type="button" class="btn btn-default more center-block">More Tracks</button></div>'
-// Put all racks in place
+
 $('#tracks').append(html);
 
 // Create the grind
@@ -131,8 +131,8 @@ for (var i=0; i<12 ; i++){
 // Create each individual track: index used to provide example, will be replaced with the actual info.
 html+='</div>'
 
-// Put all racks in place 
-$('#albums').append(html); 
+
+$('.album-preview').before(html); 
 
 // Create the grind
 obj = JSON.parse(collaborators);
@@ -147,7 +147,7 @@ for (var i=0; i<12 ; i++){
     html += '<div class="element col-md-4">'+img+info+'</div>';
 };
 html+='</div>';
-// Put all racks in place 
+
 $('#collaborators').append(html); 
 
 
@@ -187,7 +187,7 @@ $(document).ready(function(){
         obj = JSON.parse(tracks);
 
         html='';
-        // Create each individual track: index used to provide example, will be replaced with the actual info.
+        // Show more tracks in profile.
         for (var i=0; i<12 ; i++){
             var img = '<div class="col-md-6"><img id="content-img"  alt="" src="../'+ obj.tracks[i].cover +'"></div>'
             var name = '<p class="h4 row info track-name">Track name</p>'
