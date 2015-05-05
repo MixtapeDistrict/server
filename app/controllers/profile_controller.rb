@@ -34,6 +34,9 @@ class ProfileController < ApplicationController
 				@image_path  = user.image_path
 				@tracks = user.tracks_heard
 
+				# Get the array of tracks that this user has uploaded
+				@owntracks = Medium.getusertracks(session['user_id'])
+				
 				# Count the number of followers the user has.
 				if Follower.where(user_id:userID).count > 0
 					@num_followers = Follower.where(user_id:userID).count
@@ -184,6 +187,10 @@ class ProfileController < ApplicationController
 		@uploaded_image = params['track-img']
 		@track = params
 		puts params
+		if(@uploaded_file.nil?)
+			redirect_to url_for(:controller => :profile, :action => :showProfile)
+			return
+		end
 		filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
 		File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
 			file.write(@uploaded_file.read)
@@ -191,14 +198,17 @@ class ProfileController < ApplicationController
 		File.open(Rails.root.join('public/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
 			file.write(@uploaded_file.read)
 		end
-		File.open(Rails.root.join('app/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
-			file.write(@uploaded_image.read)
+		if(@uploaded_image.nil?)
+			Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, "placeholder.gif", "music")
+		else
+			File.open(Rails.root.join('app/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
+				file.write(@uploaded_image.read)
+			end
+			File.open(Rails.root.join('public/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
+				file.write(@uploaded_image.read)
+			end
+			Medium.createnew(session['user_id'].to_i, params['track-name'].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
 		end
-		File.open(Rails.root.join('public/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
-			file.write(@uploaded_image.read)
-		end
-		Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
-		
 		redirect_to url_for(:controller => :profile, :action => :showProfile)
   	end
 

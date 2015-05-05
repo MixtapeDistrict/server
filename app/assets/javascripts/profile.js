@@ -101,16 +101,16 @@ obj = JSON.parse(tracks);
 
 html='<div class="tab-content row">';
 // Create each individual track: index used to provide example, will be replaced with the actual info.
-for (var i=0; i<12 ; i++){
-    var img = '<div class="col-md-6"><img id="content-img"  alt="" src="../'+ obj.tracks[i].cover +'"></div>'
-    var name = '<p class="h4 row info track-name">Track name</p>'
-    var coll = '<p class="row info track-coll">(Collaborator)</p>'
-    var album = '<p class="row info track-album">Album</p>'
-    var duration = '<p class="row info track-duration">3:00</p>'
-    var info =  '<div class="col-md-6 content-info">'+name+coll+album+duration+'</div>';
-    html += '<div class="element col-md-4">'+img+info+'</div>';
-};
-html+='</div><div class="row track-req"><button type="button" class="btn btn-default more center-block">More Tracks</button></div>'
+//for (var i=0; i<12 ; i++){
+//    var img = '<div class="col-md-6"><img id="content-img"  alt="" src="../'+ obj.tracks[i].cover +'"></div>'
+//    var name = '<p class="h4 row info track-name">Track name</p>'
+//    var coll = '<p class="row info track-coll">(Collaborator)</p>'
+//    var album = '<p class="row info track-album">Album</p>'
+//    var duration = '<p class="row info track-duration">3:00</p>'
+//    var info =  '<div class="col-md-6 content-info">'+name+coll+album+duration+'</div>';
+//    html += '<div class="element col-md-4">'+img+info+'</div>';
+//};
+//html+='</div><div class="row track-req"><button type="button" class="btn btn-default more center-block">More Tracks</button></div>'
 
 $('#tracks').append(html);
 
@@ -232,7 +232,7 @@ $(document).ready(function(){
 	/* Initialize file upload pluging for track file upload */
 	$("#track-file").fileinput({
 		previewFileType: "audio",	
-		allowedFileExtensions: ['mp3'],
+		allowedFileTypes: ['audio'],
 		browseClass: "btn btn-info",
 		browseLabel: " Pick MP3",
 		browseIcon: '<i class="glyphicon glyphicon-music"></i>',

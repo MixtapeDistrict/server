@@ -32,7 +32,19 @@
   <!-- Information of the tabs to be display, see id is the same that the tab names-->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="tracks">
-      
+		<% @owntracks.each do |medium| %>
+      <tr>
+      	<div class="element col-md-4">
+	      	<div class="col-md-6"><img id="content-img"  alt="" src="assets/mediaimage/<%= medium.image_path %>"></div>
+	      	<div class="col-md-6 content-info">
+	      		<p class="h4 row info track-name"><%= medium.title %></p>
+	      		<p class="row info track-coll">(Collaborator)</p>
+	      		<p class="row info track-album">Album</p>
+	      		<p class="row info track-duration">3:00</p>
+	      	</div>
+        </div>
+      </tr>
+    <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="albums">
       <div class="row">
