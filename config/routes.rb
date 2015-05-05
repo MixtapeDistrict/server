@@ -13,7 +13,7 @@ WebInfo2::Application.routes.draw do
   get '/sign_out', to: 'home#sign_out'
   get '/get_tracks', to: 'musics#get_tracks'
 
-# TO DO: show users profile, and let's him update.
+# Show users profile, and let's him update.
   get '/user_profile', to: 'profile#showProfile' 
   get '/go_home', to: 'home#showHome'
   post '/newTrack', to: 'profile#newTrack'
@@ -24,6 +24,10 @@ WebInfo2::Application.routes.draw do
   post '/follow_user', to: 'profile#follow'
   get '/followers', to: 'profile#showFollowers'
 
+# Do collaborations here.
+  post '/collaborate', to: 'collaboration#coRequest'
+  get '/showAllRequests', to: 'collaboration#showRequests'
+  post '/acceptRequester', to: 'collaboration#acceptRequest'
 
   resources :medium_comments
 

@@ -14,12 +14,14 @@
           <%= @description %></p>
       </div> 
       <div class="e-mail row">
-            <p><span class="h4">Email:</span></br> 
-            <%= @email %></p>
+          <p><span class="h4">Email:</span></br> 
+          <%= @email %></p>
       </div>
       <div class="artist-web row">
-          <p><span class="h4"> Website: </span>
-          <%= link_to @website_link.to_s, @website_link, :target => '_blank' %></p>
+          <p><span class="h4"> Website:</span></p>
+          <div class="website">
+            <%= link_to @website_link.to_s, @website_link, :target => '_blank'%> 
+          </div>
       </div>
       <div class="followers-count row">
           <p class="h4">Followers (<%= @num_followers %>)</p>                

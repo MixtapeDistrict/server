@@ -1,0 +1,39 @@
+html, body {
+   margin:0;
+   padding:0;
+   height:100%;
+   overflow:hidden;
+}
+iframe {
+	height:96%;
+	width:100%;
+}
+
+.player {
+	position: absolute;
+	height:4%;
+	background-color: black;
+	width:99%;
+	color:red;
+}
+<<<<<<< HEAD:app/assets/stylesheets/main.css.scss
+#scroller {
+  -webkit-overflow-scrolling: touch;
+  	overflow-y: scroll;
+  	height:96%;
+}
+=======
+
+.jp-audio {
+	width: 100%;
+}
+
+.jp-audio .jp-type-single .jp-progress {
+	width: 80%; 
+}
+
+.jp-audio .jp-type-single .jp-time-holder {
+	left: 110px;
+	width: 80%; 
+}
+>>>>>>> fb80bc9253354b8a54098db0c5856e0c4c494d3c:app/assets/stylesheets/main.css

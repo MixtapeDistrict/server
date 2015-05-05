@@ -1,17 +1,39 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
+=======
+<html lang="en">
+>>>>>>> fb80bc9253354b8a54098db0c5856e0c4c494d3c
 
-  <head>
+  <head>    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HitPlayShare</title>
+    <link rel="shortcut icon" href="/assets/logo.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "home.css"%>
+	<%= javascript_include_tag "jquery.jplayer.min.js"%>
     <%= stylesheet_link_tag "main.css" %>
+    <%= stylesheet_link_tag "jplayer-skin/blue.monday/jplayer.blue.monday.css"%>
   </head> 
 
   <body>
     <div id="scroller"> 
       <iframe src="<%= @link %>" frameborder="0" id="loader">
       </iframe>
+<<<<<<< HEAD
      
     </div>
      <div class="msg" id="msg">JPlayer here</div>
+=======
+  		<div class="player">
+        <%= render "jplayer" %>
+  		</div>
+    </div>
+  <%= javascript_include_tag "main.js"%>  
+  <%= javascript_include_tag "jquery.jplayer.min.js"%>  
+>>>>>>> fb80bc9253354b8a54098db0c5856e0c4c494d3c
   </body>
 
 </html>

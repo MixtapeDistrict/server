@@ -4,7 +4,7 @@
     <div class="new-track-name form-group">
 		<label for="track-name" class="col-md-4 control-label">Track Name:</label>							
 		<div class="col-md-7">
-			<input id="track-name" type="text" class="form-control" name="track-name" onfocus="clearErrorMessage()"/>
+			<input id="track-name" type="text" class="form-control" name="track-name" onfocus="clearErrorMessage()" required>
 			<div id="name_outcome"></div>
 		</div>
 	</div>
@@ -13,14 +13,14 @@
 	<div class="new-track-img form-group">
 		<label for="track-img" class="col-md-4 control-label">Track Image:</label>
 		<div class="col-md-7">
-			<input id="track-img" type="file" name="track-img" accept="image/*"/>
+			<input id="track-img" type="file" name="track-img" accept="image/*">
 		</div>
 	</div>
 
 	<div class="new-track-file form-group">
 		<label for="track-file" class="col-md-4 control-label">Track File:</label>
 		<div class="col-md-7">
-			<input id="track-file" type="file" name="track-file" accept="audio/*"/>
+			<input id="track-file" type="file" name="track-file" accept="audio/*" required>
 		</div>
 	</div>	
 </form>
