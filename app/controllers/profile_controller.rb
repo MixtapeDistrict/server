@@ -204,7 +204,7 @@ class ProfileController < ApplicationController
 		if(session.has_key?("logged_in"))
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
-				redirect_to url_for(:controller => :home, :action => :showHome)
+				redirect_to url_for(:controller => :home, :action => :showHome) and return
 			end
 
 			# Get your current user id if you are logged in.
@@ -261,11 +261,11 @@ class ProfileController < ApplicationController
 
 			# If you come back to your profile, you should just see your own page.
 			if userID == logged_in_id
-				redirect_to url_for(:controller => :profile, :action => :showProfile)
+				redirect_to url_for(:controller => :profile, :action => :showProfile) and return
 			end
 
 		else
-			redirect_to url_for(:controller => :home, :action => :showHome)
+			redirect_to url_for(:controller => :home, :action => :showHome) and return
 		end
   	end
 

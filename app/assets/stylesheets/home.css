@@ -27,12 +27,9 @@
     width:100%;
     vertical-align:top;
 }
+
 .element:after {
-    content: "\a" attr(data-title) "\a" attr(data-artist) "\a" attr(data-len) "\a" attr(data-album) "\a" attr(data-rating) " (" attr(data-reference) ") ";
-	white-space : pre ;
-    font-weight: bold;
-    font-size: 14px;
-    color:#fff;
+    content: "\a";
     position:absolute;
     width:100%; height:100%;
     top:0; left:0;
@@ -41,6 +38,7 @@
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }
+
 .element:hover:after {
     opacity:1;
 }
@@ -102,3 +100,36 @@ I refactored and revamped just about all code from there, but it is possible a f
     bottom: -30px; 
     float:left;
 }
+
+.img {
+	position:relative;
+}
+
+.element:hover .grid_description {
+	position:absolute;
+	top:15px;
+	left:15px;
+	font-size:15px;
+	font-weight:bold;
+	color:white;
+	z-index:50;
+	visibility:visible;
+}
+
+.grid_description {
+	position:absolute;
+	top:0;
+	font-size:13px;
+	font-weight:bold;
+	color:white;
+	z-index:50;
+	visibility:hidden;
+}
+
+.grid_description > a {
+	
+}
+
+
+
+

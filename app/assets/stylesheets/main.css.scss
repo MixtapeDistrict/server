@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
    margin:0;
    padding:0;
    height:100%;
@@ -20,4 +19,5 @@ iframe {
 #scroller {
   -webkit-overflow-scrolling: touch;
   	overflow-y: scroll;
+  	height:96%;
 }
