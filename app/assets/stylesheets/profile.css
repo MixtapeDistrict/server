@@ -48,11 +48,6 @@ textarea {
 	resize: vertical; 
 }
 
-.followers{
-	position: relative;
-	left: 45%;
-	right: 50%;
-}
 .modal {
 	margin-top:50px;
 }

@@ -32,20 +32,26 @@
   <!-- Information of the tabs to be display, see id is the same that the tab names-->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="tracks">
-		<% @owntracks.each do |medium| %>
-      <tr>
-      	<div class="element col-md-4">
-	      	<div class="col-md-6"><img id="content-img"  alt="" src="assets/mediaimage/<%= medium.image_path %>"></div>
+		  <div class="tab-content row">
+        <% @owntracks.each do |medium| %>
+       	<div class="element col-md-4">
+	      	<div class="col-md-6">
+            <img id="content-img"  alt="" src="assets/mediaimage/<%= medium.image_path %>">
+          </div>
 	      	<div class="col-md-6 content-info">
 	      		<p class="h4 row info track-name"><%= medium.title %></p>
 	      		<p class="row info track-coll">(Collaborator)</p>
 	      		<p class="row info track-album">Album</p>
 	      		<p class="row info track-duration">3:00</p>
 	      	</div>
-        </div>
-      </tr>
-    <% end %>
-    </div>
+        </div>              
+        <% end %>
+      </div>
+      <div class="row track-req">
+        <button type="button" class="btn btn-default more center-block">More Tracks</button>
+      </div>
+    </div>  
+    
     <div role="tabpanel" class="tab-pane" id="albums">
       <div class="row">
         <%= link_to "Album Preview", "album", :target => "_blank", :type => "button", 
@@ -55,22 +61,45 @@
     
     <!-- Add collaborators here. -->
     <div role="tabpanel" class="tab-pane" id="collaborators">
+      <div class="tab-content row">
         <% for i in 0..@approved_requests.count - 1 %>
-          <h3><%= User.find(@approved_ids[i]).username %></h3>
+          <div class="element col-md-4">
+            <div class="col-md-6">
+              <img id="content-img" alt="Collaborator Image" src=""> <!--Need to include user image source-->
+            </div>
+            <div class="col-md-6 content-info">
+              <p class="h4 row info coll-name"><%= User.find(@approved_ids[i]).username %></p>
+              <p class="row info projects">
+                <span class="proj-num"><%= i %><span> projects <!--How many projects have them collaborated-->
+              </p>            
+            </div>
+          </div>
         <% end %>
+      </div>  
     </div>
 
     <!-- Onclick reveals all the people the user is following... 
       NOTE: should display all users as links !
     -->
     <div role="tabpanel" class="tab-pane" id="following">
-      <% for i in 0..@num_following - 1  %>
-        <div class="">
-        <h2>
-        <%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
-        </h2>
-        </div><br>
-      <% end %>
+      <div class="tab-content row">
+        <% for i in 0..@num_following - 1  %>
+          <div class="element col-md-4">
+            <div class="col-md-6">
+              <img id="content-img" alt="User Image" src=""> <!--Need to include user image source-->
+            </div>
+            <div class="col-md-6 content-info">
+              <p class="h4 row info foll-name">
+                <%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
+              </p>
+              <p class="row info followers">
+                <span class="foll-num"><%= i %><span> followers <!--Number of followers that the user have-->
+              </p>            
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
+
   </div>
 </div>
