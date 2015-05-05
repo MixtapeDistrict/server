@@ -1,6 +1,6 @@
 # Actions for all profile modifications and display.
 # Creator: Vui Chee 
-# Last modified 5th May 2015
+# Last modified 27th April 2015
 
 class ProfileController < ApplicationController
 
@@ -25,15 +25,6 @@ class ProfileController < ApplicationController
 			# Get the ids of all people requesting to collaborate with you.
 			@requestIDs = Collaboration.where(second_id:userID).select(:first_id)
 			@num_requests = @requestIDs.count
-
-			# Now get all requests that you make to others.
-			@approved_requests = Collaboration.where(first_id:userID, approved:true)
-			@approved_ids = Array.new(@approved_requests.count)
-
-			for i in 0..@approved_requests.count - 1
-				@approved_ids[i] = @approved_requests[i].second_id
-			end
-
 
 			if (user)
 				@username = user.username
@@ -238,13 +229,6 @@ class ProfileController < ApplicationController
 
 			# Get other person's id.
 			userID = user.id
-
-			@approved_requests = Collaboration.where(first_id:userID, approved:true)
-			@approved_ids = Array.new(@approved_requests.count)
-
-			for i in 0..@approved_requests.count - 1
-				@approved_ids[i] = @approved_requests[i].second_id
-			end
 
 			@otherID = user.id
 
