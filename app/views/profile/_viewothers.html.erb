@@ -1,8 +1,8 @@
 <!-- Buttons to display other artist profile-->
-
-<div class="collaborate-btn row">
-  <button type="button" class="btn btn-success">Collaborate</button>
-</div><br>
+<!-- Do not render collaborate button once a request has been made. -->
+<% if Collaboration.where(first_id:session['user_id'], second_id:@otherID).count == 0 %>
+	<%= render 'collaborateButton' %>
+<% end %>
 <div class="donate-btn row">
   <button type="button" class="btn btn-info">Donate</button>
 </div><br>

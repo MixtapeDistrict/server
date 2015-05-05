@@ -1,0 +1,16 @@
+<!-- NOTE: this page is only viewable iff the user the logged in. -->
+<%= render 'navbar_others'%>
+
+<% for i in 0..@num-1 %>
+	<%= form_tag({:controller => 'collaboration', :action => 'acceptRequest'}, method: "post") do %>
+	<%= hidden_field_tag(:id, @requester_ids[i]) %>
+	<span>
+		<% if Collaboration.find_by(first_id:@requester_ids[i], second_id:@userID).approved %>
+			<p> Accepted </p>
+		<% else %>
+			<p> Not yet accepted </p>
+		<% end %>
+	</span>
+	<%= submit_tag("Accept #{@names[i]}", :class => 'btn btn-success') %>
+  	<% end %><br>
+<% end %>

@@ -22,6 +22,10 @@ class ProfileController < ApplicationController
 
 			user = User.find(userID)
 
+			# Get the ids of all people requesting to collaborate with you.
+			@requestIDs = Collaboration.where(second_id:userID).select(:first_id)
+			@num_requests = @requestIDs.count
+
 			if (user)
 				@username = user.username
 				@email = user.email
@@ -329,24 +333,3 @@ class ProfileController < ApplicationController
 
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

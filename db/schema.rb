@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401135819) do
+ActiveRecord::Schema.define(version: 20150505020858) do
 
   create_table "album_comments", force: true do |t|
     t.integer  "comment_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20150401135819) do
     t.integer  "downloads"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "collaborations", force: true do |t|
+    t.integer  "first_id"
+    t.integer  "second_id"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "approved"
   end
 
   create_table "comments", force: true do |t|
