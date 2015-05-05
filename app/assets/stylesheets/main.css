@@ -1,0 +1,32 @@
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+   overflow:hidden;
+}
+iframe {
+	height:96%;
+	width:100%;
+}
+
+.player {
+	position: absolute;
+	height:4%;
+	background-color: black;
+	width:99%;
+	color:red;
+}
+
+.jp-audio {
+	width: 100%;
+}
+
+.jp-audio .jp-type-single .jp-progress {
+	width: 80%; 
+}
+
+.jp-audio .jp-type-single .jp-time-holder {
+	left: 110px;
+	width: 80%; 
+}

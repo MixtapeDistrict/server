@@ -1,6 +1,6 @@
 # Actions for all profile modifications and display.
 # Creator: Vui Chee 
-# Last modified 27th April 2015
+# Last modified 5th May 2015
 
 class ProfileController < ApplicationController
 
@@ -22,6 +22,19 @@ class ProfileController < ApplicationController
 
 			user = User.find(userID)
 
+			# Get the ids of all people requesting to collaborate with you.
+			@requestIDs = Collaboration.where(second_id:userID).select(:first_id)
+			@num_requests = @requestIDs.count
+
+			# Now get all requests that you make to others.
+			@approved_requests = Collaboration.where(first_id:userID, approved:true)
+			@approved_ids = Array.new(@approved_requests.count)
+
+			for i in 0..@approved_requests.count - 1
+				@approved_ids[i] = @approved_requests[i].second_id
+			end
+
+
 			if (user)
 				@username = user.username
 				@email = user.email
@@ -30,6 +43,9 @@ class ProfileController < ApplicationController
 				@image_path  = user.image_path
 				@tracks = user.tracks_heard
 
+				# Get the array of tracks that this user has uploaded
+				@owntracks = Medium.getusertracks(session['user_id'])
+				
 				# Count the number of followers the user has.
 				if Follower.where(user_id:userID).count > 0
 					@num_followers = Follower.where(user_id:userID).count
@@ -180,6 +196,10 @@ class ProfileController < ApplicationController
 		@uploaded_image = params['track-img']
 		@track = params
 		puts params
+		if(@uploaded_file.nil?)
+			redirect_to url_for(:controller => :profile, :action => :showProfile)
+			return
+		end
 		filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
 		File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
 			file.write(@uploaded_file.read)
@@ -187,14 +207,17 @@ class ProfileController < ApplicationController
 		File.open(Rails.root.join('public/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
 			file.write(@uploaded_file.read)
 		end
-		File.open(Rails.root.join('app/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
-			file.write(@uploaded_image.read)
+		if(@uploaded_image.nil?)
+			Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, "placeholder.gif", "music")
+		else
+			File.open(Rails.root.join('app/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
+				file.write(@uploaded_image.read)
+			end
+			File.open(Rails.root.join('public/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
+				file.write(@uploaded_image.read)
+			end
+			Medium.createnew(session['user_id'].to_i, params['track-name'].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
 		end
-		File.open(Rails.root.join('public/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
-			file.write(@uploaded_image.read)
-		end
-		Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
-		
 		redirect_to url_for(:controller => :profile, :action => :showProfile)
   	end
 
@@ -216,6 +239,13 @@ class ProfileController < ApplicationController
 			# Get other person's id.
 			userID = user.id
 
+			@approved_requests = Collaboration.where(first_id:userID, approved:true)
+			@approved_ids = Array.new(@approved_requests.count)
+
+			for i in 0..@approved_requests.count - 1
+				@approved_ids[i] = @approved_requests[i].second_id
+			end
+
 			@otherID = user.id
 
 			@username = user.username
@@ -224,6 +254,9 @@ class ProfileController < ApplicationController
 			@website_link =  user.website_link
 			@image_path  = user.image_path
 			@tracks = user.tracks_heard
+			
+			#Get the other user's tracks
+			@owntracks = Medium.getusertracks(user)
 
 			# Count the number of followers the user has.
 			if Follower.where(user_id:userID).count > 0
@@ -329,24 +362,3 @@ class ProfileController < ApplicationController
 
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

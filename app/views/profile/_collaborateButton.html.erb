@@ -1,0 +1,6 @@
+<div class="collaborate-btn row">
+  <%= form_tag({:controller => 'collaboration', :action => 'coRequest'}, method: "post") do %>	
+	<%= hidden_field_tag(:co_id, @otherID) %>
+	<%= submit_tag("Collaborate", :class => 'btn btn-success') %>
+  <% end %>
+</div><br>
