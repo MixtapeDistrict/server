@@ -56,3 +56,8 @@ textarea {
 .modal {
 	margin-top:50px;
 }
+
+.website {    
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}

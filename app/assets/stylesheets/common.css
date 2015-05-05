@@ -18,6 +18,12 @@ body {
    padding-bottom:100px;
 }
 
+p {
+    word-wrap: break-word;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 /*Navigation Bar Fixes*/
 .navbar-brand {
 	width: 150px;
