@@ -238,6 +238,9 @@ class ProfileController < ApplicationController
 			@website_link =  user.website_link
 			@image_path  = user.image_path
 			@tracks = user.tracks_heard
+			
+			#Get the other user's tracks
+			@owntracks = Medium.getusertracks(user)
 
 			# Count the number of followers the user has.
 			if Follower.where(user_id:userID).count > 0
