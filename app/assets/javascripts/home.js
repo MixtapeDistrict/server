@@ -118,6 +118,44 @@ function update_grind(songs) {
 	/* Put all racks in place */
 	$('.grind').replaceWith(html);
 }
+    // Simulates the las 100 tracks
+    var track_id = range(1,100);
+
+    //Select the first 24 elements of the random array
+    var rand_tracks = shuffle(track_id).slice(0,24);
+
+    //Test for the grind
+    var tracks = '{"tracks":[' +
+    '{"cover":"common/'+ rand_tracks[0]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[1]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[2]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[3]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[4]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[5]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[6]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[7]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[8]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[9]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[10]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[11]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[12]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[13]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[14]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[15]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[16]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[17]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[18]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[19]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[20]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[21]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[22]+'.jpg"},' +
+    '{"cover":"common/'+ rand_tracks[23]+'.jpg"}]}';
+
+// END TRACKS PICK SIMULATION: Won't be here when the database is connected
+
+
+// Create the grind
+obj = JSON.parse(tracks);
 
 /* Fill up the grind */
 get_music();
