@@ -90,7 +90,7 @@ function update_grind(songs) {
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
-			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
+			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
 		}
 	}
 	/* There is more than 24 songs in the database, our grind is good size. */
@@ -110,7 +110,7 @@ function update_grind(songs) {
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
-			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
+			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
 		}
 	}
 	html += '</div>'

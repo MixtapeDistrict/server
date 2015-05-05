@@ -56,3 +56,8 @@ textarea {
     overflow: hidden;
     text-overflow: ellipsis; 
 }
+
+select {
+	width:490px;
+	height:40px;
+}
