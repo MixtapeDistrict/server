@@ -52,8 +52,12 @@
           :class => "btn btn-default album-preview center-block" %>         
       </div> 
     </div>
+    
+    <!-- Add collaborators here. -->
     <div role="tabpanel" class="tab-pane" id="collaborators">
-      
+        <% for i in 0..@approved_requests.count - 1 %>
+          <h3><%= User.find(@approved_ids[i]).username %></h3>
+        <% end %>
     </div>
 
     <!-- Onclick reveals all the people the user is following... 
@@ -61,7 +65,10 @@
     -->
     <div role="tabpanel" class="tab-pane" id="following">
       <% for i in 0..@num_following - 1  %>
-        <div class=""><%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
+        <div class="">
+        <h2>
+        <%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
+        </h2>
         </div><br>
       <% end %>
     </div>

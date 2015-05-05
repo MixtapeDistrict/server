@@ -75,7 +75,7 @@ function update_profile() {
     '{"cover":"common/'+ track_id[23]+'.jpg"},' +
     '{"cover":"common/'+ track_id[24]+'.jpg"},' +
     '{"cover":"common/'+ track_id[25]+'.jpg"}]}';
-
+/*
         //Test for the grind
     var collaborators = '{"collaborators":[' +
     '{"cover":"common/'+ track_id[26]+'.jpg"},' +
@@ -91,8 +91,7 @@ function update_profile() {
     '{"cover":"common/'+ track_id[36]+'.jpg"},' +
     '{"cover":"common/'+ track_id[37]+'.jpg"},' +
     '{"cover":"common/'+ track_id[38]+'.jpg"}]}';
-
-
+*/
 // END TRACKS PICK SIMULATION: Won't be here when the database is connected
 
 
