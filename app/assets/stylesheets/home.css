@@ -102,16 +102,3 @@ I refactored and revamped just about all code from there, but it is possible a f
     bottom: -30px; 
     float:left;
 }
-
-.jp-audio {
-	width: 100%;
-}
-
-.jp-audio .jp-type-single .jp-progress {
-	width: 80%; 
-}
-
-.jp-audio .jp-type-single .jp-time-holder {
-	left: 110px;
-	width: 80%; 
-}

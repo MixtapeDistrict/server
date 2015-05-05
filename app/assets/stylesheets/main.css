@@ -17,3 +17,16 @@ iframe {
 	width:99%;
 	color:red;
 }
+
+.jp-audio {
+	width: 100%;
+}
+
+.jp-audio .jp-type-single .jp-progress {
+	width: 80%; 
+}
+
+.jp-audio .jp-type-single .jp-time-holder {
+	left: 110px;
+	width: 80%; 
+}
