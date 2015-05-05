@@ -85,7 +85,7 @@ function update_grind(songs) {
 				}
 			}
 
-			track_info = 'Title: ' + songs[rand].childNodes[1].childNodes[0].nodeValue + 
+			track_info = 'Title: ' + songs[rand].childNodes[0].childNodes[0].nodeValue + 
 			             '<br>Artist: <a href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
@@ -105,7 +105,7 @@ function update_grind(songs) {
 				}
 			}
 			
-        	track_info = 'Title: ' + songs[rand].childNodes[1].childNodes[0].nodeValue + 
+        	track_info = 'Title: ' + songs[rand].childNodes[0].childNodes[0].nodeValue + 
 			             '<br>Artist: <a href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
