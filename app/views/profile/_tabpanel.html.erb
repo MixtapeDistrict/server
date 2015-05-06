@@ -87,7 +87,7 @@
         <% for i in 0..@num_following - 1  %>
           <div class="element col-md-4">
             <div class="col-md-6">
-              <img id="content-img" alt="User Image" src=""> <!--Need to include user image source-->
+            <%= image_tag "userimage/" + User.find(@ids[i]).image_path, id:"content-img", alt:"User Image", size:"100x100" %> <!--Need to include user image source-->
             </div>
             <div class="col-md-6 content-info">
               <p class="h4 row info foll-name">
