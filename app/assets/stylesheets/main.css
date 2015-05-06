@@ -6,15 +6,16 @@ body {
    overflow:hidden;
 }
 iframe {
-	height:96%;
+	height:85%;
 	width:100%;
 }
 
 .player {
 	position: absolute;
-	height:4%;
+	height:113px;
+	bottom: 0px;
 	background-color: black;
-	width:99%;
+	width:100%;
 	color:red;
 }
 
