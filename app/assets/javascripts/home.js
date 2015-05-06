@@ -112,7 +112,7 @@ function update_grind(songs) {
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
-			             '<br><a href="public/assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue + '">Download Now</a>';
+			             '<br><a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue + '">Download Now</a>';
 			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
 		}
 	}

@@ -211,12 +211,13 @@ class ProfileController < ApplicationController
 			redirect_to url_for(:controller => :profile, :action => :showProfile) and return
 		end
 		filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
-		File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
-			file.write(@uploaded_file.read)
-		end
 		File.open(Rails.root.join('public/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
 			file.write(@uploaded_file.read)
 		end
+		File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
+			file.write(@uploaded_file.read)
+		end
+
 
 		if(@uploaded_image.nil?)
 			Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, "placeholder.gif", "music")
