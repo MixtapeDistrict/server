@@ -16,9 +16,22 @@ function validate2(username, email) {
 	return valid;
 }
 
+function validate_payment_email() {
+	console.log()
+	var valid = true;
+	var regex = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i;
+	var email = document.getElementById('payment-email').value;
+	if(!regex.test(email)) {
+		valid = false;
+		document.getElementById('payment_email_outcome').innerHTML = "Invalid email";
+	}
+	return valid;
+}
+
 function clearErrorMessage() {
 	document.getElementById('name_outcome').innerHTML = "";
 	document.getElementById('email_outcome').innerHTML = "";
+	document.getElementById('payment_email_outcome').innerHTML = "";
 }
 
 

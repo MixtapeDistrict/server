@@ -378,5 +378,27 @@ class ProfileController < ApplicationController
 		end
   	end
 
+  	# Changes the user's payment email
+  	def change_payment_email
+  		# Ensure the user is still logged in 
+  		if(session.has_key?("logged_in"))
+  			if(session['logged_in']!=1)
+  				redirect_to url_for(:controller => :home, :action => :showHome) and return
+  			end
+  		else
+  			redirect_to url_for(:controller => :home, :action => :showHome) and return
+  		end
+  		# Get the user's new email
+  		email = params[:payment_email]
+  		# Find the user's database record
+  		user = User.find_by(id:session['user_id'])
+  		# Change their payment email
+  		user.payment_email = email
+  		# Save the record
+  		user.save
+  		# Redirect the user to their profile page
+  		redirect_to url_for(:controller => :profile, :action => :showProfile) and return
+  	end
+
 
 end
