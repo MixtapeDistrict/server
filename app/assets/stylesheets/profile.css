@@ -63,3 +63,8 @@ form {
 .paypal {
 	margin-top:10px;
 }
+#payment_email_outcome {
+	color:red;
+	margin-left:80px;
+	margin-top:5px;
+}

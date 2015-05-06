@@ -17,7 +17,7 @@
 	<% end %>
 </div>  
 <div class="donate-btn row">
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="paypal">
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal">
     <input type="hidden" name="cmd" value="_donations">
     <input type="hidden" name="business" value="<%=User.find_by(id:@otherID).payment_email%>">
     <input type="hidden" name="lc" value="AU">

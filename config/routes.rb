@@ -29,6 +29,9 @@ WebInfo2::Application.routes.draw do
   get '/showAllRequests', to: 'collaboration#showRequests'
   post '/acceptRequester', to: 'collaboration#acceptRequest'
 
+# Changing donations email
+  post '/update_payment_email', to: 'profile#change_payment_email'
+
   resources :medium_comments
 
   resources :media
