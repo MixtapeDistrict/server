@@ -90,13 +90,13 @@ function update_grind(songs) {
 			             'Artist: <a class="artistname" href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
-			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5' +
-			             '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a>'+
-			             '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+'\')">'+
-			             '<img class="playtrack" src="assets/images/play.png"></a>';
+			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
+			playtrack = '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+'\')">'+
+			            '<img class="playtrack" src="assets/images/play.png"></a>';
+			download = '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a>';
 			
 			html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+
-					'"><div class="grid_description">'+track_info+'</div></div>';
+					'"><div class="grid_description">'+track_info+'</div>'+playtrack+download+'</div>';
 		}
 	}
 	/* There is more than 24 songs in the database, our grind is good size. */
@@ -115,13 +115,13 @@ function update_grind(songs) {
 			             'Artist: <a class="artistname" href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
-			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5' +
-			             '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a>'+
-			             '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+'\')">'+
-			             '<img class="playtrack" src="assets/images/play.png"></a>';
+			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
+			playtrack = '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+'\')">'+
+			            '<img class="playtrack" src="assets/images/play.png"></a>';
+			download = '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a>';
 			
 			html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+
-					'"><div class="grid_description">'+track_info+'</div></div>';			        	
+					'"><div class="grid_description">'+track_info+'</div>'+playtrack+download+'</div>';
 		}
 	}
 	html += '</div>'
