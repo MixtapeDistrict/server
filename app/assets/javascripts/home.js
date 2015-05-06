@@ -74,6 +74,7 @@ function update_grind(songs) {
 	var html = '<div class="row grind">';
 	var track_info = '';
 	/* If there is less than 24 songs in the database, our grind needs to be smaller */
+	console.log(songs.length);
 	if(songs.length < 24) { 
 		for(var i=0;i<songs.length;i++) {
 			/* Pick a random index from indexes array */
@@ -89,7 +90,8 @@ function update_grind(songs) {
 			             '<br>Artist: <a href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
-			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
+			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5' +
+			             '<br><a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img src="assets/images/download.png" style="height:30px; width:30px; position:relative; margin-top:15px;"></a>';
 			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
 		}
 	}
@@ -110,6 +112,7 @@ function update_grind(songs) {
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
+			             '<br><a href="public/assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue + '">Download Now</a>';
 			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
 		}
 	}

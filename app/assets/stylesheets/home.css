@@ -109,7 +109,7 @@ I refactored and revamped just about all code from there, but it is possible a f
 	position:absolute;
 	top:15px;
 	left:15px;
-	font-size:15px;
+	font-size:13px;
 	font-weight:bold;
 	color:white;
 	z-index:50;
@@ -119,17 +119,15 @@ I refactored and revamped just about all code from there, but it is possible a f
 .grid_description {
 	position:absolute;
 	top:0;
-	font-size:13px;
+	font-size:10px;
 	font-weight:bold;
 	color:white;
 	z-index:50;
 	visibility:hidden;
+	height:100%;
+	width:100%;
 }
-
 .grid_description > a {
 	
 }
-
-
-
 
