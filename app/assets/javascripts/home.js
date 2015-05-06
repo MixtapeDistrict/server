@@ -86,13 +86,13 @@ function update_grind(songs) {
 				}
 			}
 
-			track_info = 'Title: ' + songs[rand].childNodes[0].childNodes[0].nodeValue + 
-			             '<br>Artist: <a href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
+			track_info = '<p><span class="h4">' + songs[rand].childNodes[0].childNodes[0].nodeValue + 
+			             '</span><br>Artist: <a href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5' +
-			             '<br><a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img src="assets/images/download.png" style="height:30px; width:30px; position:relative; margin-top:15px;"></a>';
-			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
+			             '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a></p>';
+			html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
 		}
 	}
 	/* There is more than 24 songs in the database, our grind is good size. */
@@ -107,13 +107,13 @@ function update_grind(songs) {
 				}
 			}
 			
-        	track_info = 'Title: ' + songs[rand].childNodes[0].childNodes[0].nodeValue + 
-			             '<br>Artist: <a href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
+        	track_info = '<p><span class="h4">' + songs[rand].childNodes[0].childNodes[0].nodeValue + 
+			             '</span><br>Artist: <a href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
-			             '<br><a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue + '">Download Now</a>';
-			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
+			             '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a></p>';
+			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div></p>';
 		}
 	}
 	html += '</div>'
