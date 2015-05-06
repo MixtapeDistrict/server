@@ -11,7 +11,9 @@
 #track{
   	width: 100%;
   	max-width: 200px;
-  	min-width: 150px;
+    max-height: 200px;
+  	min-width: 160px;
+    min-height: 160px;
 }
 
 .element{
@@ -19,12 +21,12 @@
   	width: 15%;
   	margin: 10px;
   	min-width: 160px;
+    min-height: 160px;
   	position:relative;
 }
 
 /* Display Track Information */
-.element img {
-    width:100%;
+.element img {    
     vertical-align:top;
 }
 
@@ -125,9 +127,20 @@ I refactored and revamped just about all code from there, but it is possible a f
 	z-index:50;
 	visibility:hidden;
 	height:100%;
-	width:100%;
+	width:90%;
 }
-.grid_description > a {
-	
+.element:hover .download {
+  position:absolute;
+  bottom:20px;
+  right:10px;
+  z-index:50;
 }
+
+.download{
+  height:30px; 
+  width:30px; 
+  position:relative; 
+  margin-top:15px;  
+}
+
 
