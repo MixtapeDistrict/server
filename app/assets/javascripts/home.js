@@ -91,8 +91,8 @@ function update_grind(songs) {
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5' +
-			             '<br><a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img src="assets/images/download.png" style="height:30px; width:30px; position:relative; margin-top:15px;"></a>'+
-			             '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+'\')"><img src="assets/images/play.png" style="height:30px; width:30px;"></a>';
+			             '<br><a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img src="assets/images/download.png" style="height:30px; width:30px; position:relative; margin-top:15px; margin-left:30px;"></a>'+
+			             '<a href="#" onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+'\')"><img src="assets/images/play.png" style="height:27px; width:27px; margin-left:10px;margin-top:15px;"></a>';
 			 html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+'"><div class="grid_description">'+track_info+'</div></div>';
 		}
 	}
