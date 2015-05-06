@@ -5,16 +5,31 @@ html, body {
    overflow:hidden;
 }
 iframe {
-	height: calc(100% - 112px);
+	height: calc(100% - 110px);
 	width:100%;
 }
 
 .player {
 	position: absolute;
-	height:112px;
+	height:110px;
 	bottom: 0px;
 	width:100%;
-	color:red;
+}
+
+.jplayer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 0;
+	display: inline-block;
+	width: calc(100% - 110px)
+}
+
+.player-img {
+	position: absolute;
+	display: inline-block;
+	width: 110px;
+	height: 110px;	
 }
 
 #scroller {

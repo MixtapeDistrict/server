@@ -91,8 +91,8 @@ function update_grind(songs) {
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
-			playtrack = '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+'\')">'+
-			            '<img class="playtrack" src="assets/images/play.png"></a>';
+			playtrack = '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+
+						 '\',\'' + songs[rand].childNodes[4].childNodes[0].nodeValue+'\')">'+'<img class="playtrack" src="assets/images/play.png"></a>';
 			download = '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a>';
 			
 			html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+
@@ -116,8 +116,8 @@ function update_grind(songs) {
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
-			playtrack = '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+'\')">'+
-			            '<img class="playtrack" src="assets/images/play.png"></a>';
+			playtrack = '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+
+						 '\',\'' + songs[rand].childNodes[4].childNodes[0].nodeValue+'\')">'+'<img class="playtrack" src="assets/images/play.png"></a>';
 			download = '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a>';
 			
 			html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+

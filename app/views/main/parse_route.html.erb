@@ -18,7 +18,10 @@
       <iframe src="<%= @link %>" frameborder="0" id="loader">
       </iframe>
   		<div class="player">
-        <%= render "jplayer" %>
+        <img class="player-img" src="assets/defaull_player.png" alt="Player Image">
+        <div class="jplayer">
+          <%= render "jplayer" %>
+        </div>
   		</div>
     </div>
   <%= javascript_include_tag "main.js"%>
