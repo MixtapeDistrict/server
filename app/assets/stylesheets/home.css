@@ -143,6 +143,7 @@ I refactored and revamped just about all code from there, but it is possible a f
   width:30px; 
   visibility:hidden; 
 }
+
 .element:hover .download {
   visibility:visible;
   z-index:51;

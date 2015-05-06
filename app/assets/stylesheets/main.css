@@ -5,15 +5,14 @@ html, body {
    overflow:hidden;
 }
 iframe {
-	height:85%;
+	height: calc(100% - 112px);
 	width:100%;
 }
 
 .player {
 	position: absolute;
-	height:113px;
+	height:112px;
 	bottom: 0px;
-	background-color: black;
 	width:100%;
 	color:red;
 }
@@ -21,7 +20,7 @@ iframe {
 #scroller {
   -webkit-overflow-scrolling: touch;
   	overflow-y: scroll;
-  	height:96%;
+  	height:100%;
 }
 
 .jp-audio {
