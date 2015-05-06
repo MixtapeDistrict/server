@@ -28,7 +28,7 @@
           <p class="h4"> <%= link_to "Followers (" + @num_followers.to_s  + ")", '/followers'%></p>                
       </div>
       <!-- Buttons to display own profile, refer to viewself partial-->  
-      <%= render 'viewself'%>
+      <%= render "profile/buttons/viewself"%>
     </div>  
     <div class="col-md-9">
       <div class="artist-name row">
@@ -41,4 +41,4 @@
   </div>
 </div>
 
-<%= render 'modals'%>
+<%= render 'profile/modals/modals'%>

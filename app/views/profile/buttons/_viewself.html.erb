@@ -9,7 +9,7 @@
 <!-- Collaborations Rquests button-->
 <div class="coll-requests row">
 	<%= form_tag({:controller => 'collaboration', :action => 'showRequests'}, method: "get") do %>	
-	<%= submit_tag("Collaboration Requests (#{@num_requests})", :class => 'btn profile-btn btn-success') %>
+		<%= submit_tag("Collaboration Requests (#{@num_requests})", :class => 'btn profile-btn btn-success') %>
   	<% end %>
 </div>
 <!-- Manage danations button-->

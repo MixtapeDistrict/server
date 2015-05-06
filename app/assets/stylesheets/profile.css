@@ -61,3 +61,7 @@ select {
 	width:490px;
 	height:40px;
 }
+
+form {
+	text-align: left;
+}

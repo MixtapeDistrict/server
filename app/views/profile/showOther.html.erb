@@ -26,13 +26,14 @@
       <div class="followers-count row">
           <p class="h4">Followers (<%= @num_followers %>)</p>                
       </div>
-
-      <% if @amFollowing == true %>
-        <%= render 'unfollowButton' %>
-      <% else %>
-        <%= render 'followButton' %>
+      <div class="foll-btn row">
+        <% if @amFollowing == true %>
+          <%= render 'profile/buttons/unfollowButton' %>
+        <% else %>
+          <%= render 'profile/buttons/followButton' %>
         <% end %>
-      <%= render 'viewothers' %>
+      </div>  
+      <%= render 'profile/buttons/viewothers' %>
     <!-- Add _viewothers.html.erb when viewing other people's profile to see buttons. -->
 
     </div>
