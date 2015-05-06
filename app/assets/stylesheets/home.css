@@ -107,6 +107,11 @@ I refactored and revamped just about all code from there, but it is possible a f
 	position:relative;
 }
 
+.artistname {
+  color: white;
+  font-size: 15px; 
+}
+
 .element:hover .grid_description {
 	position:absolute;
 	top:15px;
@@ -138,9 +143,19 @@ I refactored and revamped just about all code from there, but it is possible a f
 
 .download{
   height:30px; 
-  width:30px; 
-  position:relative; 
-  margin-top:15px;  
+  width:30px;  
+}
+
+.element:hover .playtrack {
+  position:absolute;
+  bottom:21px;
+  right:50px;
+  z-index:50;
+}
+
+.playtrack{
+  height:27px; 
+  width:27px;
 }
 
 

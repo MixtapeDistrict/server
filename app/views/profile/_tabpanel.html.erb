@@ -65,11 +65,15 @@
         <% for i in 0..@approved_requests.count - 1 %>
           <div class="element col-md-4">
             <div class="col-md-6">
-              <%= image_tag "userimage/" + User.find(@approved_ids[i]).image_path, id:"content-img", alt:"Collaborator Image", size:"100x100" %>
+              <%= image_tag "userimage/" + User.find(@approved_ids[i]).image_path, id:"content-img", 
+              alt:"Collaborator Image" %>
                <!--Need to include user image source-->
             </div>
             <div class="col-md-6 content-info">
-              <p class="h4 row info coll-name"><%= User.find(@approved_ids[i]).username %></p>
+              <p class="h4 row info coll-name">
+                <%= link_to User.find(@approved_ids[i]).username , 
+                {:controller => 'profile', :action => 'showOther', :id => @approved_ids[i] } %>
+              </p>
               <p class="row info projects">
                 <span class="proj-num"><%= 0 %><span> projects <!--How many projects have them collaborated-->
               </p>            
@@ -87,14 +91,15 @@
         <% for i in 0..@num_following - 1  %>
           <div class="element col-md-4">
             <div class="col-md-6">
-            <%= image_tag "userimage/" + User.find(@ids[i]).image_path, id:"content-img", alt:"User Image", size:"100x100" %> <!--Need to include user image source-->
+            <%= image_tag "userimage/" + User.find(@ids[i]).image_path, id:"content-img", 
+            alt:"User Image"%> 
             </div>
             <div class="col-md-6 content-info">
               <p class="h4 row info foll-name">
                 <%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
               </p>
               <p class="row info followers">
-                <span class="foll-num"><%= Follower.where(user_id:@ids[i]).count %><span> followers <!--Number of followers that the user have-->
+                <span class="foll-num"><%= Follower.where(user_id:@ids[i]).count %><span> followers
               </p>            
             </div>
           </div>

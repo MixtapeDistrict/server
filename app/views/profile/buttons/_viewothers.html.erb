@@ -9,6 +9,13 @@
 		<button class="btn profile-btn btn-success">Request Accepted</button>
 	<% end %>
 </div>	
+<div class="foll-btn row">
+	<% if @amFollowing == true %>
+  		<%= render 'profile/buttons/unfollowButton' %>
+	<% else %>
+  		<%= render 'profile/buttons/followButton' %>
+	<% end %>
+</div>  
 <div class="donate-btn row">
-  <button type="button" class="btn profile-btn btn-primary">Donate</button>
+  <button type="button" class="btn profile-btn btn-info">Donate</button>
 </div>
