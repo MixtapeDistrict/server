@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	console.log("Main js ran");
 	$("#jquery_jplayer_1").jPlayer({
 	    ready: function () {
 	      $(this).jPlayer("setMedia", {

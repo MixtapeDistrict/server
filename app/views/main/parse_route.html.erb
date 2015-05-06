@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/assets/logo.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"%>
 	<%= javascript_include_tag "jquery.jplayer.min.js"%>
     <%= stylesheet_link_tag "jplayer-skin/blue.monday/jplayer.blue.monday.css"%>
     <%= stylesheet_link_tag "main.css" %>
@@ -20,8 +21,7 @@
         <%= render "jplayer" %>
   		</div>
     </div>
-  <%= javascript_include_tag "main.js"%>  
-  <%= javascript_include_tag "jquery.jplayer.min.js"%>  
+  <%= javascript_include_tag "main.js"%>
   </body>
 
 </html>
