@@ -5,13 +5,13 @@ html, body {
    overflow:hidden;
 }
 iframe {
-	height:96%;
+	height:90%;
 	width:100%;
 }
 
 .player {
 	position: absolute;
-	height:4%;
+	height:10%;
 	background-color: black;
 	width:99%;
 	color:red;

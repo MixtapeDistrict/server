@@ -1,7 +1,7 @@
 <!-- NOTE: this page is only viewable iff the user the logged in. -->
 <%= render 'navbar_others'%>
 	
-<h2> All requests you made </h2>
+<h2> All requests from other users </h2>
 
 <% for i in 0..@num-1 %>
 	<%= form_tag({:controller => 'collaboration', :action => 'acceptRequest'}, method: "post") do %>
