@@ -71,7 +71,7 @@
             <div class="col-md-6 content-info">
               <p class="h4 row info coll-name"><%= User.find(@approved_ids[i]).username %></p>
               <p class="row info projects">
-                <span class="proj-num"><%= i %><span> projects <!--How many projects have them collaborated-->
+                <span class="proj-num"><%= 0 %><span> projects <!--How many projects have them collaborated-->
               </p>            
             </div>
           </div>
@@ -94,7 +94,7 @@
                 <%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
               </p>
               <p class="row info followers">
-                <span class="foll-num"><%= i %><span> followers <!--Number of followers that the user have-->
+                <span class="foll-num"><%= Follower.where(user_id:@ids[i]).count %><span> followers <!--Number of followers that the user have-->
               </p>            
             </div>
           </div>
