@@ -1,0 +1,15 @@
+<form class="form-horizontal" onsubmit="return validate_payment_email();"	action="/update_payment_email" method="post">		
+	
+    <div class="new-album-name form-group">
+		<label for="album-name" class="col-md-4 control-label">Donations Email:</label>							
+		<div class="col-md-7">
+			<input id="payment-email" type="text" class="form-control" name="payment_email" onfocus="clearErrorMessage()" value=
+			"<%=User.find_by(id:session['user_id']).payment_email%>"/>
+			
+		</div>
+		<br><br>
+		<div id="payment_email_outcome"></div>
+	</div>
+
+
+
