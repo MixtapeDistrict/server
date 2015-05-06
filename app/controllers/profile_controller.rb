@@ -191,22 +191,34 @@ class ProfileController < ApplicationController
 		end
   	end
 
+  	# Allowers registered users to upload music
 	def newTrack
+		# Ensure user is logged in 
+		if(session.has_key?("logged_in"))
+			# If the user is not logged in, redirect to the homepage
+			if(session['logged_in'] != 1) 
+				redirect_to url_for(:controller => :home, :action => :showHome) and return
+			end
+		end
+
+		# Get passed information
   		@uploaded_file = params['track-file']
 		@uploaded_image = params['track-img']
 		@track = params
 		puts params
+		# Check if user inputted in no file
 		if(@uploaded_file.nil?)
-			redirect_to url_for(:controller => :profile, :action => :showProfile)
-			return
+			redirect_to url_for(:controller => :profile, :action => :showProfile) and return
 		end
 		filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
-		File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
-			file.write(@uploaded_file.read)
-		end
 		File.open(Rails.root.join('public/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
 			file.write(@uploaded_file.read)
 		end
+		File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
+			file.write(@uploaded_file.read)
+		end
+
+
 		if(@uploaded_image.nil?)
 			Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, "placeholder.gif", "music")
 		else
@@ -216,7 +228,13 @@ class ProfileController < ApplicationController
 			File.open(Rails.root.join('public/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
 				file.write(@uploaded_image.read)
 			end
-			Medium.createnew(session['user_id'].to_i, params['track-name'].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "music")
+			# Create the medium
+			medium = Medium.createnew(session['user_id'].to_i, params['track-name'].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "M")
+			# Create the music which belongs to this medium
+			music = Music.create(image_path:filenamebase+@uploaded_image.original_filename, plays:0, genre:params['genre'])
+			# Associate this music with the medium
+			medium.music = music
+			medium.save
 		end
 		redirect_to url_for(:controller => :profile, :action => :showProfile)
   	end
@@ -227,7 +245,7 @@ class ProfileController < ApplicationController
 		if(session.has_key?("logged_in"))
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
-				redirect_to url_for(:controller => :home, :action => :showHome)
+				redirect_to url_for(:controller => :home, :action => :showHome) and return
 			end
 
 			# Get your current user id if you are logged in.
@@ -294,11 +312,11 @@ class ProfileController < ApplicationController
 
 			# If you come back to your profile, you should just see your own page.
 			if userID == logged_in_id
-				redirect_to url_for(:controller => :profile, :action => :showProfile)
+				redirect_to url_for(:controller => :profile, :action => :showProfile) and return
 			end
 
 		else
-			redirect_to url_for(:controller => :home, :action => :showHome)
+			redirect_to url_for(:controller => :home, :action => :showHome) and return
 		end
   	end
 

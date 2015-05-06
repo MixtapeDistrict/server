@@ -8,7 +8,7 @@ class Medium < ActiveRecord::Base
 	has_one :music
 	
 	def self.createnew(uid, title, fpath, ipath, type)
-		Medium.create(user_id: uid, title: title, file_path: fpath, image_path: ipath, media_type: type)
+		Medium.create(user_id: uid, title: title, file_path: fpath, image_path: ipath, media_type: type, downloads:0)
 	end
 	
 	def self.getusertracks(uid)

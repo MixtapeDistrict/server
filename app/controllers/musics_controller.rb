@@ -64,7 +64,7 @@ class MusicsController < ApplicationController
   # Returns XML representing tracks to load from the database
   def get_tracks
   	# Get all songs in the database
-  	musics = Music.all.order('created_at DESC')
+  	musics = Music.all.order('created_at DESC').limit(100)
   	xml = "<songs>"
   	for music in musics
   		# Get the medium this music belongs to
@@ -72,34 +72,54 @@ class MusicsController < ApplicationController
   		# Get the user who created the music
   		user = medium.user
   		# Add useful information to the XML 
-  		xml  = "<song>"
-  		xml  = "<title>#{medium.title}</title>"
-  		xml  = "<songID>#{music.id}</songID>"
-  		xml  = "<artist>#{user.username}</artist>"
-  		xml  = "<artistID>#{user.id}</artistID>"
-  		xml  = "<imagePath>#{music.image_path}</imagePath>"
-  		xml  = "<filePath>#{medium.file_path}</filePath>"
+  		xml  += "<song>"
+  		if(medium.title)
+  			xml  += "<title>#{medium.title}</title>"
+  		else 
+  			xml  += "<title>-</title>"
+  		end
+  		xml  += "<songID>#{music.id}</songID>"
+  		xml  += "<artist>#{user.username}</artist>"
+  		xml  += "<artistID>#{user.id}</artistID>"
+  		if(medium.image_path)
+  			xml  += "<imagePath>#{medium.image_path}</imagePath>"
+  		else
+  			xml  += "<imagePath>-</imagePath>"
+  		end
+  		if(medium.file_path)
+  			xml  += "<filePath>#{medium.file_path}</filePath>"
+  		else
+  			xml  += "<filePath>-</filePath>"
+  		end
   		# Check if this music belongs to an album
   		if(music.music_albums.first)
-  			xml  = "<album>#{music.music_albums.first.title}</album>"
-  			xml  = "<albumID>#{music.music_albums.first.id}</albumID>"
+  			xml  += "<album>#{music.music_albums.first.title}</album>"
+  			xml  += "<albumID>#{music.music_albums.first.id}</albumID>"
   		else
-  			xml  = "<album>Single</album>"
+  			xml  += "<album>Single</album>"
+  			xml += "<albumID>-</albumID>"
   		end
-  		xml  = "<plays>#{music.plays}</plays>"
+  		if(music.plays)
+  			xml  += "<plays>#{music.plays}</plays>"
+  		else 
+  			xml  += "<plays>0</plays>"
+  		end
   		# Calculate the average rating of this song
   		rating_count = 0
   		rating_sum = 0
-  		user_ratings = medium.ratings
+  		user_ratings = Rating.where(medium_id:medium.id)
   		for user_rating in user_ratings
-  			rating_sum  = user_medium.rating
+  			rating_sum  += user_rating.rating
+  			rating_count += 1
   		end
   		rating = 0
+  		puts rating_sum
+  		puts rating_count
   		if(rating_count != 0)
   			rating = rating_sum.to_f/rating_count
   		end
-  		xml  = "<rating>#{rating}</rating>"
-  		xml  = "</song>"
+  		xml  += "<rating>#{rating}</rating>"
+  		xml  += "</song>"
 	end
 	xml  += "</songs>"
 	render :xml => xml
