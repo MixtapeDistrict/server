@@ -95,7 +95,7 @@ function update_grind(songs) {
 						 '\',\'' + songs[rand].childNodes[4].childNodes[0].nodeValue+'\')">'+'<img class="playtrack" src="assets/images/play.png"></a>';
 			download = '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a>';
 			
-			html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+
+			html += '<div class="element" onclick=""><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+
 					'"><div class="grid_description">'+track_info+'</div>'+playtrack+download+'</div>';
 		}
 	}
