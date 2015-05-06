@@ -31,7 +31,7 @@ class HomeController < ApplicationController
 		end
 		# If response is empty, create the user
 		if(response.empty?)
-			User.create(username:username, email:email, password:password, image_path:'placeholder.gif')
+			User.create(username:username, email:email, password:password, image_path:'placeholder.gif', payment_email:email)
 		end
 		# Return the response to the AJAX script
 		render :text => response

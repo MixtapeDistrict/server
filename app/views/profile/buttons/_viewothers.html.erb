@@ -19,7 +19,7 @@
 <div class="donate-btn row">
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="paypal">
     <input type="hidden" name="cmd" value="_donations">
-    <input type="hidden" name="business" value="<%=User.find_by(id:@otherID).email%>">
+    <input type="hidden" name="business" value="<%=User.find_by(id:@otherID).payment_email%>">
     <input type="hidden" name="lc" value="AU">
     <input type="hidden" name="currency_code" value="AUD">
     <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">

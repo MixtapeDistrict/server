@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505020858) do
+ActiveRecord::Schema.define(version: 20150506145837) do
 
   create_table "album_comments", force: true do |t|
     t.integer  "comment_id"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20150505020858) do
     t.string   "website_link"
     t.text     "tracks_heard"
     t.string   "image_path"
+    t.string   "payment_email"
   end
 
 end
