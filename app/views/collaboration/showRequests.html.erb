@@ -9,15 +9,27 @@
 <h2> All requests from other users </h2>
 
 <% for i in 0..@num-1 %>
-	<%= form_tag({:controller => 'collaboration', :action => 'acceptRequest'}, method: "post") do %>
-	<%= hidden_field_tag(:id, @requester_ids[i]) %>
-	<span>
-		<% if Collaboration.find_by(first_id:@requester_ids[i], second_id:@userID).approved %>
-			<h1> Accepted : <%= @names[i] %></h1>
-		<% else %>
-			<span><h1> Not yet accepted </h1></span>
+	<div class="element col-md-4">
+		<div class="col-md-6">
+			<% if User.find(@requester_ids[i]).image_path.nil? == false %>
+	      		<%= image_tag("userimage/#{User.find(@requester_ids[i]).image_path}", id:"content-img",  alt:"User image", size: "120x120") %>
+	      	<% else %>
+	      		<!-- Select at random default picture. -->
+	      		<% index = rand(0..3) %>
+	      		<% files = ['yellow.jpg', 'blue.jpg', 'green.jpg', 'red.jpg'] %>
+	      		<%= image_tag("userimage/#{files[index]}", id:"content-img",  alt:"User image", size: "120x120") %>
+	      	<% end %>
+        </div>
+	    <div class="col-md-6 content-info">
+			<%= form_tag({:controller => 'collaboration', :action => 'acceptRequest'}, method: "post") do %>
+			<%= hidden_field_tag(:id, @requester_ids[i]) %>
+			<% if Collaboration.find_by(first_id:@requester_ids[i], second_id:@userID).approved %>
+			<p class="h4 row info track-name"> Accepted : <%= link_to User.find(@requester_ids[i]).username, controller:"profile", action:"showOther", :id => @requester_ids[i] %></p>
+			<% else %>
+			<p class="h4 row info track-name"> Not yet accepted </p>
 			<%= submit_tag("Accept #{@names[i]}", :class => 'btn btn-success') %>
-		<% end %>
-	</span>
-  	<% end %><br>
+			<% end %>
+  			<% end %><br>
+  		</div>
+  	</div>
 <% end %>

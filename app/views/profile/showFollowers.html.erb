@@ -1,10 +1,13 @@
 <%= render 'navbar_others'%>
 <!-- List all followers here as links. -->
-<div class="followers">
-<h2>Followers</h2>
+<h2>Followers <%= "("+@num_followers.to_s+")" %></h2>
 
 <% for i in 0..@num_followers - 1  %>
-    <div class=""><%= link_to @follower_names[i] , {:controller => 'profile', :action => 'showOther', :id => @follower_ids[i] } %>
-    </div><br>
+	<div class="element col-md-4">
+		<div class="col-md-6">
+	      	<%= image_tag("userimage/#{User.find(@follower_ids[i]).image_path}", id:"content-img",  alt:"User image", size: "120x120") %>
+	    </div>
+	    <div class="col-md-6 content-info"><p class="h4 row info track-name"><%= link_to @follower_names[i] , {:controller => 'profile', :action => 'showOther', :id => @follower_ids[i] } %></p>
+	    </div>
+    </div>
 <% end %>
-</div>

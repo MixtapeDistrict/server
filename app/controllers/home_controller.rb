@@ -22,6 +22,11 @@ class HomeController < ApplicationController
 		# Need to perform an action and respond
 		# to AJAX request
 		response = ""
+
+		# Generate random default image for user.
+		index = rand(0..3)
+		files = ['yellow.jpg', 'blue.jpg', 'green.jpg', 'red.jpg']
+
 		# Check username exists or email is exists
 		if(User.find_by(email:email)) 
 			response += "emailExists"
@@ -31,7 +36,7 @@ class HomeController < ApplicationController
 		end
 		# If response is empty, create the user
 		if(response.empty?)
-			User.create(username:username, email:email, password:password, image_path:'placeholder.gif', payment_email:email)
+			User.create(username:username, email:email, password:password, image_path:files[index], payment_email:email)
 		end
 		# Return the response to the AJAX script
 		render :text => response
