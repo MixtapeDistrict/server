@@ -164,6 +164,46 @@ class MusicsController < ApplicationController
   	if(rating_count != 0)
   		@rating = rating_sum.to_f/rating_count
   	end
+  	# Store all the comments for this song
+  	@medium_comments = MediumComment.where(medium_id:@medium.id)
+  end
+
+  # Adds comment + updates/initializes rating for user
+  def add_comment 
+  	# Ensure you are logged in 
+  	if(session.has_key?("logged_in"))
+	# If the user is not logged in redirect to homepage
+		if(session['logged_in'] != 1) 
+			redirect_to url_for(:controller => :home, :action => :showHome) and return
+		end
+	else
+		redirect_to url_for(:controller => :home, :action => :showHome) and return
+	end
+  	# Parse the input which user submitted
+  	comment = params[:comment]
+  	rating = params[:rating]
+  	user_id = session['user_id']
+  	medium_id = params[:medium_id]
+  	medium = Medium.find_by(id:medium_id)
+
+  	# Check if this user has rated this medium before
+  	current_rating = Rating.where(medium_id:medium_id).find_by(user_id:user_id)
+  	# If this exists update the existing rating
+  	if current_rating
+  		current_rating.rating = rating
+  		current_rating.save
+  	# Otherwise create a rating for the user for this medium
+  	else
+  		medium.ratings.create(user_id:user_id, rating:rating)
+  	end
+  	# Add the comment of the user to the database
+  	user = User.find_by(id:user_id)
+  	new_comment = user.comments.create(comment:comment)
+  	new_comment.medium_comment = medium.medium_comments.create()
+  	new_comment.save
+  	# Rerender the page
+  	redirect_to url_for(:controller => :musics, :action => :comments, :id => medium.music.id) and return
+
   end
 
   private

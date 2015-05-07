@@ -168,8 +168,42 @@ I refactored and revamped just about all code from there, but it is possible a f
   z-index:51;
 }
 
+.rating {
+	width:100px;
+}
 
+#dp {
+	display: inline-block;
+  	width: 250px;
+  	height: auto;
+  	padding: 4px;
+  	line-height: 1.42857143;
+  	background-color: #fff;
+  	border: 1px solid #ddd;
+  	border-radius: 4px;
+  	-webkit-transition: all .2s ease-in-out;
+  	-o-transition: all .2s ease-in-out;
+  	transition: all .2s ease-in-out;
+}
 
+.comment_text { 
+	word-wrap: break-word; 
+	width:820px;
+	font-size:16px;
+	padding-top:2px;
+}
 
+.btn {
+	margin-top:10px;
+}
+#album-tracks {
+	margin-top:30px;
+}
 
-
+.input {
+	width:250px;
+}
+.input_dropdown {
+	width:250px;
+	margin-top:10px;
+}

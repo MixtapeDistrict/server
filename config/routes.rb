@@ -37,6 +37,7 @@ WebInfo2::Application.routes.draw do
 
 # When users want to comment on music
   get '/comments/music', to: 'musics#comments'
+  post '/add_music_comment', to: 'musics#add_comment'
 
   resources :medium_comments
 
