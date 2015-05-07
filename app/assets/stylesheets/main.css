@@ -22,7 +22,7 @@ iframe {
 	right: 0;
 	margin: 0;
 	display: inline-block;
-	width: calc(100% - 110px)
+	width: calc(100% - 320px)
 }
 
 .player-img {
@@ -30,6 +30,66 @@ iframe {
 	display: inline-block;
 	width: 110px;
 	height: 110px;	
+}
+
+.player-info {
+	position: absolute;
+	border-top: 1px solid #0097F7;
+	background-color: #CCCCCC;
+	left: 110px;	
+	display: inline-block;
+	padding: 15px;
+	padding-top: 0;
+	width: 180px;
+	height: 110px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 1.42857;
+	color: #333;
+}
+
+.star-rating {
+	height: 20px;
+}
+
+#artist-name {
+	font-weight: normal;
+	text-decoration: none;
+	color: #333;	
+}
+
+p {
+	margin: 0px;
+}
+
+.default {
+	margin-top: 10px;
+}
+
+.first{
+	white-space: nowrap;
+	margin-top: 10px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.download {
+  position:absolute;
+  z-index: 51;
+  bottom:5px;
+  left: 285px;
+  height:30px; 
+  width:30px;   
+}
+
+.add_playlist {
+  position:absolute;
+  z-index: 51;
+  bottom:5px;
+  left: 255px;
+  height:27px; 
+  width:27px;   
 }
 
 #scroller {
@@ -49,4 +109,16 @@ iframe {
 .jp-audio .jp-type-single .jp-time-holder {
 	left: 110px;
 	width: 80%; 
+}
+
+.jp-details .jp-title {
+    text-align: left;
+    padding: 0;
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#jp_container_1{
+	height: 108px;
 }

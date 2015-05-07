@@ -86,17 +86,31 @@ function update_grind(songs) {
 				}
 			}
 
-			track_info = '<p><span class="h4">' + songs[rand].childNodes[0].childNodes[0].nodeValue +'</span><br>'+
-			             'Artist: <a class="artistname" href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
-			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
-			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
-			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
-			playtrack = '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+
-						 '\',\'' + songs[rand].childNodes[4].childNodes[0].nodeValue+'\')">'+'<img class="playtrack" src="assets/images/play.png"></a>';
-			download = '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a><a href="/comments/music/?id='+songs[rand].childNodes[1].childNodes[0].nodeValue+'"><img class="comment" src="assets/images/comment.ico"></a>';
+			track_name = songs[rand].childNodes[0].childNodes[0].nodeValue;
+			track_comment = songs[rand].childNodes[1].childNodes[0].nodeValue;
+			artist_name = songs[rand].childNodes[2].childNodes[0].nodeValue;
+			profile_id = songs[rand].childNodes[3].childNodes[0].nodeValue;
+			track_img = songs[rand].childNodes[4].childNodes[0].nodeValue;
+			track_path = songs[rand].childNodes[5].childNodes[0].nodeValue;
+			track_album = songs[rand].childNodes[6].childNodes[0].nodeValue;
+			plays_num = songs[rand].childNodes[8].childNodes[0].nodeValue;
+			rating = songs[rand].childNodes[9].childNodes[0].nodeValue;
 			
-			html += '<div class="element" onclick=""><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+
-					'"><div class="grid_description">'+track_info+'</div>'+playtrack+download+'</div>';
+
+			track_info = '<p class="h4">' + track_name +'</p>'+
+			             '<p class="name">Artist: <a class="artistname" href="/other_profile?id='+profile_id+'">' + artist_name +
+			             '</a></p><p class="name">Album: ' + track_album +
+			             '</p><p>Plays: ' + plays_num +
+			             '</p><p>Ratings: ' + rating + '/5';
+
+			playtrack = '<a onclick="parent.jplayer_load(\'' + track_name +'\',\'' + track_path + '\',\'' + track_img +'\',\'' +
+						 artist_name + '\',\'' + profile_id + '\',\'' + rating + '\',\'' + plays_num + '\')">'+
+						'<img class="playtrack" src="assets/images/play.png"></a>';
+
+			comment = '<a href="/comments/music/?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
+
+			html += '<div class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+ track_img +
+					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + comment+'</div>';
 		}
 	}
 	/* There is more than 24 songs in the database, our grind is good size. */
@@ -111,8 +125,12 @@ function update_grind(songs) {
 				}
 			}
 
-			track_info = '<p><span class="h4">' + songs[rand].childNodes[0].childNodes[0].nodeValue +'</span><br>'+
-			             'Artist: <a class="artistname" href="/other_profile?id='+songs[rand].childNodes[3].childNodes[0].nodeValue+'">' + songs[rand].childNodes[2].childNodes[0].nodeValue +
+			track_name = songs[rand].childNodes[0].childNodes[0].nodeValue;
+			profile_id = songs[rand].childNodes[3].childNodes[0].nodeValue;
+			artist_name = songs[rand].childNodes[2].childNodes[0].nodeValue;
+
+			track_info = '<p><span class="h4">' + track_name +'</span><br>'+
+			             'Artist: <a class="artistname" href="/other_profile?id='+profile_id+'">' + artist_name +
 			             '</a><br>Album: ' + songs[rand].childNodes[6].childNodes[0].nodeValue +
 			             '<br>Plays: ' + songs[rand].childNodes[8].childNodes[0].nodeValue +
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
