@@ -18,7 +18,16 @@ function sign_in() {
 				document.getElementById('login-message').innerHTML = "Invalid username/password";
 			}
 			else {
-				document.getElementById('replace').innerHTML = "<li class=\"dropdown\">\
+				document.getElementById('replace').innerHTML = "\
+    <li class=\"dropdown\">\
+      <div class=\"input-group\" id=\"search_box\">\
+      <form method=\"get\" action=\"/search\">\
+        <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\" name=\"search\"/>\
+        <span class=\"input-group-btn\">\
+        <input type=\"submit\" class=\"btn btn-default\" value=\"Go!\"/>\
+        </span>\
+      </form></div></li>\
+<li class=\"dropdown\">\
           <!-- Acts as a href link to controller action -->\
            <a href=\"/user_profile\" class=\"dropdown-toggle\" data_toggle=\"dropdown\" role=\"button\" aria_expanded=\"true\">Profile</a>\
         </li>\

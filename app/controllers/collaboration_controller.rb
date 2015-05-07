@@ -91,26 +91,3 @@ class CollaborationController < ApplicationController
 end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

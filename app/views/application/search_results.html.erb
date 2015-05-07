@@ -1,0 +1,50 @@
+<% if session['logged_in'] == 1 %>
+	<%= render 'navbar_others' %>
+<% else %>
+	<%= render 'navbar_unlogged' %>
+	<h2>Please login to view people's profile.</h2>
+<% end %>
+
+<div>
+<!-- Display error message if the search has returned no results. -->
+<% if @no_results %>
+<h2>The search has returned no results. Try something else.</h2>
+<% end %>
+<!-- Display all tracks and users -->
+	<% @track_results.each do |track| %>
+		<div class="element col-md-4">
+	      	<div class="col-md-6">
+	      	<%= image_tag("mediaimage/#{track.image_path}", id:"content-img",  alt:"Track image", size: "100x100") %>
+          </div>
+	      	<div class="col-md-6 content-info">
+	      		<p class="h4 row info track-name"><%="Title: " + track.title %></p>
+	      		<% if session['logged_in'] == 1 %>
+	      		<p class="h4 row info track-name">Creator: 
+	      		<%= link_to User.find(track.user_id).username, controller:"profile", action:"showOther", :id => track.user_id %></p>
+	      		<% else %>
+	      		<p class="h4 row info track-name"><%="Creator: " + track.title %></p>
+	      		<% end %>
+	      	</div>
+        </div>  
+	<% end %>
+	<% @user_results.each do |key, value| %>
+		<div class="element col-md-4">
+	      	<div class="col-md-6">
+	      	<%= image_tag("userimage/#{User.find(key).image_path}", id:"content-img",  alt:"Track image", size: "100x100") %>
+          </div>
+	      	<div class="col-md-6 content-info">
+	      		<% if session['logged_in'] == 1 %>
+	      			<p class="h4 row info track-name"> User: 
+	      			<%= link_to value, controller:"profile", action:"showOther", :id => key %>
+	      		<% else %>
+	      			<p class="h4 row info track-name"><%= "User: "+value %></p>
+	      		<% end %>
+	      		<% if User.find(key).website_link.nil? == false %></p>
+	      		<p class="h4 row info track-name"><%= link_to User.find(key).website_link.to_s, User.find(key).website_link, :target => '_blank' %></p>
+	      		<% end %>
+	      		<p class="h4 row info track-name"><%= "Followers ("+Follower.where(user_id:key).count.to_s+")" %></p>
+	      		<p class="h4 row info track-name"><%= User.find(key).description %></p>
+	      	</div>
+        </div>  
+	<% end %>
+</div>

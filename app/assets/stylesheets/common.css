@@ -85,3 +85,15 @@ form {
 .space {
 	margin-top:50px;
 }
+
+#search_box {
+  position: relative;
+  top: 10px;
+  right: 30%;
+  width: 200px;
+}
+
+.followers{
+  position: relative;
+  left: 30%;
+}
