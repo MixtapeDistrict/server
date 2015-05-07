@@ -25,7 +25,7 @@
 	      	<% end %>
           </div>
 	      	<div class="col-md-6 content-info">
-	      		<p class="h4 row info track-name"><%="Title: " + track.title %></p>
+	      		<p class="h4 row info track-name"><%="Track: " + track.title %></p>
 	      		<% if Music.find_by(id:track.id).nil? == false %>
 	      		<p class="h4 row info track-name"><%="Genre: " + Music.find(track.id).genre %></p>
 	      		<% end %>
