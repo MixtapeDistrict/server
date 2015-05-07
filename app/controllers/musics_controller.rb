@@ -125,47 +125,6 @@ class MusicsController < ApplicationController
 	render :xml => xml
   end
 
-  # Is called when music is played. Updates plays in database (AJAX call)
-  def play
-  	# Get the path of the song which got played
-  	path = params[:path]
-  	# Find the song in the database
-  	medium = Medium.find_by(file_path:path)
-  	if(medium)
-  		song = medium.music
-  	end
-  	# Increment its plays and end the transaction 
-    song.plays += 1
-  	song.save
-  	# Render nothing to improve website performance
-  	render :nothing => true
-  end
-
-  # Comments for music
-  def comments
-  	# Get the music ID
-  	@music_id = params[:id]
-  	# Find the song within the database
-  	@song = Music.find_by(id:@music_id)
-  	# Store the Medium
-  	@medium = @song.medium
-  	# Find the creator of this song
-  	@creator = User.find_by(id:@medium.user_id)
-  	# Get the rating for this song
-  	# Calculate the average rating of this song
-  	rating_count = 0
-    rating_sum = 0
-    user_ratings = Rating.where(medium_id:@medium.id)
-  	for user_rating in user_ratings
-  		rating_sum  += user_rating.rating
-  		rating_count += 1
-  	end
-  	@rating = 0
-  	if(rating_count != 0)
-  		@rating = rating_sum.to_f/rating_count
-  	end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_music

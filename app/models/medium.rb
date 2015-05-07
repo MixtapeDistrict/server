@@ -12,6 +12,6 @@ class Medium < ActiveRecord::Base
 	end
 	
 	def self.getusertracks(uid)
-		return Medium.where(user_id: uid,  media_type:"M")
+		return Medium.where(user_id: uid)
 	end
 end

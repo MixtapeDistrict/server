@@ -5,7 +5,7 @@ html, body {
    overflow:hidden;
 }
 iframe {
-	height: calc(100% - 70px);
+	height: calc(100% - 110px);
 	width:100%;
 }
 
@@ -22,78 +22,14 @@ iframe {
 	right: 0;
 	margin: 0;
 	display: inline-block;
-	width: calc(100% - 320px)
+	width: calc(100% - 110px)
 }
 
 .player-img {
 	position: absolute;
 	display: inline-block;
-	width: 109px;
-	height: 110px;
-	border-top: 1px solid #0097F7;
-	border-right: 1px solid #0097F7; 
-
-}
-
-.player-info {
-	position: absolute;
-	bottom: 0px;
-	border-top: 1px solid #0097F7;
-	background-color: #CCCCCC;
-	left: 110px;	
-	display: inline-block;
-	padding: 15px;
-	padding-top: 0;
-	width: 180px;
-	height: 56px;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 1.42857;
-	color: #333;
-}
-
-.star-rating {
-	height: 20px;
-}
-
-#artist-name {
-	font-weight: normal;
-	text-decoration: none;
-	color: #333;	
-}
-
-p {
-	margin: 0px;
-}
-
-.default {
-	margin-top: 10px;
-}
-
-.first{
-	white-space: nowrap;
-	margin-top: 10px;
-	overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.download {
-  position:absolute;
-  z-index: 51;
-  bottom:5px;
-  left: 285px;
-  height:30px; 
-  width:30px;   
-}
-
-.add_playlist {
-  position:absolute;
-  z-index: 51;
-  bottom:5px;
-  left: 255px;
-  height:27px; 
-  width:27px;   
+	width: 110px;
+	height: 110px;	
 }
 
 #scroller {
@@ -107,57 +43,10 @@ p {
 }
 
 .jp-audio .jp-type-single .jp-progress {
-	width: 40%;
-	top: 10px; 
+	width: 80%; 
 }
 
 .jp-audio .jp-type-single .jp-time-holder {
-	margin: 0;
-	padding: 0;
-	top: 25px;
 	left: 110px;
-	width: 40%; 
-}
-
-.jp-audio .jp-progress {
-    position: absolute;
-    top: 32px;
-    height: 15px;
-}
-
-.jp-details .jp-title {
-    text-align: left;
-    padding: 0;
-    padding-left: 15px;
-    font-size: 14px;
-    font-weight: bold;
-}
-#jp_container_1{
-	height: 70px;
-}
-
-.jp-audio .jp-controls {
-    width: 380px;
-    padding: 5px 20px 0px;
-}
-
-.jp-audio .jp-interface {
-    height: 50px;
-}
-
-.jp-volume-controls {
-    position: absolute;
-    left: calc(120px + 40%); 
-    top: 10px;
-}
-
-.jp-audio .jp-type-single .jp-toggles {
-	position: absolute;
-	top: 25px;
-	left: calc(110px + 18%);
-    width: 25px;
-}
-
-.jp-current-time, .jp-duration {
-    width: 42px;
+	width: 80%; 
 }
