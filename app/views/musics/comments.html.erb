@@ -1,0 +1,98 @@
+<% if session['logged_in']==1 %>
+	<%= render "navbar_others" %>
+<% else %>
+    <%= render "navbar_unlogged" %>
+<% end %>
+  <%= javascript_include_tag "home.js" %>
+  <%= javascript_include_tag "signup.js" %>
+  <%= javascript_include_tag "login.js" %>
+
+<div id="content" class="container-fluid"> 
+  <div class="container">      
+    <div class="row" id="album-info"> 
+        <div class="col-md-2 col-md-offset-4">
+            <img id="track" src="<%= "/assets/mediaimage/" + @medium.image_path %>" alt="album cover">  
+        </div>
+        <div class="col-md-2">
+            <p class="album-name"><%= @medium.title %></p> 
+            <p class="album-artist"><a href="/other_profile?id=<%=@creator.id%>"><%= @creator.username %></a> </p>
+            <p class="album-year"><%= @song.genre %></p>
+            <p>
+            <% if @rating <= 0.5 %>
+            	<img src="/assets/images/0.5.png" class="rating">
+            <% elsif @rating <= 1 %>
+                <img src="/assets/images/1.0.png" class="rating">
+            <% elsif @rating <= 1.5 %>
+                <img src="/assets/images/1.5.png" class="rating">
+            <% elsif @rating <= 2 %>
+                <img src="/assets/images/2.0.png" class="rating">
+            <% elsif @rating <= 3 %>
+                <img src="/assets/images/3.0.png" class="rating">
+             <% elsif @rating <= 3.5 %>
+                <img src="/assets/images/3.5.png" class="rating">
+            <% elsif @rating <= 4 %>
+                <img src="/assets/images/4.0.png" class="rating">
+            <% elsif @rating <= 4.5 %>
+                <img src="/assets/images/4.5.png" class="rating">
+            <% else %>
+                <img src="/assets/images/5.0.png" class="rating">
+            <% end %>
+            	<button type="button" class="btn profile-btn btn-info" data-toggle="modal" data-target="#change-payment-email">Add Comment/Rating</button>
+            </p> 
+        </div>
+        <div class="col-md-2">
+        	
+        </div>
+    </div>
+    <div class="row" id="album-tracks"> 
+       <table class="table table-striped"> 
+
+         <tbody>
+         <% for medium_comment in @medium_comments %>
+           <% comment = medium_comment.comment %>
+           <% user = User.find_by(id:comment.user_id) %>
+           <% user_rating = Rating.where(medium_id:@medium.id).find_by(user_id:user.id).rating %>
+           <tr class="active">
+              <td class="col-md-3">
+                <img src= "<%="/assets/userimage/"+user.image_path%>" id = "dp">
+                <div class="col-md-11" id="track-info">
+                  <p class="track-name h4">User: <a href="/other_profile?id=<%= user.id %>"><%= user.username%></a></p>
+                  <p class= "track-duration"><%= comment.created_at %> </p>
+                  Rating:            
+            <% if user_rating <= 0.5 %>
+            	<img src="/assets/images/0.5.png" class="rating">
+            <% elsif user_rating <= 1 %>
+                <img src="/assets/images/1.0.png" class="rating">
+            <% elsif user_rating <= 1.5 %>
+                <img src="/assets/images/1.5.png" class="rating">
+            <% elsif user_rating <= 2 %>
+                <img src="/assets/images/2.0.png" class="rating">
+            <% elsif user_rating <= 3 %>
+                <img src="/assets/images/3.0.png" class="rating">
+             <% elsif user_rating <= 3.5 %>
+                <img src="/assets/images/3.5.png" class="rating">
+            <% elsif user_rating <= 4 %>
+                <img src="/assets/images/4.0.png" class="rating">
+            <% elsif user_rating <= 4.5 %>
+                <img src="/assets/images/4.5.png" class="rating">
+            <% else %>
+                <img src="/assets/images/5.0.png" class="rating">
+            <% end %>
+                </div>
+              </td>
+              <td class="col-md-6">
+              <div class="comment_text">
+             	<%= comment.comment %>
+              </div>
+              </td>
+           </tr>
+        <% end %>
+        </tbody>
+       </table>
+    </div>
+  </div> 
+</div>    
+<%= render 'add_comment'%>
+
+
+
