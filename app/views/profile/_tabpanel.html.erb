@@ -32,15 +32,12 @@
           </div>
 	      	<div class="col-md-6 content-info">
 	      		<p class="h4 row info track-name"><%= medium.title %></p>
-	      		<p class="row info track-coll">(Collaborator)</p>
-	      		<p class="row info track-album">Album</p>
+	      		<p class="row info track-coll"><%= medium.user.username%></p>
+	      		<p class="row info track-album"></p>
 	      		<p class="row info track-duration">3:00</p>
 	      	</div>
         </div>              
         <% end %>
-      </div>
-      <div class="row track-req">
-        <button type="button" class="btn btn-default more center-block">More Tracks</button>
       </div>
     </div>  
     
