@@ -93,7 +93,7 @@ function update_grind(songs) {
 			             '<br>Ratings: ' + songs[rand].childNodes[9].childNodes[0].nodeValue + '/5';
 			playtrack = '<a onclick="parent.jplayer_load(\'' + songs[rand].childNodes[0].childNodes[0].nodeValue +'\',\'' + songs[rand].childNodes[5].childNodes[0].nodeValue+
 						 '\',\'' + songs[rand].childNodes[4].childNodes[0].nodeValue+'\')">'+'<img class="playtrack" src="assets/images/play.png"></a>';
-			download = '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a>';
+			download = '<a href="assets/media/'+ songs[rand].childNodes[5].childNodes[0].nodeValue +'" download><img class="download" src="assets/images/download.png"></a><a href="/comments/music/?id='+songs[rand].childNodes[1].childNodes[0].nodeValue+'"><img class="comment" src="assets/images/comment.ico"></a>';
 			
 			html += '<div class="element" onclick=""><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+songs[rand].childNodes[4].childNodes[0].nodeValue+
 					'"><div class="grid_description">'+track_info+'</div>'+playtrack+download+'</div>';

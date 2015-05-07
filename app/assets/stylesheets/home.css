@@ -143,6 +143,18 @@ I refactored and revamped just about all code from there, but it is possible a f
   height:30px; 
   width:30px;   
 }
+.comment {
+  display:none;
+  position:absolute;
+  bottom:10px;
+  right:90px;
+  height:27px; 
+  width:27px;
+}
+.element:hover .comment {
+  display: inline-block;
+  z-index:51;
+}
 
 .element:hover .download {
   display: inline-block;

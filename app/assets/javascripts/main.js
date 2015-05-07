@@ -7,6 +7,7 @@ function jplayer_load(name, path, imgpath) {
 	$("#jquery_jplayer_1").jPlayer({
 	    ready: function () {
 	      $(this).jPlayer("setMedia", {title: name,mp3: "assets/media/"+path}).jPlayer("play",0);
+	      increment(path);
 	    },
 	    cssSelectorAncestor: "#jp_container_1",
 	    swfPath: "js",
@@ -22,4 +23,18 @@ function jplayer_load(name, path, imgpath) {
 	$('.player-img').replaceWith(html);
 }
 
+/* Makes AJAX request to database and increments plays */
+function increment(path) {
+	var xmlhttp;
+	/* If newer browser */
+	if(window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	}
+	/* Older browsers IE6 */
+	else {
+		xmlhttp = ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.open("post", "/play?path="+path, true);
+	xmlhttp.send();
+}
 
