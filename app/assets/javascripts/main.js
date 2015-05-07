@@ -23,7 +23,7 @@ function jplayer_load(name, path, imgpath, artist, artist_id, rating, plays) {
 	$('.player-img').replaceWith(html);
 	
 	html='<div class="player-info"><p class="first">Artist: <a id="artist-name" href="/other_profile?id='+artist_id+'">'+artist+
-		 '</a></span></p><p>Song Rating: </br>'+ star_rating(rating)+'</p><p>Plays:'+plays+'</p>'+'</div>';
+		 '</a></span></p><p>Song Rating: </br>'+ star_rating(rating)+'</p></div>';
 	html += '<a href="assets/media/'+ path +'" download><img class="download" src="assets/images/download.png"></a>';
 	html += '<a><img class="add_playlist" src="assets/images/add_playlist.png"></a>'
 	$('.player-info').replaceWith(html);
