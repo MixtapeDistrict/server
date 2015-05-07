@@ -154,6 +154,9 @@ I refactored and revamped just about all code from there, but it is possible a f
   z-index:51;
 }
 
+<<<<<<< HEAD
+/**************************************************************************/
+=======
 .comment{
   display:none;
   position:absolute;
@@ -186,6 +189,7 @@ I refactored and revamped just about all code from there, but it is possible a f
   	transition: all .2s ease-in-out;
 }
 
+<<<<<<< HEAD
 .comment_text { 
 	word-wrap: break-word; 
 	width:820px;
@@ -207,3 +211,14 @@ I refactored and revamped just about all code from there, but it is possible a f
 	width:250px;
 	margin-top:10px;
 }
+=======
+>>>>>>> origin/master
+
+#search_box {
+  position: relative;
+  top: 10px;
+  right: 30%;
+  width: 200px;
+}
+
+>>>>>>> 4cc2d73559cecc07e0fa14ba450eef5de032ca2b

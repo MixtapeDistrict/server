@@ -12,13 +12,16 @@
       </button>
       <!-- Put image inside link tag. -->
       <%= link_to image_tag('logo.png', :class => 'img-responsive'), "/go_home", :class => 'navbar-brand' %>
+</div>
 
-    </div>
+
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-collapse collapse in" id="elements">
-        
         <ul class="nav navbar-nav navbar-right">
+
+        <%= render 'search_box' %>
+
         <li class="dropdown">
           <!-- Acts as a href link to controller action -->
         	 <%= link_to 'profile', '/user_profile', {:class => 'dropdown-toggle', :data_toggle => 'dropdown', :role => 'button', :aria_expanded => 'true'}%>

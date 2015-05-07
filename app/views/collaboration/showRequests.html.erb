@@ -1,6 +1,11 @@
 <!-- NOTE: this page is only viewable iff the user the logged in. -->
-<%= render 'navbar_others'%>
-	
+<% if session['logged_in'] == 1 %>
+	<%= render 'navbar_others' %>
+<% else %>
+	<%= render 'navbar_unlogged' %>
+<% end %>
+
+
 <h2> All requests from other users </h2>
 
 <% for i in 0..@num-1 %>

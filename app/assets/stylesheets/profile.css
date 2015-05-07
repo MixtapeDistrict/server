@@ -68,3 +68,17 @@ form {
 	margin-left:80px;
 	margin-top:5px;
 }
+
+/**************************************************************************/
+
+#search_box {
+	position: relative;
+	top: 10px;
+	right: 30%;
+	width: 200px;
+}
+
+
+
+
+
