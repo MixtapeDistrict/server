@@ -57,10 +57,11 @@ class CollaborationController < ApplicationController
 			# Arrays to store ids other requesters.
 			@requester_ids = Array.new(@num)
 			@names = Array.new(@num)
-			@messages = Array.new(@num) # Store all messages from requesters if any...
+			@messages = Array.new(@num)
 
 			for i in 0..@num-1
 				@requester_ids[i] = @co_ids[i].first_id
+				@messages[i] = Collaboration.find_by(first_id:@requester_ids[i], second_id:@userID).message
 				@names[i] = User.find(@co_ids[i].first_id).username
 			end
 

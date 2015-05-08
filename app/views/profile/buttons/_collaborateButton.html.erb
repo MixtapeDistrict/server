@@ -1,4 +1,5 @@
-<%= form_tag({:controller => 'collaboration', :action => 'coRequest'}, method: "post") do %>	<%= text_field_tag("msg", nil, :placeholder => "Send text") %>
+<%= form_tag({:controller => 'collaboration', :action => 'coRequest'}, method: "post") do %>
+	<%= text_field_tag("msg", nil, :placeholder => "Short Message", :maxlength => 30, :class => "form-control", :required => true) %>	
 	<%= hidden_field_tag(:co_id, @otherID) %>
-	<%= submit_tag("Collaborate", :class => 'btn profile-btn btn-success', :onclick => 'return message_window();') %>
+	<%= submit_tag("Collaborate", :class => 'btn profile-btn btn-success') %>
 <% end %>

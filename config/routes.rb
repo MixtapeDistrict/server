@@ -32,8 +32,16 @@ WebInfo2::Application.routes.draw do
 # Changing donations email
   post '/update_payment_email', to: 'profile#change_payment_email'
 
+
 # Searching...
   get '/search', to: 'application#search_results'  
+
+# When user presses play
+  post '/play', to: 'musics#play'
+
+# When users want to comment on music
+  get '/comments/music', to: 'musics#comments'
+  post '/add_music_comment', to: 'musics#add_comment'
 
   resources :medium_comments
 

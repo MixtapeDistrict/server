@@ -114,39 +114,30 @@ I refactored and revamped just about all code from there, but it is possible a f
 
 .element:hover .grid_description {
   display: inline-block;
-	position:absolute;
-	top:15px;
-	left:15px;
-	font-size:13px;
-	font-weight:bold;
-	color:white;
 	z-index:50;
 }
 
 .grid_description {
   display:none;
-	position:absolute;
-	top:0;
-	font-size:10px;
+  position:absolute;
+  top:15px;
+  left:15px;
+	font-size:13px;
 	font-weight:bold;
 	color:white;
-	z-index:50;
 	height:100%;
 	width:90%;
 }
 
-.download {
-  display:none;
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  height:30px; 
-  width:30px;   
+.grid_description p {
+  margin-top: 0;
+  margin-bottom: 2px;
 }
 
-.element:hover .download {
-  display: inline-block;
-  z-index:51;
+.name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playtrack {
@@ -163,12 +154,62 @@ I refactored and revamped just about all code from there, but it is possible a f
   z-index:51;
 }
 
-/**************************************************************************/
-
-#search_box {
-  position: relative;
-  top: 10px;
-  right: 30%;
-  width: 200px;
+.comment{
+  display:none;
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  height:30px; 
+  width:30px;   
 }
 
+.element:hover .comment {
+  display: inline-block;
+  z-index:51;
+}
+
+.rating {
+	width:100px;
+}
+
+#dp {
+	display: inline-block;
+  	width: 250px;
+  	height: auto;
+  	padding: 4px;
+  	line-height: 1.42857143;
+  	background-color: #fff;
+  	border: 1px solid #ddd;
+  	border-radius: 4px;
+  	-webkit-transition: all .2s ease-in-out;
+  	-o-transition: all .2s ease-in-out;
+  	transition: all .2s ease-in-out;
+}
+
+.comment_text { 
+	word-wrap: break-word; 
+	width:820px;
+	font-size:16px;
+	padding-top:2px;
+}
+
+.btn {
+	margin-top:10px;
+}
+#album-tracks {
+	margin-top:30px;
+}
+
+.input {
+	width:250px;
+}
+.input_dropdown {
+	width:250px;
+	margin-top:10px;
+}
+#search_box {
+ position: relative;
+ top: 10px;
+ right: 30%;
+ width: 200px;
+}
