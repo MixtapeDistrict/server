@@ -15,6 +15,9 @@ class CollaborationController < ApplicationController
 			# Person to collaborate with.
 			@otherID = params[:co_id]
 
+			# Get message from user.
+			@message = params[:msg]
+
 			check = Array.new(2)
 
 			# Need to check in both ways.
@@ -23,7 +26,7 @@ class CollaborationController < ApplicationController
 			# Add request if no such request has been made.
 			if  check[0] == 0
 				# Generate a record for the request if there aren't any.
-				Collaboration.create(first_id:userID, second_id:@otherID, approved:false)
+				Collaboration.create(first_id:userID, second_id:@otherID, message:@message,approved:false)
 			end
 
 			# Stay on profile that user is currently on.
@@ -54,6 +57,7 @@ class CollaborationController < ApplicationController
 			# Arrays to store ids other requesters.
 			@requester_ids = Array.new(@num)
 			@names = Array.new(@num)
+			@messages = Array.new(@num) # Store all messages from requesters if any...
 
 			for i in 0..@num-1
 				@requester_ids[i] = @co_ids[i].first_id
