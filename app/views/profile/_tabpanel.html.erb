@@ -65,10 +65,7 @@
               <p class="h4 row info coll-name">
                 <%= link_to User.find(@approved_ids[i]).username , 
                 {:controller => 'profile', :action => 'showOther', :id => @approved_ids[i] } %>
-              </p>
-              <p class="row info projects">
-                <span class="proj-num"><%= 0 %><span> projects <!--How many projects have them collaborated-->
-              </p>            
+              </p>        
             </div>
           </div>
         <% end %>
