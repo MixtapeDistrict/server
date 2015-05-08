@@ -16,7 +16,7 @@
 
 <!-- Display all tracks and users -->
 	<% @track_results.each do |track| %>
-		<div class="element col-md-4">
+		<div class="col-md-4">
 	      	<div class="col-md-6">
 	      	<% if track.image_path.nil? == false %>
 	      		<%= image_tag("mediaimage/#{track.image_path}", id:"content-img", alt:"Track image", size: "120x120") %>
@@ -25,7 +25,7 @@
 	      	<% end %>
           </div>
 	      	<div class="col-md-6 content-info">
-	      		<p class="h4 row info track-name"><%="Title: " + track.title %></p>
+	      		<p class="h4 row info track-name"><%="Track: " + track.title %></p>
 	      		<% if Music.find_by(id:track.id).nil? == false %>
 	      		<p class="h4 row info track-name"><%="Genre: " + Music.find(track.id).genre %></p>
 	      		<% end %>
@@ -39,7 +39,7 @@
         </div>  
 	<% end %>
 	<% @user_results.each do |key, value| %>
-		<div class="element col-md-4">
+		<div class="col-md-4">
 	      	<div class="col-md-6">
 	      	<% if User.find(key).image_path.nil? == false %>
 	      		<%= image_tag("userimage/#{User.find(key).image_path}", id:"content-img",  alt:"User image", size: "120x120") %>

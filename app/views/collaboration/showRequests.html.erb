@@ -9,7 +9,7 @@
 <h2> All requests from other users </h2>
 
 <% for i in 0..@num-1 %>
-	<div class="element col-md-4">
+	<div class="col-md-4">
 		<div class="col-md-6">
 			<% if User.find(@requester_ids[i]).image_path.nil? == false %>
 	      		<%= image_tag("userimage/#{User.find(@requester_ids[i]).image_path}", id:"content-img",  alt:"User image", size: "120x120") %>

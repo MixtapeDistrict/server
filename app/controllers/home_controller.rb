@@ -22,7 +22,6 @@ class HomeController < ApplicationController
 		# Need to perform an action and respond
 		# to AJAX request
 		response = ""
-
 		# Generate random default image for user.
 		index = rand(0..3)
 		files = ['yellow.jpg', 'blue.jpg', 'green.jpg', 'red.jpg']

@@ -125,6 +125,87 @@ class MusicsController < ApplicationController
 	render :xml => xml
   end
 
+  # Is called when music is played. Updates plays in database (AJAX call)
+  def play
+  	# Get the path of the song which got played
+  	path = params[:path]
+  	# Find the song in the database
+  	medium = Medium.find_by(file_path:path)
+  	if(medium)
+  		song = medium.music
+  	end
+  	# Increment its plays and end the transaction 
+    song.plays += 1
+  	song.save
+  	# Render nothing to improve website performance
+  	render :nothing => true
+  end
+
+  # Comments for music
+  def comments
+  	# Get the music ID
+  	@music_id = params[:id]
+  	# Find the song within the database
+  	@song = Music.find_by(id:@music_id)
+  	# Store the Medium
+  	@medium = @song.medium
+  	# Find the creator of this song
+  	@creator = User.find_by(id:@medium.user_id)
+  	# Get the rating for this song
+  	# Calculate the average rating of this song
+  	rating_count = 0
+    rating_sum = 0
+    user_ratings = Rating.where(medium_id:@medium.id)
+  	for user_rating in user_ratings
+  		rating_sum  += user_rating.rating
+  		rating_count += 1
+  	end
+  	@rating = 0
+  	if(rating_count != 0)
+  		@rating = rating_sum.to_f/rating_count
+  	end
+  	# Store all the comments for this song
+  	@medium_comments = MediumComment.where(medium_id:@medium.id)
+  end
+
+  # Adds comment + updates/initializes rating for user
+  def add_comment 
+  	# Ensure you are logged in 
+  	if(session.has_key?("logged_in"))
+	# If the user is not logged in redirect to homepage
+		if(session['logged_in'] != 1) 
+			redirect_to url_for(:controller => :home, :action => :showHome) and return
+		end
+	else
+		redirect_to url_for(:controller => :home, :action => :showHome) and return
+	end
+  	# Parse the input which user submitted
+  	comment = params[:comment]
+  	rating = params[:rating]
+  	user_id = session['user_id']
+  	medium_id = params[:medium_id]
+  	medium = Medium.find_by(id:medium_id)
+
+  	# Check if this user has rated this medium before
+  	current_rating = Rating.where(medium_id:medium_id).find_by(user_id:user_id)
+  	# If this exists update the existing rating
+  	if current_rating
+  		current_rating.rating = rating
+  		current_rating.save
+  	# Otherwise create a rating for the user for this medium
+  	else
+  		medium.ratings.create(user_id:user_id, rating:rating)
+  	end
+  	# Add the comment of the user to the database
+  	user = User.find_by(id:user_id)
+  	new_comment = user.comments.create(comment:comment)
+  	new_comment.medium_comment = medium.medium_comments.create()
+  	new_comment.save
+  	# Rerender the page
+  	redirect_to url_for(:controller => :musics, :action => :comments, :id => medium.music.id) and return
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_music
