@@ -18,20 +18,19 @@
       <!-- Get new random songs -->
       <ul class="nav navbar-nav navbar-left">
         <li><a class="new-songs">New Songs      <%= image_tag "new.png", class:"refresh" %></a></li>
-      </ul>
+      </ul>        
+
+      <ul class="nav navbar-nav navbar-right" id="replace">
+
+        <%= render 'search_box' %> 
         
-        <ul class="nav navbar-nav navbar-right" id="replace">
-
-        <%= render 'search_box' %>
-
         <!-- Sign up form -->
         <%= render 'signup' %>
 
         <!-- Log In form -->
         <%= render 'login' %>
 
-        </ul>
-      </ul>
+      </ul>      
     </div>
   </div>
 </nav>

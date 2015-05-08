@@ -18,7 +18,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-collapse collapse in" id="elements">
-        <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
 
         <%= render 'search_box' %>
 
@@ -27,13 +27,12 @@
         	 <%= link_to 'profile', '/user_profile', {:class => 'dropdown-toggle', :data_toggle => 'dropdown', :role => 'button', :aria_expanded => 'true'}%>
         </li>
 
-         <li class="dropdown">
-         <form action="/sign_out" method="post">
-         	<button type="submit" class="btn btn-danger navbar-btn log-out">Logout</button>
-         </form>
-         </li>
+        <li class="dropdown">
+          <form action="/sign_out" method="post">
+         	  <button type="submit" class="btn btn-danger navbar-btn log-out">Logout</button>
+          </form>
+        </li>  
 
-        </ul>
       </ul>
     </div>
   </div>

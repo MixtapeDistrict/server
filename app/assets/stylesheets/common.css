@@ -27,6 +27,14 @@ p {
 	width: 150px;
 }
 
+.navbar-form {
+  margin: 0;
+}
+
+.btn-search{
+   margin-top: 8px !important;  
+}
+
 #footer {
    position:absolute;
    bottom:0;
@@ -78,22 +86,12 @@ form {
 	text-align:center;
 }
 .log-out {
-	margin-top:10px;
-	margin-left:10px;
-	float:left;
-}
-.space {
-	margin-top:50px;
-}
-
-#search_box {
-  position: relative;
-  top: 10px;
-  right: 30%;
-  width: 200px;
+	margin-left:0;
+  margin-top: 8px !important; 
 }
 
 .followers{
   position: relative;
   left: 30%;
 }
+

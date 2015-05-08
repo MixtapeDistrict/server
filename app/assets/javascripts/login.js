@@ -19,24 +19,20 @@ function sign_in() {
 			}
 			else {
 				document.getElementById('replace').innerHTML = "\
+    <li>\
+      <form class=\"navbar-form navbar-left\" role=\"search\" method=\"get\" action=\"/search\">\
+      <div class=\"form-group\">\
+	    <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\" name=\"search\" required/>\
+      	<input type=\"submit\" class=\"navbar-btn btn btn-search btn-default hidden-xs\" value=\"Go!\"/>\
+      </div></form></li>\
+	<li class=\"dropdown\">\
+      <a href=\"/user_profile\" class=\"dropdown-toggle\" data_toggle=\"dropdown\" role=\"button\" aria_expanded=\"true\">Profile</a>\
+    </li>\
     <li class=\"dropdown\">\
-      <div class=\"input-group\" id=\"search_box\">\
-      <form method=\"get\" action=\"/search\">\
-        <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\" name=\"search\"/>\
-        <span class=\"input-group-btn\">\
-        <input type=\"submit\" class=\"btn btn-default\" value=\"Go!\"/>\
-        </span>\
-      </form></div></li>\
-<li class=\"dropdown\">\
-          <!-- Acts as a href link to controller action -->\
-           <a href=\"/user_profile\" class=\"dropdown-toggle\" data_toggle=\"dropdown\" role=\"button\" aria_expanded=\"true\">Profile</a>\
-        </li>\
-        \
-         <li class=\"dropdown\">\
-         <form action=\"/sign_out\" method=\"post\">\
-         	<button type=\"submit\" class=\"btn profile-btn btn-danger log-out\">Logout</button>\
-         </form>\
-         </li>";
+      <form action=\"/sign_out\" method=\"post\">\
+        <button type=\"submit\" class=\"btn profile-btn btn-danger log-out\">Logout</button>\
+      </form>\
+    </li>";
          
          location.reload();
 			}
