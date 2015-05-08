@@ -13,13 +13,11 @@
 		<div class="col-md-6">
 			<% if User.find(@requester_ids[i]).image_path.nil? == false %>
 	      		<%= image_tag("userimage/#{User.find(@requester_ids[i]).image_path}", id:"content-img",  alt:"User image", size:"150x150") %>
-	      		<%= image_tag("userimage/#{User.find(@requester_ids[i]).image_path}", id:"content-img",  alt:"User image", size: "120x120") %>
 	      	<% else %>
 	      		<!-- Select at random default picture. -->
 	      		<% index = rand(0..3) %>
 	      		<% files = ['yellow.jpg', 'blue.jpg', 'green.jpg', 'red.jpg'] %>
 	      		<%= image_tag("userimage/#{files[index]}", id:"content-img",  alt:"User image", size: "150x150") %>
-	      		<%= image_tag("userimage/#{files[index]}", id:"content-img",  alt:"User image", size: "120x120") %>
 	      	<% end %>
         </div>
 	    <div class="col-md-6 content-info">
@@ -32,11 +30,8 @@
 			<p ><%= @messages[i] %></p>
 			<%= submit_tag("Accept #{@names[i]}", :class => 'btn btn-success') %>
 			<% end %>
-  			<% end %>
-  			<br>
-			<%= submit_tag("Accept #{@names[i]}", :class => 'btn btn-success') %>
 			<% end %>
-  			<% end %><br>
+			<br>
   		</div>
   	</div>
 <% end %>
