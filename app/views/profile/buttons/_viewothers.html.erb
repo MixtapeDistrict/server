@@ -1,5 +1,8 @@
 <!-- Buttons to display other artist profile-->
 <!-- Do not render collaborate button once a request has been made. -->
+
+<!-- View buttons iff logged in. -->
+<% if session['logged_in'] == 1 %>
 <div class="coll-btn row">
 	<% if Collaboration.where(first_id:session['user_id'], second_id:@otherID).count == 0 %>
 		<%= render 'profile/buttons/collaborateButton' %>
@@ -27,3 +30,4 @@
     <img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
 </form>
 </div>
+<% end %>

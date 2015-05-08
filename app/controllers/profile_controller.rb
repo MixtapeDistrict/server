@@ -239,14 +239,11 @@ class ProfileController < ApplicationController
 		redirect_to url_for(:controller => :profile, :action => :showProfile)
   	end
 
+
   	# Show other person's profile.
   	def showOther
   		# Ensure user is logged in to view this page
-		if(session.has_key?("logged_in"))
-			# If the user is not logged in redirect to homepage
-			if(session['logged_in'] != 1) 
-				redirect_to url_for(:controller => :home, :action => :showHome) and return
-			end
+		if(session.has_key?("logged_in") and session['logged_in'] == 1)
 
 			# Get your current user id if you are logged in.
 			logged_in_id = session['user_id']
@@ -257,51 +254,7 @@ class ProfileController < ApplicationController
 			# Get other person's id.
 			userID = user.id
 
-			@approved_requests = Collaboration.where(first_id:userID, approved:true)
-			@approved_ids = Array.new(@approved_requests.count)
-
-			for i in 0..@approved_requests.count - 1
-				@approved_ids[i] = @approved_requests[i].second_id
-			end
-
 			@otherID = user.id
-
-			@username = user.username
-			@email = user.email
-			@description = user.description
-			@website_link =  user.website_link
-			@image_path  = user.image_path
-			@tracks = user.tracks_heard
-			
-			#Get the other user's tracks
-			@owntracks = Medium.getusertracks(user)
-
-			# Count the number of followers the user has.
-			if Follower.where(user_id:userID).count > 0
-				@num_followers = Follower.where(user_id:userID).count
-			else
-				@num_followers = 0
-			end
-
-			# Store an array of objects containing all following ids.
-			@all_following_ids = Follower.where(follower_id:userID).select(:user_id)
-			# Find all the people the user is following.
-			@num_following = Follower.where(follower_id:userID).count
-
-			# Initialize names and links arrays for people user is following.
-			@names_following = Array.new(@num_following)
-			@links_following = Array.new(@num_following)
-			@ids = Array.new(@num_following)
-
-			# Now get all the required data.
-			for i in 0..@num_following
-				if @all_following_ids[i]
-					curr_id = @all_following_ids[i].user_id
-					@ids[i] = curr_id
-					@names_following[i] = User.find(curr_id).username
-					@links_following[i] = User.find(curr_id).website_link
-				end
-			end
 
 			# If you are following this person, the follow button should not be visible.
 			if Follower.where(user_id:userID, follower_id:logged_in_id).count > 0
@@ -316,8 +269,63 @@ class ProfileController < ApplicationController
 			end
 
 		else
-			redirect_to url_for(:controller => :home, :action => :showHome) and return
+
+			# Get user_id from link clicked on.
+			user = User.find(params[:id])
+
+			userID = user.id
+
+			# Do not show follow button when offline.
+			@amFollowing = false
+
 		end
+
+		@username = user.username
+		@email = user.email
+		@description = user.description
+		@website_link =  user.website_link
+		@image_path  = user.image_path
+		@tracks = user.tracks_heard
+			
+		#Get the other user's tracks
+		@owntracks = Medium.getusertracks(user)
+
+
+		@approved_requests = Collaboration.where(first_id:userID, approved:true)
+		@approved_ids = Array.new(@approved_requests.count)
+
+		for i in 0..@approved_requests.count - 1
+			@approved_ids[i] = @approved_requests[i].second_id
+		end
+
+
+		# Count the number of followers the user has.
+		if Follower.where(user_id:userID).count > 0
+			@num_followers = Follower.where(user_id:userID).count
+		else
+			@num_followers = 0
+		end
+
+		# Store an array of objects containing all following ids.
+		@all_following_ids = Follower.where(follower_id:userID).select(:user_id)
+		# Find all the people the user is following.
+		@num_following = Follower.where(follower_id:userID).count
+
+		# Initialize names and links arrays for people user is following.
+		@names_following = Array.new(@num_following)
+		@links_following = Array.new(@num_following)
+		@ids = Array.new(@num_following)
+
+		# Now get all the required data.
+		for i in 0..@num_following
+			if @all_following_ids[i]
+				curr_id = @all_following_ids[i].user_id
+				@ids[i] = curr_id
+				@names_following[i] = User.find(curr_id).username
+				@links_following[i] = User.find(curr_id).website_link
+			end
+		end
+		
   	end
 
 

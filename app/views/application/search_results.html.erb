@@ -3,7 +3,6 @@
 	<%= render 'navbar_others' %>
 <% else %>
 	<%= render 'navbar_unlogged' %>
-	<h2>Please login to view people's profile.</h2>
 <% end %>
 
 <div>
@@ -18,10 +17,10 @@
 	<% @track_results.each do |track| %>
 		<div class="col-md-4">
 	      	<div class="col-md-6">
-	      	<% if track.image_path.nil? == false %>
-	      		<%= image_tag("mediaimage/#{track.image_path}", id:"content-img", alt:"Track image", size: "120x120") %>
+	      	<% if track.image_path.nil? == false or track.image_path.length > 0 %>
+	      		<%= image_tag("mediaimage/#{track.image_path}", id:"content-img", alt:"Track image", size: "150x150") %>
 	      	<% else %>
-	      		<%= image_tag("mediaimage/musicnote.png", id:"content-img", alt:"Track image", size: "120x120") %>
+	      		<%= image_tag("mediaimage/musicnote.png", id:"content-img", alt:"Track image", size: "150x150") %>
 	      	<% end %>
           </div>
 	      	<div class="col-md-6 content-info">
@@ -29,12 +28,9 @@
 	      		<% if Music.find_by(id:track.id).nil? == false %>
 	      		<p class="h4 row info track-name"><%="Genre: " + Music.find(track.id).genre %></p>
 	      		<% end %>
-	      		<% if session['logged_in'] == 1 %>
 	      		<p class="h4 row info track-name">Creator: 
 	      		<%= link_to User.find(track.user_id).username, controller:"profile", action:"showOther", :id => track.user_id %></p>
-	      		<% else %>
-	      		<p class="h4 row info track-name"><%="Creator: " + track.title %></p>
-	      		<% end %>
+	
 	      	</div>
         </div>  
 	<% end %>
@@ -42,23 +38,19 @@
 		<div class="col-md-4">
 	      	<div class="col-md-6">
 	      	<% if User.find(key).image_path.nil? == false %>
-	      		<%= image_tag("userimage/#{User.find(key).image_path}", id:"content-img",  alt:"User image", size: "120x120") %>
+	      		<%= image_tag("userimage/#{User.find(key).image_path}", id:"content-img",  alt:"User image", size: "150x150") %>
 	      	<% else %>
 	      		<!-- Select at random default picture. -->
 	      		<% index = rand(0..3) %>
 	      		<% files = ['yellow.jpg', 'blue.jpg', 'green.jpg', 'red.jpg'] %>
-	      		<%= image_tag("userimage/#{files[index]}", id:"content-img",  alt:"User image", size: "120x120") %>
+	      		<%= image_tag("userimage/#{files[index]}", id:"content-img",  alt:"User image", size: "150x150") %>
 	      	<% end %>
           	</div>
 	      	<div class="col-md-6 content-info">
-	      		<% if session['logged_in'] == 1 %>
-	      			<p class="h4 row info track-name"> User: 
-	      			<%= link_to value, controller:"profile", action:"showOther", :id => key %>
-	      		<% else %>
-	      			<p class="h4 row info track-name"><%= "User: "+value %></p>
-	      		<% end %>
+	      		<p class="h4 row info track-name"> User: 
+	      		<%= link_to value, controller:"profile", action:"showOther", :id => key %>
 	      		<% if User.find(key).website_link.nil? == false %></p>
-	      		<p class="h4 row info track-name"><%= link_to User.find(key).website_link.to_s, User.find(key).website_link, :target => '_blank' %></p>
+	      		<p class="h4 row info track-name">Website: <%= link_to User.find(key).website_link.to_s, User.find(key).website_link, :target => '_blank' %></p>
 	      		<% end %>
 	      		<p class="h4 row info track-name"><%= "Followers ("+Follower.where(user_id:key).count.to_s+")" %></p>
 	      	</div>

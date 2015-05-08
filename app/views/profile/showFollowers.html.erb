@@ -5,7 +5,7 @@
 <% for i in 0..@num_followers - 1  %>
 	<div class="element col-md-4">
 		<div class="col-md-6">
-	      	<%= image_tag("userimage/#{User.find(@follower_ids[i]).image_path}", id:"content-img",  alt:"User image", size: "120x120") %>
+	      	<%= image_tag("userimage/#{User.find(@follower_ids[i]).image_path}", id:"content-img",  alt:"User image", size: "150x150") %>
 	    </div>
 	    <div class="col-md-6 content-info"><p class="h4 row info track-name"><%= link_to @follower_names[i] , {:controller => 'profile', :action => 'showOther', :id => @follower_ids[i] } %></p>
 	    </div>
