@@ -12,12 +12,20 @@
 	<div class="col-md-4">
 		<div class="col-md-6">
 			<% if User.find(@requester_ids[i]).image_path.nil? == false %>
+<<<<<<< HEAD
 	      		<%= image_tag("userimage/#{User.find(@requester_ids[i]).image_path}", id:"content-img",  alt:"User image", size:"150x150") %>
+=======
+	      		<%= image_tag("userimage/#{User.find(@requester_ids[i]).image_path}", id:"content-img",  alt:"User image", size: "120x120") %>
+>>>>>>> origin/master
 	      	<% else %>
 	      		<!-- Select at random default picture. -->
 	      		<% index = rand(0..3) %>
 	      		<% files = ['yellow.jpg', 'blue.jpg', 'green.jpg', 'red.jpg'] %>
+<<<<<<< HEAD
 	      		<%= image_tag("userimage/#{files[index]}", id:"content-img",  alt:"User image", size: "150x150") %>
+=======
+	      		<%= image_tag("userimage/#{files[index]}", id:"content-img",  alt:"User image", size: "120x120") %>
+>>>>>>> origin/master
 	      	<% end %>
         </div>
 	    <div class="col-md-6 content-info">
@@ -27,11 +35,17 @@
 			<p class="h4 row info track-name"> Accepted : <%= link_to User.find(@requester_ids[i]).username, controller:"profile", action:"showOther", :id => @requester_ids[i] %></p>
 			<% else %>
 			<p class="h4 row info track-name"> Not yet accepted </p>
+<<<<<<< HEAD
 			<p ><%= @messages[i] %></p>
 			<%= submit_tag("Accept #{@names[i]}", :class => 'btn btn-success') %>
 			<% end %>
   			<% end %>
   			<br>
+=======
+			<%= submit_tag("Accept #{@names[i]}", :class => 'btn btn-success') %>
+			<% end %>
+  			<% end %><br>
+>>>>>>> origin/master
   		</div>
   	</div>
 <% end %>
