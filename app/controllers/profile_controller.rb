@@ -15,7 +15,7 @@ class ProfileController < ApplicationController
 
 			# Should fetch user's data from database and display profile details.
 			userID = session['user_id']
-
+			@userID = userID
 			if userID <= 0
 				render nothing: true
 			end
@@ -253,7 +253,7 @@ class ProfileController < ApplicationController
 
 			# Get other person's id.
 			userID = user.id
-
+			@userID = userID
 			
 
 			# If you are following this person, the follow button should not be visible.

@@ -206,6 +206,21 @@ class MusicsController < ApplicationController
 
   end
 
+  # Deletes a user's song from the database
+  def delete_medium
+  	# Get the medium id
+  	medium_id = params[:id]
+  	# Find the medium inside the database
+  	medium = Medium.find_by(id:medium_id)
+  	# Find the music for this medium
+  	music = medium.music
+  	# Delete the music and the medium
+  	medium.destroy
+  	music.destroy
+  	# Redirect the user to their own profile
+  	redirect_to url_for(:controller => :profile, :action => :showProfile) and return
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_music

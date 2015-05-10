@@ -43,6 +43,8 @@ WebInfo2::Application.routes.draw do
   get '/comments/music', to: 'musics#comments'
   post '/add_music_comment', to: 'musics#add_comment'
 
+# When the user wants to delete their music
+  post '/delete_medium', to: 'musics#delete_medium'
   resources :medium_comments
 
   resources :media

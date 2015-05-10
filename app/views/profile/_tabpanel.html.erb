@@ -35,6 +35,10 @@
 	      		<p class="h4 row info track-name"><%= medium.title %></p>
 	      		<p class="row info track-coll"><%= medium.user.username%></p>
 	      		<p class="info">Plays:<%=medium.music.plays%></p>
+	      		<% if session['logged_in']==1 && session['user_id']==@userID %>
+                   <p class = "info"><a data-toggle="modal" data-target="#edit-track-<%= medium.music.id%>" href="#delete">Delete track</a>
+                   </p>
+                <% end %>
 	      		<p class="info"><a onclick="parent.jplayer_load('<%= medium.title %>','<%=medium.file_path%>', '<%=medium.image_path%>', '<%=medium.user.username%>', '<%=medium.user.id%>', '<%= rating %>', '<%=medium.music.plays%>')"><img class="playtrack" src="assets/images/play.png"></a>
 	      		<a href="/comments/music/?id=<%=medium.music.id%>"><img class="comment" src="assets/images/comment.ico"></a></p>
 	      		<% if rating <= 0.5 %>
@@ -57,7 +61,29 @@
                    <img src="/assets/images/5.0.png" class="rating">
                 <% end %>
 	      	</div>
-        </div>              
+        </div>  
+        <!-- The modal for this track -->
+        <div class="modal fade" id="edit-track-<%= medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
+  			<div class="modal-dialog modal-lg">
+    			<div class="modal-content">
+    			  <div class="modal-header">
+    			    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      				  <h4 class="modal-title" id="myModalLabel" style="color:red">Warning! This cannot be reverted!</h4>
+     			  </div>
+     		 <div class="modal-body">
+     		 <button type="button" class="btn profile-btn btn-info" data-dismiss="modal">I have changed my mind</button>
+     		 <form method="post" action="/delete_medium?id=<%=medium.id%>">
+     		     <button type="submit" class="btn profile-btn btn-danger">
+     		 </form>
+			Delete '<%= medium.title%>'
+			</button>
+     		 </div>
+     		 <div class="modal-footer">
+      			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>       
+    		  </div>
+    		</div>
+  		</div>
+</div>            
         <% end %>
       </div>
     </div>  
