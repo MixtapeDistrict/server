@@ -36,8 +36,8 @@
 	      		<p class="row info track-coll"><%= medium.user.username%></p>
 	      		<p class="info">Plays:<%=medium.music.plays%></p>
 	      		<% if session['logged_in']==1 && session['user_id']==@userID %>
-                   <p class = "info"><a data-toggle="modal" data-target="#edit-track-<%= medium.music.id%>" href="#delete">Delete track</a>
-                   </p>
+                   <p class = "info"><a data-toggle="modal" data-target="#delete-track-<%= medium.music.id%>" href="#delete">Delete track</a></p>
+                   <a data-toggle="modal" data-target="#edit-track-<%=medium.music.id%>" href="#edit">Edit track</a></p>
                 <% end %>
 	      		<p class="info"><a onclick="parent.jplayer_load('<%= medium.title %>','<%=medium.file_path%>', '<%=medium.image_path%>', '<%=medium.user.username%>', '<%=medium.user.id%>', '<%= rating %>', '<%=medium.music.plays%>')"><img class="playtrack" src="assets/images/play.png"></a>
 	      		<a href="/comments/music/?id=<%=medium.music.id%>"><img class="comment" src="assets/images/comment.ico"></a></p>
@@ -63,7 +63,7 @@
 	      	</div>
         </div>  
         <!-- The modal for this track -->
-        <div class="modal fade" id="edit-track-<%= medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="delete-track-<%= medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
   			<div class="modal-dialog modal-lg">
     			<div class="modal-content">
     			  <div class="modal-header">
@@ -82,8 +82,128 @@
       			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>       
     		  </div>
     		</div>
-  		</div>
-</div>            
+  			</div>
+		</div>  
+		 <div class="modal fade" id="edit-track-<%=medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit '<%=medium.title%>'</h4>
+      </div>
+      <div class="modal-body">
+        <!--Upload Track form-->
+        <form class="form-horizontal"  action="/editTrack" method="post">		
+	
+    <div class="new-track-name form-group">
+		<label for="track-name" class="col-md-4 control-label">Track Name:</label>							
+		<div class="col-md-7">
+			<input id="track-name" type="text" class="form-control" name="trackname" required maxlength="30" value="<%=medium.title%>">
+			<div id="name_outcome"></div>
+		</div>
+	</div>
+	<input type="hidden" name="medium_id" value="<%=medium.id%>"></input>
+
+
+	<div class="form-group">
+		<label for="track-genre" class="col-md-4 control-label">Genre:</label>
+		<div class="col-md-7">
+			<select name="trackgenre">
+			<% if medium.music.genre == "Blues" %>
+  				<option value="Blues" selected>Blues</option>
+  			<% else %>
+  				<option valye="Blues">Blues</option>
+  			<% end %>
+  			<% if medium.music.genre == "Classical" %>
+  			 	<option value="Classical" selected>Classical</option>
+  			<% else %>
+  				<option value="Classical">Classical</option>
+  		    <% end %>
+  		    <% if medium.music.genre == "Country"%>
+  		    	<option value="Country" selected>Country</option>
+
+  		    <% else %>
+  		    	<option value="Country">Country</option>
+  		    <% end %>
+  		    <% if medium.music.genre == "Electronic"%>
+  		    	<option value="Electronic" selected>Electronic</option>
+
+  		    <% else %>
+  		    	<option value="Electronic">Electronic</option>
+		    <% end %>
+  		    <% if medium.music.genre == "Folk"%>
+  		        <option value="Folk" selected>Folk</option>
+
+  		    <% else %>
+  		        <option value="Folk">Folk</option>
+		    <% end %>
+  		    <% if medium.music.genre == "Hip hop"%>
+  			    <option value="Hip hop" selected>Hip-Hop</option>
+
+  		    <% else %>
+  			    <option value="Hip hop">Hip-Hop</option>
+  		    <% end %>
+  		    <% if medium.music.genre == "Jazz" %>
+  				<option value="Jazz" selected>Jazz</option>
+
+  		    <% else %>
+  				<option value="Jazz">Jazz</option>
+  		    
+  		    <% end %>
+  		    <% if medium.music.genre == "Reggae"%>
+  				<option value="Reggae" selected>Reggae</option>
+
+  		    <% else %>
+  				<option value="Reggae">Reggae</option>
+  		    
+  		    <% end %>
+  		    <% if medium.music.genre == "Religious"%>
+  		       	<option value="Religious" selected>Religious</option>
+
+
+  		    <% else %>
+   				<option value="Religious">Religious</option>
+ 		    
+  		    <% end %>
+  		    <% if medium.music.genre == "Rock"%>
+  				<option value="Rock" selected>Rock</option>
+
+  		    <% else %>
+  				<option value="Rock">Rock</option>
+  		    
+  		    <% end %>
+  		    <% if medium.music.genre == "Traditional"%>
+  				<option value="Traditional" selected>Traditional</option>
+
+  		    <% else %>
+  				<option value="Traditional">Traditional</option>
+  		    
+  		    <% end %>
+  		    <% if medium.music.genre == "Other"%>
+   				<option value="Other" selected>Other</option>
+
+  		    <% else %>
+   				<option value="Other">Other</option>
+ 		    
+  		    <% end %>
+  				
+            </select>
+		</div>
+	</div>
+	
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- Make it possbile to submit the form in the modal -->
+        <input type="submit" id="submit-track" class="btn btn-primary" value="Edit Track"></input>       
+      </div>
+      </form>
+    </div>
+  </div>
+</div>   
         <% end %>
       </div>
     </div>  

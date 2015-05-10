@@ -45,6 +45,7 @@ WebInfo2::Application.routes.draw do
 
 # When the user wants to delete their music
   post '/delete_medium', to: 'musics#delete_medium'
+  post '/editTrack', to: 'musics#edit_track'
   resources :medium_comments
 
   resources :media

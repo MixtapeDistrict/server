@@ -221,6 +221,24 @@ class MusicsController < ApplicationController
   	redirect_to url_for(:controller => :profile, :action => :showProfile) and return
   end
 
+  def edit_track
+  	medium_id = params[:medium_id]
+  	track_name = params[:trackname]
+  	track_genre = params[:trackgenre]
+  	# Find the medium
+  	medium = Medium.find_by(id:medium_id)
+  	music = medium.music
+  	# Edit the user's track
+  	if(medium)
+  		medium.title = track_name
+  		music.genre = track_genre
+  		# persist the changes
+  		medium.save
+  		music.save
+  	end
+  	 # Redirect the user to their own profile
+  	redirect_to url_for(:controller => :profile, :action => :showProfile) and return
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_music
