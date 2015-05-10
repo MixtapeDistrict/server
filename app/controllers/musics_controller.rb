@@ -237,9 +237,13 @@ class MusicsController < ApplicationController
 		end
 	end
   	medium_id = params[:medium_id]
-  	track_name = params[:trackname]
+  	track_name = params[:trackname].gsub(/"|'/, '')
   	track_genre = params[:trackgenre]
   	@uploaded_image = params[:trackimage]
+  	if(not @uploaded_image.nil?)
+  		@uploaded_image.original_filename = @uploaded_image.original_filename.gsub(/\s|"|'/, '')
+  	end
+
   	# Find the medium
   	medium = Medium.find_by(id:medium_id)
   	music = medium.music

@@ -209,6 +209,7 @@ class ProfileController < ApplicationController
 		@uploaded_file.original_filename = @uploaded_file.original_filename.gsub(/\s|"|'/, '')
 		@uploaded_image.original_filename = @uploaded_image.original_filename.gsub(/\s|"|'/, '')
 		@track = params
+		@track_name = params['track-name'].gsub(/"|'/, '')
 		puts params
 		# Check if user inputted in no file
 		if(@uploaded_file.nil?)
@@ -233,7 +234,7 @@ class ProfileController < ApplicationController
 				file.write(@uploaded_image.read)
 			end
 			# Create the medium
-			medium = Medium.createnew(session['user_id'].to_i, params['track-name'].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "M")
+			medium = Medium.createnew(session['user_id'].to_i, @track_name, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "M")
 			# Create the music which belongs to this medium
 			music = Music.create(image_path:filenamebase+@uploaded_image.original_filename, plays:0, genre:params['genre'])
 			# Associate this music with the medium
