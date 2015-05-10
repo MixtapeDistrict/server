@@ -26,6 +26,7 @@
     <div role="tabpanel" class="tab-pane active" id="tracks">
 		  <div class="tab-content row">
         <% @owntracks.each do |medium| %>
+        <% rating = ratings(medium.id) %>
        	<div class="element col-md-4">
 	      	<div class="col-md-6">
             <img id="content-img"  alt="" src="assets/mediaimage/<%= medium.image_path %>">
@@ -33,8 +34,28 @@
 	      	<div class="col-md-6 content-info">
 	      		<p class="h4 row info track-name"><%= medium.title %></p>
 	      		<p class="row info track-coll"><%= medium.user.username%></p>
-	      		<p class="row info track-album"></p>
-	      		<p class="row info track-duration"></p>
+	      		<p class="info">Plays:<%=medium.music.plays%></p>
+	      		<p class="info"><a onclick="parent.jplayer_load('<%= medium.title %>','<%=medium.file_path%>', '<%=medium.image_path%>', '<%=medium.user.username%>', '<%=medium.user.id%>', '<%= rating %>', '<%=medium.music.plays%>')"><img class="playtrack" src="assets/images/play.png"></a>
+	      		<a href="/comments/music/?id=<%=medium.music.id%>"><img class="comment" src="assets/images/comment.ico"></a></p>
+	      		<% if rating <= 0.5 %>
+            		<img src="/assets/images/0.5.png" class="rating">
+           	    <% elsif rating <= 1 %>
+               	    <img src="/assets/images/1.0.png" class="rating">
+          	    <% elsif rating <= 1.5 %>
+               	    <img src="/assets/images/1.5.png" class="rating">
+                <% elsif rating <= 2 %>
+                    <img src="/assets/images/2.0.png" class="rating">
+                <% elsif rating <= 3 %>
+                    <img src="/assets/images/3.0.png" class="rating">
+                <% elsif rating <= 3.5 %>
+                    <img src="/assets/images/3.5.png" class="rating">
+                <% elsif rating <= 4 %>
+                   <img src="/assets/images/4.0.png" class="rating">
+                <% elsif rating <= 4.5 %>
+                   <img src="/assets/images/4.5.png" class="rating">
+                <% else %>
+                   <img src="/assets/images/5.0.png" class="rating">
+                <% end %>
 	      	</div>
         </div>              
         <% end %>

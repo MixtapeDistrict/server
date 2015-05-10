@@ -410,5 +410,4 @@ class ProfileController < ApplicationController
   		redirect_to url_for(:controller => :profile, :action => :showProfile) and return
   	end
 
-
 end
