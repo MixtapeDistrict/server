@@ -50,7 +50,11 @@
         <!--Upload Track form-->
         <%= render 'profile/modals/uploadTrack'%>
       </div>
-      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- Make it possbile to submit the form in the modal -->
+        <button id="submit-track" class="btn btn-primary">Upload Track</button>       
+      </div>
     </div>
   </div>
 </div>

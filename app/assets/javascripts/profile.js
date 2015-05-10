@@ -198,18 +198,5 @@ $(document).ready(function(){
 		removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
 		showUpload: false,
 	});
-	/* Initialize file upload plugin for track image update */
-	$(".editImage").fileinput({
-		previewFileType: "image",
-		allowedFileTypes: ['image'],
-		previewSettings:{ image: {width: "90%", height: "160px"}},
-		browseClass: "btn btn-success",
-		browseLabel: " Pick Image",
-		browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
-		removeClass: "btn btn-danger",
-		removeLabel: "Delete",
-		removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
-		showUpload: false,
-	});
 
 });
