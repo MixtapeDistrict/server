@@ -204,6 +204,10 @@ class ProfileController < ApplicationController
 		# Get passed information
   		@uploaded_file = params['track-file']
 		@uploaded_image = params['track-img']
+		# Set our own original file name 
+		# Stript all whitespace, and quotations
+		@uploaded_file.original_filename = @uploaded_file.original_filename.gsub(/\s|"|'/, '')
+		@uploaded_image.original_filename = @uploaded_image.original_filename.gsub(/\s|"|'/, '')
 		@track = params
 		puts params
 		# Check if user inputted in no file
