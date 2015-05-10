@@ -93,7 +93,7 @@
       </div>
       <div class="modal-body">
         <!--Upload Track form-->
-        <form class="form-horizontal"  action="/editTrack" method="post">		
+        <form class="form-horizontal"  action="/editTrack" method="post" enctype="multipart/form-data">		
 	
     <div class="new-track-name form-group">
 		<label for="track-name" class="col-md-4 control-label">Track Name:</label>							
@@ -188,9 +188,15 @@
   		    <% end %>
   				
             </select>
+
 		</div>
 	</div>
-	
+	<div class="new-image-track form-group">
+		<label for="edit-trackimage" class="col-md-4 control-label">Track Image:</label>
+		<div class="col-md-7">
+			<input class="editImage" type="file" name="trackimage" accept="image/*">
+		</div>
+	</div>	
 
 
 
