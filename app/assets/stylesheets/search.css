@@ -1,0 +1,18 @@
+.content-info {
+	margin: 0;
+	padding: 5px;
+	padding-left: 10px;
+	font-size: 10px;
+}
+
+.track-name, .user-name {
+	margin-top: 0 !important; 
+}
+
+.rating{
+	width: 100px;
+}
+
+.content-img {
+	height: 250px;
+}

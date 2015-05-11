@@ -27,11 +27,11 @@
 		  <div class="tab-content row">
         <% @owntracks.each do |medium| %>
         <% rating = ratings(medium.id) %>
-       	<div class="element col-md-4">
-	      	<div class="col-md-6">
-            	<img id="content-img"  alt="" src="assets/mediaimage/<%= medium.image_path %>">
+       	<div class="element col-md-4 col-sm-6 col-xs-6 clearfix">
+	      	<div class="col-md-6 col-sm-6 col-xs-6 content-img">
+            	<img class="img-thumbnail"  alt="Track Image" src="assets/mediaimage/<%= medium.image_path %>">
        	    </div>
-	      	<div class="col-md-6 content-info">
+	      	<div class="col-md-6 col-sm-6 col-xs-6 content-info">
 	      		<p class="h4 row info track-name"><%= medium.title %></p>
 	      		<p class="row info track-coll"><%= medium.user.username%></p>
 	      		<p class="info">Plays:<%=medium.music.plays%></p>
@@ -65,7 +65,7 @@
 
         <!-- The delete modal for this track -->
         <div class="modal fade" id="delete-track-<%= medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
-  			<div class="modal-dialog modal-lg">
+  			<div class="modal-dialog">
     			<div class="modal-content">
     			  <div class="modal-header">
     			    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -82,9 +82,9 @@
     			  </div>
     			</div>
   			</div>
-		</div>  
+		    </div>  
 		<!-- The edit modal for this track -->
-		 <div class="modal fade" id="edit-track-<%=medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
+		    <div class="modal fade" id="edit-track-<%=medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
          	<div class="modal-dialog modal-lg">
            		 <div class="modal-content">
            			 <div class="modal-header">
@@ -200,8 +200,8 @@
     						  </form>
     				    </div>
     				</div>
- 			 </div>
-		</div>   
+ 			    </div>
+		    </div>   
         <% end %>
       </div>
     </div>  
@@ -217,13 +217,13 @@
     <div role="tabpanel" class="tab-pane" id="collaborators">
       <div class="tab-content row">
         <% for i in 0..@approved_requests.count - 1 %>
-          <div class="element col-md-4">
-            <div class="col-md-6">
-              <%= image_tag "userimage/" + User.find(@approved_ids[i]).image_path, id:"content-img", 
+          <div class="element col-md-4 col-sm-6 col-xs-6 clearfix">
+            <div class="col-md-6 col-sm-6 col-xs-6 coll-img">
+              <%= image_tag "userimage/" + User.find(@approved_ids[i]).image_path, class:"img-thumbnail", 
               alt:"Collaborator Image" %>
                <!--Need to include user image source-->
             </div>
-            <div class="col-md-6 content-info">
+            <div class="col-md-6 col-sm-6 col-xs-6 content-info">
               <p class="h4 row info coll-name">
                 <%= link_to User.find(@approved_ids[i]).username , 
                 {:controller => 'profile', :action => 'showOther', :id => @approved_ids[i] } %>
@@ -240,17 +240,17 @@
     <div role="tabpanel" class="tab-pane" id="following">
       <div class="tab-content row">
         <% for i in 0..@num_following - 1  %>
-          <div class="element col-md-4">
-            <div class="col-md-6">
-            <%= image_tag "userimage/" + User.find(@ids[i]).image_path, id:"content-img", 
+          <div class="element col-md-4 col-sm-6 col-sm-6 clearfix">
+            <div class="col-md-6 col-sm-6 col-xs-6 foll-img">
+            <%= image_tag "userimage/" + User.find(@ids[i]).image_path, class:"img-thumbnail", 
             alt:"User Image"%> 
             </div>
-            <div class="col-md-6 content-info">
+            <div class="col-md-6 col-sm-6 col-xs-6 content-info">
               <p class="h4 row info foll-name">
                 <%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
               </p>
-              <p class="row info followers">
-                <span class="foll-num"><%= Follower.where(user_id:@ids[i]).count %><span> followers
+              <p class="row info num-foll">
+                <%= Follower.where(user_id:@ids[i]).count %> followers
               </p>            
             </div>
           </div>

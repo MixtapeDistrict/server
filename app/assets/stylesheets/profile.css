@@ -7,9 +7,17 @@
 	margin-left: 0;			
 }
 
-#content-img {	
-	width: 100px;
-	height: 100px;
+.content-img {	
+	height: 200px;
+}
+
+.coll-img, .foll-img{
+	height: 90px;
+}
+
+.artist-image {
+	max-width: 200px;
+	max-height: 500px;
 }
 
 .artist-name {
@@ -21,7 +29,7 @@
 }
 
 .element {
-	margin-bottom: 35px;
+	margin-bottom: 10px;
 }
 
 .info {
