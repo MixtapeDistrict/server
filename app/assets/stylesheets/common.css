@@ -94,4 +94,11 @@ form {
   position: relative;
   left: 30%;
 }
-
+.playtrack-search {
+  height:27px; 
+  width:27px;
+}
+.comment-search {
+	height:27px;
+	width:27px;
+}

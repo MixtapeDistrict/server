@@ -15,7 +15,7 @@ class ProfileController < ApplicationController
 
 			# Should fetch user's data from database and display profile details.
 			userID = session['user_id']
-
+			@userID = userID
 			if userID <= 0
 				render nothing: true
 			end
@@ -204,7 +204,12 @@ class ProfileController < ApplicationController
 		# Get passed information
   		@uploaded_file = params['track-file']
 		@uploaded_image = params['track-img']
+		# Set our own original file name 
+		# Stript all whitespace, and quotations
+		@uploaded_file.original_filename = @uploaded_file.original_filename.gsub(/\s|"|'/, '')
+		@uploaded_image.original_filename = @uploaded_image.original_filename.gsub(/\s|"|'/, '')
 		@track = params
+		@track_name = params['track-name'].gsub(/"|'/, '')
 		puts params
 		# Check if user inputted in no file
 		if(@uploaded_file.nil?)
@@ -229,7 +234,7 @@ class ProfileController < ApplicationController
 				file.write(@uploaded_image.read)
 			end
 			# Create the medium
-			medium = Medium.createnew(session['user_id'].to_i, params['track-name'].to_s, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "M")
+			medium = Medium.createnew(session['user_id'].to_i, @track_name, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "M")
 			# Create the music which belongs to this medium
 			music = Music.create(image_path:filenamebase+@uploaded_image.original_filename, plays:0, genre:params['genre'])
 			# Associate this music with the medium
@@ -253,7 +258,7 @@ class ProfileController < ApplicationController
 
 			# Get other person's id.
 			userID = user.id
-
+			@userID = userID
 			
 
 			# If you are following this person, the follow button should not be visible.
@@ -409,6 +414,5 @@ class ProfileController < ApplicationController
   		# Redirect the user to their profile page
   		redirect_to url_for(:controller => :profile, :action => :showProfile) and return
   	end
-
 
 end

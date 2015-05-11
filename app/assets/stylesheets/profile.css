@@ -78,4 +78,22 @@ form {
 	width: 200px;
 }
 
+.playtrack {
+  height:27px; 
+  width:27px;
+}
+
+.comment{
+  height:30px; 
+  width:30px;   
+}
+
+.star-rating {
+	height: 20px;
+}
+.rating {
+	width:100px;
+}
+
+
 

@@ -15,6 +15,7 @@
 
 <!-- Display all tracks and users -->
 	<% @track_results.each do |track| %>
+	    <% rating = ratings track.id %>
 		<div class="col-md-4">
 	      	<div class="col-md-6">
 	      	<% if track.image_path.nil? == false or track.image_path.length > 0 %>
@@ -30,7 +31,30 @@
 	      		<% end %>
 	      		<p class="h4 row info track-name">Creator: 
 	      		<%= link_to User.find(track.user_id).username, controller:"profile", action:"showOther", :id => track.user_id %></p>
-	
+	  			<p class="h4 row info track-name">Plays:<%=track.music.plays%></p>
+	  			<p class="h4 row info track-name"><a onclick="parent.jplayer_load('<%= track.title %>','<%=track.file_path%>', '<%=track.image_path%>', '<%=track.user.username%>', '<%=track.user.id%>', '<%= rating %>', '<%=track.music.plays%>')"><img class="playtrack-search" src="assets/images/play.png">
+	  			<a href="/comments/music/?id=<%=track.music.id%>"><img class="comment-search" src="assets/images/comment.ico"></a></p>
+	  			<p class="h4 row info track-name">
+	  				<% if rating <= 0.5 %>
+            		<img src="/assets/images/0.5.png" class="rating">
+           	    <% elsif rating <= 1 %>
+               	    <img src="/assets/images/1.0.png" class="rating">
+          	    <% elsif rating <= 1.5 %>
+               	    <img src="/assets/images/1.5.png" class="rating">
+                <% elsif rating <= 2 %>
+                    <img src="/assets/images/2.0.png" class="rating">
+                <% elsif rating <= 3 %>
+                    <img src="/assets/images/3.0.png" class="rating">
+                <% elsif rating <= 3.5 %>
+                    <img src="/assets/images/3.5.png" class="rating">
+                <% elsif rating <= 4 %>
+                   <img src="/assets/images/4.0.png" class="rating">
+                <% elsif rating <= 4.5 %>
+                   <img src="/assets/images/4.5.png" class="rating">
+                <% else %>
+                   <img src="/assets/images/5.0.png" class="rating">
+                <% end %>
+	      	</p>
 	      	</div>
         </div>  
 	<% end %>
