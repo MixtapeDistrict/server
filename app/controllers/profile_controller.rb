@@ -33,7 +33,6 @@ class ProfileController < ApplicationController
 				@approved_ids[i] = @approved_requests[i].second_id
 			end
 
-
 			if (user)
 				@username = user.username
 				@email = user.email
@@ -258,7 +257,6 @@ class ProfileController < ApplicationController
 			# Get other person's id.
 			userID = user.id
 			@userID = userID
-			
 
 			# If you are following this person, the follow button should not be visible.
 			if Follower.where(user_id:userID, follower_id:logged_in_id).count > 0

@@ -104,8 +104,12 @@ form {
 }
 
 /**************************************************/
+
 .modal.modal-wide .modal-dialog {
-  width: 20%;
+  position: relative;
+  width: 250px;
+  margin-right: 10%;
+  margin-top: 0%;
 }
 .modal-wide .modal-body {
   overflow-y: auto;
