@@ -11,6 +11,7 @@ class CollaborationController < ApplicationController
 	def coRequest
   		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
+		
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome)
@@ -49,6 +50,7 @@ class CollaborationController < ApplicationController
 	def showRequests
   		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
+		
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome)
@@ -84,6 +86,7 @@ class CollaborationController < ApplicationController
 	def acceptRequest
 		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
+		
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome)
@@ -99,7 +102,6 @@ class CollaborationController < ApplicationController
 			Collaboration.find_by(first_id:otherID, second_id:userID).update(approved:true)
 
 			redirect_to url_for(:action => :showRequests)
-
 		else
 			redirect_to url_for(:controller => :home, :action => :showHome)
 		end

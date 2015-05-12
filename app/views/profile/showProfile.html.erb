@@ -6,38 +6,38 @@
   <div class="container">
     <!-- Artist details, see classes for information-->
     <div class="col-md-2">
-      <div class="artist-image row">
-        <%= image_tag("userimage/#{@image_path}", class: 'img-thumbnail', alt: 'Artist Image') %>
-      </div>
-      <div class="description row">
-          <p> <span class="h4">Description:</span></br>
-          <%= @description %></p>
-      </div> 
-      <div class="e-mail row">
-          <p><span class="h4">Email:</span></br> 
-          <%= @email %></p>
-      </div>
-      <div class="artist-web row">
-          <p><span class="h4"> Website:</span></p>
-          <div class="website">
-            <%= link_to @website_link.to_s, @website_link, :target => '_blank'%> 
-          </div>
-      </div>
-      <div class="followers-count row">
-          <p class="h4"> <%= link_to "Followers (" + @num_followers.to_s  + ")", '/followers'%></p>                
-      </div>
-      <!-- Buttons to display own profile, refer to viewself partial-->  
-      <%= render "profile/buttons/viewself"%>
-    </div>  
-    <div class="col-md-9">
-      <div class="artist-name row">
-        <h2><%= @username %></h2>  
-      </div>
-      <!-- Refer to tabpanel partial -->
-      <%= render 'tabpanel'%>
-    </div>          
+		<div class="artist-image row">
+			<%= image_tag("userimage/#{@image_path}", class: 'img-thumbnail', alt: 'Artist Image') %>
+		</div>
+		<div class="description row">
+			<p> <span class="h4">Description:</span></br>
+			<%= @description %></p>
+		</div> 
+		<div class="e-mail row">
+			<p><span class="h4">Email:</span></br> 
+			<%= @email %></p>
+		</div>
+		<div class="artist-web row">
+			<p><span class="h4"> Website:</span></p>
+			<div class="website">
+				<%= link_to @website_link.to_s, @website_link, :target => '_blank'%> 
+			</div>
+		</div>
+			<div class="followers-count row">
+				<p class="h4"> <%= link_to "Followers (" + @num_followers.to_s  + ")", '/followers'%></p>                
+			</div>
+		<!-- Buttons to display own profile, refer to viewself partial-->  
+		<%= render "profile/buttons/viewself"%>
+		</div>  
+		<div class="col-md-9">
+			<div class="artist-name row">
+				<h2><%= @username %></h2>  
+			</div>
+			<!-- Refer to tabpanel partial -->
+			<%= render 'tabpanel'%>
+		</div>          
 
-  </div>
+	</div>
 </div>
 
 <%= render 'profile/modals/modals'%>

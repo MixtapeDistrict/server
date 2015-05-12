@@ -11,14 +11,22 @@ class User < ActiveRecord::Base
 
 	has_many :followers, dependent: :destroy
 	
+	#Function for changing user profile images
 	def self.updateimage(user, img)
+		#Assign unique filename prefix (Time uploaded to the second)
 		filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'+img.original_filename
+		
+		#Upload file to development location
 		File.open(Rails.root.join('app/assets/images', 'userimage', filenamebase), 'wb') do |file|
 			file.write(img.read)
-		user = User.where(id: user).first
-		user.image_path = filenamebase
-		user.save
+			
+			#Assign the image to the correct user
+			user = User.where(id: user).first
+			user.image_path = filenamebase
+			user.save
 		end
+		
+		#Upload the image to the production location
 		File.open(Rails.root.join('public/assets/images', 'userimage', filenamebase), 'wb') do |file|
 			file.write(img.read)
 		end

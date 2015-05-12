@@ -7,6 +7,7 @@ class ProfileController < ApplicationController
 	def showProfile
 		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
+		
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome)
@@ -18,7 +19,8 @@ class ProfileController < ApplicationController
 			if userID <= 0
 				render nothing: true
 			end
-
+			
+			#Get details for current logged in user
 			user = User.find(userID)
 
 			# Get the ids of all people requesting to collaborate with you.
@@ -33,6 +35,10 @@ class ProfileController < ApplicationController
 				@approved_ids[i] = @approved_requests[i].second_id
 			end
 
+<<<<<<< HEAD
+=======
+			#Execute only if a user is logged in
+>>>>>>> origin/master
 			if (user)
 				@username = user.username
 				@email = user.email
@@ -99,6 +105,7 @@ class ProfileController < ApplicationController
 				@num_followers = 0
 			end
 
+			#Get the follower details
 			@follower_names = Array.new(@num_followers)
 			@follower_ids = Array.new(@num_followers)
 
@@ -128,9 +135,8 @@ class ProfileController < ApplicationController
 				redirect_to url_for(:controller => :home, :action => :showHome)
 			end
 
-			# Get user id.
+			# Get user id and details
 			userID = session['user_id']
-
 			@username = User.find(userID).username
 			@email = User.find(userID).email
 			@website_link = User.find(userID).website_link
@@ -146,6 +152,7 @@ class ProfileController < ApplicationController
   	def updateDetails
   		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
+		
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome)
@@ -189,10 +196,11 @@ class ProfileController < ApplicationController
 		end
   	end
 
-  	# Allowers registered users to upload music
+  	# Allows registered users to upload music
 	def newTrack
 		# Ensure user is logged in 
 		if(session.has_key?("logged_in"))
+		
 			# If the user is not logged in, redirect to the homepage
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome) and return
@@ -202,43 +210,61 @@ class ProfileController < ApplicationController
 		# Get passed information
   		@uploaded_file = params['track-file']
 		@uploaded_image = params['track-img']
-		# Set our own original file name 
-		# Stript all whitespace, and quotations
+
+		# Remove non alphanumeric characters from filename
 		@uploaded_file.original_filename = @uploaded_file.original_filename.gsub(/\s|"|'/, '')
 		@uploaded_image.original_filename = @uploaded_image.original_filename.gsub(/\s|"|'/, '')
+		
+		#Assign parameters to variable for easy access
 		@track = params
+		
+		#Strip out non alphanumeric characters from the name to be stored
 		@track_name = params['track-name'].gsub(/"|'/, '')
-		puts params
-		# Check if user inputted in no file
+		
+		
+		#Check if no file was selected
 		if(@uploaded_file.nil?)
 			redirect_to url_for(:controller => :profile, :action => :showProfile) and return
-		end
-		filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
-		File.open(Rails.root.join('public/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
-			file.write(@uploaded_file.read)
-		end
-		File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
-			file.write(@uploaded_file.read)
+		else
+			#Assign unique prefix to the file (Upload time down to the second)
+			filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
+			
+			#Upload to two different locations so that file is accessible in both development and production mode
+			File.open(Rails.root.join('public/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
+				file.write(@uploaded_file.read)
+			end
+			File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
+				file.write(@uploaded_file.read)
+			end
 		end
 
 
+		#Check if no image was selected
 		if(@uploaded_image.nil?)
+			#Use default placeholder details if no image is selected
 			Medium.createnew(session['user_id'].to_i, params[:title].to_s, filenamebase+@uploaded_file.original_filename, "placeholder.gif", "music")
 		else
+		
+			#Upload to two locations so file is accessible in both development and production mode
 			File.open(Rails.root.join('app/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
 				file.write(@uploaded_image.read)
 			end
 			File.open(Rails.root.join('public/assets/images', 'mediaimage', filenamebase+@uploaded_image.original_filename), 'wb') do |file|
 				file.write(@uploaded_image.read)
 			end
+			
 			# Create the medium
 			medium = Medium.createnew(session['user_id'].to_i, @track_name, filenamebase+@uploaded_file.original_filename, filenamebase+@uploaded_image.original_filename, "M")
+			
 			# Create the music which belongs to this medium
 			music = Music.create(image_path:filenamebase+@uploaded_image.original_filename, plays:0, genre:params['genre'])
-			# Associate this music with the medium
+			
+			# Associate this music with the medium and ensure commit
 			medium.music = music
 			medium.save
 		end
+		
+		#Refresh the profile when done.
 		redirect_to url_for(:controller => :profile, :action => :showProfile)
   	end
 
@@ -282,15 +308,15 @@ class ProfileController < ApplicationController
 
 		end
 
+		#Get user id and details
 		@otherID = user.id
-
 		@username = user.username
 		@email = user.email
 		@description = user.description
 		@website_link =  user.website_link
 		@image_path  = user.image_path
 		@tracks = user.tracks_heard
-			
+		
 		#Get the other user's tracks
 		@owntracks = Medium.getusertracks(user)
 
@@ -337,6 +363,7 @@ class ProfileController < ApplicationController
   	def unfollow
   		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
+		
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome)
@@ -364,6 +391,7 @@ class ProfileController < ApplicationController
   	def follow
 		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
+		
 			# If the user is not logged in redirect to homepage
 			if(session['logged_in'] != 1) 
 				redirect_to url_for(:controller => :home, :action => :showHome)
@@ -402,14 +430,19 @@ class ProfileController < ApplicationController
   		else
   			redirect_to url_for(:controller => :home, :action => :showHome) and return
   		end
+		
   		# Get the user's new email
   		email = params[:payment_email]
+		
   		# Find the user's database record
   		user = User.find_by(id:session['user_id'])
+		
   		# Change their payment email
   		user.payment_email = email
+		
   		# Save the record
   		user.save
+		
   		# Redirect the user to their profile page
   		redirect_to url_for(:controller => :profile, :action => :showProfile) and return
   	end

@@ -27,13 +27,13 @@ class MusicAlbumsController < ApplicationController
     @music_album = MusicAlbum.new(music_album_params)
 
     respond_to do |format|
-      if @music_album.save
-        format.html { redirect_to @music_album, notice: 'Music album was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @music_album }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @music_album.errors, status: :unprocessable_entity }
-      end
+		if @music_album.save
+			format.html { redirect_to @music_album, notice: 'Music album was successfully created.' }
+			format.json { render action: 'show', status: :created, location: @music_album }
+		else
+			format.html { render action: 'new' }
+			format.json { render json: @music_album.errors, status: :unprocessable_entity }
+		end
     end
   end
 
@@ -41,13 +41,13 @@ class MusicAlbumsController < ApplicationController
   # PATCH/PUT /music_albums/1.json
   def update
     respond_to do |format|
-      if @music_album.update(music_album_params)
-        format.html { redirect_to @music_album, notice: 'Music album was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @music_album.errors, status: :unprocessable_entity }
-      end
+		if @music_album.update(music_album_params)
+			format.html { redirect_to @music_album, notice: 'Music album was successfully updated.' }
+			format.json { head :no_content }
+		else
+			format.html { render action: 'edit' }
+			format.json { render json: @music_album.errors, status: :unprocessable_entity }
+		end
     end
   end
 
@@ -56,8 +56,8 @@ class MusicAlbumsController < ApplicationController
   def destroy
     @music_album.destroy
     respond_to do |format|
-      format.html { redirect_to music_albums_url }
-      format.json { head :no_content }
+		format.html { redirect_to music_albums_url }
+		format.json { head :no_content }
     end
   end
 

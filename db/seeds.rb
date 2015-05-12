@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+#THIS IS AN OLD SEEDS FILE, IT IS ONLY PARTIALLY COMPATIBLE WITH THE CURRENT SCHEMA, USE AT OWN RISK#
+
 #Users#
 
 User.create(username: "Stevenmagnet", password: "magnets", email: "steve@magnecorp.net", description: "Magnetic tape is the purest form of audio storage.", website_link: "http://gyropedia.wikia.com/wiki/Steven_Magnet", tracks_heard: "", image_path: 'steven.png')
