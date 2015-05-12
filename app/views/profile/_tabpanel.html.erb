@@ -35,6 +35,7 @@
 	      		<p class="h4 row info track-name"><%= medium.title %></p>
 	      		<p class="row info track-coll"><%= medium.user.username%></p>
 	      		<p class="info">Plays:<%=medium.music.plays%></p>
+	      		<p class="info">Genre:<%=medium.music.genre%></p>
 	      		<% if session['logged_in']==1 && session['user_id']==@userID %>
                    <p class = "info"><a data-toggle="modal" data-target="#delete-track-<%= medium.music.id%>" href="#delete">Delete track</a></p>
                    <a data-toggle="modal" data-target="#edit-track-<%=medium.music.id%>" href="#edit">Edit track</a></p>
