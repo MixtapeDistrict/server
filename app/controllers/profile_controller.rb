@@ -45,7 +45,7 @@ class ProfileController < ApplicationController
 
 				# Get the array of tracks that this user has uploaded
 				@owntracks = Medium.getusertracks(session['user_id'])
-				
+
 				# Count the number of followers the user has.
 				if Follower.where(user_id:userID).count > 0
 					@num_followers = Follower.where(user_id:userID).count

@@ -8,13 +8,16 @@ class ApplicationController < ActionController::Base
 		allTracks = Medium.all
 		numTracks = allTracks.count
 
-		# Create new array to store results
-		@track_results = Array.new
+		# Create a hash to store results
+		@track_results = Hash.new
 
 		# Search for every track title with that string.
 		for i in 0..numTracks-1
 			if allTracks[i].title.downcase.include? search_string
-				@track_results.push(allTracks[i])
+				@track_results[allTracks[i].id] = allTracks[i]
+			end
+			if Music.find_by(medium_id:allTracks[i].id).genre.downcase.include? search_string
+				@track_results[allTracks[i].id] = allTracks[i]
 			end
 		end
 

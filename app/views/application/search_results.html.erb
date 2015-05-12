@@ -15,7 +15,7 @@
 		<% end %>
 
 		<!-- Display all tracks and users -->
-		<% @track_results.each do |track| %>
+		<% @track_results.each do |key, track| %>
 		<div class="col-md-4 col-sm-6 clearfix">
 		  <div class="col-md-6 col-sm-6 content-img">
 	      	<% if track.image_path.nil? == false or track.image_path.length > 0 %>
