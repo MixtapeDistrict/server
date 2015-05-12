@@ -8,40 +8,40 @@
 
 <!-- All the content on the homepage -->
 <div id="content" class="container-fluid">
-  <div class="container">
+	<div class="container">
     <!-- Artist details, see classes for information-->
     <div class="col-md-2">
-      <div class="artist-image row">
-        <%= image_tag("userimage/#{@image_path}", class: 'img-thumbnail', alt: 'Artist Image') %>
-      </div>
-      <div class="description row">
-          <p> <span class="h4">Description:</span></br>
-          <%= @description %></p>
-      </div> 
-      <div class="e-mail row">
-          <p><span class="h4">Email:</span></br> 
-          <%= @email %></p>
-      </div>
-      <div class="artist-web row">
-          <p><span class="h4"> Website:</span></p>
-          <div class="website">
-            <%= link_to @website_link.to_s, @website_link, :target => '_blank'%> 
-          </div>
-      </div>
-      <div class="followers-count row">
-          <p class="h4">Followers (<%= @num_followers %>)</p>                
-      </div>
-      <%= render 'profile/buttons/viewothers' %>
+		<div class="artist-image row">
+			<%= image_tag("userimage/#{@image_path}", class: 'img-thumbnail', alt: 'Artist Image') %>
+		</div>
+		<div class="description row">
+			<p> <span class="h4">Description:</span></br>
+			<%= @description %></p>
+		</div> 
+		<div class="e-mail row">
+			<p><span class="h4">Email:</span></br> 
+			<%= @email %></p>
+		</div>
+		<div class="artist-web row">
+			<p><span class="h4"> Website:</span></p>
+			<div class="website">
+				<%= link_to @website_link.to_s, @website_link, :target => '_blank'%> 
+			</div>
+		</div>
+		<div class="followers-count row">
+			<p class="h4">Followers (<%= @num_followers %>)</p>                
+		</div>
+		<%= render 'profile/buttons/viewothers' %>
     <!-- Add _viewothers.html.erb when viewing other people's profile to see buttons. -->
 
-    </div>
+	</div>
     <div class="col-md-9">
-      <div class="artist-name row">
-        <h1><%= @username %></h1>  
-      </div>
-      <!-- Refer to tabpanel partial -->
-      <%= render 'tabpanel'%>
-    </div>        
-  </div>
+		<div class="artist-name row">
+			<h1><%= @username %></h1>  
+		</div>
+		<!-- Refer to tabpanel partial -->
+		<%= render 'tabpanel'%>
+		</div>        
+	</div>
 </div>
 
