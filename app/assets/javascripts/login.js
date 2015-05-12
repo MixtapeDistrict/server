@@ -26,7 +26,7 @@ function sign_in() {
       	<input type=\"submit\" class=\"navbar-btn btn btn-search btn-default hidden-xs\" value=\"Go!\"/>\
       </div></form></li>\
 	<li class=\"dropdown\">\
-      <a href=\"/user_profile\" class=\"dropdown-toggle\" data_toggle=\"dropdown\" role=\"button\" aria_expanded=\"true\">Profile</a>\
+      <a href=\"/user_profile\" class=\"dropdown-toggle\" data_toggle=\"dropdown\" role=\"button\" aria_expanded=\"true\"><img src='assets/person.png' style='width:20px; height:22px;'></a>\
     </li>\
     <li class=\"dropdown\">\
       <form action=\"/sign_out\" method=\"post\">\
