@@ -102,3 +102,13 @@ form {
 	height:27px;
 	width:27px;
 }
+
+/**************************************************/
+.modal.modal-wide .modal-dialog {
+  width: 20%;
+}
+.modal-wide .modal-body {
+  overflow-y: auto;
+}
+
+
