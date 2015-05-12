@@ -35,10 +35,6 @@ class ProfileController < ApplicationController
 				@approved_ids[i] = @approved_requests[i].second_id
 			end
 
-<<<<<<< HEAD
-=======
-			#Execute only if a user is logged in
->>>>>>> origin/master
 			if (user)
 				@username = user.username
 				@email = user.email

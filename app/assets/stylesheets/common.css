@@ -115,4 +115,10 @@ form {
   overflow-y: auto;
 }
 
-
+.line {
+  display: block;
+  height: 1px;
+  width: 220px;
+  border: 5px;
+  border-top: 1px solid;
+}
