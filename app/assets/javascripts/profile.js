@@ -57,6 +57,7 @@ function update_profile() {
     // Simulates the las 100 tracks
     var track_id = range(1,100);
 
+/*
         //Test for the grind
     var albums = '{"albums":[' +
     '{"cover":"common/'+ track_id[13]+'.jpg"},' +
@@ -72,7 +73,7 @@ function update_profile() {
     '{"cover":"common/'+ track_id[23]+'.jpg"},' +
     '{"cover":"common/'+ track_id[24]+'.jpg"},' +
     '{"cover":"common/'+ track_id[25]+'.jpg"}]}';
-
+*/
 // END TRACKS PICK SIMULATION: Won't be here when the database is connected
 
 // Create the grind

@@ -10,9 +10,6 @@
       <a href="#tracks" aria-controls="tracks" role="tab" data-toggle="tab">Tracks</a>
     </li>
     <li role="presentation">
-      <a href="#albums" aria-controls="albums" role="tab" data-toggle="tab">Albums</a>
-    </li>
-    <li role="presentation">
       <a href="#collaborators" aria-controls="collaborators" role="tab" data-toggle="tab">Collaborators</a>
     </li>
     <li role="presentation">
@@ -196,7 +193,7 @@
 							 <div class="modal-footer">
         						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
        							 <!-- Make it possbile to submit the form in the modal -->
-      							  <input type="submit" id="submit-track" class="btn btn-primary" value="Edit Track">\    
+      							  <input type="submit" id="submit-track" class="btn btn-primary" value="Edit Track">    
     						  </div>
     						  </form>
     				    </div>
@@ -206,13 +203,6 @@
         <% end %>
       </div>
     </div>  
-    
-    <div role="tabpanel" class="tab-pane" id="albums">
-      <div class="row">
-        <%= link_to "Album Preview", "album", :target => "_blank", :type => "button", 
-          :class => "btn btn-default album-preview center-block" %>         
-      </div> 
-    </div>
     
     <!-- Add collaborators here. -->
     <div role="tabpanel" class="tab-pane" id="collaborators">

@@ -1,3 +1,10 @@
+# Collaborations functionality.
+# Modified at: 12th May 2015
+# 
+# User when viewing another person's profile, you
+# can make a collaboration request to the person, and 
+# vice-versa.
+
 class CollaborationController < ApplicationController
 
 	# Creates a request to another user to collaborate with him/her.
@@ -37,6 +44,8 @@ class CollaborationController < ApplicationController
 		end
 	end
 
+
+	# Show all requests made by other users to YOU.
 	def showRequests
   		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))
@@ -70,6 +79,8 @@ class CollaborationController < ApplicationController
 		end
 	end
 
+
+	# Action to accept request by other person.
 	def acceptRequest
 		# Ensure user is logged in to view this page
 		if(session.has_key?("logged_in"))

@@ -1,6 +1,5 @@
-# Actions for all profile modifications and display.
-# Creator: Vui Chee 
-# Last modified 5th May 2015
+# Actions for all profile modifications and display profile details.
+# Last modified 12th May 2015
 
 class ProfileController < ApplicationController
 
@@ -362,6 +361,7 @@ class ProfileController < ApplicationController
 		end
   	end
 
+
   	# Use this follow to follow someone.
   	def follow
 		# Ensure user is logged in to view this page
@@ -392,6 +392,7 @@ class ProfileController < ApplicationController
 			redirect_to url_for(:controller => :home, :action => :showHome)
 		end
   	end
+
 
   	# Changes the user's payment email
   	def change_payment_email

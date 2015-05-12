@@ -5,7 +5,6 @@ WebInfo2::Application.routes.draw do
   # get 'home/index'
   #root 'home#showHome'
   get '/home', to: 'home#showHome'
-  get '/album', to: 'album#showAlbum'
   match ':controller(/:action(/:id))', :via => :get
   post '/sign_up', to: 'home#sign_up'
   post '/sign_out', to: 'home#sign_out'

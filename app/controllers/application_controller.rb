@@ -1,14 +1,22 @@
+# Search functionality 
+# Search for all strings that match the substring entered by user.
+# Modified at: 12th May 2015
+
 class ApplicationController < ActionController::Base
 
 	helper_method :ratings
+
+	# Search action. 
 	def search_results
 		
+		# User entered input.
 		search_string = params[:search].downcase
 
+		# Get all tracks.
 		allTracks = Medium.all
 		numTracks = allTracks.count
 
-		# Create a hash to store results
+		# Create a hash to store results.
 		@track_results = Hash.new
 
 		# Search for every track title with that string.
@@ -21,23 +29,25 @@ class ApplicationController < ActionController::Base
 			end
 		end
 
+		# Get all users
 		allUsers = User.all
 		numUsers = allUsers.count
 
 		@user_results = Hash.new
 
-		# Get all 
+		# Get all users with matching usernames.
 		for i in 0..numUsers-1
 			if allUsers[i].username.downcase.include? search_string
 				@user_results[allUsers[i].id] = allUsers[i].username
 			end
 		end
 
+		# No matching results.
 		if @track_results.count == 0 and @user_results.count == 0
 			@no_results = true
 		end
-
 	end
+
 
     # Gets a rating for a given medium id
     def ratings(medium_id)
@@ -47,6 +57,7 @@ class ApplicationController < ActionController::Base
   		rating_count = 0
    	    rating_sum = 0
    	    user_ratings = Rating.where(medium_id:medium_id)
+   	    # Get the average rating of every user.
     	for user_rating in user_ratings
   		    rating_sum  += user_rating.rating
   		    rating_count += 1
@@ -58,6 +69,4 @@ class ApplicationController < ActionController::Base
   	   return rating
     end
     
-
-
 end
