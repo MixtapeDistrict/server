@@ -245,9 +245,14 @@ $(document).ready(function(){
 var PANEL_SIZE = 130;
 var TO_RADIANS = Math.PI/180;
 var BACKFACE_INVISIBLE = true;
+var selectedIndex = 0;
+var carouselData = null;
 
 // Creates a Carousel from an Array 
 function doCarousel(data){
+	
+	carouselData = data;
+	
     var spinner = $("#carousel");
     var interval = 360/data.length;
     var r = PANEL_SIZE/(Math.tan((interval/2)*TO_RADIANS));
@@ -269,6 +274,16 @@ function galleryspin(sign) {
     var carousel = document.querySelector('#carousel');
     var numPanels = carousel.children.length;
     var increment = sign ? -1 : 1;
+    
+	selectedIndex+=increment;
+	if(selectedIndex >= carouselData.length){
+		selectedIndex-=carouselData.length;
+	}else if(selectedIndex < 0){
+		selectedIndex+=carouselData.length;
+	}
+	
+	console.log(selectedIndex);
+	console.log(carouselData[selectedIndex]);
     
     angle += ( -360 / numPanels ) * increment;
     carousel.style[ '-webkit-transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';
