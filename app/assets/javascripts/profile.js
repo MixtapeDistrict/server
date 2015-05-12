@@ -57,7 +57,7 @@ function update_profile() {
     // Simulates the las 100 tracks
     var track_id = range(1,100);
 
-/*
+
         //Test for the grind
     var albums = '{"albums":[' +
     '{"cover":"common/'+ track_id[13]+'.jpg"},' +
@@ -73,7 +73,7 @@ function update_profile() {
     '{"cover":"common/'+ track_id[23]+'.jpg"},' +
     '{"cover":"common/'+ track_id[24]+'.jpg"},' +
     '{"cover":"common/'+ track_id[25]+'.jpg"}]}';
-*/
+
 // END TRACKS PICK SIMULATION: Won't be here when the database is connected
 
 // Create the grind
@@ -186,19 +186,7 @@ $(document).ready(function(){
 		removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
 		showUpload: false,
 	});
-	/* Initialize file upload pluging for album image upload */
-	$("#album-image").fileinput({
-		previewFileType: "image",
-		allowedFileTypes: ['image'],		
-		previewSettings:{ image: {width: "90%", height: "160px"}},
-		browseClass: "btn btn-success",
-		browseLabel: " Pick Image",
-		browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
-		removeClass: "btn btn-danger",
-		removeLabel: "Delete",
-		removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
-		showUpload: false,
-	});
+
 	/* Initialize file upload plugin for track image update */
 	$(".editImage").fileinput({
 		previewFileType: "image",
