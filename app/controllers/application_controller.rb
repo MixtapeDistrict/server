@@ -52,20 +52,25 @@ class ApplicationController < ActionController::Base
     # Gets a rating for a given medium id
     def ratings(medium_id)
     	medium = Medium.first
+		
   		# Get the rating for this song
   		# Calculate the average rating of this song
   		rating_count = 0
    	    rating_sum = 0
    	    user_ratings = Rating.where(medium_id:medium_id)
+		
    	    # Get the average rating of every user.
     	for user_rating in user_ratings
   		    rating_sum  += user_rating.rating
   		    rating_count += 1
   	    end
+		
   	    rating = 0
+		
   	    if(rating_count != 0)
   	    	rating = rating_sum.to_f/rating_count
      	end
+		
   	   return rating
     end
     

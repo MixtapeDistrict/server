@@ -23,18 +23,33 @@ class MediaController < ApplicationController
 
   # POST /media
   # POST /media.json
+  #Old Method for uploading tracks, now generalised to media.
   def create
+	
+	#Assign file pointers to variables
 	@uploaded_file = medium_params[:file]
 	@uploaded_image = medium_params[:image]
+	
+	#Assign parameters to variable for easier access
 	@medium = medium_params
+	
+	#Edit relevant variables to correct
 	@medium.delete :file_path
 	@medium.delete :image_path
 	@medium.delete(:image)
 	@medium.delete(:file)
+	
+	#Create blank entry
 	@medium = Medium.new(@medium)
+	
+	#Create unique file name prefix (Upload time down to the second)
 	filenamebase = Time.now().strftime("%Y%m%d%H%M%S")+'___'
+	
+	#Correct files paths
 	@medium[:file_path] = @uploaded_file.original_filename
 	@medium[:image_path] = @uploaded_image.original_filename
+	
+	#Upload files to assets
 	File.open(Rails.root.join('app/assets', 'media', filenamebase+@uploaded_file.original_filename), 'wb') do |file|
 		file.write(@uploaded_file.read)
 	end
@@ -42,6 +57,7 @@ class MediaController < ApplicationController
 		file.write(@uploaded_image.read)
 	end
 
+	#Report success or failure of creation
     respond_to do |format|
       if @medium.save
         format.html { redirect_to @medium, notice: 'Medium was successfully created.' }
@@ -72,19 +88,19 @@ class MediaController < ApplicationController
   def destroy
     @medium.destroy
     respond_to do |format|
-      format.html { redirect_to media_url }
-      format.json { head :no_content }
+		format.html { redirect_to media_url }
+		format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_medium
-      @medium = Medium.find(params[:id])
+		@medium = Medium.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medium_params
-      params.require(:medium).permit(:user_id, :title, :file_path, :file, :image_path, :image, :downloads, :media_type)
+		params.require(:medium).permit(:user_id, :title, :file_path, :file, :image_path, :image, :downloads, :media_type)
     end
 end
