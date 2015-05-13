@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :playlists, dependent: :destroy
+	has_one :playlist
 
 	has_many :ratings, dependent: :destroy
 	has_many :media, dependent: :destroy
