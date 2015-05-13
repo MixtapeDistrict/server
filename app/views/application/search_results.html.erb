@@ -6,36 +6,36 @@
 <% end %>
 
 <div id="content" class="container-fluid">
-  <div class="container results">
+	<div class="container results">
 		<!-- Display error message if the search has returned no results. -->
 		<% if @no_results %>
-		<h2>The search has returned no results. Try something else.</h2>
+			<h2>The search has returned no results. Try something else.</h2>
 		<% else %>
-		<h2>No. search results: <%= @track_results.count + @user_results.count %></h2>
+			<h2>No. search results: <%= @track_results.count + @user_results.count %></h2>
 		<% end %>
 
 		<!-- Display all tracks and users -->
 		<% @track_results.each do |key, track| %>
 		<div class="col-md-4 col-sm-6 clearfix">
-		  <div class="col-md-6 col-sm-6 content-img">
-	      	<% if track.image_path.nil? == false or track.image_path.length > 0 %>
-	      		<%= image_tag("mediaimage/#{track.image_path}", class:"img-thumbnail", alt:"Track image") %>
-	      	<% else %>
-	      		<%= image_tag("mediaimage/musicnote.png", class:"img-thumbnail", alt:"Track image") %>
-	      	<% end %>
-	    </div>
-	    <div class="col-md-6 col-sm-6 content-info">
-	  		<p class="h4 row info track-name">
-	  			<%= track.title %>
-	  		</p>
-	  		<p class="h5 row info track-artist">By: 
-	  			<%= link_to User.find(track.user_id).username, controller:"profile", action:"showOther", 
+			<div class="col-md-6 col-sm-6 content-img">
+				<% if track.image_path.nil? == false or track.image_path.length > 0 %>
+					<%= image_tag("mediaimage/#{track.image_path}", class:"img-thumbnail", alt:"Track image") %>
+				<% else %>
+					<%= image_tag("mediaimage/musicnote.png", class:"img-thumbnail", alt:"Track image") %>
+				<% end %>
+			</div>
+			<div class="col-md-6 col-sm-6 content-info">
+				<p class="h4 row info track-name">
+					<%= track.title %>
+				</p>
+				<p class="h5 row info track-artist">By: 
+					<%= link_to User.find(track.user_id).username, controller:"profile", action:"showOther", 
 	  			    :id => track.user_id %>
-	  		</p>
+				</p>
 	  		<% if Music.find_by(id:track.id).nil? == false %>
-	  		<p class="h5 row info track-genre">
-	  			<%="Genre: " + Music.find(track.id).genre %>
-	  		</p>
+				<p class="h5 row info track-genre">
+					<%="Genre: " + Music.find(track.id).genre %>
+				</p>
 	  		<% end %>
 				<p class="h5 row info track-plays">	
 					Plays:<%=track.music.plays%>
@@ -51,49 +51,50 @@
 				</p>
 				<p class="row info track-rating">
 					<% if rating <= 0.5 %>
-	      		<img src="/assets/images/0.5.png" class="rating">
-	     	  <% elsif rating <= 1 %>
-	         	<img src="/assets/images/1.0.png" class="rating">
-	    	  <% elsif rating <= 1.5 %>
-	         	<img src="/assets/images/1.5.png" class="rating">
-	        <% elsif rating <= 2 %>
-	          <img src="/assets/images/2.0.png" class="rating">
-	        <% elsif rating <= 3 %>
-	          <img src="/assets/images/3.0.png" class="rating">
-	        <% elsif rating <= 3.5 %>
-	          <img src="/assets/images/3.5.png" class="rating">
-	        <% elsif rating <= 4 %>
-	          <img src="/assets/images/4.0.png" class="rating">
-	        <% elsif rating <= 4.5 %>
-	          <img src="/assets/images/4.5.png" class="rating">
-	        <% else %>
-	          <img src="/assets/images/5.0.png" class="rating">
-	        <% end %>
-	  		</p>
-	    </div>
-	  </div>  
+						<img src="/assets/images/0.5.png" class="rating">
+					<% elsif rating <= 1 %>
+						<img src="/assets/images/1.0.png" class="rating">
+					<% elsif rating <= 1.5 %>
+						<img src="/assets/images/1.5.png" class="rating">
+					<% elsif rating <= 2 %>
+						<img src="/assets/images/2.0.png" class="rating">
+					<% elsif rating <= 3 %>
+						<img src="/assets/images/3.0.png" class="rating">
+					<% elsif rating <= 3.5 %>
+						<img src="/assets/images/3.5.png" class="rating">
+					<% elsif rating <= 4 %>
+						<img src="/assets/images/4.0.png" class="rating">
+					<% elsif rating <= 4.5 %>
+						<img src="/assets/images/4.5.png" class="rating">
+					<% else %>
+						<img src="/assets/images/5.0.png" class="rating">
+					<% end %>
+				</p>
+			</div>
+		</div>  
 		<% end %>
+		
 		<% @user_results.each do |key, value| %>
-		<div class="col-md-4 col-sm-6 clearfix">
-	      	<div class="col-md-6 col-sm-6 content-img">
-	      	<% if User.find(key).image_path.nil? == false %>
-	      		<%= image_tag("userimage/#{User.find(key).image_path}", class:"img-thumbnail", alt:"User image") %>
-	      	<% else %>
-	      		<!-- Select at random default picture. -->
-	      		<% index = rand(0..3) %>
-	      		<% files = ['yellow.jpg', 'blue.jpg', 'green.jpg', 'red.jpg'] %>
-	      		<%= image_tag("userimage/#{files[index]}", class:"img-thumbnail", alt:"User image") %>
-	      	<% end %>
-          </div>
-	      	<div class="col-md-6 col-sm-6 content-info">
-	      		<p class="h4 row info user-name"> 
-	      		<%= link_to value, controller:"profile", action:"showOther", :id => key %>
-	      		<% if User.find(key).website_link.nil? == false %></p>
-	      		<p class="h5 row info user-web">Website: <%= link_to User.find(key).website_link.to_s, User.find(key).website_link, :target => '_blank' %></p>
-	      		<% end %>
-	      		<p class="h5 row info user-foll"><%= "Followers ("+Follower.where(user_id:key).count.to_s+")" %></p>
-	      	</div>
-    </div>
-    <% end %>
-  </div>  
+			<div class="col-md-4 col-sm-6 clearfix">
+				<div class="col-md-6 col-sm-6 content-img">
+					<% if User.find(key).image_path.nil? == false %>
+						<%= image_tag("userimage/#{User.find(key).image_path}", class:"img-thumbnail", alt:"User image") %>
+					<% else %>
+						<!-- Select at random default picture. -->
+						<% index = rand(0..3) %>
+						<% files = ['yellow.jpg', 'blue.jpg', 'green.jpg', 'red.jpg'] %>
+						<%= image_tag("userimage/#{files[index]}", class:"img-thumbnail", alt:"User image") %>
+					<% end %>
+				</div>
+				<div class="col-md-6 col-sm-6 content-info">
+					<p class="h4 row info user-name"> 
+						<%= link_to value, controller:"profile", action:"showOther", :id => key %>
+						<% if User.find(key).website_link.nil? == false %></p>
+							<p class="h5 row info user-web">Website: <%= link_to User.find(key).website_link.to_s, User.find(key).website_link, :target => '_blank' %></p>
+						<% end %>
+						<p class="h5 row info user-foll"><%= "Followers ("+Follower.where(user_id:key).count.to_s+")" %></p>
+				</div>
+			</div>
+		<% end %>
+	</div>  
 </div>
