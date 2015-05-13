@@ -81,19 +81,19 @@ p {
 .download {
   position:absolute;
   z-index: 51;
-  bottom:5px;
+  bottom:21px;
   left: 285px;
-  height:30px; 
-  width:30px;   
+  height:25px; 
+  width:25px;   
 }
 
 .add_playlist {
   position:absolute;
   z-index: 51;
-  bottom:5px;
+  bottom:22px;
   left: 255px;
-  height:27px; 
-  width:27px;   
+  height:22px; 
+  width:22px;   
 }
 
 #scroller {
