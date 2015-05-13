@@ -99,7 +99,7 @@ p {
 #scroller {
   -webkit-overflow-scrolling: touch;
   	overflow-y: scroll;
-  	height:120%;
+  	height:100%;
 }
 
 .jp-audio {
