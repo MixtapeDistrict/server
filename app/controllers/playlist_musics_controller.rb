@@ -61,39 +61,6 @@ class PlaylistMusicsController < ApplicationController
     end
   end
 
-  # Returns XML depending on which kind of music the user has in the playlist
-  def get_playlist
-  	# The playlist functionality will only work if you are logged in
-  	# Get the user id
-  	# If the user is not logged in, empty XML is returned
-  	if(session['logged_in'] != 1) 
-  		xml_response = "<images><image>http://myitforum.com/myitforumwp/wp-content/uploads/2012/12/error.png</image><image>http://img2.wikia.nocookie.net/__cb20100427134246/half-life/en/images/b/b8/Error.jpg</image></images>"
-  		render :xml => xml_response and return
-  	end
-  	user_id = session['user_id']
-  	# Find the user in the database
-  	user = User.find_by(id:user_id)
-  	# Get the playlist for this user
-  	playlist = user.playlist
-  	# If the user does not have a playlist already create one for it
-  	if(not playlist)
-  		user.playlist = Playlist.create()
-  		playlist = user.playlist
-  		# Persist
-  		user.save
-  	end
-  	# Get all the tracks images the user has in their playlist
-  	tracks = playlist.musics
-  	response = "<images>"
-  	for track in tracks
-  		# Put in the songID here so the user can get the image
-  		response += "<image>#{track.id}</image>" 
-  	end
-  	response += "</images>"
-  	# Return this response back to the caller
-  	render :xml => response and return
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist_music

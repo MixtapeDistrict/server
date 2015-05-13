@@ -4,5 +4,6 @@ class Music < ActiveRecord::Base
 	has_many :music_albums, dependent: :destroy
 	has_many :albums, :through => :music_albums
 
-	belongs_to :playlist
+	has_many :playlist_musics, dependent: :destroy
+	has_many :playlists, :through => :playlist_musics
 end
