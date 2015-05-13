@@ -1,6 +1,5 @@
 <!-- Generates logged in navigation bar. -->
 <nav class="navbar navbar-default">
-<<<<<<< Updated upstream
 	<div class="container-fluid">
 
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -14,8 +13,6 @@
 			<!-- Put image inside link tag. -->
 			<%= link_to image_tag('logo.png', :class => 'img-responsive'), "/go_home", :class => 'navbar-brand' %>
 		</div>
-
-
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="navbar-collapse collapse in" id="elements">
@@ -154,145 +151,5 @@
 			</ul>
 		</div>
 	</div>
-=======
   <div class="container-fluid">
 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button aria-expanded="true" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#elements">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <!-- Put image inside link tag. -->
-      <%= link_to image_tag('logo.png', :class => 'img-responsive'), "/go_home", :class => 'navbar-brand' %>
-</div>
-
-
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="navbar-collapse collapse in" id="elements">
-      <ul class="nav navbar-nav navbar-right">
-
-        <%= render 'search_box' %>
-
-<!-- Notifications button -->
-        <li class="dropdown">
-        <!-- No. notifications shown here...MAX: 10 -->
-        <% num = 0 %>
-        <% recent_tracks = Array.new %>
-        <% all_requests = Array.new %>
-        <% followers = Array.new %>
-            <% if session['logged_in'] == 1 %>
-                <% yourID = session['user_id'] %>
-                <% allFollowing = Follower.where(follower_id:yourID) %>
-                <% for i in 0..allFollowing.count - 1 %>
-                    <% currID = allFollowing[i].user_id %>
-                    <!-- Sort all tracks of following in descending order. -->
-                    <% all_tracks = Medium.where(user_id:currID).sort_by{ |t| - t[:created_at].to_i} %>
-                    <% now = Time.now %>
-                    <% all_tracks.each do |track| %>
-                        <% break if num > 9 %>
-                        <% timeMade = Time.parse(track.created_at.to_s) %>
-                        <% timeDiff = (now - timeMade)/3600.0 %>
-                        <!-- Number of hours  -->
-                        <% if timeDiff < 2.0 %>
-                            <% recent_tracks.push(track) %>
-                            <% num = num + 1 %>
-                        <% end %>
-                    <% end %>
-                <% end %>
-
-                <!-- Get at least 10 recent followers in decreasing order of timestamps. -->
-                <% f = Follower.where(user_id:yourID).sort_by{ |t| - t[:created_at].to_i} %>
-                <% now = Time.now %>
-                <% for i in 0..9 %>
-                    <% if f[i] %>
-                        <% timeMade = Time.parse(f[i].created_at.to_s) %>
-                        <% timeDiff = (now - timeMade)/3600.0 %>
-                        <% if timeDiff <= 1.0 %>
-                            <% followers.push(f[i]) %>
-                        <% end %>
-                    <% end %>  
-                <% end %>
-
-                <!-- Get all requests that has yet to be accepted. Show up to 5 requests -->
-                <% all_requests = Collaboration.where(second_id:yourID, approved:false).limit(5) %>
-                <% num = all_requests.count + num + followers.count %>
-            <% end %>
-        <a data-toggle="modal" href="#shortModal" ><%= image_tag("bell.png", size:"20x22") + "#{num}" %></a>
-            <div id="shortModal" class="modal modal-wide fade">
-            <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Notifications</h4>
-            </div>
-            <div class="modal-body">
-
-            <% if session['logged_in'] == 1 and num > 0 %>
-                <% if recent_tracks.count > 0 %>
-                    <p><b>recent uploads by followers</b></p>
-                <% end %>
-                <!-- All information here... -->
-                <% recent_tracks.each do |track| %>
-                    <div><p><%= link_to User.find(track.user_id).username, {:controller => 'profile', :action => 'showOther', :id => track.user_id }  %>
-                    <%= " uploaded : " + track.title %>
-                    </p></div>
-                <% end %>
-                <br>
-                <% if all_requests.count > 0 %>
-                    <div class="line"></div>
-                    <p><b>requests</b></p>
-                <% end %>
-                <% all_requests.each do |req| %>
-                    <%= form_tag({:controller => 'collaboration', :action => 'acceptRequest'}, method: "post") do %>
-                    <%= hidden_field_tag(:id, req.first_id) %>
-                    <% name = User.find(req.first_id).username %>
-                    <span><%= "From " + name + " : " + req.message %>
-                    <%= submit_tag("Accept #{name}", :class => 'btn btn-success') %></span>
-                    <% end %>
-                <% end %>
-                <br>
-                <% if followers.count > 0 %>
-                    <div class="line"></div>
-                    <p><b>recent followers</b></p>
-                <% end %>    
-                <% followers.each do |fol| %>
-                    <div><span><%= link_to User.find(fol.follower_id).username, {:controller => 'profile', :action => 'showOther', :id => fol.follower_id }  %>
-                    <%= " just followed you! " %>
-                    </span></div>
-                <% end %>
-            <% else %>
-                <p><b>You have no notifications.</b></p>
-            <% end %>
-
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-        </li>
-<!-- End of notifications section -->
-
-
-
-        <li class="dropdown">
-          <!-- Acts as a href link to controller action -->
-        	 <%= link_to image_tag("person.png", size:"20x22"), '/user_profile', {:class => 'dropdown-toggle', :data_toggle => 'dropdown', :role => 'button', :aria_expanded => 'true'}%>
-        </li>
-
-        <li class="dropdown">
-          <form action="/sign_out" method="post">
-         	  <button type="submit" class="btn btn-danger navbar-btn log-out">Logout</button>
-          </form>
-        </li>  
-
-      </ul>
-    </div>
-  </div>
->>>>>>> Stashed changes
-</nav>
