@@ -67,7 +67,7 @@ class PlaylistMusicsController < ApplicationController
   	# Get the user id
   	# If the user is not logged in, empty XML is returned
   	if(session['logged_in'] != 1) 
-  		xml_response = "<images><image>http://myitforum.com/myitforumwp/wp-content/uploads/2012/12/error.png</image><image>http://img2.wikia.nocookie.net/__cb20100427134246/half-life/en/images/b/b8/Error.jpg</image></images>"
+  		xml_response = "<images></images>"
   		render :xml => xml_response and return
   	end
   	user_id = session['user_id']
@@ -92,6 +92,45 @@ class PlaylistMusicsController < ApplicationController
   	response += "</images>"
   	# Return this response back to the caller
   	render :xml => response and return
+  end
+
+  # Adds a song to the user's playlist 
+  def add_song
+  	# Ensure the user is logged in
+  	if(session['logged_in'] != 1)
+  		render :nothing => true and return
+  	end
+  	# Fetch the user's information
+  	user_id = session['user_id']
+  	user = User.find_by(id:user_id)
+  	# Fetch the track information
+  	path = params[:path]
+  	# Get their playlist
+  	playlist = user.playlist
+  	# If they do not have a playlist create new playlist for them
+  	if(not playlist)
+  		user.playlist = Playlist.create()
+  		playlist = user.playlist
+  		# Persist
+  		user.save
+  	end
+  	# Find the song to add to the playlist
+  	medium = Medium.find_by(file_path:path)
+  	if medium
+  		music = medium.music
+  	end
+  	# If there was such a song on the database, add it to the user's playlist
+  	# Only add this song to the playlist if it isn't already in it
+  	if medium and music
+  		if(not playlist.musics.find_by(id:music.id))
+  			# This is not in the user's playlist hence add it!
+  			playlist.musics.push(music)
+  			playlist.save
+  			user.save
+  		end
+  	end
+  	# Retnder nothing as this is an AJAX call
+  	render :nothing => true and return
   end
 
   private

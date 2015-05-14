@@ -157,44 +157,51 @@ function update_grind(songs) {
 	/* Put all racks in place */
 	$('.grind').replaceWith(html);
 }
-    // Simulates the las 100 tracks
-    var track_id = range(1,100);
 
-    //Select the first 24 elements of the random array
-    var rand_tracks = shuffle(track_id).slice(0,24);
+/* Connects to the database and gets the user's playlist using AJAX. */
+function get_playlist() {
+	var xmlhttp;
+	var xmlDoc;
+	/* New browsers */
+	if(window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	}
+	/* IE 6 and older browsers */
+	else {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	/* Define the function which will be called when the request is completed. */
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+			var response = xmlhttp.responseText;
+			/* Parse the string as XML*/
+			if(window.DOMParser) {
+				parser = new DOMParser();
+				xmlDoc = parser.parseFromString(response, "text/xml");
+			}
+			else {
+				xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+				xmlDoc.async = false;
+				xmlDoc.loadXML(response);
+			}
+			/* Load the playlist into the carousel */
+			load_playlist(xmlDoc.getElementsByTagName('image'));
+		}
+	}
+	/* Send the ajax request */
+	xmlhttp.open("get", "/playlist", true);
+	xmlhttp.send();
+}
+function load_playlist(playlist) {
+	var data=[];
+	for (var i=0; i<playlist.length; i++) {
+		/* Push all the image sources to the carousel */
+		data.push(""+playlist[i].childNodes[0].nodeValue+"");
+	}
+	doCarousel(data);
+}
 
-    //Test for the grind
-    var tracks = '{"tracks":[' +
-    '{"cover":"common/'+ rand_tracks[0]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[1]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[2]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[3]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[4]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[5]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[6]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[7]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[8]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[9]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[10]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[11]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[12]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[13]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[14]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[15]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[16]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[17]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[18]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[19]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[20]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[21]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[22]+'.jpg"},' +
-    '{"cover":"common/'+ rand_tracks[23]+'.jpg"}]}';
 
-// END TRACKS PICK SIMULATION: Won't be here when the database is connected
-
-
-// Create the grind
-obj = JSON.parse(tracks);
 
 /* Fill up the grind */
 get_music();
@@ -234,6 +241,7 @@ $(document).ready(function(){
     };
 
 	doCarousel(data);
+	get_playlist();
 
 });
 

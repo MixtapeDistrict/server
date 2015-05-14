@@ -45,6 +45,12 @@ WebInfo2::Application.routes.draw do
 # When the user wants to delete their music
   post '/delete_medium', to: 'musics#delete_medium'
   post '/editTrack', to: 'musics#edit_track'
+
+  # Get's user's playlist
+  get '/playlist', to: 'playlist_musics#get_playlist'
+
+  # Adds a song to the user's playlist
+  post '/add_song', to: 'playlist_musics#add_song'
   resources :medium_comments
 
   resources :media
