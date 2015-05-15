@@ -28,6 +28,7 @@
   						</button>
  						 <% playlist = User.find_by(id:session['user_id']).playlist %>
  						 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+ 						<% if playlist %> 
   						<% for music in playlist.musics %>
   							 <%  rating_count = 0 %>
   						 	 <%rating_sum = 0%>
@@ -47,6 +48,8 @@
   						<% end %>
   						<% if playlist.musics.length == 0 %>
   						<li role="presentation"><a role="menuitem" tabindex="-1">Your playlist is empty.</a></li>
+  					    <% end %>
+
   					    <% end %>
 	 					 </ul>
 					</div>
