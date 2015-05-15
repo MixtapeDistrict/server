@@ -63,6 +63,9 @@ WebInfo2::Application.routes.draw do
   # Deletes a track from the user's playlist
   get '/playlist_remove', to: 'playlist_musics#remove_track'
 
+  # Helper method for AJAX which checks whether the user is logged in
+  get '/logged_in_status', to: 'application#logged_in_status'
+
   resources :medium_comments
 
   resources :media

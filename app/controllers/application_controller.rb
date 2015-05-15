@@ -74,4 +74,10 @@ class ApplicationController < ActionController::Base
   	   return rating
     end
     
+    # Helper method which checks whether the user is logged in or not
+    # Used by certain AJAX scripts
+    def logged_in_status
+    	response = "#{session['logged_in']}"
+    	render :text =>response and return 
+    end
 end
