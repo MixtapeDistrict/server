@@ -4,6 +4,8 @@ WebInfo2::Application.routes.draw do
 
   # get 'home/index'
   #root 'home#showHome'
+  get '/home/track_image', to:'playlist_musics#track_image'
+
   get '/home', to: 'home#showHome'
   match ':controller(/:action(/:id))', :via => :get
   post '/sign_up', to: 'home#sign_up'
@@ -51,6 +53,10 @@ WebInfo2::Application.routes.draw do
 
   # Adds a song to the user's playlist
   post '/add_song', to: 'playlist_musics#add_song'
+
+  # Gets a track image given a track id
+  get '/track_image', to: 'playlist_musics#track_image'
+
   resources :medium_comments
 
   resources :media

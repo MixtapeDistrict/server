@@ -87,7 +87,7 @@ class PlaylistMusicsController < ApplicationController
   	response = "<images>"
   	for track in tracks
   		# Put in the songID here so the user can get the image
-  		response += "<image>#{track.id}</image>" 
+  		response += "<image>#{track.image_path}</image>" 
   	end
   	response += "</images>"
   	# Return this response back to the caller
@@ -131,6 +131,16 @@ class PlaylistMusicsController < ApplicationController
   	end
   	# Retnder nothing as this is an AJAX call
   	render :nothing => true and return
+  end
+
+  def track_image
+  	# Get the required parameters
+  	music_id = params[:music_id]
+  	# Find the music within the database
+  	music = Music.find_by(id:music_id)
+  	# If such a song exists return its image path
+  	response = "#{music.image_path}"
+  	render :text => response and return
   end
 
   private

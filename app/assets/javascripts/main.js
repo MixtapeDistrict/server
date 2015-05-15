@@ -13,6 +13,8 @@ function add_playlist(path) {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			console.log("Song added to playlist.");
 			console.log(path);
+			/* Re-render carousel */
+			document.getElementById('loader').contentWindow.get_playlist();
 		}
 	}
 	xmlhttp.open("post", "/add_song?path="+path, true);

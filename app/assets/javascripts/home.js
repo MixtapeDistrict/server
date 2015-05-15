@@ -192,14 +192,20 @@ function get_playlist() {
 	xmlhttp.open("get", "/playlist", true);
 	xmlhttp.send();
 }
+
+
+
 function load_playlist(playlist) {
 	var data=[];
 	for (var i=0; i<playlist.length; i++) {
+		var image = playlist[i].childNodes[0].nodeValue;
 		/* Push all the image sources to the carousel */
-		data.push(""+playlist[i].childNodes[0].nodeValue+"");
+		data.push("assets/mediaimage/"+image+"");
 	}
 	doCarousel(data);
 }
+
+
 
 
 
@@ -233,14 +239,6 @@ $(document).ready(function(){
 	// Do Carousel	// Will pull this from server. Static for now.
     
     // Create the elements to display in the carousel
- 
-    var data=[];
-
-    for (var i=0; i<10 ; i++){
-        data.push(''+obj.tracks[i].cover +'');
-    };
-
-	doCarousel(data);
 	get_playlist();
 
 });
@@ -262,10 +260,11 @@ function doCarousel(data){
 	carouselData = data;
 	
     var spinner = $("#carousel");
+    spinner.empty();
     var interval = 360/data.length;
     var r = PANEL_SIZE/(Math.tan((interval/2)*TO_RADIANS));
     for(var i = 0 ; i < data.length ; i++) {
-        var newElement = $("<img src=\"../"+data[i]+"\">");
+        var newElement = $("<img src=\""+data[i]+"\">");
         var num = interval*i;
         newElement.css("transform","rotateY( " + num + "deg ) translateZ( "+r+"px )");
         
