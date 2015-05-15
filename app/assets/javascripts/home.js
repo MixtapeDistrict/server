@@ -277,8 +277,6 @@ function doCarousel(data){
         spinner.append(newElement);
     }
 
-
-
     /* Populate the div next to the carousel on the first call */
    	if(data.length > 0) {
    		/*  TRYING TO ADD TRACK DETAILS HERE. */
@@ -363,30 +361,6 @@ function populate_playlist_div(image_path) {
 			var plays = xmlDoc.getElementsByTagName('plays')[0].childNodes[0].nodeValue;
 			var rating = xmlDoc.getElementsByTagName('rating')[0].childNodes[0].nodeValue;
 			var img = xmlDoc.getElementsByTagName('imagePath')[0].childNodes[0].nodeValue;
-<<<<<<< HEAD
-=======
-			console.log("Title: " + track_title);
-			console.log("SongID: " + song_id);
-			console.log("Artist Name: " + artist_name);
-			console.log("Artist ID: " + artist_id);
-			console.log("File path: " + file_path);
-			console.log("Genre: " + genre);
-			console.log("Plays: " + plays);
-			console.log("Rating: " + rating);
-			console.log("<---- END OF THE CAROUSEL FOCUS ---->");
-			console.log(image_path);
-				/* Time to populate the DIV right next to the carousel with information */
-				document.getElementById('carousel-track-name').innerHTML = track_title;
-				document.getElementById('carousel-track-artist').innerHTML = "<a href='/other_profile?id=" + artist_id + "'>"+artist_name+"</a>";
-				document.getElementById('carousel-track-plays').innerHTML = plays;
-				document.getElementById('carousel-track-genre').innerHTML = genre;
-				document.getElementById('carousel-track-rating').innerHTML = rating;
-				/* Add buttons for users to play this song in their playlist or comment/rate it*/
-				document.getElementById('carousel-track-controls').innerHTML = "<a onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
-				img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img class='carousel-playtrack' src=\"assets/images/play.png\"></a>" +
-				"<a href = '/comments?id="+song_id+"'><img class = 'carousel-comment' src='assets/images/comment.ico'></a>" +
-				"<a onclick = 'remove_song("+song_id+")'><img class = 'carousel-remove' src ='assets/images/remove.png'></a>";
->>>>>>> origin/master
 
 		/* ADD INFORMATION TO NEW TRACK AREA. */
 

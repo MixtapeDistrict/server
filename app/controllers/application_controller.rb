@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	def search_results
 		
 		# User entered input.
-		search_string = params[:search].downcase
+		search_string = params[:search].downcase.strip
 
 		# Get all tracks.
 		allTracks = Medium.all
