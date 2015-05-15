@@ -141,6 +141,7 @@ class MusicsController < ApplicationController
   		end
 		
   		xml  += "<rating>#{rating}</rating>"
+  		xml += "<genre>#{music.genre}</genre>"
   		xml  += "</song>"
 	end
 	
