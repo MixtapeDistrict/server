@@ -282,6 +282,14 @@ function doCarousel(data){
    	}
    	else {
    		populate_playlist_div("empty");
+   		var newElement = $("<img src='assets/images/error.jpg'>");
+        var num = interval*i;
+        newElement.css("transform","rotateY( " + num + "deg ) translateZ( "+r+"px )");
+        
+        var backfaceVisibility = BACKFACE_INVISIBLE ? "hidden" : "visible";
+        newElement.css("-webkit-backface-visibility",backfaceVisibility);
+        newElement.css("backface-visibility",backfaceVisibility);
+        spinner.append(newElement);
    	}
 }
 
