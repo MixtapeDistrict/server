@@ -13,15 +13,42 @@
 			<!-- Put image inside link tag. -->
 			<%= link_to image_tag('logo.png', :class => 'img-responsive'), "/go_home", :class => 'navbar-brand' %>
 		</div>
+		
 
 
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="navbar-collapse collapse in" id="elements">
 			<ul class="nav navbar-nav navbar-right">
-
+				<li>
+					<div class="dropdown quicklaunch_playlist">
+  						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+  						  	Playlist
+   						 	<span class="caret"></span>
+  						</button>
+ 						 <% playlist = User.find_by(id:session['user_id']).playlist %>
+ 						 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  						<% for music in playlist.musics %>
+  							 <%  rating_count = 0 %>
+  						 	 <%rating_sum = 0%>
+  						 	<%user_ratings = Rating.where(medium_id:music.medium.id)%>
+	
+  							<%for user_rating in user_ratings%>
+  									<%rating_sum  += user_rating.rating%>
+  									<%rating_count += 1%>
+  							<%end%>
+	
+  							<%rating = 0%>
+	
+  							<%if(rating_count != 0)%>
+  								<%rating = rating_sum.to_f/rating_count%>
+  							<%end%>
+   	 						<li role="presentation"><a role="menuitem" tabindex="-1" onclick="parent.jplayer_load('<%= music.medium.title %>', '<%= music.medium.file_path%>', '<%= music.medium.image_path%>', '<%= music.medium.user.username%>', '<%= music.medium.user.id %>', '<%=rating%>', '<%= music.plays %>')"><%= music.medium.title%></a></li>
+  						<% end %>
+	 					 </ul>
+					</div>
+			</li>
 				<%= render 'search_box' %>
-
 				<!-- Notifications button -->
 				<li class="dropdown">
 					
