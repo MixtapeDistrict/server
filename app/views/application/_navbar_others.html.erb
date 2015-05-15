@@ -45,6 +45,9 @@
   							<%end%>
    	 						<li role="presentation"><a role="menuitem" tabindex="-1" onclick="parent.jplayer_load('<%= music.medium.title %>', '<%= music.medium.file_path%>', '<%= music.medium.image_path%>', '<%= music.medium.user.username%>', '<%= music.medium.user.id %>', '<%=rating%>', '<%= music.plays %>')"><%= music.medium.title%></a></li>
   						<% end %>
+  						<% if playlist.musics.length == 0 %>
+  						<li role="presentation"><a role="menuitem" tabindex="-1">Your playlist is empty.</a></li>
+  					    <% end %>
 	 					 </ul>
 					</div>
 			</li>
