@@ -76,8 +76,10 @@ I refactored and revamped just about all code from there, but it is possible a f
 
 #carousel img {
   	position: absolute;
-  	width: 200px;
-  	height: 200px;
+  	max-width: 200px;
+  	max-height: 200px;
+  	min-width:200px;
+  	min-height:200px;
   	left: 10px;
   	top: 10px;
   	margin: 0 auto;

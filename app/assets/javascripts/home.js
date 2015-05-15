@@ -254,6 +254,7 @@ var TO_RADIANS = Math.PI/180;
 var BACKFACE_INVISIBLE = true;
 var selectedIndex = 0;
 var carouselData = null;
+var RADIUS_SIZE = 300;
 
 // Creates a Carousel from an Array 
 function doCarousel(data){
@@ -262,7 +263,7 @@ function doCarousel(data){
     var spinner = $("#carousel");
     spinner.empty();
     var interval = 360/data.length;
-    var r = PANEL_SIZE/(Math.tan((interval/2)*TO_RADIANS));
+    var r = RADIUS_SIZE;
     for(var i = 0 ; i < data.length ; i++) {
         var newElement = $("<img src=\""+data[i]+"\">");
         var num = interval*i;
