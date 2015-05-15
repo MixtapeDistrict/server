@@ -99,8 +99,7 @@ function update_grind(songs) {
 
 			track_info = '<p class="h4">' + track_name +'</p>'+
 			             '<p class="name">Artist: <a class="artistname" href="/other_profile?id='+profile_id+'">' + artist_name +
-			             '</a></p><p class="name">Album: ' + track_album +
-			             '</p><p>Plays: ' + plays_num +
+			             '</a></p>'+ '<p>Plays: ' + plays_num +
 			             '</p><p>Ratings: ' + rating + '/5';
 
 			playtrack = '<a onclick="parent.jplayer_load(\'' + track_name +'\',\'' + track_path + '\',\'' + track_img +'\',\'' +
