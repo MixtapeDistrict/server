@@ -280,6 +280,9 @@ function doCarousel(data){
    	if(data.length > 0) {
    		populate_playlist_div(data[0]);
    	}
+   	else {
+   		populate_playlist_div("empty");
+   	}
 }
 
 /* Removes a song from the carousel(User's playlist) */
@@ -349,23 +352,36 @@ function populate_playlist_div(image_path) {
 			console.log("Plays: " + plays);
 			console.log("Rating: " + rating);
 			console.log("<---- END OF THE CAROUSEL FOCUS ---->");
-			/* Time to populate the DIV right next to the carousel with information */
-			document.getElementById('carousel-track-name').innerHTML = track_title;
-			document.getElementById('carousel-track-artist').innerHTML = "<a href='/other_profile?id=" + artist_id + "'>"+artist_name+"</a>";
-			document.getElementById('carousel-track-plays').innerHTML = plays;
-			document.getElementById('carousel-track-genre').innerHTML = genre;
-			document.getElementById('carousel-track-rating').innerHTML = rating;
-			/* Add buttons for users to play this song in their playlist or comment/rate it*/
-			document.getElementById('carousel-track-controls').innerHTML = "<a onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
-			img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img class='carousel-playtrack' src=\"assets/images/play.png\"></a>" +
-			"<a href = 'comments/music/?id="+song_id+"'><img class = 'carousel-comment' src='assets/images/comment.ico'></a>" +
-			"<a onclick = 'remove_song("+song_id+")'><img class = 'carousel-remove' src ='assets/images/remove.png'></a>";
+			console.log(image_path);
+				/* Time to populate the DIV right next to the carousel with information */
+				document.getElementById('carousel-track-name').innerHTML = track_title;
+				document.getElementById('carousel-track-artist').innerHTML = "<a href='/other_profile?id=" + artist_id + "'>"+artist_name+"</a>";
+				document.getElementById('carousel-track-plays').innerHTML = plays;
+				document.getElementById('carousel-track-genre').innerHTML = genre;
+				document.getElementById('carousel-track-rating').innerHTML = rating;
+				/* Add buttons for users to play this song in their playlist or comment/rate it*/
+				document.getElementById('carousel-track-controls').innerHTML = "<a onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
+				img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img class='carousel-playtrack' src=\"assets/images/play.png\"></a>" +
+				"<a href = 'comments/music/?id="+song_id+"'><img class = 'carousel-comment' src='assets/images/comment.ico'></a>" +
+				"<a onclick = 'remove_song("+song_id+")'><img class = 'carousel-remove' src ='assets/images/remove.png'></a>";
 
 		}
 	}
-	xmlhttp.open("get", "/track_info?image_path="+image_path, true);
-	xmlhttp.send();
+	if(image_path != "empty") {
+		xmlhttp.open("get", "/track_info?image_path="+image_path, true);
+		xmlhttp.send();
+	}
+	else {
+		document.getElementById('carousel-track-name').innerHTML = "";
+		document.getElementById('carousel-track-artist').innerHTML = "";
+		document.getElementById('carousel-track-plays').innerHTML = "";
+		document.getElementById('carousel-track-genre').innerHTML = "";
+		document.getElementById('carousel-track-rating').innerHTML = "";
+		document.getElementById('carousel-track-controls').innerHTML = "";
+
+	}
 }
+
 
 // Makes the images on the carousel spin, updating the css
 var angle = 0;
