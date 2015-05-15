@@ -109,7 +109,7 @@ function update_grind(songs) {
 
 			comment = '<a href="/comments/music/?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
 
-			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+ track_img +
+			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" style="height:170px;width:170px;" alt="" src="assets/mediaimage/'+ track_img +
 					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + comment+'</div>';
 		}
 	}
