@@ -185,6 +185,7 @@ function get_playlist() {
 				xmlDoc.loadXML(response);
 			}
 			/* Load the playlist into the carousel */
+			angle=0;
 			load_playlist(xmlDoc.getElementsByTagName('image'));
 		}
 	}
@@ -262,6 +263,7 @@ function doCarousel(data){
 	angle = 0;
     var spinner = $("#carousel");
     spinner.empty();
+    selectedIndex = 0;
     var interval = 360/data.length;
     var r = RADIUS_SIZE;
     for(var i = 0 ; i < data.length ; i++) {
@@ -293,6 +295,7 @@ function remove_song(song_id) {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			console.log("Song removed");
 			$("#carousel").removeAttr('style');
+			selectedIndex = 0;
 			get_playlist();
 		}
 	}
