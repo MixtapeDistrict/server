@@ -5,13 +5,12 @@
 <% end %>
   <%= javascript_include_tag "home.js" %>
   <%= javascript_include_tag "signup.js" %>
-  <%= javascript_include_tag "login.js" %>
 
 <div id="content" class="container-fluid"> 
   <div class="container">      
     <div class="row" id="album-info"> 
         <div class="col-md-2 col-md-offset-4">
-            <img id="track" src="<%= "/assets/mediaimage/" + @medium.image_path %>" alt="album cover">  
+            <img id="track" src="<%= "assets/mediaimage/" + @medium.image_path %>" alt="album cover">  
         </div>
         <div class="col-md-2">
             <p class="album-name"><%= @medium.title %></p> 
@@ -39,9 +38,13 @@
             <% end %>
             	<button type="button" class="btn profile-btn btn-info" data-toggle="modal" data-target="#change-payment-email">Add Comment/Rating</button>
             </p> 
+            <p><a onclick="parent.jplayer_load('<%=@medium.title %>','<%=@medium.file_path %>', '<%=@medium.image_path %>', '<%=@medium.user.username %>', '<%=@medium.user.id %>', '<%=@rating %>', '<%=@medium.music.plays%>')">
+						<img class="playtrack-search" src="assets/images/play.png">
+					</a>
+					<a onclick = "parent.add_playlist('<%=@medium.file_path%>')"><img class="add_playlist" height="27" width="27" src="assets/images/add_playlist.png"></a></p>
         </div>
         <div class="col-md-2">
-        	
+        		
         </div>
     </div>
     <div class="row" id="album-tracks"> 

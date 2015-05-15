@@ -27,7 +27,7 @@
    						 	<span class="caret"></span>
   						</button>
  						 <% playlist = User.find_by(id:session['user_id']).playlist %>
- 						 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+ 						 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="playlist_quick_launcher">
   						<% for music in playlist.musics %>
   							 <%  rating_count = 0 %>
   						 	 <%rating_sum = 0%>
