@@ -41,7 +41,7 @@ WebInfo2::Application.routes.draw do
   post '/play', to: 'musics#play'
 
 # When users want to comment on music
-  get '/comments/music', to: 'musics#comments'
+  get '/comments', to: 'musics#comments'
   post '/add_music_comment', to: 'musics#add_comment'
 
 # When the user wants to delete their music

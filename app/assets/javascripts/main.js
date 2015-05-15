@@ -15,7 +15,48 @@ function add_playlist(path) {
 			console.log(path);
 			/* Re-render carousel */
 			document.getElementById('loader').contentWindow.$("#carousel").removeAttr('style');
-			document.getElementById('loader').contentWindow.get_playlist();
+			if(typeof document.getElementById('loader').contentWindow.get_playlist == "function") {
+				document.getElementById('loader').contentWindow.get_playlist();
+			}
+
+			var response = xmlhttp.responseText;
+			/* Parse the string as XML*/
+			if(window.DOMParser) {
+				parser = new DOMParser();
+				xmlDoc = parser.parseFromString(response, "text/xml");
+			}
+			else {
+				xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+				xmlDoc.async = false;
+				xmlDoc.loadXML(response);
+			}
+			/* Begin parsing the information */
+			var songs = xmlDoc.getElementsByTagName('track');
+			/* Update the dropdown list if it is on the page */
+			var list = document.getElementById('loader').contentWindow.document.getElementById('playlist_quick_launcher');
+			if(list) {
+				var html = "You have no songs in your playlist.";
+				console.log(songs.length);
+				for(var i=0; i<songs.length; i++) {
+					if(i==0) {
+						html = "";
+					}
+					var name = songs[i].childNodes[0].childNodes[0].nodeValue;
+					var path = songs[i].childNodes[1].childNodes[0].nodeValue;
+					var imgpath = songs[i].childNodes[2].childNodes[0].nodeValue;
+					var artist = songs[i].childNodes[3].childNodes[0].nodeValue;
+					var artist_id = songs[i].childNodes[4].childNodes[0].nodeValue;
+					var rating = songs[i].childNodes[5].childNodes[0].nodeValue;
+					var plays = songs[i].childNodes[6].childNodes[0].nodeValue;
+					html += "<li role='presentation'>";
+					html += "<a role=\"menuitem\" tabindex=\"-1\" ";
+					html += "onclick=\"parent.jplayer_load('" + name + "', '" + path + "',";
+			 	    html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\">" + name + "</a>";
+					html += "</li>";
+				}
+				console.log(html);
+				list.innerHTML = html;
+			}
 		}
 	}
 	xmlhttp.open("post", "/add_song?path="+path, true);

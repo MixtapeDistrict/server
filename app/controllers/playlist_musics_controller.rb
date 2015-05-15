@@ -130,8 +130,37 @@ class PlaylistMusicsController < ApplicationController
   			user.save
   		end
   	end
-  	# Retnder nothing as this is an AJAX call
-  	render :nothing => true and return
+  	# Return the playlist so the views can be updated using ajax
+  	xml = "<tracks>"
+  	for music in playlist.musics
+  		xml += "<track>"
+  		xml += "<name>#{music.medium.title}</name>"
+  		xml += "<path>#{music.medium.file_path}</path>"
+  		xml += "<imgpath>#{music.image_path}</imgpath>"
+  		xml += "<artist>#{music.medium.user.username}</artist>"
+  		xml += "<artist_id>#{music.medium.user.id}</artist_id>"
+  		# Calculate the average rating of this song
+  		rating_count = 0
+  		rating_sum = 0
+  		user_ratings = Rating.where(medium_id:music.medium.id)
+		for user_rating in user_ratings
+  			rating_sum  += user_rating.rating
+  			rating_count += 1
+  		end
+		
+  		rating = 0
+  		puts rating_sum
+  		puts rating_count
+		
+  		if(rating_count != 0)
+  			rating = rating_sum.to_f/rating_count
+  		end
+  		xml += "<rating>#{rating}</rating>"
+  		xml += "<plays>#{music.plays}</plays>"
+  		xml += "</track>"
+  	end
+  	xml += "</tracks>"
+  	render :xml => xml and return
   end
 
   # Returns the image of a track

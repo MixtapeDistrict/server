@@ -45,7 +45,8 @@
 					<a onclick="parent.jplayer_load('<%= track.title %>','<%=track.file_path%>', '<%=track.image_path%>', '<%=track.user.username%>', '<%=track.user.id%>', '<%= rating %>', '<%=track.music.plays%>')">
 						<img class="playtrack-search" src="assets/images/play.png">
 					</a>
-					<a href="/comments/music/?id=<%=track.music.id%>">	
+					<a onclick = "parent.add_playlist('<%= track.file_path%>')"><img class="add_playlist" height="27" width="27" src="assets/images/add_playlist.png"></a>
+					<a href="/comments?id=<%=track.music.id%>">	
 						<img class="comment-search" src="assets/images/comment.ico">
 					</a>
 				</p>
