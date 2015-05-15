@@ -107,7 +107,7 @@ function update_grind(songs) {
 						 artist_name + '\',\'' + profile_id + '\',\'' + rating + '\',\'' + plays_num + '\')">'+
 						'<img class="playtrack" src="assets/images/play.png"></a>';
 
-			comment = '<a href="/comments/music/?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
+			comment = '<a href="/comments?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
 
 			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" style="height:170px;width:170px;" alt="" src="assets/mediaimage/'+ track_img +
 					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + comment+'</div>';
@@ -146,7 +146,7 @@ function update_grind(songs) {
 						 artist_name + '\',\'' + profile_id + '\',\'' + rating + '\',\'' + plays_num + '\')">'+
 						'<img class="playtrack" src="assets/images/play.png"></a>';
 
-			comment = '<a href="/comments/music/?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
+			comment = '<a href="/comments?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
 
 			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+ track_img +
 					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + comment+'</div>';
@@ -370,7 +370,7 @@ function populate_playlist_div(image_path) {
 				/* Add buttons for users to play this song in their playlist or comment/rate it*/
 				document.getElementById('carousel-track-controls').innerHTML = "<a onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
 				img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img class='carousel-playtrack' src=\"assets/images/play.png\"></a>" +
-				"<a href = 'comments/music/?id="+song_id+"'><img class = 'carousel-comment' src='assets/images/comment.ico'></a>" +
+				"<a href = '/comments?id="+song_id+"'><img class = 'carousel-comment' src='assets/images/comment.ico'></a>" +
 				"<a onclick = 'remove_song("+song_id+")'><img class = 'carousel-remove' src ='assets/images/remove.png'></a>";
 
 		}
