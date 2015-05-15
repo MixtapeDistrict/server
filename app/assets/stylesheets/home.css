@@ -72,16 +72,17 @@ I refactored and revamped just about all code from there, but it is possible a f
             transform-style: preserve-3d;
     -webkit-transition: -webkit-transform 1s;
             transition: transform 1s;
+
 }
 
-#carousel img {
+#carousel > img {
   	position: absolute;
   	max-width: 200px;
   	max-height: 200px;
   	min-width:200px;
   	min-height:200px;
   	left: 10px;
-  	top: 10px;
+  	top: 22px;
   	margin: 0 auto;
   	border: 2px solid;
 }
@@ -235,3 +236,65 @@ I refactored and revamped just about all code from there, but it is possible a f
  right: 30%;
  width: 200px;
 }
+
+/* Carousel new look. */
+
+#carousel:hover > img {
+    opacity: 0.1;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+#carousel:hover #information{
+    background:#000000;
+    opacity: 0.8;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+#information {
+    position: relative;
+    width: 255px;
+    height: 255px;
+    margin-left: -7%;
+}
+
+.T1, .T2, .T3, .T4, .T5{
+  margin-left: 18px;
+  color: white;  
+  font-weight: 500;
+}
+
+.T1 {
+    font-size: 26px;
+}
+
+.T2, .T3, .T4, .T5{
+  font-size:20px;
+}
+
+.T6 {
+    position: absolute;
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    left: 170px;
+    bottom: -50px;
+}
+
+.T6 a{
+  opacity: 0;
+}
+
+#B1 > img, #B2 > img, #B3 > img{
+  height: 27px;
+  width: 27px;
+}
+
+#carousel:hover .T6 > a{
+  opacity: 1;
+  z-index: 51;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+

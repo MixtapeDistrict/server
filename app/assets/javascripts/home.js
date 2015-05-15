@@ -276,8 +276,20 @@ function doCarousel(data){
         newElement.css("backface-visibility",backfaceVisibility);
         spinner.append(newElement);
     }
+
+
+
     /* Populate the div next to the carousel on the first call */
    	if(data.length > 0) {
+   		/*  TRYING TO ADD TRACK DETAILS HERE. */
+		TRACKNAME = "<p class='T1'></p>";
+		ARTIST = "<div class='T2'></div>";
+		PLAYS = "<div class='T3'></div>";
+		GENRE = "<div class='T4'></div>";
+		RATING = "<div class='T5'></div>";
+		BUTTONS = "<span class='T6'></span>";
+    	div_text = $("<div id='information'>"+ TRACKNAME + ARTIST + PLAYS + GENRE + RATING + BUTTONS +"</div>");
+    	spinner.append(div_text);
    		populate_playlist_div(data[0]);
    	}
    	else {
@@ -351,28 +363,19 @@ function populate_playlist_div(image_path) {
 			var plays = xmlDoc.getElementsByTagName('plays')[0].childNodes[0].nodeValue;
 			var rating = xmlDoc.getElementsByTagName('rating')[0].childNodes[0].nodeValue;
 			var img = xmlDoc.getElementsByTagName('imagePath')[0].childNodes[0].nodeValue;
-			console.log("Title: " + track_title);
-			console.log("SongID: " + song_id);
-			console.log("Artist Name: " + artist_name);
-			console.log("Artist ID: " + artist_id);
-			console.log("File path: " + file_path);
-			console.log("Genre: " + genre);
-			console.log("Plays: " + plays);
-			console.log("Rating: " + rating);
-			console.log("<---- END OF THE CAROUSEL FOCUS ---->");
-			console.log(image_path);
-				/* Time to populate the DIV right next to the carousel with information */
-				document.getElementById('carousel-track-name').innerHTML = track_title;
-				document.getElementById('carousel-track-artist').innerHTML = "<a href='/other_profile?id=" + artist_id + "'>"+artist_name+"</a>";
-				document.getElementById('carousel-track-plays').innerHTML = plays;
-				document.getElementById('carousel-track-genre').innerHTML = genre;
-				document.getElementById('carousel-track-rating').innerHTML = rating;
-				/* Add buttons for users to play this song in their playlist or comment/rate it*/
-				document.getElementById('carousel-track-controls').innerHTML = "<a onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
-				img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img class='carousel-playtrack' src=\"assets/images/play.png\"></a>" +
-				"<a href = 'comments/music/?id="+song_id+"'><img class = 'carousel-comment' src='assets/images/comment.ico'></a>" +
-				"<a onclick = 'remove_song("+song_id+")'><img class = 'carousel-remove' src ='assets/images/remove.png'></a>";
 
+		/* ADD INFORMATION TO NEW TRACK AREA. */
+
+			$('.T1').text(track_title);
+			$('.T2').html("<p>Artist: " + artist_name + "</p>");
+			$('.T3').html("<p>Genre: " + genre + "</p>");
+			$('.T4').html("<p>Plays: " + plays + "</p>");
+			$('.T5').html("<p>Rating: " + rating + "</p>");
+
+			$('.T6').html("<a  id=\"B1\" onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
+				img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img src=\"assets/images/play.png\"></a>" +
+				"<a  id=\"B2\" href = 'comments/music/?id="+song_id+"'><img src='assets/images/comment.ico'></a>" +
+				"<a  id=\"B3\" onclick = 'remove_song("+song_id+")'><img  src ='assets/images/remove.png'></a>");
 		}
 	}
 	if(image_path != "empty") {
@@ -386,7 +389,6 @@ function populate_playlist_div(image_path) {
 		document.getElementById('carousel-track-genre').innerHTML = "";
 		document.getElementById('carousel-track-rating').innerHTML = "";
 		document.getElementById('carousel-track-controls').innerHTML = "";
-
 	}
 }
 
@@ -395,9 +397,10 @@ function populate_playlist_div(image_path) {
 var angle = 0;
 function galleryspin(sign) {
     var carousel = document.querySelector('#carousel');
-    var numPanels = carousel.children.length;
+    var numPanels = carousel.children.length - 1;
     var increment = sign ? -1 : 1;
-    
+
+
 	selectedIndex+=increment;
 	if(selectedIndex >= carouselData.length){
 		selectedIndex-=carouselData.length;
@@ -411,8 +414,18 @@ function galleryspin(sign) {
 	console.log("Increment = " + increment);
 	/* Use this image path to populate the div next to the carousel */
 	populate_playlist_div(carouselData[selectedIndex]);
+
     
     angle += ( -360 / numPanels ) * increment;
     carousel.style[ '-webkit-transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';
-    carousel.style[ 'transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';   
+    document.querySelector('#information').style[ '-webkit-transform' ] = 'translateZ( 0px ) rotateY(' + (-1) * angle + 'deg)';
+    carousel.style[ 'transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';
+	document.querySelector('#information').style[ 'transform' ] = 'translateZ( 0px ) rotateY(' + (-1) * angle + 'deg)'
+
 }
+
+
+
+
+
+

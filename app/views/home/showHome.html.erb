@@ -12,23 +12,19 @@
 		</div>
 	<% if session['logged_in'] == 1 %>
 		<div class="row playlist">
-			<div class="col-md-10">
+			<div class="col-md-10" style="width: 100%;">
 				<div class="gallery">
-					<div id="carousel"></div>
+					<div id="carousel">
+						<!-- Image is added here. -->
+
+					</div>
+
 						<button type="button" id="previous" class="btn btn-default ss-icon" onclick="galleryspin('-')">&lt;</button>
 						<button type="button" id="next" class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
-						<button type="button" id="random" class="btn btn-default ss-icon" onclick="galleryspin('')"><b>Shuffle</b></button>
+						<button type="button" id="random" style="bottom: -50px;" class="btn btn-default ss-icon" onclick="galleryspin('')"><b>Shuffle</b></button>
 					</div>
 				</div>
-				<!-- Playlist Track Information (Currently: static), TODO: Show information of the current track -->
-				<div class="col-md-2 pull-left">
-					<p><b>Track Name:</b> <span id="carousel-track-name"></span></p>
-					<p><b>Artist:</b> <span id="carousel-track-artist"></span></p>
-					<p><b>Plays:</b> <span id="carousel-track-plays"></span></p> 
-					<p><b>Genre:</b> <span id="carousel-track-genre"></span></p>
-					<p><b>Rating:</b> <span id="carousel-track-rating"></span></p>   
-					<p><span id="carousel-track-controls"></span></p>
-				</div>
+
 			</div>
 		</div>
 	</div>
