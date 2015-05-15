@@ -275,6 +275,37 @@ function doCarousel(data){
     }
 }
 
+/* Populates the DIV next to the playlist with information
+ * given an image path of the current focused song.
+ */
+function populate_playlist_div(image_path) {
+	var xmlhttp;
+	if(window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	}
+	else {
+		xmlthttp = ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.request == 200 && xmlhttp.readyState == 4) {
+			var response = xmlhttp.responseText;
+			/* Parse the string as XML*/
+			if(window.DOMParser) {
+				parser = new DOMParser();
+				xmlDoc = parser.parseFromString(response, "text/xml");
+			}
+			else {
+				xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+				xmlDoc.async = false;
+				xmlDoc.loadXML(response);
+			}
+			/* Store the required information */
+		}
+	}
+	xmlhttp.open("get", "/track_info?image_path="+image_path, true);
+	xmlhttp.send();
+}
+
 // Makes the images on the carousel spin, updating the css
 var angle = 0;
 function galleryspin(sign) {
@@ -291,6 +322,8 @@ function galleryspin(sign) {
 	
 	console.log(selectedIndex);
 	console.log(carouselData[selectedIndex]);
+	/* Use this image path to populate the div next to the carousel */
+	populate_playlist_div(carouselData[selectedIndex]);
     
     angle += ( -360 / numPanels ) * increment;
     carousel.style[ '-webkit-transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';

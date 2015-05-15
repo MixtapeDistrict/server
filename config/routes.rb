@@ -57,6 +57,9 @@ WebInfo2::Application.routes.draw do
   # Gets a track image given a track id
   get '/track_image', to: 'playlist_musics#track_image'
 
+  # Gets the track info given an image path
+  get '/track_info', to: 'playlist_musics#track_info'
+
   resources :medium_comments
 
   resources :media

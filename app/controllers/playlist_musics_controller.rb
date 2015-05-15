@@ -133,6 +133,7 @@ class PlaylistMusicsController < ApplicationController
   	render :nothing => true and return
   end
 
+  # Returns the image of a track
   def track_image
   	# Get the required parameters
   	music_id = params[:music_id]
@@ -141,6 +142,51 @@ class PlaylistMusicsController < ApplicationController
   	# If such a song exists return its image path
   	response = "#{music.image_path}"
   	render :text => response and return
+  end
+
+  # Gets the track information given its image path
+  def track_info
+  	# Get the image path
+  	image_path = params[:image_path]
+  	# Find the song with this image path
+  	music = Music.find_by(image_path:image_path)
+  	# Now the medium
+  	medium = music.medium
+  	# Find the user who made this track
+  	user = medium.user
+
+  	xml  = "<song>"
+  	xml  += "<title>#{medium.title}</title>"
+	xml  += "<songID>#{music.id}</songID>"
+  	xml  += "<artist>#{user.username}</artist>"
+  	xml  += "<artistID>#{user.id}</artistID>"
+	xml  += "<filePath>#{medium.file_path}</filePath>"
+  	xml  += "<album>Single</album>"
+  	if(music.plays)
+  		xml  += "<plays>#{music.plays}</plays>"
+  	else 
+  		xml  += "<plays>0</plays>"
+  	end
+		
+  	# Calculate the average rating of this song
+  	rating_count = 0
+  	rating_sum = 0
+  	user_ratings = Rating.where(medium_id:medium.id)
+		
+  	for user_rating in user_ratings
+  		rating_sum  += user_rating.rating
+  		rating_count += 1
+  	end
+		
+  	rating = 0
+		
+  	if(rating_count != 0)
+  		rating = rating_sum.to_f/rating_count
+  	end
+		
+  	xml  += "<rating>#{rating}</rating>"
+  	xml  += "</song>"
+  	render :xml => xml and return
   end
 
   private
