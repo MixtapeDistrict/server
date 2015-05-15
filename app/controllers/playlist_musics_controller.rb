@@ -1,3 +1,4 @@
+SLICE_LENGTH = 18
 class PlaylistMusicsController < ApplicationController
   before_action :set_playlist_music, only: [:show, :edit, :update, :destroy]
 
@@ -147,7 +148,9 @@ class PlaylistMusicsController < ApplicationController
   # Gets the track information given its image path
   def track_info
   	# Get the image path
-  	image_path = params[:image_path]
+  	# Remove the preceding folders by slicing the string 
+  	image_path = params[:image_path].slice(SLICE_LENGTH, params[:image_path].length)
+  	puts image_path
   	# Find the song with this image path
   	music = Music.find_by(image_path:image_path)
   	# Now the medium
@@ -161,7 +164,7 @@ class PlaylistMusicsController < ApplicationController
   	xml  += "<artist>#{user.username}</artist>"
   	xml  += "<artistID>#{user.id}</artistID>"
 	xml  += "<filePath>#{medium.file_path}</filePath>"
-  	xml  += "<album>Single</album>"
+  	xml  += "<genre>#{music.genre}</genre>"
   	if(music.plays)
   		xml  += "<plays>#{music.plays}</plays>"
   	else 

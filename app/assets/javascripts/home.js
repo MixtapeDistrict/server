@@ -273,6 +273,10 @@ function doCarousel(data){
         newElement.css("backface-visibility",backfaceVisibility);
         spinner.append(newElement);
     }
+    /* Populate the div next to the carousel */
+   	if(data.length > 0) {
+   		populate_playlist_div(data[0]);
+   	}
 }
 
 /* Populates the DIV next to the playlist with information
@@ -287,7 +291,7 @@ function populate_playlist_div(image_path) {
 		xmlthttp = ActiveXObject("Microsoft.XMLHTTP");
 	}
 	xmlhttp.onreadystatechange = function() {
-		if(xmlhttp.request == 200 && xmlhttp.readyState == 4) {
+		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			var response = xmlhttp.responseText;
 			/* Parse the string as XML*/
 			if(window.DOMParser) {
@@ -300,6 +304,32 @@ function populate_playlist_div(image_path) {
 				xmlDoc.loadXML(response);
 			}
 			/* Store the required information */
+			console.log("<---- START OF CAROUSEL FOCUS ---->");
+			var track_title = xmlDoc.getElementsByTagName('title')[0].childNodes[0].nodeValue;
+			var song_id = xmlDoc.getElementsByTagName('songID')[0].childNodes[0].nodeValue;
+			var artist_name = xmlDoc.getElementsByTagName('artist')[0].childNodes[0].nodeValue;
+			var artist_id = xmlDoc.getElementsByTagName('artistID')[0].childNodes[0].nodeValue;
+			var file_path = xmlDoc.getElementsByTagName('filePath')[0].childNodes[0].nodeValue;
+			var genre = xmlDoc.getElementsByTagName('genre')[0].childNodes[0].nodeValue;
+			var plays = xmlDoc.getElementsByTagName('plays')[0].childNodes[0].nodeValue;
+			var rating = xmlDoc.getElementsByTagName('rating')[0].childNodes[0].nodeValue;
+			console.log("Title: " + track_title);
+			console.log("SongID: " + song_id);
+			console.log("Artist Name: " + artist_name);
+			console.log("Artist ID: " + artist_id);
+			console.log("File path: " + file_path);
+			console.log("Genre: " + genre);
+			console.log("Plays: " + plays);
+			console.log("Rating: " + rating);
+			console.log("<---- END OF THE CAROUSEL FOCUS ---->");
+			/* Time to populate the DIV right next to the carousel with information */
+			document.getElementById('carousel-track-name').innerHTML = track_title;
+			document.getElementById('carousel-track-artist').innerHTML = "<a href='/other_profile?id=" + artist_id + "'>"+artist_name+"</a>";
+			document.getElementById('carousel-track-plays').innerHTML = plays;
+			document.getElementById('carousel-track-genre').innerHTML = genre;
+			document.getElementById('carousel-track-rating').innerHTML = rating;
+			/* Add buttons for users to play this song in their playlist or comment/rate it*/
+
 		}
 	}
 	xmlhttp.open("get", "/track_info?image_path="+image_path, true);
