@@ -28,7 +28,6 @@
   						</button>
  						 <% playlist = User.find_by(id:session['user_id']).playlist %>
  						 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="playlist_quick_launcher">
- 						 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
  						<% if playlist %> 
   						<% for music in playlist.musics %>
   							 <%  rating_count = 0 %>

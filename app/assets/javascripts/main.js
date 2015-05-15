@@ -15,7 +15,7 @@ function add_playlist(path) {
 			console.log(path);
 			/* Re-render carousel */
 			document.getElementById('loader').contentWindow.$("#carousel").removeAttr('style');
-			if(typeof document.getElementById('loader').contentWindow.get_playlist.onChange === "function") {
+			if(typeof document.getElementById('loader').contentWindow.get_playlist == "function") {
 				document.getElementById('loader').contentWindow.get_playlist();
 			}
 
