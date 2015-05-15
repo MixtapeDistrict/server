@@ -14,6 +14,7 @@ function add_playlist(path) {
 			console.log("Song added to playlist.");
 			console.log(path);
 			/* Re-render carousel */
+			document.getElementById('loader').contentWindow.$("#carousel").removeAttr('style');
 			document.getElementById('loader').contentWindow.get_playlist();
 		}
 	}

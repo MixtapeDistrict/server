@@ -60,6 +60,9 @@ WebInfo2::Application.routes.draw do
   # Gets the track info given an image path
   get '/track_info', to: 'playlist_musics#track_info'
 
+  # Deletes a track from the user's playlist
+  get '/playlist_remove', to: 'playlist_musics#remove_track'
+
   resources :medium_comments
 
   resources :media

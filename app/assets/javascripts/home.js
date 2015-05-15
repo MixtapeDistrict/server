@@ -188,6 +188,7 @@ function get_playlist() {
 			load_playlist(xmlDoc.getElementsByTagName('image'));
 		}
 	}
+
 	/* Send the ajax request */
 	xmlhttp.open("get", "/playlist", true);
 	xmlhttp.send();
@@ -256,9 +257,8 @@ var carouselData = null;
 
 // Creates a Carousel from an Array 
 function doCarousel(data){
-	
 	carouselData = data;
-	
+	angle = 0;
     var spinner = $("#carousel");
     spinner.empty();
     var interval = 360/data.length;
@@ -273,10 +273,32 @@ function doCarousel(data){
         newElement.css("backface-visibility",backfaceVisibility);
         spinner.append(newElement);
     }
-    /* Populate the div next to the carousel */
+    /* Populate the div next to the carousel on the first call */
    	if(data.length > 0) {
    		populate_playlist_div(data[0]);
    	}
+}
+
+/* Removes a song from the carousel(User's playlist) */
+function remove_song(song_id) {
+	var xmlhttp;
+	if(window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	}
+	else {
+		xmlhttp = ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+			console.log("Song removed");
+			$("#carousel").removeAttr('style');
+			get_playlist();
+		}
+	}
+	/* Open and send ajax request */
+	xmlhttp.open("get", "/playlist_remove?song_id="+song_id, true);
+	xmlhttp.send();
+
 }
 
 /* Populates the DIV next to the playlist with information
@@ -313,6 +335,7 @@ function populate_playlist_div(image_path) {
 			var genre = xmlDoc.getElementsByTagName('genre')[0].childNodes[0].nodeValue;
 			var plays = xmlDoc.getElementsByTagName('plays')[0].childNodes[0].nodeValue;
 			var rating = xmlDoc.getElementsByTagName('rating')[0].childNodes[0].nodeValue;
+			var img = xmlDoc.getElementsByTagName('imagePath')[0].childNodes[0].nodeValue;
 			console.log("Title: " + track_title);
 			console.log("SongID: " + song_id);
 			console.log("Artist Name: " + artist_name);
@@ -329,6 +352,10 @@ function populate_playlist_div(image_path) {
 			document.getElementById('carousel-track-genre').innerHTML = genre;
 			document.getElementById('carousel-track-rating').innerHTML = rating;
 			/* Add buttons for users to play this song in their playlist or comment/rate it*/
+			document.getElementById('carousel-track-controls').innerHTML = "<a onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
+			img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img class='carousel-playtrack' src=\"assets/images/play.png\"></a>" +
+			"<a href = 'comments/music/?id="+song_id+"'><img class = 'carousel-comment' src='assets/images/comment.ico'></a>" +
+			"<a onclick = 'remove_song("+song_id+")'><img class = 'carousel-remove' src ='assets/images/remove.png'></a>";
 
 		}
 	}
@@ -352,6 +379,8 @@ function galleryspin(sign) {
 	
 	console.log(selectedIndex);
 	console.log(carouselData[selectedIndex]);
+	console.log("Panels in carousel = " + numPanels);
+	console.log("Increment = " + increment);
 	/* Use this image path to populate the div next to the carousel */
 	populate_playlist_div(carouselData[selectedIndex]);
     

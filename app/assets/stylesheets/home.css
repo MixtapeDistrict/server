@@ -148,6 +148,24 @@ I refactored and revamped just about all code from there, but it is possible a f
   height:27px; 
   width:27px;
 }
+.carousel-playtrack {
+  position:absolute;
+  height:27px; 
+  width:27px;
+}
+.carousel-comment{
+  position:absolute;
+  height:27px; 
+  width:27px;   
+  margin-left:35px;
+}
+
+.carousel-remove {
+	position:absolute;
+	height:27px;
+	width:27px;
+	margin-left:70px;
+}
 
 .element:hover .playtrack {
   display: inline-block;

@@ -165,6 +165,7 @@ class PlaylistMusicsController < ApplicationController
   	xml  += "<artistID>#{user.id}</artistID>"
 	xml  += "<filePath>#{medium.file_path}</filePath>"
   	xml  += "<genre>#{music.genre}</genre>"
+  	xml += "<imagePath>#{image_path}</imagePath>"
   	if(music.plays)
   		xml  += "<plays>#{music.plays}</plays>"
   	else 
@@ -190,6 +191,31 @@ class PlaylistMusicsController < ApplicationController
   	xml  += "<rating>#{rating}</rating>"
   	xml  += "</song>"
   	render :xml => xml and return
+  end
+
+  # Ajax function removes track of user
+  def remove_track
+  	# get the music id parsed in
+  	music_id = params[:song_id]
+  	# If user isn't logged in return without rendering anything
+  	if(session['logged_in'] != 1)
+  		render :nothing => true and return
+  	end
+  	# Get the user_id
+  	user_id = session['user_id']
+  	# find the user in the database
+  	user = User.find_by(id:user_id)
+  	# get their playlist
+  	playlist = user.playlist
+  	# Get the song from their playlist
+  	music = playlist.musics.find_by(id:music_id)
+ 	# Delete this song from their playlist
+ 	playlist.musics.delete(music)
+ 	# Persist
+ 	playlist.save
+ 	user.save
+ 	redirect_to url_for(:controller => :home, :action => :showHome) and return
+
   end
 
   private
