@@ -22,7 +22,7 @@ function sign_in() {
     <li>\
       <form class=\"navbar-form navbar-left\" role=\"search\" method=\"get\" action=\"/search\">\
       <div class=\"form-group\">\
-	    <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\" name=\"search\" required/>\
+	    <input type=\"text\" class=\"form-control\" style=\"width:300px;\"  placeholder=\"Search for tracks, profiles or genres\" name=\"search\" required/>\
       	<input type=\"submit\" class=\"navbar-btn btn btn-search btn-default hidden-xs\" value=\"Go!\"/>\
       </div></form></li>\
 	<li class=\"dropdown\">\
