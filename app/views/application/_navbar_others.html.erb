@@ -140,8 +140,10 @@
 
 
 				<li class="dropdown">
+					<% iduser = session['user_id'] %>
+					<% path_to_image = User.find(iduser).image_path %>
 					<!-- Acts as a href link to controller action -->
-					<%= link_to image_tag("person.png", size:"20x22"), '/user_profile', {:class => 'dropdown-toggle', :data_toggle => 'dropdown', :role => 'button', :aria_expanded => 'true'}%>
+					<%= link_to image_tag("userimage/" + path_to_image, size:"20x22") + " " + User.find(iduser).username, "/user_profile", {:class => 'dropdown-toggle', :data_toggle => 'dropdown', :role => 'button', :aria_expanded => 'true'}%>
 				</li>
 
 				<li class="dropdown">
