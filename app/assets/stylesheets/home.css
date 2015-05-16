@@ -149,7 +149,7 @@ I refactored and revamped just about all code from there, but it is possible a f
   display:none;
   position:absolute;
   bottom:11px;
-  right:50px;
+  right:87px;
   height:27px; 
   width:27px;
 }
@@ -184,6 +184,18 @@ I refactored and revamped just about all code from there, but it is possible a f
   right:10px;
   height:30px; 
   width:30px;   
+}
+.add_playlist {
+	display:none;
+	position:absolute;
+	bottom:10px;
+	right:50px;
+	height:27px;
+	width:27px;
+}
+.element:hover .add_playlist {
+	display: inline-block;
+	z-index:51;
 }
 
 .element:hover .comment {
