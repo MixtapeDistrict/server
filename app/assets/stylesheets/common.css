@@ -130,3 +130,11 @@ form {
 	cursor: pointer;
 	cursor: hand;
 }
+
+.delete_image{
+  width:15px;
+  height: 15px;
+  position:absolute; 
+  margin-left:115px; 
+  margin-top:7px; 
+}
