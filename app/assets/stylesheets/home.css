@@ -4,6 +4,13 @@
 	padding-bottom: 40px;
 }
 
+#content{
+  padding-bottom: 0; 
+}
+
+body{
+    overflow-x:hidden;
+}
 .refresh{
 	height: 20px;
 }
@@ -14,6 +21,8 @@
     max-height: 200px;
   	min-width: 160px;
     min-height: 160px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .element{
@@ -52,11 +61,11 @@
 /*  Created using http://desandro.github.io/3dtransforms/docs/carousel.html as a tutorial/guide
 I refactored and revamped just about all code from there, but it is possible a few variable names/css are the same */	
 .playlist{
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 }
 .gallery {
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     height: 210px;
     -webkit-perspective: 1100px;
             perspective: 1100px;  	
@@ -74,6 +83,15 @@ I refactored and revamped just about all code from there, but it is possible a f
             transition: transform 1s;
 
 }
+
+.my-playlist{
+  height:260px;
+  width: 99.8%;
+  background:#000000;opacity:0.8;
+  position:relative;
+  top:-29px;
+}
+
 
 #carousel > img {
   	position: absolute;
@@ -235,9 +253,6 @@ I refactored and revamped just about all code from there, but it is possible a f
 	padding-top:2px;
 }
 
-.btn {
-	margin-top:10px;
-}
 #album-tracks {
 	margin-top:30px;
 }

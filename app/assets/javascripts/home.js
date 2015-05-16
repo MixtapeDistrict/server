@@ -1,18 +1,8 @@
-/* A function which shuffles an array */
-function shuffle(array) {
-    var size = array.length;
-    var random_index;
-	/* While there remain elements to shuffle */
-	for(var i=0; i<array.length; i++) {
-		/* Pick a random index from the array */
-		random_index = Math.floor(Math.random()*array.length);
-		/* Swap this random index with the current index */
-		var temp = array[i];
-		array[i] = array[random_index];
-		array[random_index] = temp;
-	}
-	return array;
-}
+$.each( $('*'), function() { 
+    if( $(this).width() > $('body').width()) {
+        console.log("Wide Element: ", $(this), "Width: ", $(this).width()); 
+    } 
+});
 
 // Make an Array form start to end of size(end-start+1)
 function range(start, end) {
@@ -110,7 +100,7 @@ function update_grind(songs) {
 			comment = '<a href="/comments?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
 			playlist = '<a onclick="parent.add_playlist(\''+track_path+'\')"><img class="add_playlist" src="assets/images/add_playlist.png"></a>';
 
-			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" style="height:170px;width:170px;" alt="" src="assets/mediaimage/'+ track_img +
+			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+ track_img +
 					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + playlist + comment+'</div>';
 		}
 	}
@@ -139,8 +129,7 @@ function update_grind(songs) {
 
 			track_info = '<p class="h4">' + track_name +'</p>'+
 			             '<p class="name">Artist: <a class="artistname" href="/other_profile?id='+profile_id+'">' + artist_name +
-			             '</a></p><p class="name">Album: ' + track_album +
-			             '</p><p>Plays: ' + plays_num +
+			             '</a></p>'+ '<p>Genre: ' + genre + '</p>' + '<p>Plays: ' + plays_num +
 			             '</p><p>Ratings: ' + rating + '/5';
 
 			playtrack = '<a onclick="parent.jplayer_load(\'' + track_name +'\',\'' + track_path + '\',\'' + track_img +'\',\'' +
