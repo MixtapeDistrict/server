@@ -20,235 +20,49 @@
 
   <!-- Information of the tabs to be display, see id is the same that the tab names-->
 	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="tracks">
-			<div class="tab-content row">
-				<% @owntracks.each do |medium| %>
-					<% rating = ratings(medium.id) %>
-					<div class="element col-md-4 col-sm-6 col-xs-6 clearfix">
-						<div class="col-md-6 col-sm-6 col-xs-6 content-img">
-							<img class="img-thumbnail"  alt="Track Image" src="assets/mediaimage/<%= medium.image_path %>">
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6 content-info">
-							<p class="h4 row info track-name"><%= medium.title %></p>
-							<p class="row info track-coll"><%= medium.user.username%></p>
-							<p class="info">Plays:<%=medium.music.plays%></p>
-							<p class="info">Genre:<%=medium.music.genre%></p>
-							<% if session['logged_in']==1 && session['user_id']==@userID %>
-								<p class = "info"><a data-toggle="modal" data-target="#delete-track-<%= medium.music.id%>" href="#delete">Delete track</a></p>
-								<a data-toggle="modal" data-target="#edit-track-<%=medium.music.id%>" href="#edit">Edit track</a></p>
-							<% end %>
-							<p class="info"><a onclick="parent.jplayer_load('<%= medium.title %>','<%=medium.file_path%>', '<%=medium.image_path%>', '<%=medium.user.username%>', '<%=medium.user.id%>', '<%= rating %>', '<%=medium.music.plays%>')"><img class="playtrack" src="assets/images/play.png"></a>
-<!-- TRYING TO ADD_TO_PLAYLIST BUTTON  -->
-							<% song_path = medium.file_path %>
-<a onclick = "parent.add_playlist('<%= song_path %>')"><img class="add_playlist" height="27" width="27" src="assets/images/add_playlist.png">
-</a>
-							<a href="/comments?id=<%=medium.music.id%>"><img class="comment" src="assets/images/comment.ico"></a>
-
-
-							</p>
-							<% if rating <= 0.5 %>
-								<img src="/assets/images/0.5.png" class="rating">
-							<% elsif rating <= 1 %>
-								<img src="/assets/images/1.0.png" class="rating">
-							<% elsif rating <= 1.5 %>
-								<img src="/assets/images/1.5.png" class="rating">
-							<% elsif rating <= 2 %>
-								<img src="/assets/images/2.0.png" class="rating">
-							<% elsif rating <= 3 %>
-								<img src="/assets/images/3.0.png" class="rating">
-							<% elsif rating <= 3.5 %>
-								<img src="/assets/images/3.5.png" class="rating">
-							<% elsif rating <= 4 %>
-								<img src="/assets/images/4.0.png" class="rating">
-							<% elsif rating <= 4.5 %>
-								<img src="/assets/images/4.5.png" class="rating">
-							<% else %>
-								<img src="/assets/images/5.0.png" class="rating">
-				<% end %>
-						</div>
-					</div>  
-
-        <!-- The delete modal for this track -->
-        <div class="modal fade" id="delete-track-<%= medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel" style="color:red">Warning! This cannot be reverted!</h4>
-					</div>
-					<div class="modal-body">
-						<button type="button" class="btn profile-btn btn-info" data-dismiss="modal">I have changed my mind</button>
-						<form method="post" action="/delete_medium?id=<%=medium.id%>">
-						<button type="submit" class="btn profile-btn btn-danger">Delete '<%= medium.title%>'</button>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>       
-					</div>
-				</div>
-  			</div>
-		</div>  
-		<!-- The edit modal for this track -->
-		<div class="modal fade" id="edit-track-<%=medium.music.id%>" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Edit '<%=medium.title%>'</h4>
-					</div>
-					<div class="modal-body">
-						<!--Upload Track form-->
-						<form class="form-horizontal"  action="/editTrack" method="post" enctype="multipart/form-data">		
-							<div class="new-track-name form-group">
-								<label for="track-name" class="col-md-4 control-label">Track Name:</label>							
-								<div class="col-md-7">
-									<input id="track-name" type="text" class="form-control" name="trackname" required maxlength="30" value="<%=medium.title%>">
-									<input type="hidden" name="medium_id" value="<%=medium.id%>">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="track-genre" class="col-md-4 control-label">Genre:</label>
-								<div class="col-md-7">
-									<select name="trackgenre">
-										<% if medium.music.genre == "Blues" %>
-											<option value="Blues" selected>Blues</option>
-										<% else %>
-											<option valye="Blues">Blues</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Classical" %>
-											<option value="Classical" selected>Classical</option>
-										<% else %>
-											<option value="Classical">Classical</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Country"%>
-											<option value="Country" selected>Country</option>
-										<% else %>
-											<option value="Country">Country</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Electronic"%>
-											<option value="Electronic" selected>Electronic</option>
-										<% else %>
-											<option value="Electronic">Electronic</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Folk"%>
-											<option value="Folk" selected>Folk</option>
-										<% else %>
-											<option value="Folk">Folk</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Hip hop"%>
-											<option value="Hip hop" selected>Hip-Hop</option>
-										<% else %>
-											<option value="Hip hop">Hip-Hop</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Jazz" %>
-											<option value="Jazz" selected>Jazz</option>
-										<% else %>
-											<option value="Jazz">Jazz</option>    
-										<% end %>
-										
-										<% if medium.music.genre == "Reggae"%>
-											<option value="Reggae" selected>Reggae</option>
-										<% else %>
-											<option value="Reggae">Reggae</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Religious"%>
-											<option value="Religious" selected>Religious</option>
-										<% else %>
-											<option value="Religious">Religious</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Rock"%>
-											<option value="Rock" selected>Rock</option>
-										<% else %>
-											<option value="Rock">Rock</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Traditional"%>
-											<option value="Traditional" selected>Traditional</option>
-										<% else %>
-											<option value="Traditional">Traditional</option>
-										<% end %>
-										
-										<% if medium.music.genre == "Other"%>
-											<option value="Other" selected>Other</option>
-										<% else %>
-											<option value="Other">Other</option>
-										<% end %>
-										
-									</select>
-								</div>
-							</div>
-							<div class="new-image-track form-group">
-								<label for="edit-trackimage" class="col-md-4 control-label">Track Image:</label>
-								<div class="col-md-7">
-									<input class="editImage" type="file" name="trackimage" accept="image/*">
-								</div>
-							</div>	
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									<!-- Make it possbile to submit the form in the modal -->
-									<input type="submit" id="submit-track" class="btn btn-primary" value="Edit Track">    
-								</div>
-						</form>
-							</div>
-    				</div>
-				</div>
-			</div>   
-		<% end %>
-	</div>
-</div>  
+	<%= render 'trackstab'%>  
     
-<!-- Add collaborators here. -->
-<div role="tabpanel" class="tab-pane" id="collaborators">
-	<div class="tab-content row">
-		<% for i in 0..@approved_requests.count - 1 %>
-			<div class="element col-md-4 col-sm-6 col-xs-6 clearfix">
-				<div class="col-md-6 col-sm-6 col-xs-6 coll-img">
-					<%= image_tag "userimage/" + User.find(@approved_ids[i]).image_path, class:"img-thumbnail", 
-					alt:"Collaborator Image" %>
-					<!--Need to include user image source-->
+	<!-- Add collaborators here. -->
+	<div role="tabpanel" class="tab-pane" id="collaborators">
+		<div class="tab-content row">
+			<% for i in 0..@approved_requests.count - 1 %>
+				<div class="element col-md-4 col-sm-6 col-xs-6 clearfix">
+					<div class="col-md-6 col-sm-6 col-xs-6 coll-img">
+						<%= image_tag "userimage/" + User.find(@approved_ids[i]).image_path, class:"img-thumbnail", 
+						alt:"Collaborator Image" %>
+						<!--Need to include user image source-->
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-6 content-info">
+						<p class="h4 row info coll-name">
+							<%= link_to User.find(@approved_ids[i]).username , 
+							{:controller => 'profile', :action => 'showOther', :id => @approved_ids[i] } %>
+						</p>          
+					</div>
 				</div>
-				<div class="col-md-6 col-sm-6 col-xs-6 content-info">
-					<p class="h4 row info coll-name">
-						<%= link_to User.find(@approved_ids[i]).username , 
-						{:controller => 'profile', :action => 'showOther', :id => @approved_ids[i] } %>
-					</p>          
-				</div>
-			</div>
-		<% end %>
-	</div>  
-</div>
-
-<!-- Onclick reveals all the people the user is following... 
-	NOTE: should display all users as links !
--->
-<div role="tabpanel" class="tab-pane" id="following">
-	<div class="tab-content row">
-		<% for i in 0..@num_following - 1  %>
-			<div class="element col-md-4 col-sm-6 col-sm-6 clearfix">
-				<div class="col-md-6 col-sm-6 col-xs-6 foll-img">
-					<%= image_tag "userimage/" + User.find(@ids[i]).image_path, class:"img-thumbnail", 
-					alt:"User Image"%> 
-				</div>
-				<div class="col-md-6 col-sm-6 col-xs-6 content-info">
-					<p class="h4 row info foll-name">
-						<%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
-					</p>
-					<p class="row info num-foll">
-						<%= Follower.where(user_id:@ids[i]).count %> followers
-					</p>            
-				</div>
-			</div>
-		<% end %>
+			<% end %>
+		</div>  
 	</div>
-</div>
+
+	<div role="tabpanel" class="tab-pane" id="following">
+		<div class="tab-content row">
+			<% for i in 0..@num_following - 1  %>
+				<div class="element col-md-4 col-sm-6 col-sm-6 clearfix">
+					<div class="col-md-6 col-sm-6 col-xs-6 foll-img">
+						<%= image_tag "userimage/" + User.find(@ids[i]).image_path, class:"img-thumbnail", 
+						alt:"User Image"%> 
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-6 content-info">
+						<p class="h4 row info foll-name">
+							<%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
+						</p>
+						<p class="row info num-foll">
+							<%= Follower.where(user_id:@ids[i]).count %> followers
+						</p>            
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
 
 	</div>
 </div>
