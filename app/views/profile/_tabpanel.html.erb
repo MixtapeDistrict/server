@@ -19,7 +19,7 @@
   </ul>
 
   <!-- Information of the tabs to be display, see id is the same that the tab names-->
-	<div class="tab-content">
+  <div class="tab-content">
 	<%= render 'trackstab'%>  
     
 	<!-- Add collaborators here. -->
@@ -46,14 +46,15 @@
 	<div role="tabpanel" class="tab-pane" id="following">
 		<div class="tab-content row">
 			<% for i in 0..@num_following - 1  %>
-				<div class="element col-md-4 col-sm-6 col-sm-6 clearfix">
+				<div class="element col-md-4 col-sm-6 col-sm-6">
 					<div class="col-md-6 col-sm-6 col-xs-6 foll-img">
-						<%= image_tag "userimage/" + User.find(@ids[i]).image_path, class:"img-thumbnail", 
-						alt:"User Image"%> 
+						<%= image_tag "userimage/" + User.find(@ids[i]).image_path, 
+						class:"foll-image img-thumbnail", alt:"User Image"%> 
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6 content-info">
 						<p class="h4 row info foll-name">
-							<%= link_to @names_following[i] , {:controller => 'profile', :action => 'showOther', :id => @ids[i] } %>
+							<%= link_to @names_following[i] , {:controller => 'profile', 
+								:action => 'showOther', :id => @ids[i] } %>
 						</p>
 						<p class="row info num-foll">
 							<%= Follower.where(user_id:@ids[i]).count %> followers
@@ -64,5 +65,5 @@
 		</div>
 	</div>
 
-	</div>
+  </div>
 </div>

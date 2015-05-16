@@ -160,3 +160,8 @@ form {
   margin-top: 10px;
 }
 
+.user-avatar{
+  max-height: 150px;
+  max-width: 150px;
+}
+

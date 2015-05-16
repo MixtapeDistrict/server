@@ -8,14 +8,14 @@
 
 <div id="content" class="container-fluid"> 
 	<div class="container">      
-		<div class="row" id="album-info"> 
+		<div class="row" id="track-info"> 
 			<div class="col-md-2 col-md-offset-4">
-				<img id="track" src="<%= "/assets/mediaimage/" + @medium.image_path %>" alt="album cover">  
+				<img id="track" src="<%= "/assets/mediaimage/" + @medium.image_path %>" alt="Track cover">  
 			</div>
 		<div class="col-md-2">
-			<p class="album-name"><%= @medium.title %></p> 
-			<p class="album-artist"><a href="/other_profile?id=<%=@creator.id%>"><%= @creator.username %></a> </p>
-			<p class="album-year"><%= @song.genre %></p>
+			<p class="ha track-name"><%= @medium.title %></p> 
+			<p class="track-artist"><a href="/other_profile?id=<%=@creator.id%>"><%= @creator.username %></a> </p>
+			<p class="track-genre"><%= @song.genre %></p>
 			<p>
 				<% if @rating <= 0.5 %>
 					<img src="/assets/images/0.5.png" class="rating">
@@ -47,9 +47,8 @@
         		
         </div>
 	</div>
-	<div class="row" id="album-tracks"> 
+	<div class="row" id="tracks-comments"> 
 		<table class="table table-striped"> 
-
 			<tbody>
 				<% for medium_comment in @medium_comments %>
 					<% comment = medium_comment.comment %>
@@ -57,11 +56,11 @@
 					<% user_rating = Rating.where(medium_id:@medium.id).find_by(user_id:user.id).rating %>
 					<tr class="active">
 						<td class="col-md-3">
-							<img src= "<%="/assets/userimage/"+user.image_path%>" id = "dp">
+							<img class="user-avatar" src= "<%="/assets/userimage/"+user.image_path%>" id = "dp">
 							<div class="col-md-11" id="track-info">
 								<p class="track-name h4">User: <a href="/other_profile?id=<%= user.id %>"><%= user.username%></a></p>
 								<p class= "track-duration"><%= comment.created_at %> </p>
-                  Rating:            
+                  				Rating:            
 								<% if user_rating <= 0.5 %>
 									<img src="/assets/images/0.5.png" class="rating">
 								<% elsif user_rating <= 1 %>
