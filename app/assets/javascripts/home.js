@@ -119,7 +119,8 @@ function update_grind(songs) {
 			track_album = songs[rand].childNodes[6].childNodes[0].nodeValue;
 			plays_num = songs[rand].childNodes[8].childNodes[0].nodeValue;
 			rating = songs[rand].childNodes[9].childNodes[0].nodeValue;
-			
+			genre = songs[rand].childNodes[10].childNodes[0].nodeValue;
+
 
 			track_info = '<p class="h4">' + track_name +'</p>'+
 			             '<p class="name">Artist: <a class="artistname" href="/other_profile?id='+profile_id+'">' + artist_name +
