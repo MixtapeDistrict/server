@@ -334,6 +334,6 @@ I refactored and revamped just about all code from there, but it is possible a f
   -webkit-transition: all 0.5s;
 }
 
-#email-message, #username-message, #password-message{
+#email-message, #username-message, #password-message, #login-message {
 	font-size:12px;
 }
