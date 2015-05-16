@@ -148,9 +148,9 @@ function update_grind(songs) {
 						'<img class="playtrack" src="assets/images/play.png"></a>';
 
 			comment = '<a href="/comments?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
-
+            playlist = '<a onclick="parent.add_playlist(\''+track_path+'\')"><img class="add_playlist" src="assets/images/add_playlist.png"></a>';
 			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+ track_img +
-					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + comment+'</div>';
+					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + playlist + comment+'</div>';
 		}
 	}
 	html += '</div>'
