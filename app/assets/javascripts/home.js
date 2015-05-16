@@ -291,8 +291,9 @@ function doCarousel(data){
    		populate_playlist_div(data[0]);
    	}
    	else {
-   		populate_playlist_div("empty");
-   		var newElement = $("<img src='assets/images/error.jpg'>");
+   		// populate_playlist_div("empty");
+   		// <img src='assets/images/error.jpg'>
+   		var newElement = $("<h2 style='color:white;'>Playlist is empty.</h2>");
         var num = interval*i;
         newElement.css("transform","rotateY( " + num + "deg ) translateZ( "+r+"px )");
         
