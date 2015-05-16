@@ -131,11 +131,10 @@ form {
 	cursor: hand;
 }
 
+
 .delete_image{
   width:15px;
   height: 15px;
-  position:absolute; 
-  margin-top:7px; 
 }
 .remove-playlist{
   padding: 0;
@@ -143,4 +142,9 @@ form {
 
 .play-list-song{
   padding: 0;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+.presentation{
+  padding: 5px;
 }

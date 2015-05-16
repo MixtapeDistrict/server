@@ -44,12 +44,14 @@
   							<%if(rating_count != 0)%>
   								<%rating = rating_sum.to_f/rating_count%>
   							<%end%>
-   	 						<li role="presentation">
-   	 							<div class="col-md-11 play-list-song" role="menuitem" tabindex="-1" 
+   	 						<li class="presentation" role="presentation">
+   	 							<div class="col-md-11 col-sm-11 col-xs-11 play-list-song" 
+   	 							     role="menuitem" tabindex="-1" 
    	 							     onclick="parent.jplayer_load('<%= music.medium.title %>', '<%= music.medium.file_path%>', '<%= music.medium.image_path%>', '<%= music.medium.user.username%>', '<%= music.medium.user.id %>', '<%=rating%>', '<%= music.plays %>')">
    	 								<%= music.medium.title%>
    	 							</div>   	 							
-   	 							<div class='col-md-1 remove-playlist' onclick='remove_song(<%=music.id%>)'>
+   	 							<div class='col-md-1 col-sm-1 col-xs-1 remove-playlist' 
+   	 							     onclick='remove_song(<%=music.id%>)'>
    	 								<img class='delete_image' src='assets/images/remove.png'>
    	 							</div>
    	 						</li>
