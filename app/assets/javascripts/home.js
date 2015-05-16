@@ -101,7 +101,7 @@ function update_grind(songs) {
 			playlist = '<a onclick="parent.add_playlist(\''+track_path+'\')" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And heres some amazing content. Its very engaging. Right?"><img class="add_playlist" src="assets/images/add_playlist.png"></a>';
 
 			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+ track_img +
-					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + comment+'</div>';
+					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + playlist + comment+'</div>';
 		}
 	}
 	/* There is more than 24 songs in the database, our grind is good size. */
