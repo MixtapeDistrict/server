@@ -1,12 +1,13 @@
 class MainController < ApplicationController
-  LINK = "/home"
-  def parse_route
-  	@link = LINK
+	LINK = "/home"
 	
-  	if(params[:request])
-  		@link = params[:request]
-  	end
+	def parse_route
+		@link = LINK
 	
-  	render :layout => false
-  end
+		if(params[:request])
+			@link = params[:request]
+		end
+	
+		render :layout => false
+	end
 end

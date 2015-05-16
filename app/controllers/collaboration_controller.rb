@@ -107,5 +107,3 @@ class CollaborationController < ApplicationController
 		end
 	end
 end
-
-
