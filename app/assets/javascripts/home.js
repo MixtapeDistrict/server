@@ -372,7 +372,7 @@ function populate_playlist_div(image_path) {
 
 			$('.T6').html("<a  id=\"B1\" onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
 				img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img src=\"assets/images/play.png\"></a>" +
-				"<a  id=\"B2\" href = 'comments/music/?id="+song_id+"'><img src='assets/images/comment.ico'></a>" +
+				"<a  id=\"B2\" href = '/comments?id="+song_id+"'><img src='assets/images/comment.ico'></a>" +
 				"<a  id=\"B3\" onclick = 'remove_song("+song_id+")'><img  src ='assets/images/remove.png'></a>");
 		}
 	}
