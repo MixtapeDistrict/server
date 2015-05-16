@@ -193,6 +193,13 @@ I refactored and revamped just about all code from there, but it is possible a f
 	height:27px;
 	width:27px;
 }
+.add_playlist_comments {
+	position:absolute;
+	bottom:10px;
+	right:120px;
+	height:27px;
+	width:27px;
+}
 .element:hover .add_playlist {
 	display: inline-block;
 	z-index:51;
@@ -258,6 +265,7 @@ I refactored and revamped just about all code from there, but it is possible a f
 }
 
 #carousel:hover #information{
+	display:inline-block;
     background:#000000;
     opacity: 0.8;
     transition: all 0.5s;
@@ -265,6 +273,7 @@ I refactored and revamped just about all code from there, but it is possible a f
 }
 
 #information {
+	display:none;
     position: relative;
     width: 255px;
     height: 255px;
