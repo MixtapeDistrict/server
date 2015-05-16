@@ -135,6 +135,12 @@ form {
   width:15px;
   height: 15px;
   position:absolute; 
-  margin-left:115px; 
   margin-top:7px; 
+}
+.remove-playlist{
+  padding: 0;
+}
+
+.play-list-song{
+  padding: 0;
 }
