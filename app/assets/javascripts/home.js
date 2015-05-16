@@ -1,9 +1,3 @@
-$.each( $('*'), function() { 
-    if( $(this).width() > $('body').width()) {
-        console.log("Wide Element: ", $(this), "Width: ", $(this).width()); 
-    } 
-});
-
 // Make an Array form start to end of size(end-start+1)
 function range(start, end) {
     var array = [];
@@ -350,12 +344,12 @@ function populate_quicklaunch_bar(xmlDoc) {
 			var rating = songs[i].childNodes[5].childNodes[0].nodeValue;
 			var plays = songs[i].childNodes[6].childNodes[0].nodeValue;
 			var song_id = songs[i].childNodes[7].childNodes[0].nodeValue;
-			var delete_image = "<a onclick='remove_song("+song_id+")''><img width='15' height='15' align='right' style='position:absolute; margin-left:115px; margin-top:7px; ' src='assets/images/remove.png'></a>";
+			var delete_image = "<div class='col-md-1'><a onclick='remove_song("+song_id+")''><img class='delete_image' src='assets/images/remove.png'></a></div>";
 			html += "<li role='presentation'>";
 			html += delete_image;
-			html += "<a role=\"menuitem\" tabindex=\"-1\" ";
+			html += "<div class='col-md-11'><a role=\"menuitem\" tabindex=\"-1\" ";
 			html += "onclick=\"parent.jplayer_load('" + name + "', '" + path + "',";
-			html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\">" + name + "</a>";
+	 	    html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\">" + name + "</a></div>";
 			html += "</li>";
 		}
 		list.innerHTML = html;
