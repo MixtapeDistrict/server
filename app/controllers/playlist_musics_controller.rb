@@ -176,6 +176,7 @@ class PlaylistMusicsController < ApplicationController
   		
 		xml += "<rating>#{rating}</rating>"
   		xml += "<plays>#{music.plays}</plays>"
+  		xml += "<songID>#{music.id}</songID>"
   		xml += "</track>"
 	end
   	

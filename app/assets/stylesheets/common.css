@@ -125,3 +125,8 @@ form {
 .quicklaunch_playlist {
 	padding:8px;
 }
+.quicklaunch_playlist > ul > li > a:hover {
+	background-color:white;
+	cursor: pointer;
+	cursor: hand;
+}

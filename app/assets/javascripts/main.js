@@ -48,7 +48,10 @@ function add_playlist(path) {
 					var artist_id = songs[i].childNodes[4].childNodes[0].nodeValue;
 					var rating = songs[i].childNodes[5].childNodes[0].nodeValue;
 					var plays = songs[i].childNodes[6].childNodes[0].nodeValue;
+					var song_id = songs[i].childNodes[7].childNodes[0].nodeValue;
+					var delete_image = "<a onclick='remove_song("+song_id+")''><img width='15' height='15' align='right' style='position:absolute; margin-left:115px; margin-top:7px; ' src='assets/images/remove.png'></a>";
 					html += "<li role='presentation'>";
+					html += delete_image;
 					html += "<a role=\"menuitem\" tabindex=\"-1\" ";
 					html += "onclick=\"parent.jplayer_load('" + name + "', '" + path + "',";
 			 	    html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\">" + name + "</a>";
