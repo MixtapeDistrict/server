@@ -54,7 +54,7 @@ function add_playlist(path) {
 					html += "<li class='presentation' role='presentation'>";
 					html += "<div class='col-md-11 col-sm-11 col-xs-11 play-list-song'role=\"menuitem\" tabindex=\"-1\" ";
 					html += "onclick=\"parent.jplayer_load('" + name + "', '" + path + "',";
-			 	    html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\">" + name + "</div>";
+			 	    html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\"><p>"+name+"</p></div>";
 					html += delete_image;
 					html += "</li>";
 				}

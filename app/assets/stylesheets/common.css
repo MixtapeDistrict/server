@@ -131,10 +131,15 @@ form {
 	cursor: hand;
 }
 
+#playlist_quick_launcher{
+  width: 175px;
+}
 
 .delete_image{
   width:15px;
   height: 15px;
+  position: absolute;
+  top: 2px;
 }
 .remove-playlist{
   padding: 0;
@@ -143,8 +148,15 @@ form {
 .play-list-song{
   padding: 0;
   padding-left: 5px;
-  margin-bottom: 10px;
+  padding-right: 5px;
+  margin-bottom: 5px;  
 }
+
 .presentation{
   padding: 5px;
 }
+
+.comment-btn{
+  margin-top: 10px;
+}
+
