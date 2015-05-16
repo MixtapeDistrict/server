@@ -1,33 +1,37 @@
 <%= form_for(@music) do |f| %>
-  <% if @music.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@music.errors.count, "error") %> prohibited this music from being saved:</h2>
+	<% if @music.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@music.errors.count, "error") %> prohibited this music from being saved:</h2>
 
-      <ul>
-      <% @music.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+				<% @music.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :image_path %><br>
-    <%= f.text_field :image_path %>
-  </div>
-  <div class="field">
-    <%= f.label :media_id %><br>
-    <%= f.number_field :media_id %>
-  </div>
-  <div class="field">
-    <%= f.label :plays %><br>
-    <%= f.number_field :plays %>
-  </div>
-  <div class="field">
-    <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="field">
+		<%= f.label :image_path %><br>
+		<%= f.text_field :image_path %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :media_id %><br>
+		<%= f.number_field :media_id %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :plays %><br>
+		<%= f.number_field :plays %>
+	</div>
+
+	<div class="field">
+		<%= f.label :genre %><br>
+		<%= f.text_field :genre %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
 <% end %>

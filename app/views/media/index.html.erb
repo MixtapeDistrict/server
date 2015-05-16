@@ -1,35 +1,35 @@
 <h1>Listing media</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>File path</th>
-      <th>Image path</th>
-      <th>Downloads</th>
-      <th>Media type</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>User</th>
+			<th>Title</th>
+			<th>File path</th>
+			<th>Image path</th>
+			<th>Downloads</th>
+			<th>Media type</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @media.each do |medium| %>
-      <tr>
-        <td><%= medium.user_id %></td>
-        <td><%= medium.title %></td>
-        <td><%= medium.file_path %></td>
-        <td><%= medium.image_path %></td>
-        <td><%= medium.downloads %></td>
-        <td><%= medium.media_type %></td>
-        <td><%= link_to 'Show', medium %></td>
-        <td><%= link_to 'Edit', edit_medium_path(medium) %></td>
-        <td><%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @media.each do |medium| %>
+			<tr>
+				<td><%= medium.user_id %></td>
+				<td><%= medium.title %></td>
+				<td><%= medium.file_path %></td>
+				<td><%= medium.image_path %></td>
+				<td><%= medium.downloads %></td>
+				<td><%= medium.media_type %></td>
+				<td><%= link_to 'Show', medium %></td>
+				<td><%= link_to 'Edit', edit_medium_path(medium) %></td>
+				<td><%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>

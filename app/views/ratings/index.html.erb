@@ -1,29 +1,29 @@
 <h1>Listing ratings</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Media</th>
-      <th>User</th>
-      <th>Rating</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>Media</th>
+			<th>User</th>
+			<th>Rating</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @ratings.each do |rating| %>
-      <tr>
-        <td><%= rating.media_id %></td>
-        <td><%= rating.user_id %></td>
-        <td><%= rating.rating %></td>
-        <td><%= link_to 'Show', rating %></td>
-        <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
-        <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @ratings.each do |rating| %>
+			<tr>
+				<td><%= rating.media_id %></td>
+				<td><%= rating.user_id %></td>
+				<td><%= rating.rating %></td>
+				<td><%= link_to 'Show', rating %></td>
+				<td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+				<td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>
