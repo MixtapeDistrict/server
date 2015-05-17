@@ -2,9 +2,9 @@
 
 // You should comment on what is allowed in the regex string...
 function validate2(username, email) {
-	var regex = /^[A-Za-z0-9]{6,30}$/i;
+	var regex = /^[A-Za-z0-9]{6,30}$/i; //Regex for valid usernames
 	var valid = true;
-	var regex2 = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i;
+	var regex2 = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i; //Regex for valid emails
 	if(!regex.test(username)) {
 		valid = false;
 		document.getElementById('name_outcome').innerHTML = "Invalid username";
@@ -16,10 +16,11 @@ function validate2(username, email) {
 	return valid;
 }
 
+//Validate emails for payments
 function validate_payment_email() {
 	console.log()
 	var valid = true;
-	var regex = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i;
+	var regex = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i; //Regex for emails again
 	var email = document.getElementById('payment-email').value;
 	if(!regex.test(email)) {
 		valid = false;
@@ -28,6 +29,7 @@ function validate_payment_email() {
 	return valid;
 }
 
+//Get rid of the errormessage once the user corrects
 function clearErrorMessage() {
 	document.getElementById('name_outcome').innerHTML = "";
 	document.getElementById('email_outcome').innerHTML = "";
@@ -35,7 +37,7 @@ function clearErrorMessage() {
 }
 
 
-
+//Perform validations on the new details entered by the user when updating their profile
 function update_profile() {
 	var username = document.getElementById('name').value;
 	var email = document.getElementById('email').value;
@@ -44,7 +46,7 @@ function update_profile() {
 }
 
 // TRACKS PICK SIMULATION: Won't be here when the database is connected
-
+	//This remains here for posterity
     // Make an Array form start to end of size(end-start+1)
     function range(start, end) {
         var array = [];

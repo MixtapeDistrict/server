@@ -1,3 +1,4 @@
+//Set up the jplayer
 $(document).ready(function(){
 
 	  $("#jquery_jplayer_1").jPlayer({
