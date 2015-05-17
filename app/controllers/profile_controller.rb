@@ -316,7 +316,7 @@ class ProfileController < ApplicationController
 		#Get the other user's tracks
 		@owntracks = Medium.getusertracks(user)
 
-
+		#Get the approved collaborations
 		@approved_requests = Collaboration.where(first_id:userID, approved:true)
 		@approved_ids = Array.new(@approved_requests.count)
 
