@@ -15,6 +15,23 @@ function validate2(username, email) {
 	return valid;
 }
 
+/* Validates track upload */
+function verify_upload() {
+	var track_name = document.getElementById('track-name').value;
+	/* Ensure this is alphanumeric and at-least 1 character big */
+	var regex = /^[A-Za-z0-9\s]{1,30}$/i;
+	var valid = true;
+	if(!regex.test(track_name)) {
+		valid = false;
+		document.getElementById('track-outcome').innerHTML = "Track name may only contain alphanumeric characters & spaces."
+	}
+	else if(track_name.match(/^\s*$/)) {
+		valid = false;
+		document.getElementById('track-outcome').innerHTML = "Track name cannot be all whitespaces.";
+	}
+	return valid;
+}
+
 //Validate emails for payments
 function validate_payment_email() {
 	console.log()

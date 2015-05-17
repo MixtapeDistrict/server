@@ -1,11 +1,11 @@
 <form class="form-horizontal submit-track" enctype="multipart/form-data" 
-      onsubmit="return update_profile();"	action="/newTrack" method="post">		
+      onsubmit="return verify_upload();"	action="/newTrack" method="post">		
 	
     <div class="new-track-name form-group">
 		<label for="track-name" class="col-md-4 control-label">Track Name:</label>							
 		<div class="col-md-7">
 			<input id="track-name" type="text" class="form-control" name="track-name" onfocus="clearErrorMessage()" required maxlength="30">
-			<div id="name_outcome"></div>
+			<div id="track-outcome"></div>
 		</div>
 	</div>
 
