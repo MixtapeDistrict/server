@@ -9,12 +9,12 @@
 <!-- Collaborations Rquests button-->
 <div class="coll-requests row">
 	<%= form_tag({:controller => 'collaboration', :action => 'showRequests'}, method: "get") do %>	
-		<%= submit_tag("Collaboration Requests (#{@num_requests})", :class => 'btn profile-btn btn-success') %>
+		<%= submit_tag("Requests (#{@num_requests})", :class => 'btn profile-btn btn-success') %>
   	<% end %>
 </div>
 <!-- Manage danations button-->
 <div class="donations row">
-	<button type="button" class="btn profile-btn btn-info" data-toggle="modal" data-target="#change-payment-email">Change Donation Email</button>
+	<button type="button" class="btn profile-btn btn-primary" data-toggle="modal" data-target="#change-payment-email">Donation Email</button>
 </div>
 <!-- Track upload button-->
 <div class="track-upload row">

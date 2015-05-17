@@ -1,19 +1,3 @@
-/* A function which shuffles an array */
-function shuffle(array) {
-    var size = array.length;
-    var random_index;
-	/* While there remain elements to shuffle */
-	for(var i=0; i<array.length; i++) {
-		/* Pick a random index from the array */
-		random_index = Math.floor(Math.random()*array.length);
-		/* Swap this random index with the current index */
-		var temp = array[i];
-		array[i] = array[random_index];
-		array[random_index] = temp;
-	}
-	return array;
-}
-
 // Make an Array form start to end of size(end-start+1)
 function range(start, end) {
     var array = [];
@@ -108,9 +92,10 @@ function update_grind(songs) {
 						'<img class="playtrack" src="assets/images/play.png"></a>';
 
 			comment = '<a href="/comments?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
+			playlist = '<a onclick="parent.add_playlist(\''+track_path+'\')"><img class="add_playlist" src="assets/images/add_playlist.png"></a>';
 
-			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" style="height:170px;width:170px;" alt="" src="assets/mediaimage/'+ track_img +
-					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + comment+'</div>';
+			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+ track_img +
+					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + playlist + comment+'</div>';
 		}
 	}
 	/* There is more than 24 songs in the database, our grind is good size. */
@@ -134,12 +119,12 @@ function update_grind(songs) {
 			track_album = songs[rand].childNodes[6].childNodes[0].nodeValue;
 			plays_num = songs[rand].childNodes[8].childNodes[0].nodeValue;
 			rating = songs[rand].childNodes[9].childNodes[0].nodeValue;
-			
+			genre = songs[rand].childNodes[10].childNodes[0].nodeValue;
+
 
 			track_info = '<p class="h4">' + track_name +'</p>'+
 			             '<p class="name">Artist: <a class="artistname" href="/other_profile?id='+profile_id+'">' + artist_name +
-			             '</a></p><p class="name">Album: ' + track_album +
-			             '</p><p>Plays: ' + plays_num +
+			             '</a></p>'+ '<p>Genre: ' + genre + '</p>' + '<p>Plays: ' + plays_num +
 			             '</p><p>Ratings: ' + rating + '/5';
 
 			playtrack = '<a onclick="parent.jplayer_load(\'' + track_name +'\',\'' + track_path + '\',\'' + track_img +'\',\'' +
@@ -147,9 +132,9 @@ function update_grind(songs) {
 						'<img class="playtrack" src="assets/images/play.png"></a>';
 
 			comment = '<a href="/comments?id='+ track_comment +'"><img class="comment" src="assets/images/comment.ico"></a>';
-
+            playlist = '<a onclick="parent.add_playlist(\''+track_path+'\')"><img class="add_playlist" src="assets/images/add_playlist.png"></a>';
 			html += '<div onclick="" class="element"><img id="track" class="col-md-2 img-thumbnail" alt="" src="assets/mediaimage/'+ track_img +
-					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + comment+'</div>';
+					'"><div class="grid_description">'+ track_info +'</div>'+ playtrack + playlist + comment+'</div>';
 		}
 	}
 	html += '</div>'
@@ -319,12 +304,58 @@ function remove_song(song_id) {
 			$("#carousel").removeAttr('style');
 			selectedIndex = 0;
 			get_playlist();
+			var response = xmlhttp.responseText;
+			/* Parse the string as XML*/
+			if(window.DOMParser) {
+				parser = new DOMParser();
+				xmlDoc = parser.parseFromString(response, "text/xml");
+			}
+			else {
+				xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+				xmlDoc.async = false;
+				xmlDoc.loadXML(response);
+			}
+			populate_quicklaunch_bar(xmlDoc);
 		}
 	}
 	/* Open and send ajax request */
 	xmlhttp.open("get", "/playlist_remove?song_id="+song_id, true);
 	xmlhttp.send();
 
+}
+
+/* Populates quick launch bar */
+function populate_quicklaunch_bar(xmlDoc) {
+	/* Begin parsing the information */
+	var songs = xmlDoc.getElementsByTagName('track');
+	/* Update the dropdown list if it is on the page */
+	var list = document.getElementById('playlist_quick_launcher');
+	if(list) {
+		var html = "<li role='presentation'><a role = 'menuitem' tabindex='-1'>You have no songs in your playlist.</a></li>";
+		console.log(songs.length);
+		for(var i=0; i<songs.length; i++) {
+			if(i==0) {
+				html = "";
+			}
+			var name = songs[i].childNodes[0].childNodes[0].nodeValue;
+			var path = songs[i].childNodes[1].childNodes[0].nodeValue;
+			var imgpath = songs[i].childNodes[2].childNodes[0].nodeValue;
+			var artist = songs[i].childNodes[3].childNodes[0].nodeValue;
+			var artist_id = songs[i].childNodes[4].childNodes[0].nodeValue;
+			var rating = songs[i].childNodes[5].childNodes[0].nodeValue;
+			var plays = songs[i].childNodes[6].childNodes[0].nodeValue;
+			var song_id = songs[i].childNodes[7].childNodes[0].nodeValue;
+			var delete_image = "<div class='col-md-1 col-sm-1 col-xs-1 remove-playlist'><a onclick='remove_song("+
+							    song_id+")''><img class='delete_image' src='assets/images/remove.png'></a></div>";
+			html += "<li class='presentation' role='presentation'>";
+			html += "<div class='col-md-11 col-sm-11 col-xs-11 play-list-song'role=\"menuitem\" tabindex=\"-1\" ";
+			html += "onclick=\"parent.jplayer_load('" + name + "', '" + path + "',";
+	 	    html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\"><p>"+name+"</p></div>";
+			html += delete_image;
+			html += "</li>";
+		}
+		list.innerHTML = html;
+	}
 }
 
 /* Populates the DIV next to the playlist with information

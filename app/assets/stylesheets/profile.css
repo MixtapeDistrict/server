@@ -30,6 +30,7 @@
 
 .element {
 	margin-bottom: 10px;
+	padding: 0;
 }
 
 .info {
@@ -68,9 +69,7 @@ select {
 form {
 	text-align: left;
 }
-.paypal {
-	margin-top:10px;
-}
+
 #payment_email_outcome {
 	color:red;
 	margin-left:80px;
@@ -101,6 +100,9 @@ form {
 }
 .rating {
 	width:100px;
+}
+.foll-image{
+	max-height: 100px;
 }
 
 

@@ -1,14 +1,14 @@
 <% if session['logged_in']==1 %>
-<%= render 'navbar_logged'%>
+	<%= render 'navbar_logged'%>
 <% else %>
-<%= render 'navbar'%>
+	<%= render 'navbar'%>
 <% end %>
 <!-- All the content on the homepage -->
 <div id="content" class="container-fluid">
 		
 	<% if session['logged_in'] == 1 %>
 		<div class="row playlist">
-			<div class="col-md-10" style="height:260px;width: 100%;background:#000000;opacity:0.8;position:relative;top:-29px;">
+			<div class="col-md-10 my-playlist">
 				<div class="gallery">
 					<div id="carousel">
 						<!-- Image is added here. -->
@@ -23,14 +23,23 @@
 
 			</div>
 		</div>
+<<<<<<< HEAD
 		<div class="container" style="position:relative;top:-100px;">
 
 	<div class="main row">
 		<div class="row grind">                      
+=======
+	<% end %>
+	<div class="container">
+		
+		<div class="main row">
+			<div class="row grind">                      
+			</div>
+>>>>>>> origin/master
 		</div>
-	</div>
 
 	</div>
+<<<<<<< HEAD
 	<% else %>
 
 <div class="container">
@@ -43,3 +52,7 @@
 </div>
 
 <% end %>
+=======
+
+</div>
+>>>>>>> origin/master
