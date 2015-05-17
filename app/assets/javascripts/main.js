@@ -71,11 +71,7 @@ function add_playlist(path) {
 			}
 		}
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> origin/master
 	xmlhttp.open("post", "/add_song?path="+path, true);
 	xmlhttp.send();
 }
