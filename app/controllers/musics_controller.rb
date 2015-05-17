@@ -287,7 +287,7 @@ class MusicsController < ApplicationController
 		end
 	
 		medium_id = params[:medium_id]
-		track_name = params[:trackname].gsub(/"|'/, '')
+		track_name = params[:trackname].delete('\,"&\'')
 		track_genre = params[:trackgenre]
 		@uploaded_image = params[:trackimage]
 	
