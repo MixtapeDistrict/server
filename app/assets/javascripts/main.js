@@ -117,7 +117,7 @@ function jplayer_load(name, path, imgpath, artist, artist_id, rating, plays) {
 					html='<img class="player-img" src="assets/mediaimage/'+imgpath+'" alt="Player Image" style="height:50px;width:50px;bottom:0px;">';
 					$('.player-img').replaceWith(html);
 	
-					html='<div class="player-info" style="height:35px;width:250px;left:50px;"><p class="first">Artist: <a id="artist-name" href="/other_profile?id='+artist_id+'">'+artist+
+					html='<div class="player-info" style="height:35px;width:250px;left:50px;"><p class="first">Artist: <a id="artist-name" href="/other_profile?id='+artist_id+'" target="main_loader">'+artist+
 						 '</a></span></p>'+ "<p>Now playing: " + name + "</p>";
 					html += '<a href="assets/media/'+ path +'" download><img class="download" src="assets/images/download.png"></a>';
 					html += '<a onclick = "add_playlist(\'' + path +'\')"><img class="add_playlist" src="assets/images/add_playlist.png"></a></div>';
