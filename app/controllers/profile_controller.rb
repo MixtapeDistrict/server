@@ -208,8 +208,9 @@ class ProfileController < ApplicationController
 		@uploaded_image = params['track-img']
 
 		# Remove non alphanumeric characters from filename
-		@uploaded_file.original_filename = @uploaded_file.original_filename.gsub(/\s|"|'/, '')
-		@uploaded_image.original_filename = @uploaded_image.original_filename.gsub(/\s|"|'/, '')
+		# Rename these files to store them on the server
+		@uploaded_file.original_filename = "song" + File.extname(@uploaded_file.original_filename)
+		@uploaded_image.original_filename = "track_image" + File.extname(@uploaded_image.original_filename)
 		
 		#Assign parameters to variable for easy access
 		@track = params
