@@ -63,10 +63,6 @@ $(document).ready(function(){
 		$('.submit-update').submit();
 	});
 	/** Allow submit in modal footer */
-	$('#submit-track').click(function(){
-		$('.submit-track').submit();
-	});
-	/** Allow submit in modal footer */
 	$('#submit-album').click(function(){
 		$('.submit-album').submit();
 	});

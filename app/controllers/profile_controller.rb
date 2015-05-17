@@ -216,7 +216,7 @@ class ProfileController < ApplicationController
 		@track = params
 		
 		#Strip out non alphanumeric characters from the name to be stored
-		@track_name = params['track-name'].gsub(/"|'/, '')
+		@track_name = params['track-name'].delete('\,"&\'')
 		
 		
 		#Check if no file was selected
