@@ -1,6 +1,5 @@
 /* A javascript file which handles signing in */
 
-// You should comment on what is allowed in the regex string...
 function validate2(username, email) {
 	var regex = /^[A-Za-z0-9]{6,30}$/i;
 	var valid = true;

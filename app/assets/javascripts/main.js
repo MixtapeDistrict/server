@@ -3,6 +3,7 @@
  */
 function add_playlist(path) {
 	var xmlhttp;
+
 	if(window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
 	}
@@ -63,6 +64,7 @@ function add_playlist(path) {
 			}
 		}
 	}
+
 	xmlhttp.open("post", "/add_song?path="+path, true);
 	xmlhttp.send();
 }

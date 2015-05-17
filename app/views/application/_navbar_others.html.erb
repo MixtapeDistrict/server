@@ -28,7 +28,7 @@
   						</button>
  						 <% playlist = User.find_by(id:session['user_id']).playlist %>
  						 <ul class="dropdown-menu pull-right" role="menu" 
- 						    aria-labelledby="dropdownMenu1" id="playlist_quick_launcher">
+ 						    aria-labelledby="dropdownMenu1" id="playlist_quick_launcher" style="width:270px;">
  						<% if playlist %> 
   						<% for music in playlist.musics %>
   							 <%  rating_count = 0 %>
@@ -49,7 +49,7 @@
    	 							<div class="col-md-11 col-sm-11 col-xs-11 play-list-song" 
    	 							     role="menuitem" tabindex="-1" 
    	 							     onclick="parent.jplayer_load('<%= music.medium.title %>', '<%= music.medium.file_path%>', '<%= music.medium.image_path%>', '<%= music.medium.user.username%>', '<%= music.medium.user.id %>', '<%=rating%>', '<%= music.plays %>')">
-   	 								<p><%= music.medium.title%></p>
+   	 								<%= music.medium.title%>
    	 							</div>   	 							
    	 							<div class='col-md-1 col-sm-1 col-xs-1 remove-playlist' 
    	 							     onclick='remove_song(<%=music.id%>)'>
