@@ -14,9 +14,7 @@ function add_playlist(path) {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			console.log("Song added to playlist.");
 			console.log(path);
-
-			document.getElementById('loader').contentWindow.$.notify("Song added to playlist.",{autoHideDelay: 3000, position: 'top', className:'success'});
-
+			notify();
 			/* Re-render carousel */
 			document.getElementById('loader').contentWindow.$("#carousel").removeAttr('style');
 			if(typeof document.getElementById('loader').contentWindow.get_playlist == "function") {
@@ -139,6 +137,34 @@ function jplayer_load(name, path, imgpath, artist, artist_id, rating, plays) {
 
 	
 };
+
+/* Notifies the user that the song was added to their playlist using AJAX */
+function notify() {
+	/* AJAX call to check whether the user is logged in or not */
+	var xmlhttp;
+	if(window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	}
+	else {
+		xmlhttp = ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+			var response = xmlhttp.responseText;
+			
+			/* User is logged in */
+			if(response == "1") {
+				document.getElementById('loader').contentWindow.$.notify("Song added to playlist.",{autoHideDelay: 3000, position: 'top', className:'success'});
+
+			}
+			else {
+				document.getElementById('loader').contentWindow.$.notify("You must be signed in to use playlist functionality.",{autoHideDelay: 3000, position: 'top'});
+			}
+		}
+	}
+	xmlhttp.open("get", "/logged_in_status", true);
+	xmlhttp.send();
+}
 
 
 
