@@ -1,29 +1,13 @@
 <%= render 'navbar_others'%>
 <!-- List all followers here as links. -->
+<h2>Followers <%= "("+@num_followers.to_s+")" %></h2>
 
-<div id="content" class="container-fluid">
-	<div class="container results">
-		<h2>Followers <%= "("+@num_followers.to_s+")" %></h2>
-		<% for i in 0..@num_followers - 1  %>
-			<div class="col-md-4 col-sm-6 clearfix">
-				<div class="col-md-6 col-sm-6 content-img" heigh="175px">
-			      	<%= image_tag("userimage/#{User.find(@follower_ids[i]).image_path}", id:"content-img",  
-			      					alt:"User image", class:"img-thumbnail") %>
-			    </div>
-				<div class="col-md-6 col-sm-6 content-info">
-					<p class="h4 row info track-name">
-						<%= link_to @follower_names[i] ,{:controller => 'profile', :action => 'showOther', 
-							:id => @follower_ids[i] } %>
-					</p>
-					<% if User.find(@follower_ids[i]).website_link.nil? == false %></p>
-					<p class="h5 row info user-web">Website: <%= link_to User.find(@follower_ids[i]).website_link.to_s, User.find(@follower_ids[i]).website_link, :target => '_blank' %></p>
-					<% end %>
-					<p class="h5 row info user-foll">
-						<%= "Followers ("+Follower.where(user_id:@follower_ids[i]).count.to_s+")" %>
-					</p>
-				</div>
-		    </div>
-		<% end %>
-	</div>
-</div>
-
+<% for i in 0..@num_followers - 1  %>
+	<div class="element col-md-4">
+		<div class="col-md-6">
+	      	<%= image_tag("userimage/#{User.find(@follower_ids[i]).image_path}", id:"content-img",  alt:"User image", size: "150x150") %>
+	    </div>
+	    <div class="col-md-6 content-info"><p class="h4 row info track-name"><%= link_to @follower_names[i] , {:controller => 'profile', :action => 'showOther', :id => @follower_ids[i] } %></p>
+	    </div>
+    </div>
+<% end %>

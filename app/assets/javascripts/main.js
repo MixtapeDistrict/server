@@ -48,14 +48,10 @@ function add_playlist(path) {
 					var artist_id = songs[i].childNodes[4].childNodes[0].nodeValue;
 					var rating = songs[i].childNodes[5].childNodes[0].nodeValue;
 					var plays = songs[i].childNodes[6].childNodes[0].nodeValue;
-					var song_id = songs[i].childNodes[7].childNodes[0].nodeValue;
-					var delete_image = "<div class='col-md-1 col-sm-1 col-xs-1 remove-playlist'><a onclick='remove_song("+
-									    song_id+")''><img class='delete_image' src='assets/images/remove.png'></a></div>";
-					html += "<li class='presentation' role='presentation'>";
-					html += "<div class='col-md-11 col-sm-11 col-xs-11 play-list-song'role=\"menuitem\" tabindex=\"-1\" ";
+					html += "<li role='presentation'>";
+					html += "<a role=\"menuitem\" tabindex=\"-1\" ";
 					html += "onclick=\"parent.jplayer_load('" + name + "', '" + path + "',";
-			 	    html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\"><p>"+name+"</p></div>";
-					html += delete_image;
+			 	    html += " '" + imgpath + "', '" + artist + "', '" + artist_id + "', '" + rating + "', '" + plays + "')\">" + name + "</a>";
 					html += "</li>";
 				}
 				console.log(html);

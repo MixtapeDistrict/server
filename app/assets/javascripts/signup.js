@@ -61,16 +61,16 @@ function validateRegex(username, email, password) {
 	var regex = /^[A-Za-z0-9]{6,30}$/i;
 	var valid = true;
 	if(!regex.test(username)) {
-		document.getElementById('username-message').innerHTML = "Usernames must be between 6-30 alpha-numeric characters.";
+		document.getElementById('username-message').innerHTML = "Invalid username";
 		valid = false;
 	}
 	if(!regex.test(password)) {
-		document.getElementById('password-message').innerHTML = "Passwords must be between 6-30 alpha-numeric characters.";
+		document.getElementById('password-message').innerHTML = "Invalid password";
 		valid = false;
 	}
 	regex = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i;
 	if(!regex.test(email)) {
-		document.getElementById('email-message').innerHTML = "Please enter a valid email.";
+		document.getElementById('email-message').innerHTML = "Invalid email";
 		valid = false;
 	}
 	return valid;

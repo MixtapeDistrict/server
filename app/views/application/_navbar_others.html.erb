@@ -20,15 +20,14 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="navbar-collapse collapse in" id="elements">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="hidden-xs">
+				<li>
 					<div class="dropdown quicklaunch_playlist">
   						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
   						  	Playlist
    						 	<span class="caret"></span>
   						</button>
  						 <% playlist = User.find_by(id:session['user_id']).playlist %>
- 						 <ul class="dropdown-menu pull-right" role="menu" 
- 						    aria-labelledby="dropdownMenu1" id="playlist_quick_launcher">
+ 						 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="playlist_quick_launcher">
  						<% if playlist %> 
   						<% for music in playlist.musics %>
   							 <%  rating_count = 0 %>
@@ -45,17 +44,7 @@
   							<%if(rating_count != 0)%>
   								<%rating = rating_sum.to_f/rating_count%>
   							<%end%>
-   	 						<li class="presentation" role="presentation">
-   	 							<div class="col-md-11 col-sm-11 col-xs-11 play-list-song" 
-   	 							     role="menuitem" tabindex="-1" 
-   	 							     onclick="parent.jplayer_load('<%= music.medium.title %>', '<%= music.medium.file_path%>', '<%= music.medium.image_path%>', '<%= music.medium.user.username%>', '<%= music.medium.user.id %>', '<%=rating%>', '<%= music.plays %>')">
-   	 								<p><%= music.medium.title%></p>
-   	 							</div>   	 							
-   	 							<div class='col-md-1 col-sm-1 col-xs-1 remove-playlist' 
-   	 							     onclick='remove_song(<%=music.id%>)'>
-   	 								<img class='delete_image' src='assets/images/remove.png'>
-   	 							</div>
-   	 						</li>
+   	 						<li role="presentation"><a role="menuitem" tabindex="-1" onclick="parent.jplayer_load('<%= music.medium.title %>', '<%= music.medium.file_path%>', '<%= music.medium.image_path%>', '<%= music.medium.user.username%>', '<%= music.medium.user.id %>', '<%=rating%>', '<%= music.plays %>')"><%= music.medium.title%></a></li>
   						<% end %>
   						<% if playlist.musics.length == 0 %>
   						<li role="presentation"><a role="menuitem" tabindex="-1">Your playlist is empty.</a></li>
@@ -64,7 +53,7 @@
   					    <% end %>
 	 					 </ul>
 					</div>
-				</li>
+			</li>
 				<%= render 'search_box' %>
 				<!-- Notifications button -->
 				<li class="dropdown">
