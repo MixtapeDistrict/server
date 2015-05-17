@@ -1,4 +1,6 @@
+
 SLICE_LENGTH = 18
+
 class PlaylistMusicsController < ApplicationController
 	before_action :set_playlist_music, only: [:show, :edit, :update, :destroy]
 
@@ -130,6 +132,7 @@ class PlaylistMusicsController < ApplicationController
 		# Find the song to add to the playlist
 		medium = Medium.find_by(file_path:path)
 		
+		#Grab the correct portion of the data
 		if medium
 			music = medium.music
 		end
@@ -148,6 +151,7 @@ class PlaylistMusicsController < ApplicationController
 		# Return the playlist so the views can be updated using ajax
 		xml = "<tracks>"
 		
+		#Add all the relevant fields to the XML output
 		for music in playlist.musics
 			xml += "<track>"
 			xml += "<name>#{music.medium.title}</name>"
@@ -161,25 +165,30 @@ class PlaylistMusicsController < ApplicationController
 			rating_sum = 0
 			user_ratings = Rating.where(medium_id:music.medium.id)
 			
+			#Add the ratings together
 			for user_rating in user_ratings
 				rating_sum  += user_rating.rating
 				rating_count += 1
 			end
 		
+		#Initialize rating to 0
 		rating = 0
 		puts rating_sum
 		puts rating_count
 		
+		#Generate the actual rating if one exists
 		if(rating_count != 0)
 			rating = rating_sum.to_f/rating_count
 		end
   		
+		#Add the information to the XML output
 		xml += "<rating>#{rating}</rating>"
   		xml += "<plays>#{music.plays}</plays>"
   		xml += "<songID>#{music.id}</songID>"
   		xml += "</track>"
 	end
   	
+	#Close tags and render
 	xml += "</tracks>"
 	render :xml => xml and return
 	end
@@ -213,6 +222,7 @@ class PlaylistMusicsController < ApplicationController
 		# Find the user who made this track
 		user = medium.user
 
+		#Add fields and data to XML output
 		xml  = "<song>"
 		xml  += "<title>#{medium.title}</title>"
 		xml  += "<songID>#{music.id}</songID>"
@@ -222,6 +232,7 @@ class PlaylistMusicsController < ApplicationController
 		xml  += "<genre>#{music.genre}</genre>"
 		xml += "<imagePath>#{image_path}</imagePath>"
 		
+		#If the music has been played them list the number of plays, otherwise 0
 		if(music.plays)
 			xml  += "<plays>#{music.plays}</plays>"
 		else 
@@ -233,7 +244,8 @@ class PlaylistMusicsController < ApplicationController
 		rating_sum = 0
 		user_ratings = Rating.where(medium_id:medium.id)
 		
-
+		
+		#Sum up the ratings
 		for user_rating in user_ratings
 			rating_sum  += user_rating.rating
 			rating_count += 1
@@ -241,10 +253,12 @@ class PlaylistMusicsController < ApplicationController
 		
 		rating = 0
 		
+		#Generate the actual rating if it exists
 		if(rating_count != 0)
 			rating = rating_sum.to_f/rating_count
 		end
 		
+		#Add data to XML output, close tags and render
 		xml  += "<rating>#{rating}</rating>"
 		xml  += "</song>"
 		render :xml => xml and return
@@ -281,7 +295,10 @@ class PlaylistMusicsController < ApplicationController
         # Return the playlist so the views can be updated using ajax
 		xml = "<tracks>"
 		
+		#Rating information for all music in the playlist
 		for music in playlist.musics
+		
+			#Add tags and data for the song
 			xml += "<track>"
 			xml += "<name>#{music.medium.title}</name>"
 			xml += "<path>#{music.medium.file_path}</path>"
@@ -289,11 +306,12 @@ class PlaylistMusicsController < ApplicationController
 			xml += "<artist>#{music.medium.user.username}</artist>"
 			xml += "<artist_id>#{music.medium.user.id}</artist_id>"
 			
-			# Calculate the average rating of this song
+			#Get the ratings from the database
 			rating_count = 0
 			rating_sum = 0
 			user_ratings = Rating.where(medium_id:music.medium.id)
 			
+			#Sum up the ratings
 			for user_rating in user_ratings
 				rating_sum  += user_rating.rating
 				rating_count += 1
@@ -303,16 +321,19 @@ class PlaylistMusicsController < ApplicationController
 			puts rating_sum
 			puts rating_count
 		
+			#Generate the total rating if it exists
 			if(rating_count != 0)
 				rating = rating_sum.to_f/rating_count
 			end
   		
+			#Add the rating and plays data to the XML output
 			xml += "<rating>#{rating}</rating>"
   			xml += "<plays>#{music.plays}</plays>"
   			xml += "<songID>#{music.id}</songID>"
   			xml += "</track>"
 		end
-  	
+		
+		#Close tags and render
 		xml += "</tracks>"
 		render :xml => xml and return
 	end
