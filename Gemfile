@@ -37,6 +37,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem "minitest-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

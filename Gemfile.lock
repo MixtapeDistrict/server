@@ -50,6 +50,12 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
+    minitest-rails (1.0.1)
+      minitest (~> 4.7)
+      minitest-test (~> 1.0)
+      railties (>= 3.0, < 4.1)
+    minitest-test (1.1.0)
+      minitest (~> 4.0)
     multi_json (1.11.0)
     pg (0.18.1)
     pg (0.18.1-x86-mingw32)
@@ -114,6 +120,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
+  minitest-rails
   pg
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
