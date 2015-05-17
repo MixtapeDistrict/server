@@ -7,6 +7,7 @@ function submit_form() {
 	var email = document.getElementById('email').value;
 	var password = document.getElementById('password').value;
 	var password2 = document.getElementById('re-password').value;
+	
 	/* Check if both passwords are the same */
 	if(password != password2) {
 		document.getElementById('password-message').innerHTML = "Passwords do not match";
@@ -15,14 +16,17 @@ function submit_form() {
 	if(!validateRegex(username, email, password)) {
 		return;
 	}
+	
 	/* Check with the server if this sign up is valid */
 	var xmlhttp;
+	
 	if(window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
 	}
 	else {
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
+	
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			response = xmlhttp.responseText;
@@ -55,23 +59,29 @@ function clearMessages() {
 	document.getElementById('password-message').innerHTML = "";
 	document.getElementById('username-message').innerHTML = "";
 }
+
 /* Validates the function using regex */
 function validateRegex(username, email, password) {
 	/*A username & Password must consist of letters and numbers and be between length 6 and 30*/
 	var regex = /^[A-Za-z0-9]{6,30}$/i;
 	var valid = true;
+	
 	if(!regex.test(username)) {
 		document.getElementById('username-message').innerHTML = "Usernames must be between 6-30 alpha-numeric characters.";
 		valid = false;
 	}
+	
 	if(!regex.test(password)) {
 		document.getElementById('password-message').innerHTML = "Passwords must be between 6-30 alpha-numeric characters.";
 		valid = false;
 	}
-	regex = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i;
+	
+	regex = /^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9.]*[A-Za-z]$/i; //Email regex
+	
 	if(!regex.test(email)) {
 		document.getElementById('email-message').innerHTML = "Please enter a valid email.";
 		valid = false;
+	
 	}
 	return valid;
 }

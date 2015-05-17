@@ -1,6 +1,7 @@
 class MainController < ApplicationController
 	LINK = "/home"
 	
+	#Function to parse routes through the server
 	def parse_route
 		@link = LINK
 	

@@ -5,6 +5,8 @@ function sign_in() {
 
 	/* Communicate with the server and check if this is a valid sign up */
 	var xmlhttp;
+	
+	//Handle different browsers using different standards... Looking at you IE
 	if(window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
 	}
@@ -14,10 +16,13 @@ function sign_in() {
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			response = xmlhttp.responseText;
+			//Check if the login was valid
 			if(response.indexOf("error") >= 0) {
+				//Invalid login
 				document.getElementById('login-message').innerHTML = "Invalid username/password";
 			}
 			else {
+				//Valid login, replace page contents with the 'logged in' version
 				document.getElementById('replace').innerHTML = "\
     <li>\
       <form class=\"navbar-form navbar-left\" role=\"search\" method=\"get\" action=\"/search\">\

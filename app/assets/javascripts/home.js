@@ -23,10 +23,12 @@ function get_music() {
 	else {
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
+	
 	/* Define the function which will be called when the request is completed. */
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			var response = xmlhttp.responseText;
+			
 			/* Parse the string as XML*/
 			if(window.DOMParser) {
 				parser = new DOMParser();
@@ -37,6 +39,7 @@ function get_music() {
 				xmlDoc.async = false;
 				xmlDoc.loadXML(response);
 			}
+			
 			/* Update the grind with this new information */
 			update_grind(xmlDoc.getElementsByTagName('song'));
 		}
@@ -54,15 +57,18 @@ function update_grind(songs) {
 
 	/* Get an array of indexes */
 	var indexes = range(0, songs.length-1);
+	
 	/* Store the html which will go inside the grind */
 	var html = '<div class="row grind">';
 	var track_info = '';
+	
 	/* If there is less than 24 songs in the database, our grind needs to be smaller */
 	console.log(songs.length);
 	if(songs.length < 24) { 
 		for(var i=0;i<songs.length;i++) {
 			/* Pick a random index from indexes array */
 			var rand = indexes[Math.floor(Math.random() * indexes.length)];
+			
 			/* Remove this index from indexes array so it doesn't get picked again */
 			for(var x=0; x<indexes.length; x++) {
 				if(indexes[x]==rand) {
@@ -103,6 +109,7 @@ function update_grind(songs) {
 		for(var i=0;i<24;i++) {
 			/* Pick a random index from indexes array */
 			var rand = indexes[Math.floor(Math.random() * indexes.length)];
+			
 			/* Remove this index from indexes array so it doesn't get picked again */
 			for(var x=0; x<indexes.length; x++) {
 				if(indexes[x]==rand) {
@@ -138,6 +145,7 @@ function update_grind(songs) {
 		}
 	}
 	html += '</div>'
+	
 	/* Replace the grind HTML with the HTML this function generates. */
 	/* Put all racks in place */
 	$('.grind').replaceWith(html);
@@ -147,6 +155,7 @@ function update_grind(songs) {
 function get_playlist() {
 	var xmlhttp;
 	var xmlDoc;
+	
 	/* New browsers */
 	if(window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
@@ -155,10 +164,12 @@ function get_playlist() {
 	else {
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
+	
 	/* Define the function which will be called when the request is completed. */
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			var response = xmlhttp.responseText;
+			
 			/* Parse the string as XML*/
 			if(window.DOMParser) {
 				parser = new DOMParser();
@@ -169,6 +180,7 @@ function get_playlist() {
 				xmlDoc.async = false;
 				xmlDoc.loadXML(response);
 			}
+			
 			/* Load the playlist into the carousel */
 			angle=0;
 			load_playlist(xmlDoc.getElementsByTagName('image'));
@@ -186,6 +198,7 @@ function load_playlist(playlist) {
 	var data=[];
 	for (var i=0; i<playlist.length; i++) {
 		var image = playlist[i].childNodes[0].nodeValue;
+		
 		/* Push all the image sources to the carousel */
 		data.push("assets/mediaimage/"+image+"");
 	}
@@ -251,11 +264,14 @@ function doCarousel(data){
     selectedIndex = 0;
     var interval = 360/data.length;
     var r = RADIUS_SIZE;
+	
+	//Put elements into the carousel
     for(var i = 0 ; i < data.length ; i++) {
         var newElement = $("<img src=\""+data[i]+"\">");
         var num = interval*i;
         newElement.css("transform","rotateY( " + num + "deg ) translateZ( "+r+"px )");
         
+		//Configure read of carousel panels
         var backfaceVisibility = BACKFACE_INVISIBLE ? "hidden" : "visible";
         newElement.css("-webkit-backface-visibility",backfaceVisibility);
         newElement.css("backface-visibility",backfaceVisibility);
@@ -305,6 +321,7 @@ function remove_song(song_id) {
 			selectedIndex = 0;
 			get_playlist();
 			var response = xmlhttp.responseText;
+			
 			/* Parse the string as XML*/
 			if(window.DOMParser) {
 				parser = new DOMParser();
@@ -318,6 +335,7 @@ function remove_song(song_id) {
 			populate_quicklaunch_bar(xmlDoc);
 		}
 	}
+	
 	/* Open and send ajax request */
 	xmlhttp.open("get", "/playlist_remove?song_id="+song_id, true);
 	xmlhttp.send();
@@ -328,11 +346,14 @@ function remove_song(song_id) {
 function populate_quicklaunch_bar(xmlDoc) {
 	/* Begin parsing the information */
 	var songs = xmlDoc.getElementsByTagName('track');
+	
 	/* Update the dropdown list if it is on the page */
 	var list = document.getElementById('playlist_quick_launcher');
 	if(list) {
 		var html = "<li role='presentation'><a role = 'menuitem' tabindex='-1'>You have no songs in your playlist.</a></li>";
 		console.log(songs.length);
+		
+		//Add individual songs into the list
 		for(var i=0; i<songs.length; i++) {
 			if(i==0) {
 				html = "";
@@ -372,6 +393,7 @@ function populate_playlist_div(image_path) {
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			var response = xmlhttp.responseText;
+			
 			/* Parse the string as XML*/
 			if(window.DOMParser) {
 				parser = new DOMParser();
@@ -382,6 +404,7 @@ function populate_playlist_div(image_path) {
 				xmlDoc.async = false;
 				xmlDoc.loadXML(response);
 			}
+			
 			/* Store the required information */
 			console.log("<---- START OF CAROUSEL FOCUS ---->");
 			var track_title = xmlDoc.getElementsByTagName('title')[0].childNodes[0].nodeValue;
@@ -401,18 +424,20 @@ function populate_playlist_div(image_path) {
 			$('.T3').html("<p>Genre: " + genre + "</p>");
 			$('.T4').html("<p>Plays: " + plays + "</p>");
 			$('.T5').html("<p>Rating: " + rating + "</p>");
-
 			$('.T6').html("<a  id=\"B1\" onclick=\"parent.jplayer_load('"+track_title+"','"+file_path+"','"+
 				img+"','"+artist_name+"','"+artist_id+"','"+rating+"','"+plays+"')\"><img src=\"assets/images/play.png\"></a>" +
 				"<a  id=\"B2\" href = '/comments?id="+song_id+"'><img src='assets/images/comment.ico'></a>" +
 				"<a  id=\"B3\" onclick = 'remove_song("+song_id+")'><img  src ='assets/images/remove.png'></a>");
 		}
 	}
+	
+	//Handle empty image paths
 	if(image_path != "empty") {
 		xmlhttp.open("get", "/track_info?image_path="+image_path, true);
 		xmlhttp.send();
 	}
 	else {
+		//Otherwise insert the data
 		document.getElementById('carousel-track-name').innerHTML = "";
 		document.getElementById('carousel-track-artist').innerHTML = "";
 		document.getElementById('carousel-track-plays').innerHTML = "";
@@ -442,10 +467,11 @@ function galleryspin(sign) {
 	console.log(carouselData[selectedIndex]);
 	console.log("Panels in carousel = " + numPanels);
 	console.log("Increment = " + increment);
+	
 	/* Use this image path to populate the div next to the carousel */
 	populate_playlist_div(carouselData[selectedIndex]);
 
-    
+    //Handle the transforms
     angle += ( -360 / numPanels ) * increment;
     carousel.style[ '-webkit-transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';
     document.querySelector('#information').style[ '-webkit-transform' ] = 'translateZ( 0px ) rotateY(' + (-1) * angle + 'deg)';

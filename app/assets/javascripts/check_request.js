@@ -6,6 +6,7 @@ function inIframe () {
     }
 }
 
+//Handle the location the request is coming from
 if(!inIframe()) {
 	window.location.href = "/?request="+window.location.href;
 }

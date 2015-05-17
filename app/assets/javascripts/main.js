@@ -13,6 +13,7 @@ function add_playlist(path) {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			console.log("Song added to playlist.");
 			console.log(path);
+			
 			/* Re-render carousel */
 			document.getElementById('loader').contentWindow.$("#carousel").removeAttr('style');
 			if(typeof document.getElementById('loader').contentWindow.get_playlist == "function") {
@@ -20,6 +21,7 @@ function add_playlist(path) {
 			}
 
 			var response = xmlhttp.responseText;
+			
 			/* Parse the string as XML*/
 			if(window.DOMParser) {
 				parser = new DOMParser();
@@ -30,17 +32,22 @@ function add_playlist(path) {
 				xmlDoc.async = false;
 				xmlDoc.loadXML(response);
 			}
+			
 			/* Begin parsing the information */
 			var songs = xmlDoc.getElementsByTagName('track');
+			
 			/* Update the dropdown list if it is on the page */
 			var list = document.getElementById('loader').contentWindow.document.getElementById('playlist_quick_launcher');
 			if(list) {
 				var html = "You have no songs in your playlist.";
 				console.log(songs.length);
+				
 				for(var i=0; i<songs.length; i++) {
 					if(i==0) {
 						html = "";
 					}
+					
+					//Populate the dropdown list
 					var name = songs[i].childNodes[0].childNodes[0].nodeValue;
 					var path = songs[i].childNodes[1].childNodes[0].nodeValue;
 					var imgpath = songs[i].childNodes[2].childNodes[0].nodeValue;
@@ -63,6 +70,7 @@ function add_playlist(path) {
 			}
 		}
 	}
+	
 	xmlhttp.open("post", "/add_song?path="+path, true);
 	xmlhttp.send();
 }
@@ -100,6 +108,7 @@ function jplayer_load(name, path, imgpath, artist, artist_id, rating, plays) {
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			var response = xmlhttp.responseText;
+			
 			/* User is logged in */
 			if(response == "1") {
 					html='<img class="player-img" src="assets/mediaimage/'+imgpath+'" alt="Player Image" style="height:50px;width:50px;bottom:0px;">';
@@ -133,22 +142,28 @@ function jplayer_load(name, path, imgpath, artist, artist_id, rating, plays) {
 /* Makes AJAX request to database && increments plays */
 function increment(path) {
 	var xmlhttp;
+	
 	/* If newer browser */
 	if(window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
 	}
+	
 	/* Older browsers IE6 */
 	else {
 		xmlhttp = ActiveXObject("Microsoft.XMLHTTP");
 	}
+	
 	xmlhttp.open("post", "/play?path="+path, true);
 	xmlhttp.send();
 };
 
+
+//Function to decide which rating to display on the page
 function star_rating(rating) {
 	var star = parseFloat(rating);
 	var image;
 
+	//Lots of nested ifs for lots of different ratings
 	if (star <= 0.5) {
 		image = '<img class="star-rating" src="assets/images/0.5.png">';	
 	} else if ((star > 0.5) && (star <= 1.0)){
