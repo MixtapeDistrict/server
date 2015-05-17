@@ -153,6 +153,16 @@ I refactored and revamped just about all code from there, but it is possible a f
   height:27px; 
   width:27px;
 }
+
+.ply_button {
+  display:none;
+  position:absolute;
+  bottom:11px;
+  right:50px;
+  height:27px; 
+  width:27px;
+}
+
 .carousel-playtrack {
   position:absolute;
   height:27px; 

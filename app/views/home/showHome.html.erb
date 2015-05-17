@@ -8,7 +8,7 @@
 		
 	<% if session['logged_in'] == 1 %>
 		<div class="row playlist">
-			<div class="col-md-10" style="height:260px;width: 100%;background:#000000;opacity:0.8;">
+			<div class="col-md-10" style="height:260px;width: 100%;background:#000000;opacity:0.8;position:relative;top:-29px;">
 				<div class="gallery">
 					<div id="carousel">
 						<!-- Image is added here. -->
@@ -17,14 +17,13 @@
 
 						<button type="button" id="previous" class="btn btn-default ss-icon" onclick="galleryspin('-')">&lt;</button>
 						<button type="button" id="next" class="btn btn-default ss-icon" onclick="galleryspin('')">&gt;</button>
-						<button type="button" id="random" style="bottom: -50px;left:43%;" class="btn btn-default ss-icon" onclick="galleryspin('')"><b>Shuffle</b></button>
+						<button type="button" id="random" style="bottom: -50px;left:43%;" class="btn btn-default ss-icon" onclick="galleryspin('')"><b>Shuffle Playlist</b></button>
 					</div>
 				</div>
 
 			</div>
 		</div>
-	<% end %>
-		<div class="container">
+		<div class="container" style="position:relative;top:-100px;">
 
 	<div class="main row">
 		<div class="row grind">                      
@@ -32,3 +31,15 @@
 	</div>
 
 	</div>
+	<% else %>
+
+<div class="container">
+
+	<div class="main row">
+		<div class="row grind">                      
+		</div>
+	</div>
+
+</div>
+
+<% end %>
