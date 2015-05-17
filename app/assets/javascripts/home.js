@@ -332,6 +332,7 @@ function remove_song(song_id) {
 				xmlDoc.async = false;
 				xmlDoc.loadXML(response);
 			}
+			$.notify("Song removed from playlist.",{autoHideDelay: 3000, position: 'top'});
 			populate_quicklaunch_bar(xmlDoc);
 		}
 	}
@@ -454,7 +455,6 @@ function galleryspin(sign) {
     var carousel = document.querySelector('#carousel');
     var numPanels = carousel.children.length - 1;
     var increment = sign ? -1 : 1;
-
 
 	selectedIndex+=increment;
 	if(selectedIndex >= carouselData.length){

@@ -14,7 +14,9 @@ function add_playlist(path) {
 		if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
 			console.log("Song added to playlist.");
 			console.log(path);
-			
+
+			document.getElementById('loader').contentWindow.$.notify("Song added to playlist.",{autoHideDelay: 3000, position: 'top', className:'success'});
+
 			/* Re-render carousel */
 			document.getElementById('loader').contentWindow.$("#carousel").removeAttr('style');
 			if(typeof document.getElementById('loader').contentWindow.get_playlist == "function") {

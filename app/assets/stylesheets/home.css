@@ -18,16 +18,14 @@ body{
 #track{
 	position:absolute;
   	width: 100%;
-<<<<<<< HEAD
-  	max-width: 180px;
-    max-height: 180px;
-  	min-width: 180px;
-    min-height: 180px;
-=======
     height: 100%;
->>>>>>> origin/master
     padding-right: 5px;
     padding-left: 5px;
+}
+#track-comment {
+	position:absolute;
+	width:180px;
+	height:180px;
 }
 
 .element{
