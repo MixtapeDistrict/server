@@ -50,6 +50,7 @@ function clearErrorMessage() {
 	document.getElementById('name_outcome').innerHTML = "";
 	document.getElementById('email_outcome').innerHTML = "";
 	document.getElementById('payment_email_outcome').innerHTML = "";
+	document.getElementById('track-outcome').innerHTML = "";
 }
 
 
