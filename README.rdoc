@@ -1,5 +1,5 @@
 = HitPlayShare
-http://www.mixtape-district.herokuapp.com
+www.mixtape-district.herokuapp.com
 
 ==Description
 An application to help new artists gain recognition and develop a fanbase. Allows musicians to upload music, and fans to download music, stream music, and rate music.
