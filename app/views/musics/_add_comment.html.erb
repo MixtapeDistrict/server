@@ -1,4 +1,4 @@
-<!--Change Donation Email modal-->
+<!-- Add comment modal -->
 <div class="modal fade" id="change-payment-email" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -9,20 +9,23 @@
 			
 			<div class="modal-body">
 				<% if session['logged_in']==1 %>
-					<!--Create donation form-->
+					<!--Add comment form-->
 					<form class="form-horizontal" action="/add_music_comment" method="post">		
 					<input type="hidden" name="medium_id" value="<%=@medium.id%>">
 					<div class="new-album-name form-group">
 						<label for="album-name" class="col-md-4 control-label">Comment</label>							
 						<div class="col-md-7">
-							<textarea name="comment" class="input"></textarea>
+							<textarea name="comment" class="input" maxlength="120"></textarea>
 						</div>
-						<label for="track-genre" class="col-md-4 control-label">Rating</label>
+						
 						<% check_rating = Rating.where(medium_id:@medium.id).find_by(user_id:session['user_id'])%>
 						<% if check_rating %>
 							<% current_rating = check_rating.rating %>
+							<label for="track-genre" class="col-md-4 control-label">Change Your Rating</label>
+
 						<% else %>
 							<% current_rating = -1 %>
+							<label for="track-genre" class="col-md-4 control-label">Rating</label>
 						<% end %>
 						<div class="col-md-7">
 							<select name="rating" class="input_dropdown">
@@ -57,7 +60,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<!-- Make it possbile to submit the form in the modal -->
-						<input type="submit" id="submit-email" class="btn btn-primary" value="Add Comment"></input>       
+						<input type="submit" id="submit-email" class="btn btn-primary" value="Add Comment/Rating"></input>       
 					</div>
 				</form>
 			<% else %>
