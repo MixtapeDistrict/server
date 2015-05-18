@@ -1,4 +1,6 @@
 <!-- Generates logged in navigation bar. -->
+
+
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 
@@ -13,9 +15,6 @@
 			<!-- Put image inside link tag. -->
 			<%= link_to image_tag('logo.png', :class => 'img-responsive'), "/go_home", :class => 'navbar-brand' %>
 		</div>
-		
-
-
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="navbar-collapse collapse in" id="elements">
@@ -180,9 +179,7 @@
 					</div><!-- /.modal -->
 				</li>
 
-
-
-
+				<!-- profile button. -->
 				<li class="dropdown">
 					<% iduser = session['user_id'] %>
 					<% path_to_image = User.find(iduser).image_path %>
