@@ -151,19 +151,30 @@ class MusicsController < ApplicationController
 
 	# Is called when music is played. Updates plays in database (AJAX call)
 	def play
+		# Ensure user is logged in
+		if(session['logged_in'] == 0) 
+			render :nothing => true and return
+		end
 		# Get the path of the song which got played
 		path = params[:path]
 	
 		# Find the song in the database
 		medium = Medium.find_by(file_path:path)
-	
-		if(medium)
-			song = medium.music
+		song = medium.music
+
+		# Find the user who is playing the song
+		user = User.find_by(id:session['user_id'])
+		
+		# Check if the user has played this song before
+		user_play = UserPlay.find_by(user_id:user.id, music_id:song.id)
+
+		# If they haven't played this song before increment their plays
+		if(not user_play) 
+			UserPlay.create(user_id:user.id, music_id:song.id)
+			# Increment the songs and persist
+			song.plays += 1
+			song.save
 		end
-	
-		# Increment its plays and end the transaction 
-		song.plays += 1
-		song.save
 	
 		# Render nothing to improve website performance
 		render :nothing => true
