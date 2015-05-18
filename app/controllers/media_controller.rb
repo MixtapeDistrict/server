@@ -1,3 +1,13 @@
+# All forms of media (in this case tracks) functionality are managed 
+# here.
+#
+# Actions(only important ones are highlighted):
+# => create : stores the track uploaded in the server and database.
+# => medium_params : modify form parameters to be required.
+#
+# Modified at: 18th May 2015
+#########################################################################
+
 class MediaController < ApplicationController
 	before_action :set_medium, only: [:show, :edit, :update, :destroy]
 

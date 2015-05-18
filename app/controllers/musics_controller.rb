@@ -1,11 +1,17 @@
-# The music controller: Responsible for all
-# requests in relation to music.
-# Last modified: 18th May 2015.
+# The music controller: 
+#
+# Responsible for all requests in relation to music.
 # Responsibilites: Provide an interface for
 # AJAX calls to request tracks in the database,
 # counting plays, adding comments/ratings.
 # Additionally also responsible for adding/editing
 # and deleting music.
+# All forms of media (in this case tracks) functionality are managed 
+# here.
+#
+# Modified at: 18th May 2015
+#########################################################################
+
 class MusicsController < ApplicationController
 	before_action :set_music, only: [:show, :edit, :update, :destroy]
 

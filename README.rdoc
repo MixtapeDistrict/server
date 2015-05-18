@@ -45,3 +45,7 @@ An application to help new artists gain recognition and develop a fanbase. Allow
 * views -> Mainly contain the presentation logic of our application. Folder names correspond to controller names (The controller with the name of the folder renders a view from that folder). Includes stylesheets & javascript from the assets folder.
 
 
+==ADDITIONAL INFORMATION REGARDING RAILS:
+
+
+

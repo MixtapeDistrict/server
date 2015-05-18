@@ -1,8 +1,17 @@
-# Manages the homepage functionality.
-# Modified at 17th May 2015.
+# Controller that manages the homepage functionality.
+#
 # Responsibilities: Intializing sessions,
 # and session parameters. Also responsible
 # for signing users up and logging them in.
+#
+# Actions(functions/methods):
+# => showHome : creates a new user session and opens homepage.
+# => sign_up : user Ajax to sign a user to the system.
+# => sign_out : user logs out of the system.
+# => login : enables user login.
+#
+# Modified at 17th May 2015.
+################################################################
 
 class HomeController < ApplicationController
 

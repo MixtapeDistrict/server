@@ -1,9 +1,12 @@
 # Playlist functionality.
-# Last modified: 18th May 2015.
+#
 # Responsibilities: Provides interface
 # for AJAX calls to add music to playlist,
 # remove music from playlist, read music
 # from playlist.
+#
+# Modified at: 18th May 2015
+#########################################################################
 
 # Slice directory length
 SLICE_LENGTH = 18
