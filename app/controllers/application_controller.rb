@@ -1,6 +1,15 @@
-# Search functionality 
-# Search for all strings that match the substring entered by user.
+# Search functionality is implemented here.
+# 
+# Actions:
+# => search_results : search database for records the user is searching 
+# 	 for.
+#
+# => ratings : 
+#
+#
+#
 # Modified at: 12th May 2015
+#########################################################################
 
 class ApplicationController < ActionController::Base
 
