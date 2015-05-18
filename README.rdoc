@@ -1,7 +1,7 @@
 = HitPlayShare
 
 ==Description
-#An application to help new artists gain recognition and develop a fanbase. Allows musicians to upload music, and fans to download music, stream #music, and rate music. Online at: http://www.mixtape-district.herokuapp.com (Note: Files may get deleted due to the file system Heroku uses).
+An application to help new artists gain recognition and develop a fanbase. Allows musicians to upload music, and fans to download music, stream music, and rate music. Online at: http://www.mixtape-district.herokuapp.com (Note: Files may get deleted due to the file system Heroku uses).
 
 ==The technologies we used:
 * Ruby On Rails
