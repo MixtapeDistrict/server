@@ -54,40 +54,44 @@
 					<% comment = medium_comment.comment %>
 					<% user = User.find_by(id:comment.user_id) %>
 					<% user_rating = Rating.where(medium_id:@medium.id).find_by(user_id:user.id).rating %>
-					<tr class="active">
-						<td class="col-md-3">
-							<img class="user-avatar" src= "<%="/assets/userimage/"+user.image_path%>" id = "dp">
-							<div class="col-md-11" id="track-info">
-								<p class="track-name h4">User: <a href="/other_profile?id=<%= user.id %>"><%= user.username%></a></p>
-								<p class= "track-duration"><%= comment.created_at %> </p>
-                  				Rating:            
-								<% if user_rating <= 0.5 %>
-									<img src="/assets/images/0.5.png" class="rating">
-								<% elsif user_rating <= 1 %>
-									<img src="/assets/images/1.0.png" class="rating">
-								<% elsif user_rating <= 1.5 %>
-									<img src="/assets/images/1.5.png" class="rating">
-								<% elsif user_rating <= 2 %>
-									<img src="/assets/images/2.0.png" class="rating">
-								<% elsif user_rating <= 3 %>
-									<img src="/assets/images/3.0.png" class="rating">
-								<% elsif user_rating <= 3.5 %>
-									<img src="/assets/images/3.5.png" class="rating">
-								<% elsif user_rating <= 4 %>
-									<img src="/assets/images/4.0.png" class="rating">
-								<% elsif user_rating <= 4.5 %>
-									<img src="/assets/images/4.5.png" class="rating">
-								<% else %>
-									<img src="/assets/images/5.0.png" class="rating">
-								<% end %>
-							</div>
-						</td>
-						<td class="col-md-6">
-							<div class="comment_text">
-								<%= comment.comment %>
-							</div>
-						</td>
-					</tr>
+					<!-- Only show the comment if the user wrote something -->
+					<% stripped_comment = comment.comment.delete(' ') %>
+					<% if stripped_comment.length > 0 %>
+						<tr class="active">
+							<td class="col-md-3">
+								<img class="user-avatar" src= "<%="/assets/userimage/"+user.image_path%>" id = "dp">
+								<div class="col-md-11" id="track-info">
+									<p class="track-name h4">User: <a href="/other_profile?id=<%= user.id %>"><%= user.username%></a></p>
+									<p class= "track-duration"><%= comment.created_at %> </p>
+                  					Rating:            
+									<% if user_rating <= 0.5 %>
+										<img src="/assets/images/0.5.png" class="rating">
+									<% elsif user_rating <= 1 %>
+										<img src="/assets/images/1.0.png" class="rating">
+									<% elsif user_rating <= 1.5 %>
+										<img src="/assets/images/1.5.png" class="rating">
+									<% elsif user_rating <= 2 %>
+										<img src="/assets/images/2.0.png" class="rating">
+									<% elsif user_rating <= 3 %>
+										<img src="/assets/images/3.0.png" class="rating">
+									<% elsif user_rating <= 3.5 %>
+										<img src="/assets/images/3.5.png" class="rating">
+									<% elsif user_rating <= 4 %>
+										<img src="/assets/images/4.0.png" class="rating">
+									<% elsif user_rating <= 4.5 %>
+										<img src="/assets/images/4.5.png" class="rating">
+									<% else %>
+										<img src="/assets/images/5.0.png" class="rating">
+									<% end %>
+								</div>
+							</td>
+							<td class="col-md-6">
+								<div class="comment_text">
+									<%= comment.comment %>
+								</div>
+							</td>
+						</tr>
+						<% end %>
 				<% end %>
 			</tbody>
 		</table>
