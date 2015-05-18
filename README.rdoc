@@ -2,8 +2,6 @@
 
 Website-link: mixtape-district.herokuapp.com
 
-To view the our entire project files, you can also go to https://github.com/MixtapeDistrict/server
-
 ==Description
 An application to help new artists gain recognition and develop a fanbase. Allows musicians to upload music, and fans to download music, stream music, and rate music.
 
@@ -46,6 +44,17 @@ An application to help new artists gain recognition and develop a fanbase. Allow
 
 
 ==ADDITIONAL INFORMATION REGARDING RAILS:
+* For people who are new to rails, controllers contain actions (class methods) which selects the view (html page etc.) to be displayed to the user.
+* How actions work : if no URL is specified after the function call, the controller selects a view (html page)
+which matches the name of the action itself.
+* Eg. redirect_to url_for(:controller => :home, :action => :showHome) is a function called in actions
+of the controller which redirects user to another action of another controller. In this way, we can redirect
+users to specific routes.
+
+
+To view the our entire project files, you can also go to https://github.com/MixtapeDistrict/server
+
+
 
 
 
