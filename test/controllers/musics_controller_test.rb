@@ -77,6 +77,7 @@ class MusicsControllerTest
   	mct.upload_music
   	mct.edit_music
   	mct.delete_music
+  	mct.clean_up
   	puts "<---------------------- All unit tests for music controller passed ------------->"
   end
 end
