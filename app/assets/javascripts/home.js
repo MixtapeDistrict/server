@@ -332,6 +332,8 @@ function remove_song(song_id) {
 				xmlDoc.async = false;
 				xmlDoc.loadXML(response);
 			}
+			/* Clear any old notifications */
+			$('.notifyjs-corner').empty();
 			$.notify("Song removed from playlist.",{autoHideDelay: 3000, position: 'top'});
 			populate_quicklaunch_bar(xmlDoc);
 		}

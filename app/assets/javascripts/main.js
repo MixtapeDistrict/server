@@ -154,10 +154,14 @@ function notify() {
 			
 			/* User is logged in */
 			if(response == "1") {
+				/* Clear any old notifications */
+				document.getElementById('loader').contentWindow.$('.notifyjs-corner').empty();
 				document.getElementById('loader').contentWindow.$.notify("Song added to playlist.",{autoHideDelay: 3000, position: 'top', className:'success'});
 
 			}
 			else {
+				/* Clear any old notifications */
+				document.getElementById('loader').contentWindow.$('.notifyjs-corner').empty();
 				document.getElementById('loader').contentWindow.$.notify("You must be signed in to use playlist functionality.",{autoHideDelay: 3000, position: 'top'});
 			}
 		}
