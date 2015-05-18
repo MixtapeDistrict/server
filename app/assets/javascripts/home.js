@@ -494,5 +494,13 @@ function shuffle() {
 	}
 }
 
+/* Stop spam submit */
+$("form").submit(function() {
+    $(this).submit(function() {
+        return false;
+    });
+    return true;
+});
+
 
 
