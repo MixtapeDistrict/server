@@ -271,7 +271,7 @@ class MusicsController < ApplicationController
 		# Delete the music and the medium
 		medium.destroy
 		music.destroy
-	
+
 		# Redirect the user to their own profile
 		redirect_to url_for(:controller => :profile, :action => :showProfile) and return
 	
