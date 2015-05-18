@@ -482,7 +482,17 @@ function galleryspin(sign) {
 
 }
 
-
+/* Shuffles the carousel */
+function shuffle() {
+	/* Get how much panels are inside the carousel */
+	var numPanels = carousel.children.length - 1;
+	/* Generate a random number between 0 and numPanels */
+	var rand = Math.floor(Math.random()*numPanels + 1);
+	/* Spin the carousel rand times in the positive direction */
+	for(var i=0; i<rand; i++) {
+		galleryspin('');
+	}
+}
 
 
 
