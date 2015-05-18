@@ -1,9 +1,17 @@
 # Collaborations functionality.
-# Modified at: 12th May 2015
 # 
 # User when viewing another person's profile, you
 # can make a collaboration request to the person, and 
 # vice-versa.
+#
+# Actions(functions/methods):
+# => coRequest : Creates a record that registers a user's request to 
+# 				 another person
+# => showRequests : Generates a list of requests made by others to you.
+# => acceptRequest : updates collaborations record to "accepted".
+#
+# Modified at: 18th May 2015
+#########################################################################
 
 class CollaborationController < ApplicationController
 

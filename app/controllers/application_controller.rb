@@ -1,6 +1,16 @@
-# Search functionality 
-# Search for all strings that match the substring entered by user.
-# Modified at: 12th May 2015
+# Search functionality is implemented here.
+# 
+# Actions(functions/methods):
+# => search_results : search database for records the user is searching 
+# 	 				  for.
+#
+# => ratings : calculate the ratings for that medium based on current
+#    		   ratings.
+#
+# => logged_in_status : checks if user is logged in.
+#
+# Modified at: 18th May 2015
+#########################################################################
 
 class ApplicationController < ActionController::Base
 

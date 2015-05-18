@@ -1,4 +1,8 @@
 # Scaffold generated to interact with comments on the website.
+#
+# Modified at: 18th May 2015
+#########################################################################
+
 class MediumCommentsController < ApplicationController
 	before_action :set_medium_comment, only: [:show, :edit, :update, :destroy]
 

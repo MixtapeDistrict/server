@@ -1,5 +1,22 @@
 # Actions for all profile modifications and display profile details.
-# Last modified 12th May 2015
+# 
+# Actions (important ones):
+# => showProfile : queries database for current user profile details
+# 				   and redirects them to homepage with details.
+# => showFollowers : displays all followers on a new page.
+# => updateProfile : returns user pre-existing profile details on an
+# 					 update details form for them to modify.
+# => newTracK : logged in users can upload music.
+# => showOther : displays profile of person other than you 
+# 				 (on a separate profile page).
+# => unfollow : removes record of person you no longer want to 
+# 				follow (receive updates of new tracks). 
+# => follow : creates a record if you want to follow an artist
+# => change_payment_email : updates payment email to allow other users
+# 							to make donations to you.
+#
+# Modified at: 18th May 2015
+#########################################################################
 
 class ProfileController < ApplicationController
 

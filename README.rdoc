@@ -1,5 +1,8 @@
 = HitPlayShare
-mixtape-district.herokuapp.com
+
+Website-link: mixtape-district.herokuapp.com
+
+To view the our entire project files, you can also go to https://github.com/MixtapeDistrict/server
 
 ==Description
 An application to help new artists gain recognition and develop a fanbase. Allows musicians to upload music, and fans to download music, stream music, and rate music.
@@ -40,5 +43,9 @@ An application to help new artists gain recognition and develop a fanbase. Allow
 * controllers -> Contains all the logic of our application. These are responsible for responding to a specific request (as specified in routes.rb), performing the logic of the application and rendering the appropriate view/return XML/test
 * models -> Contains multiple classes which map to tables within the database (ORM using ActiveRecordAssociation). This represents the data layer of our application.
 * views -> Mainly contain the presentation logic of our application. Folder names correspond to controller names (The controller with the name of the folder renders a view from that folder). Includes stylesheets & javascript from the assets folder.
+
+
+==ADDITIONAL INFORMATION REGARDING RAILS:
+
 
 
