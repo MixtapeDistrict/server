@@ -48,7 +48,9 @@ function sign_in() {
 	xmlhttp.send();
 }
 
-
+/* Clears the login message divider when form is 
+ * bought into focus.
+ */
 function clearLogin() {
 	document.getElementById('login-message').innerHTML = "";
 }

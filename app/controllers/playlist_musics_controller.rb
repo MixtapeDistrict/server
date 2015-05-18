@@ -1,4 +1,11 @@
+# Playlist functionality.
+# Last modified: 18th May 2015.
+# Responsibilities: Provides interface
+# for AJAX calls to add music to playlist,
+# remove music from playlist, read music
+# from playlist.
 
+# Slice directory length
 SLICE_LENGTH = 18
 
 class PlaylistMusicsController < ApplicationController
@@ -106,6 +113,8 @@ class PlaylistMusicsController < ApplicationController
 	end
 
 	# Adds a song to the user's playlist 
+	# Returns an XML representing the user's playlist 
+	# after adding the song.
 	def add_song
 		# Ensure the user is logged in
 		if(session['logged_in'] != 1)
@@ -265,6 +274,7 @@ class PlaylistMusicsController < ApplicationController
 	end
 
 	# Ajax function removes track of user
+	# Then returns their playlist with their track removed
 	def remove_track
 		# get the music id parsed in
 		music_id = params[:song_id]

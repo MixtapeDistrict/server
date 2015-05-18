@@ -1,3 +1,6 @@
+/* A function which checks whether the current request
+ * is in an Iframe or not 
+ */
 function inIframe () {
     try {
         return window.self !== window.top;
@@ -6,7 +9,9 @@ function inIframe () {
     }
 }
 
-//Handle the location the request is coming from
+/* Responsible for maintaining browser history and setting
+ * the URI of the browser.
+ */
 if(!inIframe()) {
 	window.location.href = "/?request="+window.location.href;
 }

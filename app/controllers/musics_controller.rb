@@ -1,3 +1,11 @@
+# The music controller: Responsible for all
+# requests in relation to music.
+# Last modified: 18th May 2015.
+# Responsibilites: Provide an interface for
+# AJAX calls to request tracks in the database,
+# counting plays, adding comments/ratings.
+# Additionally also responsible for adding/editing
+# and deleting music.
 class MusicsController < ApplicationController
 	before_action :set_music, only: [:show, :edit, :update, :destroy]
 
@@ -68,6 +76,7 @@ class MusicsController < ApplicationController
 	end
 
 	# Returns XML representing tracks to load from the database
+	# Also called using AJAX
 	def get_tracks
 		# Get all songs in the database
 		musics = Music.all.order('created_at DESC').limit(100)
@@ -149,7 +158,8 @@ class MusicsController < ApplicationController
 	
 	end
 
-	# Is called when music is played. Updates plays in database (AJAX call)
+	# Is called when music is played. Updates plays in database (AJAX call).
+	# We only count plays for users who are signed up.
 	def play
 		# Ensure user is logged in
 		if(session['logged_in'] == 0) 
@@ -181,7 +191,7 @@ class MusicsController < ApplicationController
 	
 	end
 
-	# Comments for music
+	# Returns the comments for a given song
 	def comments
 		# Get the music ID
 		@music_id = params[:id]
@@ -288,6 +298,7 @@ class MusicsController < ApplicationController
 	
 	end
 
+	# Allows users to update name/image for their track
 	def edit_track
 		# Ensure user is logged in 
 		if(session.has_key?("logged_in"))

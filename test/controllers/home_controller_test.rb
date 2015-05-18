@@ -1,31 +1,15 @@
-require 'test_helper'
+# Unit tests for things the homepage does:
+# Signs users up, and logs them in.
+
 
 # Unit tests for the home controller 
-class HomeControllerTest < ActionController::TestCase
-puts "Pass"
-	# Testing different actions respond correctly
-
-	# Show home action
-	test "should show home" do
-		get :showHome
-		assert_response :success
-	end
-
-	# Sign up action
-	test "sign up" do
-		get :sign_up
-		assert_response :success
-	end
-
-	# Sign out action
-	test "sign out" do
-		get :sign_out
-		assert_resoponse :success
-	end
-
-	# Log in action
-	test "login" do 
-		get :login
-		assert_response :success
-	end
+class HomeControllerTest
+    # Tests whether the users can sign up properly
+    def sign_up
+    	puts "Testing Sign up"
+    	# Create a dummy user with dummy information
+    	user = User.create(username:"hitplayshare",password:"testing",email:"x@hotmail.com")
+    	# Ensure the user signed up
+    	raise "Failed to sign the user up " unless user
+    end
 end

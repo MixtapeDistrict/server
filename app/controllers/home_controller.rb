@@ -1,4 +1,12 @@
+# Manages the homepage functionality.
+# Modified at 17th May 2015.
+# Responsibilities: Intializing sessions,
+# and session parameters. Also responsible
+# for signing users up and logging them in.
+
 class HomeController < ApplicationController
+
+	# Initializes session & renders homepage
 	def showHome
 		if(params.has_key?(:error)) 
 			@error = params[:error]
@@ -16,6 +24,8 @@ class HomeController < ApplicationController
 		end
 	end
 
+	# Responsible for signing the user up
+	# Called using AJAX.
 	def sign_up
 		# Retrieve the variables passed in
 		username = params[:username]
@@ -49,6 +59,7 @@ class HomeController < ApplicationController
 		render :text => response
 	end
 
+	# Responsible for signing the user out.
 	def sign_out
 		# Log the user out
 		session['logged_in'] = 0
@@ -57,6 +68,8 @@ class HomeController < ApplicationController
 		redirect_to action:"showHome"
 	end
 
+	# Responsible for signing the user in.
+	# Also called using AJAX.
 	def login
 		# Get the parameters passed 
 		username = params[:username]
