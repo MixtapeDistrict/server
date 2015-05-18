@@ -20,12 +20,29 @@ class ProfileControllerTest
 		puts "Edit information test passed."
 	end
 
+	# Testing whether the logic of users following each other works
+	def follow
+		puts "Testing user follow functionality"
+		# Find the original user
+		user = User.find_by(id:@id)
+		# Create a second user
+		user2 = User.create()
+		@id2 = user2.id
+		# Make the second user follow the first user
+		user.followers.create(user_id:@id, follower_id:@id2)
+		# Check that user2 follows
+		raise "User follow test failed " unless user.followers.first.follower_id == @id2 and user.followers.first.user_id == @id
+		puts "User follow test passed"
+	end
+
 	# Cleans up
 	def clean_up
 		puts "Cleaning up...."
 		# Find the user
 		user = User.find_by(id:@id)
+		user2 = User.find_by(id:@id2)
 		user.destroy
+		user2.destroy
 	end
 
 	# A class method which runs this unit test case
@@ -33,6 +50,7 @@ class ProfileControllerTest
 		 puts "<--------------------- Running unit tests for profile controller ---------------->"
 		 pct = ProfileControllerTest.new
 		 pct.change_information
+		 pct.follow
 		 pct.clean_up
 		 puts "<---------------------- All unit tests for profile controller passed ------------->"
 	end
