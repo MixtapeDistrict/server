@@ -1,49 +1,43 @@
-require 'test_helper'
+# Unit test cases for a medium comment
+# Just tests whether the database was implemented
+# appropriately.
 
-class MediumCommentsControllerTest < ActionController::TestCase
-  setup do
-    @medium_comment = medium_comments(:one)
-  end
+class MediumCommentsControllerTest
+	# Testing whether the user can add a comment to medium
+	def add_comment
+		puts "Testing comments adding"
+		# Create a dummy medium
+		medium = Medium.create
+		@medium_id = medium.id
+		# Create a dummy user
+		user = User.create
+		@user_id = user.id
+		# Create a comment for this user
+		comment = user.comments.create(comment:"Texting this", comment_type:"M")
+		# Make the comment have a medium comment
+		comment.medium_comment = MediumComment.create(medium_id:@medium_id)
+		comment.save
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:medium_comments)
-  end
+		# Ensure this comment was added for this medium
+		raise "Comments test failed" unless medium.medium_comments.length == 1
+		puts "Comments test passed"
+	end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+	# Clean up
+	def clean_up
+		puts "Cleaning up..."
+		# Destroy medium
+		Medium.find_by(id:@medium_id).medium_comments.destroy_all
+		Medium.find_by(id:@medium_id).destroy
+		User.find_by(id:@user_id).destroy
+	end
 
-  test "should create medium_comment" do
-    assert_difference('MediumComment.count') do
-      post :create, medium_comment: { comment_id: @medium_comment.comment_id, medium_id: @medium_comment.medium_id }
+	# A class method to run this test case
+	def self.run
+		puts "<--------------------- Running unit tests for medium comments controller ---------------->"
+		mcct = MediumCommentsControllerTest.new
+		mcct.add_comment
+		mcct.clean_up
+    	puts "<----------------------ALL UNIT TESTS PASSED-------------------------->"
     end
-
-    assert_redirected_to medium_comment_path(assigns(:medium_comment))
-  end
-
-  test "should show medium_comment" do
-    get :show, id: @medium_comment
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @medium_comment
-    assert_response :success
-  end
-
-  test "should update medium_comment" do
-    patch :update, id: @medium_comment, medium_comment: { comment_id: @medium_comment.comment_id, medium_id: @medium_comment.medium_id }
-    assert_redirected_to medium_comment_path(assigns(:medium_comment))
-  end
-
-  test "should destroy medium_comment" do
-    assert_difference('MediumComment.count', -1) do
-      delete :destroy, id: @medium_comment
-    end
-
-    assert_redirected_to medium_comments_path
-  end
 end
