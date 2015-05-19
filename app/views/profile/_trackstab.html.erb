@@ -102,6 +102,10 @@
 								<label for="track-genre" class="col-md-4 control-label">Genre:</label>
 								<div class="col-md-7">
 									<select name="trackgenre">
+									    <% if medium.music.genre == "Pop" %>
+									        <option value="Pop" selected>Pop</option>
+									    <% else %>
+									    	<option value="Pop">Pop</option>
 										<% if medium.music.genre == "Blues" %>
 											<option value="Blues" selected>Blues</option>
 										<% else %>
