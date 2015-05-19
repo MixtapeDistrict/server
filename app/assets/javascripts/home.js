@@ -484,6 +484,18 @@ function galleryspin(sign) {
 
 /* Shuffles the carousel */
 function shuffle() {
+	/* Change the button to something intuitive */
+	var shuffle_button = document.getElementById('random');
+	shuffle_button.disabled = true;
+	$('#random b').text("Shuffling..");
+
+	/* After 1 second enable the button */
+	setTimeout (function(){
+        shuffle_button.disabled = false;
+        $('#random b').text("Shuffle Playlist");
+    },1000);
+
+	/* Change the name inside the button */
 	var carousel = document.querySelector('#carousel');
 	/* Get how much panels are inside the carousel */
 	var numPanels = carousel.children.length - 1;
@@ -516,6 +528,7 @@ function shuffle() {
 
 	/* Use this image path to populate the div next to the carousel */
 	populate_playlist_div(carouselData[selectedIndex]);
+
 }
 
 $("form").submit(function() {
