@@ -23,12 +23,33 @@ function verify_upload() {
 	var valid = true;
 	if(!regex.test(track_name)) {
 		valid = false;
-		document.getElementById('track-outcome').innerHTML = "Track name may only contain alphanumeric characters & spaces."
+		document.getElementById('track-outcome').innerHTML = "Track name may only contain alphanumeric characters & spaces.";
 	}
 	else if(track_name.match(/^\s*$/)) {
 		valid = false;
 		document.getElementById('track-outcome').innerHTML = "Track name cannot be all whitespaces.";
 	}
+	return valid;
+}
+
+/* Validates track edit */
+function verify_edit(obj) {
+	id = obj.id;
+	console.log("Id = " + id);
+	var track_name = document.getElementById('track-edit-name-'+id).value;
+	/* Ensure this is alphanumeric and at-least 1 character big */
+	var regex = /^[A-Za-z0-9\s]{1,30}$/i;
+	var valid = true;
+	if(!regex.test(track_name)) {
+		valid = false;
+		document.getElementById("track-edit-outcome-"+id).innerHTML = "Track name may only contain alphanumeric characters & spaces.";
+	}
+	else if(track_name.match(/^\s*$/)) {
+		valid = false;
+		document.getElementById("track-edit-outcome-"+id).innerHTML = "Track name cannot be all whitespaces.";
+	}
+	console.log(track_name);
+	console.log(valid);
 	return valid;
 }
 

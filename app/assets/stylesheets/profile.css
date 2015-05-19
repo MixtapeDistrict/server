@@ -104,7 +104,7 @@ form {
 .foll-image{
 	max-height: 100px;
 }
-#track-outcome {
+#track-outcome ,.track-edit-outcome {
 	color:red;
 	font-size:12px;
 }

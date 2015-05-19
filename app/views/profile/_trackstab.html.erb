@@ -89,12 +89,12 @@
 					</div>
 					<div class="modal-body">
 						<!--Upload Track form-->
-						<form class="form-horizontal"  action="/editTrack" method="post" enctype="multipart/form-data" onsubmit="return verify_upload()">		
+						<form class="form-horizontal"  action="/editTrack" method="post" enctype="multipart/form-data" id="<%=medium.music.id%>" onsubmit="return verify_edit(this)">		
 							<div class="new-track-name form-group">
 								<label for="track-name" class="col-md-4 control-label">Track Name:</label>
 								<div class="col-md-7">
-								<input id="track-name" type="text" class="form-control" name="trackname" required maxlength="30" value="<%=medium.title%>" onfocus="clearErrorMessage()">
-									<div id="track-outcome"></div>
+								<input id="track-edit-name-<%=medium.music.id%>" type="text" class="form-control" name="trackname" required maxlength="30" value="<%=medium.title%>" onfocus="clearErrorMessage()">
+									<div class="track-edit-outcome" id="track-edit-outcome-<%=medium.music.id%>"></div>
 									<input type="hidden" name="medium_id" value="<%=medium.id%>">
 								</div>
 							</div>
