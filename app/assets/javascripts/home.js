@@ -518,4 +518,11 @@ function shuffle() {
 	populate_playlist_div(carouselData[selectedIndex]);
 }
 
+$("form").submit(function() {
+    $(this).submit(function() {
+        return false;
+    });
+    return true;
+});
+
 
