@@ -29,6 +29,8 @@ function verify_upload() {
 		valid = false;
 		document.getElementById('track-outcome').innerHTML = "Track name cannot be all whitespaces.";
 	}
+	console.log(track_name);
+	console.log("valid="+valid);
 	return valid;
 }
 
