@@ -253,7 +253,7 @@ var TO_RADIANS = Math.PI/180;
 var BACKFACE_INVISIBLE = true;
 var selectedIndex = 0;
 var carouselData = null;
-var RADIUS_SIZE = 300;
+var RADIUS_SIZE = 500;
 
 // Creates a Carousel from an Array 
 function doCarousel(data){
@@ -484,14 +484,39 @@ function galleryspin(sign) {
 
 /* Shuffles the carousel */
 function shuffle() {
+	var carousel = document.querySelector('#carousel');
 	/* Get how much panels are inside the carousel */
 	var numPanels = carousel.children.length - 1;
 	/* Generate a random number between 0 and numPanels */
 	var rand = Math.floor(Math.random()*numPanels + 1);
+	
+
 	/* Spin the carousel rand times in the positive direction */
 	for(var i=0; i<rand; i++) {
-		galleryspin('');
+		var increment = 1;
+
+		selectedIndex+=increment;
+		if(selectedIndex >= carouselData.length){
+			selectedIndex-=carouselData.length;
+		}else if(selectedIndex < 0){
+			selectedIndex+=carouselData.length;
+		}
+	
+		console.log(selectedIndex);
+		console.log(carouselData[selectedIndex]);
+		console.log("Panels in carousel = " + numPanels);
+		console.log("Increment = " + increment);
+		//Handle the transforms
+        angle += ( -360 / numPanels ) * increment;
+        carousel.style[ '-webkit-transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';
+        document.querySelector('#information').style[ '-webkit-transform' ] = 'translateZ( 0px ) rotateY(' + (-1) * angle + 'deg)';
+        carousel.style[ 'transform' ] = 'translateZ( -288px ) rotateY(' + angle + 'deg)';
+	    document.querySelector('#information').style[ 'transform' ] = 'translateZ( 0px ) rotateY(' + (-1) * angle + 'deg)';
 	}
+
+	/* Use this image path to populate the div next to the carousel */
+	populate_playlist_div(carouselData[selectedIndex]);
+
 }
 
 
