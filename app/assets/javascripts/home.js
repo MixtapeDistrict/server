@@ -531,7 +531,7 @@ function shuffle() {
 
 }
 
-$("form").submit(function() {
+$("#comment-form").submit(function() {
     $(this).submit(function() {
         return false;
     });

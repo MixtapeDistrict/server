@@ -10,7 +10,7 @@
 			<div class="modal-body">
 				<% if session['logged_in']==1 %>
 					<!--Add comment form-->
-					<form class="form-horizontal" action="/add_music_comment" method="post">		
+					<form class="form-horizontal " action="/add_music_comment" method="post" id="comment-form">		
 					<input type="hidden" name="medium_id" value="<%=@medium.id%>">
 					<div class="new-album-name form-group">
 						<label for="album-name" class="col-md-4 control-label">Comment</label>							
