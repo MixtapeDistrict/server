@@ -253,7 +253,7 @@ var TO_RADIANS = Math.PI/180;
 var BACKFACE_INVISIBLE = true;
 var selectedIndex = 0;
 var carouselData = null;
-var RADIUS_SIZE = 500;
+var RADIUS_SIZE = 300;
 
 // Creates a Carousel from an Array 
 function doCarousel(data){
@@ -516,7 +516,6 @@ function shuffle() {
 
 	/* Use this image path to populate the div next to the carousel */
 	populate_playlist_div(carouselData[selectedIndex]);
-
 }
 
 
