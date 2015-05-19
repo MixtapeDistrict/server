@@ -18,7 +18,9 @@
 			<p class="track-artist"><a href="/other_profile?id=<%=@creator.id%>"><%= @creator.username %></a> </p>
 			<p class="track-genre"><%= @song.genre %></p>
 			<p>
-				<% if @rating <= 0.5 %>
+			    <% if @rating <= 0.1 %>
+			    	<img src="/assets/images/0.png" class="rating">
+				<% elsif @rating <= 0.5 %>
 					<img src="/assets/images/0.5.png" class="rating">
 				<% elsif @rating <= 1 %>
 					<img src="/assets/images/1.0.png" class="rating">

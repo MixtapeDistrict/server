@@ -51,7 +51,9 @@
 					</a>
 				</p>
 				<p class="row info track-rating">
-					<% if rating <= 0.5 %>
+					<% if rating <= 0.1 %>
+						<img src="/assets/images/0.png" class="rating">
+					<% elsif rating <= 0.5 %>
 						<img src="/assets/images/0.5.png" class="rating">
 					<% elsif rating <= 1 %>
 						<img src="/assets/images/1.0.png" class="rating">
